@@ -10,7 +10,6 @@
         html { scroll-behavior: smooth; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        /* Explicit fallback styles to guarantee visibility control */
         .custom-modal { display: none; }
         .custom-modal.active { display: flex !important; }
         .mobile-drawer { display: none; }
@@ -31,7 +30,7 @@
                         TriDash<span class="text-slate-500 font-light">AI.com</span>
                     </a>
 
-                    <!-- MOBILE HAMBURGER BUTTON (UNDERNEATH COMPANY NAME) -->
+                    <!-- MOBILE HAMBURGER BUTTON (UNDERNEATH LOGO) -->
                     <div class="md:hidden mt-0.5">
                         <button type="button" id="menu-btn" aria-label="Toggle Menu" class="p-1.5 -ml-1.5 rounded-lg text-slate-800 hover:bg-slate-100 transition focus:outline-none cursor-pointer flex items-center gap-1.5">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +41,7 @@
                     </div>
                 </div>
                 
-                <!-- DESKTOP ACTIONS: Clean Header (Log In hidden here, accessible via drawer/mobile) -->
+                <!-- DESKTOP ACTIONS -->
                 <div class="hidden md:flex flex-col items-end gap-1.5">
                     <a href="#register" class="px-4 py-2 bg-black hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
                         Register / Sign Up
@@ -64,7 +63,7 @@
             <a href="#packages" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">Packages</a>
             <a href="#faq" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">FAQ</a>
             <hr class="border-slate-100 my-2">
-            <button type="button" id="mobile-login-btn" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition cursor-pointer">
+            <button type="button" id="mobile-login-btn" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition">
                 Log In
             </button>
         </nav>
@@ -88,9 +87,9 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <button type="button" data-package="standard" class="pkg-trigger w-full sm:w-auto px-8 py-4 bg-black hover:bg-slate-800 text-white font-bold text-lg rounded-xl transition shadow-lg text-center cursor-pointer">
+            <a href="#register" data-package="standard" class="pkg-trigger w-full sm:w-auto px-8 py-4 bg-black hover:bg-slate-800 text-white font-bold text-lg rounded-xl transition shadow-lg text-center cursor-pointer">
                 Start your 30-day pilot for just $10
-            </button>
+            </a>
             <a href="#demo" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-lg rounded-xl transition text-center cursor-pointer">
                 See How It Works
             </a>
@@ -400,11 +399,304 @@
                         <li class="flex items-center gap-3">Automated Google 5-Star Review Request Invites</li>
                     </ul>
 
-                    <button type="button" data-package="standard" class="pkg-trigger block w-full py-4 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-xl transition text-center cursor-pointer">
+                    <a href="#register" data-package="standard" class="pkg-trigger block w-full py-4 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-xl transition text-center cursor-pointer">
                         Select Standard Package →
-                    </button>
+                    </a>
                 </div>
 
                 <!-- TIER 2 -->
                 <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-blue-600 relative">
-                    <span class="absolute -
+                    <span class="absolute -top-3.5 left-8 bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Recommended</span>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-6 mb-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-full mb-2">Premium Package</span>
+                            <h3 class="text-2xl font-extrabold text-slate-900">Pro AI Automation Suite</h3>
+                        </div>
+                        <div class="mt-4 sm:mt-0 text-left sm:text-right">
+                            <span class="text-4xl font-extrabold text-slate-900">$39</span>
+                            <span class="text-sm text-slate-500 block">/ month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-slate-700 text-sm font-medium">
+                        <li class="flex items-center gap-3"><strong>300 SMS messages</strong> included per month</li>
+                        <li class="flex items-center gap-3"><strong>AI-Powered Custom Review Responses</strong></li>
+                        <li class="flex items-center gap-3">Instant Missed-Call Automated SMS Response</li>
+                        <li class="flex items-center gap-3">Google Calendar Link Injection</li>
+                    </ul>
+
+                    <a href="#register" data-package="premium" class="pkg-trigger block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg cursor-pointer">
+                        Select Premium Package (Pro AI) →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION SECTION -->
+    <section id="register" class="py-20 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xl">
+            <div class="text-center mb-8">
+                <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Instant Activation</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Create Your Account & Activate</h2>
+                <p class="text-slate-500 text-sm mt-2">Enter your details below to set up your TriDash account.</p>
+            </div>
+
+            <form id="reg-form" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name / Business Name</label>
+                    <input type="text" id="reg-name" required placeholder="e.g. John Doe - Apex Electrical" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Business Email</label>
+                    <input type="email" id="reg-email" required placeholder="you@company.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Choose Password</label>
+                    <input type="password" id="reg-password" required minlength="8" placeholder="At least 8 characters" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Mobile Phone Number</label>
+                    <input type="tel" id="reg-phone" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Google Calendar Booking Link</label>
+                    <input type="url" id="reg-calendar" required placeholder="https://calendar.google.com/..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Select Package Tier</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+                            <input type="radio" name="package_choice" id="pkg-standard" value="Standard Package" checked class="w-4 h-4 text-blue-600">
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Standard Tier</span>
+                                <span class="block text-xs text-slate-500">$10 1st mo / $29 mo</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 border border-blue-200 bg-blue-50/50 rounded-xl cursor-pointer hover:bg-blue-50 transition">
+                            <input type="radio" name="package_choice" id="pkg-premium" value="Premium Pro AI Suite" class="w-4 h-4 text-blue-600">
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Premium Pro AI</span>
+                                <span class="block text-xs text-blue-700 font-semibold">$39 / month</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-lg cursor-pointer">
+                    Complete Registration & Activate →
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (COMPLETE FULL LIST) -->
+    <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How does the missed-call automation work?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        When someone calls your business number and you are unable to answer, our system immediately sends a personalized SMS on your behalf within 5 seconds to retain the lead before they call a competitor.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How do I receive Google 5-star reviews automatically?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        You paste your official Google Business review link into your portal. After completing a job, TriDash automatically dispatches an SMS review invitation to your client.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How does the AI respond to reviews without sounding like a robot?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        Our system uses tailored prompts to write natural, conversational replies. For 5-star reviews, it thanks the customer like a real person. For 1-star reviews, it uses de-escalation language to apologize and take the conversation offline.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        Are there any long-term contracts or setup fees?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        None at all. TriDash AI starts with a $10 30-day pilot on the Standard tier or $39/month for Pro AI, with zero setup fees. You can pause or cancel your subscription whenever you wish.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-white border-t border-slate-100 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© TriDash AI. All rights reserved.</p>
+            <p class="text-xs text-slate-400">Questions or need help? Email <a href="mailto:kelvin@tridashai.com" class="text-slate-700 underline font-semibold">kelvin@tridashai.com</a></p>
+        </div>
+    </footer>
+
+    <!-- LOG IN MODAL OVERLAY -->
+    <div id="login-modal" class="custom-modal fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
+            <button type="button" id="close-modal-btn" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-slate-900">Welcome Back</h3>
+                <p class="text-slate-500 text-sm mt-1">Log in to your TriDash client dashboard.</p>
+            </div>
+
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Business Email</label>
+                    <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
+                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base cursor-pointer">
+                    Log In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Hamburger Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const navDrawer = document.getElementById('nav-drawer');
+            if (menuBtn && navDrawer) {
+                menuBtn.addEventListener('click', () => {
+                    navDrawer.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navDrawer) navDrawer.classList.remove('active');
+                });
+            });
+
+            // 2. Login Modal Toggles
+            const loginModal = document.getElementById('login-modal');
+            const mobileLoginBtn = document.getElementById('mobile-login-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            function openModal() {
+                if (loginModal) loginModal.classList.add('active');
+                if (navDrawer) navDrawer.classList.remove('active');
+            }
+
+            function closeModal() {
+                if (loginModal) loginModal.classList.remove('active');
+            }
+
+            if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openModal);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+            // 3. Package Selectors
+            document.querySelectorAll('.pkg-trigger').forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const tier = trigger.getAttribute('data-package');
+                    if (tier === 'premium') {
+                        const radio = document.getElementById('pkg-premium');
+                        if (radio) radio.checked = true;
+                    } else {
+                        const radio = document.getElementById('pkg-standard');
+                        if (radio) radio.checked = true;
+                    }
+                });
+            });
+
+            // 4. Forms
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Login successful! Redirecting...');
+                    closeModal();
+                });
+            }
+
+            const regForm = document.getElementById('reg-form');
+            if (regForm) {
+                regForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Registration successful! Redirecting to dashboard...');
+                });
+            }
+
+            // 5. Demo Simulation Button
+            const demoBtn = document.getElementById('run-demo-btn');
+            const demoStatus = document.getElementById('demo-status');
+            if (demoBtn) {
+                demoBtn.addEventListener('click', () => {
+                    if (demoStatus) demoStatus.classList.remove('hidden');
+                    demoBtn.textContent = "✓ Simulation Active";
+                    demoBtn.classList.remove('bg-slate-100', 'text-slate-800');
+                    demoBtn.classList.add('bg-emerald-600', 'text-white');
+
+                    setTimeout(() => {
+                        demoBtn.textContent = "Test Live Speed Demo";
+                        demoBtn.classList.remove('bg-emerald-600', 'text-white');
+                        demoBtn.classList.add('bg-slate-100', 'text-slate-800');
+                        if (demoStatus) demoStatus.classList.add('hidden');
+                    }, 4000);
+                });
+            }
+
+            // 6. ROI Calculator
+            const jobSlider = document.getElementById('job-slider');
+            const callsSlider = document.getElementById('calls-slider');
+            const jobVal = document.getElementById('job-val');
+            const callsVal = document.getElementById('calls-val');
+            const lostRev = document.getElementById('lost-rev');
+
+            function calculateROI() {
+                if (!jobSlider || !callsSlider) return;
+                const val = parseInt(jobSlider.value);
+                const calls = parseInt(callsSlider.value);
+                if (jobVal) jobVal.textContent = '$' + val;
+                if (callsVal) callsVal.textContent = calls;
+                if (lostRev) lostRev.textContent = '$' + Math.round(val * calls * 4).toLocaleString();
+            }
+
+            if (jobSlider && callsSlider) {
+                jobSlider.addEventListener('input', calculateROI);
+                callsSlider.addEventListener('input', calculateROI);
+            }
+        });
+    </script>
+</body>
+</html>
