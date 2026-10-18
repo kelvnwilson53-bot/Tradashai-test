@@ -106,7 +106,7 @@
         </p>
     </section>
 
-    <!-- INDUSTRY STATS / PROOF CARDS -->
+    <!-- INDUSTRY STATS / PROOF CARDS WITH YOUR CUSTOM IMAGES -->
     <section id="stats" class="py-16 bg-slate-50 border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -115,12 +115,11 @@
                 </h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1: 1791934087000.jpg (Realtor / Estate Agent Image) -->
+                <!-- Card 1: 1792284444903.jpg -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1791934087000.jpg" 
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';" 
-                             alt="Lady Estate Agent / Professional Service" 
+                        <img src="1792284444903.jpg" 
+                             alt="Professional Session" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -134,12 +133,11 @@
                     </div>
                 </div>
 
-                <!-- Card 2: 1791884316108.jpg -->
+                <!-- Card 2: 1792284293487.jpg -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1791884316108.jpg" 
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80';" 
-                             alt="Mobile Lead Capture" 
+                        <img src="1792284293487.jpg" 
+                             alt="Roofing and Construction" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -153,12 +151,11 @@
                     </div>
                 </div>
 
-                <!-- Card 3: 1791881066069.jpg -->
+                <!-- Card 3: 1792284260193.jpg -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1791881066069.jpg" 
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80';" 
-                             alt="Trade Technician On Site" 
+                        <img src="1792284260193.jpg" 
+                             alt="Electrical Contractor" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -172,12 +169,11 @@
                     </div>
                 </div>
 
-                <!-- Card 4: 1791884228401.jpg -->
+                <!-- Card 4: 1792284328037.jpg -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1791884228401.jpg" 
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';" 
-                             alt="Professional Delivery" 
+                        <img src="1792284328037.jpg" 
+                             alt="Plumbing and Pipe Installation" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -616,232 +612,4 @@
 
             <div class="text-center pt-2">
                 <p id="auth-toggle-text" class="text-xs text-slate-500">
-                    Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Log In</button>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PILOT FEEDBACK MODAL -->
-    <div id="feedback-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-            <button type="button" onclick="toggleFeedbackModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
-            
-            <div class="text-center">
-                <h3 class="text-2xl font-extrabold text-slate-900">TriDash AI Pilot Feedback</h3>
-                <p class="text-slate-500 text-sm mt-1">Help us fine-tune the system for your daily operations.</p>
-            </div>
-
-            <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name & Business</label>
-                    <input type="text" name="business_name" required placeholder="e.g. John - Apex Electrical" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">System Satisfaction</label>
-                    <select name="rating" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
-                        <option value="5">⭐⭐⭐⭐⭐ 5 - Excellent (Recovered leads & boost reviews)</option>
-                        <option value="4">⭐⭐⭐⭐ 4 - Good</option>
-                        <option value="3">⭐⭐⭐ 3 - Average</option>
-                        <option value="2">⭐⭐ 2 - Needs improvement</option>
-                        <option value="1">⭐ 1 - Poor</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Most Valuable Pillar</label>
-                    <select name="top_feature" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
-                        <option value="missed_sms">1. Instant Lead Recovery (5-sec SMS)</option>
-                        <option value="google_reviews">2. Automated Google Review Invites</option>
-                        <option value="ai_responses">3. Human-Style AI Review Responses</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detailed Feedback & Feature Requests</label>
-                    <textarea name="comments" rows="3" required placeholder="Tell us what worked well or what features you would like added..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black"></textarea>
-                </div>
-
-                <button type="submit" id="feedback-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base">
-                    Submit Feedback
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- TERMS & CONDITIONS MODAL -->
-    <div id="terms-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-6 max-h-[80vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
-                <h3 class="text-xl font-bold text-slate-900">Terms & Service Terms</h3>
-                <button type="button" onclick="toggleTermsModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
-            </div>
-            <div class="text-sm text-slate-600 space-y-4 leading-relaxed">
-                <p><strong>Service Subscription:</strong> TriDash AI provides automated messaging and lead recovery toolsets starting at $10 during your initial 30-day pilot, transitioning to $29 per month for Standard or $39 per month for Premium Pro AI.</p>
-                <p><strong>No Long-Term Contracts:</strong> You retain complete control to pause or end your subscription at any time within your user portal without penalty or hidden cancellation fees.</p>
-                <p><strong>Data Privacy:</strong> We strictly manage lead contact numbers and business automated messages adhering to privacy standards. Your data is never sold or repurposed.</p>
-            </div>
-            <button type="button" onclick="toggleTermsModal()" class="w-full py-3 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition">
-                Close
-            </button>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const navDrawer = document.getElementById('nav-drawer');
-        let currentAuthMode = 'signup';
-
-        function toggleMenu() {
-            if (navDrawer.classList.contains('hidden')) {
-                navDrawer.classList.remove('hidden');
-                navDrawer.classList.add('flex');
-            } else {
-                closeMenu();
-            }
-        }
-
-        function closeMenu() {
-            navDrawer.classList.add('hidden');
-            navDrawer.classList.remove('flex');
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-
-        // Auth Modal Controls
-        function openAuthModal(mode, planName = 'Standard Package ($10 1st mo / $29 mo)') {
-            currentAuthMode = mode;
-            document.getElementById('input-plan').value = planName;
-            updateAuthUI();
-            document.getElementById('auth-modal').classList.remove('hidden');
-        }
-
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.add('hidden');
-        }
-
-        function toggleAuthMode() {
-            currentAuthMode = currentAuthMode === 'signup' ? 'login' : 'signup';
-            updateAuthUI();
-        }
-
-        function updateAuthUI() {
-            const title = document.getElementById('auth-title');
-            const subtitle = document.getElementById('auth-subtitle');
-            const nameField = document.getElementById('name-field');
-            const planField = document.getElementById('plan-field');
-            const calendarField = document.getElementById('calendar-field');
-            const passwordField = document.getElementById('password-field');
-            const phoneField = document.getElementById('phone-field');
-            const inputName = document.getElementById('input-name');
-            const inputPhone = document.getElementById('input-phone');
-            const inputPassword = document.getElementById('input-password');
-            const submitBtn = document.getElementById('auth-submit-btn');
-            const toggleText = document.getElementById('auth-toggle-text');
-
-            if (currentAuthMode === 'login') {
-                title.textContent = 'Welcome Back';
-                subtitle.textContent = 'Log in to your TriDash client portal.';
-                nameField.classList.add('hidden');
-                planField.classList.add('hidden');
-                calendarField.classList.add('hidden');
-                phoneField.classList.add('hidden');
-                passwordField.classList.remove('hidden');
-                inputName.removeAttribute('required');
-                inputPhone.removeAttribute('required');
-                inputPassword.setAttribute('required', 'true');
-                submitBtn.textContent = 'Log In';
-                toggleText.innerHTML = 'Don\'t have an account yet? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Activate your account</button>';
-            } else {
-                title.textContent = 'Activate Your Account';
-                subtitle.textContent = 'Instant setup • Cancel anytime.';
-                nameField.classList.remove('hidden');
-                planField.classList.remove('hidden');
-                calendarField.classList.remove('hidden');
-                phoneField.classList.remove('hidden');
-                passwordField.classList.add('hidden');
-                inputName.setAttribute('required', 'true');
-                inputPhone.setAttribute('required', 'true');
-                inputPassword.removeAttribute('required');
-                submitBtn.textContent = 'Continue to Activation';
-                toggleText.innerHTML = 'Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Log In</button>';
-            }
-        }
-
-        function handleAuthSubmit(e) {
-            e.preventDefault();
-            if (currentAuthMode === 'signup') {
-                alert('Account registration successful! Redirecting to your dashboard...');
-            } else {
-                alert('Login successful! Redirecting to your dashboard...');
-            }
-            closeAuthModal();
-        }
-
-        // Feedback Modal Controls
-        function toggleFeedbackModal() {
-            const modal = document.getElementById('feedback-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        function submitFeedback(e) {
-            e.preventDefault();
-            const btn = document.getElementById('feedback-btn');
-            btn.textContent = "✓ Feedback Saved!";
-            btn.classList.remove('bg-black', 'hover:bg-slate-800');
-            btn.classList.add('bg-emerald-600');
-
-            setTimeout(() => {
-                toggleFeedbackModal();
-                btn.textContent = "Submit Feedback";
-                btn.classList.remove('bg-emerald-600');
-                btn.classList.add('bg-black', 'hover:bg-slate-800');
-                document.getElementById('feedbackForm').reset();
-            }, 2000);
-        }
-
-        function triggerDemo() {
-            const statusBox = document.getElementById('demo-status');
-            const btn = document.getElementById('run-demo-btn');
-            
-            statusBox.classList.remove('hidden');
-            btn.textContent = "✓ Simulation Active";
-            btn.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
-            btn.classList.add('bg-emerald-600', 'text-white');
-
-            setTimeout(() => {
-                btn.textContent = "Test Live Speed Demo";
-                btn.classList.remove('bg-emerald-600', 'text-white');
-                btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
-                statusBox.classList.add('hidden');
-            }, 4000);
-        }
-
-        const jobSlider = document.getElementById('job-slider');
-        const callsSlider = document.getElementById('calls-slider');
-        const jobVal = document.getElementById('job-val');
-        const callsVal = document.getElementById('calls-val');
-        const lostRev = document.getElementById('lost-rev');
-
-        function calculateROI() {
-            const val = parseInt(jobSlider.value);
-            const calls = parseInt(callsSlider.value);
-            jobVal.textContent = '$' + val;
-            callsVal.textContent = calls;
-            
-            const monthlyLost = Math.round(val * calls * 4);
-            lostRev.textContent = '$' + monthlyLost.toLocaleString();
-        }
-
-        jobSlider.addEventListener('input', calculateROI);
-        callsSlider.addEventListener('input', calculateROI);
-
-        function toggleTermsModal() {
-            const modal = document.getElementById('terms-modal');
-            modal.classList.toggle('hidden');
-        }
-    </script>
-</body>
-</html>
+                    Already have an account? <button type="
