@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tridashai - Missed Call Recovery & AI Review Management</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1e293b; background: #f8fafc; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: #ffffff; border-bottom: 1px solid #e2e8f0; sticky: top; }
+        .logo { font-size: 24px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a { text-decoration: none; font-weight: 600; color: #475569; font-size: 15px; }
+        .nav-links a:hover { color: #2563eb; }
+        .btn-primary { background: #2563eb; color: #ffffff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+        .btn-primary:hover { background: #1d4ed8; }
+        
+        /* HERO SECTION */
+        .hero { text-align: center; padding: 70px 20px 50px; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 18px; line-height: 1.25; }
+        .hero p { font-size: 19px; color: #64748b; margin-bottom: 32px; }
 
+        /* PRICING SECTION - STACKED LAYOUT */
+        .pricing-section { padding: 40px 20px 80px; max-width: 720px; margin: 0 auto; }
+        .pricing-header { text-align: center; margin-bottom: 40px; }
+        .pricing-header h2 { font-size: 32px; color: #0f172a; margin-bottom: 8px; }
+        .pricing-header p { font-size: 16px; color: #64748b; }
+        
+        .stacked-pricing { display: flex; flex-direction: column; gap: 32px; }
+        .price-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 36px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: relative; }
+        .price-card.featured { border: 2px solid #2563eb; box-shadow: 0 10px 25px -5px rgba(37,99,235,0.12); }
+        .badge { position: absolute; top: -14px; left: 32px; background: #2563eb; color: #ffffff; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .card-header { margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
+        .card-header h3 { font-size: 24px; color: #0f172a; margin: 0 0 8px 0; }
+        .price { font-size: 38px; font-weight: 800; color: #0f172a; margin: 0; }
+        .price span { font-size: 15px; color: #64748b; font-weight: 400; }
+        
+        .features-list { list-style: none; padding: 0; margin: 0 0 28px 0; }
+        .features-list li { padding: 10px 0; font-size: 16px; color: #334155; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f8fafc; }
+        .features-list li strong { color: #0f172a; }
+        .check { color: #16a34a; font-weight: bold; }
+
+        .select-btn { display: block; text-align: center; width: 100%; padding: 14px 0; background: #0f172a; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; transition: background 0.2s; cursor: pointer; border: none; }
+        .select-btn:hover { background: #1e293b; }
+        .select-btn.primary { background: #2563eb; }
+        .select-btn.primary:hover { background: #1d4ed8; }
+
+        /* MODAL ONBOARDING FORM */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-card { background: #ffffff; border-radius: 16px; width: 100%; max-width: 480px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); position: relative; }
+        .close-btn { position: absolute; top: 20px; right: 20px; border: none; background: none; font-size: 24px; color: #64748b; cursor: pointer; }
+        .modal-card h3 { margin-top: 0; font-size: 22px; color: #0f172a; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; }
+        .help-note { font-size: 13px; color: #64748b; margin-top: 6px; }
+
+        /* FOOTER SUPPORT */
+        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; font-size: 14px; }
+        footer a { color: #38bdf8; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+    <header>
+        <div class="logo">Tridashai</div>
+        <div class="nav-links">
+            <a href="#pricing">Pricing</a>
+            <a href="/login.html">Login</a>
+            <a href="#pricing" class="btn-primary">Get Started</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Never Lose Another Client to a Missed Call</h1>
+        <p>Tridashai automatically texts back missed calls, includes your personal Google Calendar booking link, and manages your Google reviews seamlessly.</p>
+        <a href="#pricing" class="btn-primary" style="padding: 14px 28px; font-size: 16px; display: inline-block;">View Packages & Sign Up →</a>
+    </section>
+
+    <!-- STACKED PRICING SECTION -->
+    <section id="pricing" class="pricing-section">
+        <div class="pricing-header">
+            <h2>Select Your Package</h2>
+            <p>Choose the plan that fits your business needs. Upgrade or cancel anytime.</p>
+        </div>
+
+        <div class="stacked-pricing">
+            
+            <!-- PACKAGE 1: STANDARD -->
+            <div class="price-card">
+                <div class="card-header">
+                    <h3>Standard Package</h3>
+                    <div class="price">$10 <span>first month ($29/mo thereafter)</span></div>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check">✓</span> <strong>100 SMS messages</strong> per month included</li>
+                    <li><span class="check">✓</span> Instant Missed-Call Auto Text Back</li>
+                    <li><span class="check">✓</span> Google Calendar Booking Link Injection</li>
+                    <li><span class="check">✓</span> Post-Service Review Request SMS</li>
+                    <li><span class="check">✓</span> Standard Warm Review Replies (6 Preset Pool)</li>
+                    <li><span class="check">✓</span> Public De-escalation Protocol (1–3★)</li>
+                    <li><span class="check">✓</span> $0.05 per extra SMS overage</li>
+                </ul>
+                <button class="select-btn" onclick="openSignup('Starter Plan ($10 1st mo / $29 mo)')">Choose Standard Package</button>
+            </div>
+
+            <!-- PACKAGE 2: PREMIUM PRO AI -->
+            <div class="price-card featured">
+                <div class="badge">Recommended</div>
+                <div class="card-header">
+                    <h3>Premium Package (Pro AI)</h3>
+                    <div class="price">$39 <span>/ month</span></div>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check">✓</span> <strong>300 SMS messages</strong> per month included</li>
+                    <li><span class="check">✓</span> <strong>AI-Powered Custom Review Responses</strong> (OpenAI)</li>
+                    <li><span class="check">✓</span> Instant Missed-Call Auto Text Back</li>
+                    <li><span class="check">✓</span> Google Calendar Booking Link Injection</li>
+                    <li><span class="check">✓</span> Post-Service Review Request SMS</li>
+                    <li><span class="check">✓</span> Public De-escalation Protocol (1–3★)</li>
+                    <li><span class="check">✓</span> $0.05 per extra SMS overage</li>
+                </ul>
+                <button class="select-btn primary" onclick="openSignup('Pro AI Suite ($39/mo)')">Choose Premium Package</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SIGN-UP ONBOARDING MODAL -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-card">
+            <button class="close-btn" onclick="closeSignup()">×</button>
+            <h3>Get Started with Tridashai</h3>
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <label>Selected Package</label>
+                    <input type="text" id="selectedPlan" name="plan" readonly style="background: #f1f5f9; font-weight: 600;">
+                </div>
+                <div class="form-group">
+                    <label>Business Name</label>
+                    <input type="text" name="businessName" placeholder="e.g. Smith Plumbing" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile / Business Phone</label>
+                    <input type="tel" name="phone" placeholder="e.g. (555) 000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label>Google Calendar Booking Link</label>
+                    <input type="url" name="calendarLink" placeholder="https://calendar.google.com/..." required>
+                    <div class="help-note">Need help finding your link? Email Kelvin at <a href="mailto:kelvin@tridashai.com">kelvin@tridashai.com</a>.</div>
+                </div>
+                <button type="submit" class="select-btn primary" style="margin-top: 10px;">Continue to Activation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER WITH SUPPORT DETAILS -->
+    <footer>
+        <p>&copy; 2026 Tridashai. All rights reserved.</p>
+        <p>Questions or need help setting up? Contact Kelvin directly at <a href="mailto:kelvin@tridashai.com">kelvin@tridashai.com</a></p>
+    </footer>
+
+    <script>
+        function openSignup(planName) {
+            document.getElementById('selectedPlan').value = planName;
+            document.getElementById('signupModal').style.display = 'flex';
+        }
+        function closeSignup() {
+            document.getElementById('signupModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
