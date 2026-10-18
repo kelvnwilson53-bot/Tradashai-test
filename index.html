@@ -3,174 +3,844 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tridashai - Missed Call Recovery & AI Review Management</title>
+    <title>TriDash AI - The 3-in-1 Growth Engine for Local Trades</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1e293b; background: #f8fafc; line-height: 1.6; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
-        .logo { font-size: 24px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
-        .nav-links { display: flex; align-items: center; gap: 24px; }
-        .nav-links a { text-decoration: none; font-weight: 600; color: #475569; font-size: 15px; }
-        .nav-links a:hover { color: #2563eb; }
-        .btn-primary { background: #2563eb; color: #ffffff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
-        .btn-primary:hover { background: #1d4ed8; }
-        
-        /* HERO SECTION */
-        .hero { text-align: center; padding: 70px 20px 50px; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 18px; line-height: 1.25; }
-        .hero p { font-size: 19px; color: #64748b; margin-bottom: 32px; }
-
-        /* PACKAGES SECTION - STACKED LAYOUT */
-        .packages-section { padding: 40px 20px 80px; max-width: 720px; margin: 0 auto; }
-        .packages-header { text-align: center; margin-bottom: 40px; }
-        .packages-header h2 { font-size: 32px; color: #0f172a; margin-bottom: 8px; }
-        .packages-header p { font-size: 16px; color: #64748b; }
-        
-        .stacked-packages { display: flex; flex-direction: column; gap: 32px; }
-        .price-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 36px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: relative; }
-        .price-card.featured { border: 2px solid #2563eb; box-shadow: 0 10px 25px -5px rgba(37,99,235,0.12); }
-        .badge { position: absolute; top: -14px; left: 32px; background: #2563eb; color: #ffffff; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .card-header { margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
-        .card-header h3 { font-size: 24px; color: #0f172a; margin: 0 0 8px 0; }
-        .price { font-size: 38px; font-weight: 800; color: #0f172a; margin: 0; }
-        .price span { font-size: 15px; color: #64748b; font-weight: 400; }
-        
-        .features-list { list-style: none; padding: 0; margin: 0 0 28px 0; }
-        .features-list li { padding: 10px 0; font-size: 16px; color: #334155; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f8fafc; }
-        .features-list li strong { color: #0f172a; }
-        .check { color: #16a34a; font-weight: bold; }
-
-        .select-btn { display: block; text-align: center; width: 100%; padding: 14px 0; background: #0f172a; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; transition: background 0.2s; cursor: pointer; border: none; }
-        .select-btn:hover { background: #1e293b; }
-        .select-btn.primary { background: #2563eb; }
-        .select-btn.primary:hover { background: #1d4ed8; }
-
-        /* MODAL ONBOARDING FORM */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-card { background: #ffffff; border-radius: 16px; width: 100%; max-width: 480px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); position: relative; }
-        .close-btn { position: absolute; top: 20px; right: 20px; border: none; background: none; font-size: 24px; color: #64748b; cursor: pointer; }
-        .modal-card h3 { margin-top: 0; font-size: 22px; color: #0f172a; }
-        .form-group { margin-bottom: 18px; text-align: left; }
-        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; }
-        .help-note { font-size: 13px; color: #64748b; margin-top: 6px; }
-
-        /* FOOTER SUPPORT */
-        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; font-size: 14px; }
-        footer a { color: #38bdf8; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-slate-900 selection:text-white relative">
 
-    <!-- TOP NAVIGATION -->
-    <header>
-        <div class="logo">Tridashai</div>
-        <div class="nav-links">
-            <a href="#plans">Plans</a>
-            <a href="/login.html">Login</a>
-            <a href="#plans" class="btn-primary">Get Started</a>
+    <!-- TOP HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="text-2xl font-bold tracking-tight text-slate-900">
+                    TriDash<span class="text-slate-500 font-light">AI.com</span>
+                </a>
+                
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button type="button" onclick="toggleFeedbackModal()" class="hidden sm:inline-flex px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-lg transition">
+                        Pilot Feedback
+                    </button>
+                    <button type="button" onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition">
+                        Log In
+                    </button>
+                    <button type="button" id="menu-btn" aria-label="Toggle Menu" class="p-2 rounded-lg text-slate-800 hover:bg-slate-100 transition focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
+    <!-- SOLID OPAQUE MOBILE NAVIGATION DRAWER -->
+    <div id="nav-drawer" class="fixed top-20 left-0 right-0 bottom-0 bg-white z-[9999] hidden flex-col justify-between p-6 border-t border-slate-200 overflow-y-auto">
+        <nav class="space-y-3">
+            <a href="#demo" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">Interactive Demo</a>
+            <a href="#stats" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">Industries & Stats</a>
+            <a href="#features" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">3-in-1 Engine</a>
+            <a href="#proof" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">Bot vs Human AI</a>
+            <a href="#roi" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">ROI Calculator</a>
+            <a href="#packages" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">Packages</a>
+            <a href="#faq" onclick="closeMenu()" class="block px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">FAQ</a>
+            <hr class="border-slate-100 my-2">
+            <button type="button" onclick="closeMenu(); toggleFeedbackModal()" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-800 hover:bg-slate-50 rounded-lg transition">
+                Submit Pilot Feedback
+            </button>
+            <button type="button" onclick="closeMenu(); openAuthModal('login')" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition">
+                Log In
+            </button>
+        </nav>
+        <div class="pt-6 pb-8 border-t border-slate-100">
+            <button type="button" onclick="closeMenu(); openAuthModal('signup')" class="block w-full py-4 text-center bg-black hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-lg text-lg">
+                Start your 30-day pilot for just $10
+            </button>
+        </div>
+    </div>
+
     <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>Never Lose Another Client to a Missed Call</h1>
-        <p>Tridashai automatically texts back missed calls, includes your personal Google Calendar booking link, and manages your Google reviews seamlessly.</p>
-        <a href="#plans" class="btn-primary" style="padding: 14px 28px; font-size: 16px; display: inline-block;">View Packages & Sign Up →</a>
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-700 mb-8">
+            Automated Lead Recovery & Review Management
+        </div>
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
+            Never lose another high-value lead.
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+            TriDash AI instantly recovers missed callers via automated SMS and acts as your proactive Google review engine—collecting 5-star reviews and handling replies so you can focus on client delivery.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+            <button type="button" onclick="openAuthModal('signup')" class="w-full sm:w-auto px-8 py-4 bg-black hover:bg-slate-800 text-white font-bold text-lg rounded-xl transition shadow-lg text-center">
+                Start your 30-day pilot for just $10
+            </button>
+            <a href="#demo" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-lg rounded-xl transition text-center">
+                See How It Works
+            </a>
+        </div>
+        
+        <p class="text-sm font-medium text-slate-500">
+            $10 for your first 30 days, then $29/month • No setup fees • No long-term contracts
+        </p>
     </section>
 
-    <!-- STACKED PACKAGES SECTION -->
-    <section id="plans" class="packages-section">
-        <div class="packages-header">
-            <h2>Select Your Package</h2>
-            <p>Choose the plan that fits your business needs. Upgrade or cancel anytime.</p>
+    <!-- INDUSTRY STATS / PROOF CARDS -->
+    <section id="stats" class="py-16 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Turn customer feedback into opportunity and protect your 5-star reputation.
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: 1791934087000.jpg (Realtor / Estate Agent Image) -->
+                <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-100">
+                        <img src="1791934087000.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Lady Estate Agent / Professional Service" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Expectation</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Consumers Expect Fast Responses</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                89% of modern consumers expect business owners to respond directly to online reviews, and 80% choose businesses that actively reply over those that stay silent <em>(BrightLocal)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: 1791884316108.jpg -->
+                <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-100">
+                        <img src="1791884316108.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Mobile Lead Capture" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Revenue Impact</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Massive Revenue Loss</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Businesses that engage and respond to customer reviews earn an average of 35% more revenue than businesses that ignore review feedback <em>(Womply Research)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: 1791881066069.jpg -->
+                <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-100">
+                        <img src="1791881066069.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Trade Technician On Site" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">SEO Visibility</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Trust & Search Rank Penalty</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                97% of local consumers read owner responses when searching for local services. Leaving reviews unaddressed drops your local Google Search visibility and pushes leads straight to competitors <em>(BrightLocal / ReviewTrackers)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: 1791884228401.jpg -->
+                <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-100">
+                        <img src="1791884228401.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Professional Delivery" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Brand Perception</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Unfiltered Public Perception</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                42% of prospective clients report they will outright refuse to hire or buy from a local business that ignores public customer reviews entirely <em>(BrightLocal)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE 3-IN-1 GROWTH ENGINE SECTION -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Core Pillars</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-2 mb-6">The 3-in-1 Growth Engine for Local Trades</h2>
+            <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                Three powerful tools working together to recover missed leads, boost your 5-star ratings, and protect your local reputation.
+            </p>
         </div>
 
-        <div class="stacked-packages">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-col">
+                <div class="w-12 h-12 bg-black text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">1</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Instant Lead Recovery</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    When you’re on a job or driving and can’t answer the phone, our system automatically texts missed callers in 5 seconds. It captures the lead before they call a competitor.
+                </p>
+            </div>
+
+            <div class="p-8 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-col">
+                <div class="w-12 h-12 bg-black text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">2</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Automated Google Reviews</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    After a job is done, send automated, friendly SMS review requests to satisfied clients to build your 5-star Google rating effortlessly.
+                </p>
+            </div>
+
+            <div class="p-8 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-col">
+                <div class="w-12 h-12 bg-black text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">3</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Human-Style AI Review Responses</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Instead of stiff, robotic replies that sound like a computer, TriDash AI writes warm, natural responses that sound just like you. It instantly thanks your happy clients and gracefully de-escalates any negative feedback—protecting your good name and letting you get back to your day with complete peace of mind.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF: BOT VS HUMAN AI COMPARISON -->
+    <section id="proof" class="py-20 bg-slate-50 border-y border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-400">The Proof</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Bot vs. Human AI Response</h2>
+                <p class="text-slate-600 text-lg">See how TriDash AI sounds like a real business owner, not a corporate robot.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- 5-Star Example -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="text-xs font-bold uppercase text-amber-600 tracking-wider">💬 5-Star Review Example</span>
+                        <p class="text-slate-800 text-sm italic mt-1">
+                            "The team was brilliant from start to finish on our kitchen extension. Turned up on time every day, worked cleanly, and finished right on budget."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-red-50/50 rounded-xl border border-red-100">
+                            <span class="text-xs font-bold text-red-600 uppercase">❌ Generic Bot Response</span>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                "Thank you for your 5-star review regarding your kitchen extension! We are delighted that our building team was punctual, worked cleanly, and completed your house extension on budget..."
+                            </p>
+                        </div>
+                        <div class="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                            <span class="text-xs font-bold text-emerald-700 uppercase">✅ TriDash AI Response</span>
+                            <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                                "Thanks so much for the feedback! It was a real pleasure working with you on the project, and I’m thrilled you’re happy with how the new space turned out."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1-Star Example -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="text-xs font-bold uppercase text-red-600 tracking-wider">💬 1-Star Review De-escalation Example</span>
+                        <p class="text-slate-800 text-sm italic mt-1">
+                            "Booked them for 9 AM to fix a leak. Nobody showed up until 11:30 AM and no one called me."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-red-50/50 rounded-xl border border-red-100">
+                            <span class="text-xs font-bold text-red-600 uppercase">❌ Generic Bot Response</span>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                "We apologize for your review regarding our late arrival at 11:30 AM for your leak. As per our terms, emergency calls cause delays..."
+                            </p>
+                        </div>
+                        <div class="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                            <span class="text-xs font-bold text-emerald-700 uppercase">✅ TriDash AI Response</span>
+                            <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                                "I’m really sorry about the delay and the lack of communication—that’s definitely not how we aim to operate. Please give me a direct call at [Phone] so I can make this right."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DEMO / SMS SIMULATOR -->
+    <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Experience the Automated Sequence</h2>
+                <p class="text-slate-600 text-lg">Test how TriDash AI instantly recovers missed calls on autopilot.</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden max-w-md mx-auto">
+                <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+                        <span class="font-semibold text-sm">Automated Recovery Bot</span>
+                    </div>
+                    <span class="text-xs text-slate-400">Live Simulation</span>
+                </div>
+
+                <div id="chat-window" class="p-6 bg-slate-50 space-y-4 text-sm font-sans min-h-[320px] flex flex-col justify-end">
+                    <div class="text-center my-2">
+                        <span class="bg-slate-200 text-slate-600 text-xs px-3 py-1 rounded-full">Missed Call Detected • 10:14 AM</span>
+                    </div>
+
+                    <div class="flex flex-col items-start max-w-[85%]">
+                        <div class="bg-white text-slate-800 p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm">
+                            Hi! Sorry I missed your call. I'm currently with a client. How can I help you today?
+                        </div>
+                        <span class="text-[10px] text-slate-400 mt-1 ml-1">10:14 AM</span>
+                    </div>
+
+                    <div class="flex flex-col items-end max-w-[85%] self-end">
+                        <div class="bg-black text-white p-3.5 rounded-2xl rounded-tr-none shadow-sm">
+                            Hi, I need to book an appointment for tomorrow if possible.
+                        </div>
+                        <span class="text-[10px] text-slate-400 mt-1 mr-1">10:15 AM</span>
+                    </div>
+
+                    <div class="flex flex-col items-start max-w-[85%]">
+                        <div class="bg-white text-slate-800 p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm">
+                            Perfect! You can select your preferred time slot directly here: <span class="text-blue-600 underline cursor-pointer">tridashai.com/book</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 mt-1 ml-1">10:15 AM</span>
+                    </div>
+                </div>
+
+                <div id="demo-status" class="hidden px-4 py-2 bg-emerald-50 text-emerald-800 text-xs text-center border-t border-emerald-100 font-medium">
+                    ✓ Sequence triggered: Automated SMS sent within 5 seconds of missed call.
+                </div>
+
+                <div class="p-4 bg-white border-t border-slate-200 text-center">
+                    <button type="button" id="run-demo-btn" onclick="triggerDemo()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm rounded-lg transition">
+                        Test Live Speed Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI CALCULATOR SECTION -->
+    <section id="roi" class="py-20 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-sm">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">Calculate Recovered Revenue</h2>
+                <p class="text-slate-600">See how much lost revenue TriDash AI recovers for your business every month.</p>
+            </div>
+
+            <div class="space-y-8">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-sm font-semibold text-slate-700">Average Value per Client / Job</label>
+                        <span id="job-val" class="font-bold text-slate-900">$150</span>
+                    </div>
+                    <input type="range" id="job-slider" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-black">
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-sm font-semibold text-slate-700">Missed Calls per Week</label>
+                        <span id="calls-val" class="font-bold text-slate-900">5</span>
+                    </div>
+                    <input type="range" id="calls-slider" min="1" max="30" step="1" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-black">
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                    <div class="p-4 bg-slate-50 rounded-2xl">
+                        <p class="text-xs uppercase font-bold text-slate-500 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-rev" class="text-3xl font-extrabold text-slate-900">$3,000</p>
+                    </div>
+                    <div class="p-4 bg-black text-white rounded-2xl">
+                        <p class="text-xs uppercase font-bold text-slate-400 mb-1">TriDash AI Monthly Cost</p>
+                        <p class="text-3xl font-extrabold">$29</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION (STACKED TIER 1 & TIER 2) -->
+    <section id="packages" class="py-20 bg-slate-900 text-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-5xl font-extrabold mb-4">Select Your Package</h2>
+            <p class="text-slate-400 text-lg mb-12">Straightforward pricing tailored to your business scale. No long-term contracts.</p>
+
+            <div class="space-y-8 text-left">
+                
+                <!-- TIER 1: STANDARD PACKAGE -->
+                <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200 relative">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-6 mb-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider rounded-full mb-2">Standard Package</span>
+                            <h3 class="text-2xl font-extrabold text-slate-900">Starter Lead Recovery</h3>
+                        </div>
+                        <div class="mt-4 sm:mt-0 text-left sm:text-right">
+                            <span class="text-4xl font-extrabold text-slate-900">$10</span>
+                            <span class="text-sm text-slate-500 block">first month ($29/mo thereafter)</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-slate-700 text-sm font-medium">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <strong>100 SMS messages</strong> included per month ($0.05/extra)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Instant Missed-Call Automated SMS Response (5-sec)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Google Calendar Link Injection
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Automated Google 5-Star Review Request Invites
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Standard Warm Review Replies (6 Preset Warm Pool)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Public De-escalation Protocol for 1–3★ Reviews
+                        </li>
+                    </ul>
+
+                    <button type="button" onclick="openAuthModal('signup', 'Standard Package ($10 1st mo / $29 mo)')" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-xl transition text-center">
+                        Choose Standard Package
+                    </button>
+                </div>
+
+                <!-- TIER 2: PREMIUM PACKAGE (PRO AI) -->
+                <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-blue-600 relative">
+                    <span class="absolute -top-3.5 left-8 bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Recommended</span>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-6 mb-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-full mb-2">Premium Package</span>
+                            <h3 class="text-2xl font-extrabold text-slate-900">Pro AI Automation Suite</h3>
+                        </div>
+                        <div class="mt-4 sm:mt-0 text-left sm:text-right">
+                            <span class="text-4xl font-extrabold text-slate-900">$39</span>
+                            <span class="text-sm text-slate-500 block">/ month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-slate-700 text-sm font-medium">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <strong>300 SMS messages</strong> included per month ($0.05/extra)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <strong>AI-Powered Custom Review Responses</strong> (OpenAI)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Instant Missed-Call Automated SMS Response (5-sec)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Google Calendar Link Injection
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Automated Google 5-Star Review Request Invites
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Public De-escalation Protocol for 1–3★ Reviews
+                        </li>
+                    </ul>
+
+                    <button type="button" onclick="openAuthModal('signup', 'Premium Pro AI Package ($39/mo)')" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg">
+                        Choose Premium Package (Pro AI)
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
             
-            <!-- PACKAGE 1: STANDARD -->
-            <div class="price-card">
-                <div class="card-header">
-                    <h3>Standard Package</h3>
-                    <div class="price">$10 <span>first month ($29/mo thereafter)</span></div>
-                </div>
-                <ul class="features-list">
-                    <li><span class="check">✓</span> <strong>100 SMS messages</strong> per month included</li>
-                    <li><span class="check">✓</span> Instant Missed-Call Auto Text Back</li>
-                    <li><span class="check">✓</span> Google Calendar Booking Link Injection</li>
-                    <li><span class="check">✓</span> Post-Service Review Request SMS</li>
-                    <li><span class="check">✓</span> Standard Warm Review Replies (6 Preset Pool)</li>
-                    <li><span class="check">✓</span> Public De-escalation Protocol (1–3★)</li>
-                    <li><span class="check">✓</span> $0.05 per extra SMS overage</li>
-                </ul>
-                <button class="select-btn" onclick="openSignup('Starter Plan ($10 1st mo / $29 mo)')">Choose Standard Package</button>
-            </div>
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How does the missed-call automation work?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        When someone calls your business number and you are unable to answer, our system immediately sends a personalized SMS on your behalf within 5 seconds to retain the lead before they call a competitor.
+                    </p>
+                </details>
 
-            <!-- PACKAGE 2: PREMIUM PRO AI -->
-            <div class="price-card featured">
-                <div class="badge">Recommended</div>
-                <div class="card-header">
-                    <h3>Premium Package (Pro AI)</h3>
-                    <div class="price">$39 <span>/ month</span></div>
-                </div>
-                <ul class="features-list">
-                    <li><span class="check">✓</span> <strong>300 SMS messages</strong> per month included</li>
-                    <li><span class="check">✓</span> <strong>AI-Powered Custom Review Responses</strong> (OpenAI)</li>
-                    <li><span class="check">✓</span> Instant Missed-Call Auto Text Back</li>
-                    <li><span class="check">✓</span> Google Calendar Booking Link Injection</li>
-                    <li><span class="check">✓</span> Post-Service Review Request SMS</li>
-                    <li><span class="check">✓</span> Public De-escalation Protocol (1–3★)</li>
-                    <li><span class="check">✓</span> $0.05 per extra SMS overage</li>
-                </ul>
-                <button class="select-btn primary" onclick="openSignup('Pro AI Suite ($39/mo)')">Choose Premium Package</button>
-            </div>
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How do I receive Google 5-star reviews automatically?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        You paste your official Google Business review link into your portal. After completing a job, TriDash automatically dispatches an SMS review invitation to your client.
+                    </p>
+                </details>
 
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        How does the AI respond to reviews without sounding like a robot?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        Our system uses tailored prompts to write natural, conversational replies. For 5-star reviews, it thanks the customer like a real person. For 1-star reviews, it uses de-escalation language to apologize and take the conversation offline.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-200 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-lg">
+                        Are there any long-term contracts or setup fees?
+                        <span class="ml-4 transition group-open:rotate-180">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        None at all. TriDash AI starts with a $10 30-day pilot on the Standard tier or $39/month for Pro AI, with zero setup fees. You can pause or cancel your subscription whenever you wish.
+                    </p>
+                </details>
+            </div>
         </div>
     </section>
 
-    <!-- SIGN-UP ONBOARDING MODAL -->
-    <div class="modal-overlay" id="signupModal">
-        <div class="modal-card">
-            <button class="close-btn" onclick="closeSignup()">×</button>
-            <h3>Get Started with Tridashai</h3>
-            <form action="/signup" method="POST">
-                <div class="form-group">
-                    <label>Selected Package</label>
-                    <input type="text" id="selectedPlan" name="plan" readonly style="background: #f1f5f9; font-weight: 600;">
+    <!-- FOOTER -->
+    <footer class="py-12 bg-white border-t border-slate-100 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© TriDash AI. All rights reserved.</p>
+            <p class="text-xs text-slate-400">Questions or need setup assistance? Email Kelvin directly at <a href="mailto:kelvin@tridashai.com" class="text-slate-700 underline font-semibold">kelvin@tridashai.com</a></p>
+            <div class="flex gap-6">
+                <button type="button" onclick="toggleFeedbackModal()" class="hover:text-slate-900 underline font-semibold transition">Submit Pilot Feedback</button>
+                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition">Terms & Conditions</button>
+                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition">Privacy Policy</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SIGN UP / LOGIN AUTH MODAL -->
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <button type="button" onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
+            
+            <div class="text-center">
+                <h3 id="auth-title" class="text-2xl font-extrabold text-slate-900">Activate Your Account</h3>
+                <p id="auth-subtitle" class="text-slate-500 text-sm mt-1">Instant setup • Cancel anytime.</p>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div id="plan-field">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Selected Package</label>
+                    <input type="text" id="input-plan" name="plan" readonly value="Standard Package ($10 1st mo / $29 mo)" class="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800">
                 </div>
-                <div class="form-group">
-                    <label>Business Name</label>
-                    <input type="text" name="businessName" placeholder="e.g. Smith Plumbing" required>
+
+                <div id="name-field">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name / Business Name</label>
+                    <input type="text" id="input-name" placeholder="John Doe - Apex Electrical" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
                 </div>
-                <div class="form-group">
-                    <label>Mobile / Business Phone</label>
-                    <input type="tel" name="phone" placeholder="e.g. (555) 000-0000" required>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Business Email</label>
+                    <input type="email" id="input-email" placeholder="you@company.com" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
                 </div>
-                <div class="form-group">
-                    <label>Google Calendar Booking Link</label>
-                    <input type="url" name="calendarLink" placeholder="https://calendar.google.com/..." required>
-                    <div class="help-note">Need help finding your link? Email Kelvin at <a href="mailto:kelvin@tridashai.com">kelvin@tridashai.com</a>.</div>
+
+                <div id="calendar-field">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Google Calendar Booking Link</label>
+                    <input type="url" id="input-calendar" placeholder="https://calendar.google.com/..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                    <p class="text-[11px] text-slate-500 mt-1">Need help finding your calendar link? Email Kelvin at <a href="mailto:kelvin@tridashai.com" class="underline text-slate-800 font-semibold">kelvin@tridashai.com</a>.</p>
                 </div>
-                <button type="submit" class="select-btn primary" style="margin-top: 10px;">Continue to Activation</button>
+
+                <div id="password-field" class="hidden">
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="block text-xs font-bold text-slate-700 uppercase">Password</label>
+                        <a href="#" onclick="alert('Password reset link sent to your email.'); return false;" class="text-xs text-slate-500 hover:text-black">Forgot?</a>
+                    </div>
+                    <input type="password" id="input-password" placeholder="••••••••" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div id="phone-field">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Mobile Phone Number</label>
+                    <input type="tel" id="input-phone" placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <button type="submit" id="auth-submit-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base mt-2">
+                    Continue to Activation
+                </button>
+            </form>
+
+            <div class="text-center pt-2">
+                <p id="auth-toggle-text" class="text-xs text-slate-500">
+                    Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Log In</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PILOT FEEDBACK MODAL -->
+    <div id="feedback-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <button type="button" onclick="toggleFeedbackModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-slate-900">TriDash AI Pilot Feedback</h3>
+                <p class="text-slate-500 text-sm mt-1">Help us fine-tune the system for your daily operations.</p>
+            </div>
+
+            <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name & Business</label>
+                    <input type="text" name="business_name" required placeholder="e.g. John - Apex Electrical" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">System Satisfaction</label>
+                    <select name="rating" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                        <option value="5">⭐⭐⭐⭐⭐ 5 - Excellent (Recovered leads & boost reviews)</option>
+                        <option value="4">⭐⭐⭐⭐ 4 - Good</option>
+                        <option value="3">⭐⭐⭐ 3 - Average</option>
+                        <option value="2">⭐⭐ 2 - Needs improvement</option>
+                        <option value="1">⭐ 1 - Poor</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Most Valuable Pillar</label>
+                    <select name="top_feature" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                        <option value="missed_sms">1. Instant Lead Recovery (5-sec SMS)</option>
+                        <option value="google_reviews">2. Automated Google Review Invites</option>
+                        <option value="ai_responses">3. Human-Style AI Review Responses</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detailed Feedback & Feature Requests</label>
+                    <textarea name="comments" rows="3" required placeholder="Tell us what worked well or what features you would like added..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black"></textarea>
+                </div>
+
+                <button type="submit" id="feedback-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base">
+                    Submit Feedback
+                </button>
             </form>
         </div>
     </div>
 
-    <!-- FOOTER WITH SUPPORT DETAILS -->
-    <footer>
-        <p>&copy; 2026 Tridashai. All rights reserved.</p>
-        <p>Questions or need help setting up? Contact Kelvin directly at <a href="mailto:kelvin@tridashai.com">kelvin@tridashai.com</a></p>
-    </footer>
+    <!-- TERMS & CONDITIONS MODAL -->
+    <div id="terms-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-6 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                <h3 class="text-xl font-bold text-slate-900">Terms & Service Terms</h3>
+                <button type="button" onclick="toggleTermsModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
+            </div>
+            <div class="text-sm text-slate-600 space-y-4 leading-relaxed">
+                <p><strong>Service Subscription:</strong> TriDash AI provides automated messaging and lead recovery toolsets starting at $10 during your initial 30-day pilot, transitioning to $29 per month for Standard or $39 per month for Premium Pro AI.</p>
+                <p><strong>No Long-Term Contracts:</strong> You retain complete control to pause or end your subscription at any time within your user portal without penalty or hidden cancellation fees.</p>
+                <p><strong>Data Privacy:</strong> We strictly manage lead contact numbers and business automated messages adhering to privacy standards. Your data is never sold or repurposed.</p>
+            </div>
+            <button type="button" onclick="toggleTermsModal()" class="w-full py-3 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                Close
+            </button>
+        </div>
+    </div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        function openSignup(planName) {
-            document.getElementById('selectedPlan').value = planName;
-            document.getElementById('signupModal').style.display = 'flex';
+        const menuBtn = document.getElementById('menu-btn');
+        const navDrawer = document.getElementById('nav-drawer');
+        let currentAuthMode = 'signup';
+
+        function toggleMenu() {
+            if (navDrawer.classList.contains('hidden')) {
+                navDrawer.classList.remove('hidden');
+                navDrawer.classList.add('flex');
+            } else {
+                closeMenu();
+            }
         }
-        function closeSignup() {
-            document.getElementById('signupModal').style.display = 'none';
+
+        function closeMenu() {
+            navDrawer.classList.add('hidden');
+            navDrawer.classList.remove('flex');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Auth Modal Controls
+        function openAuthModal(mode, planName = 'Standard Package ($10 1st mo / $29 mo)') {
+            currentAuthMode = mode;
+            document.getElementById('input-plan').value = planName;
+            updateAuthUI();
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function toggleAuthMode() {
+            currentAuthMode = currentAuthMode === 'signup' ? 'login' : 'signup';
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const nameField = document.getElementById('name-field');
+            const planField = document.getElementById('plan-field');
+            const calendarField = document.getElementById('calendar-field');
+            const passwordField = document.getElementById('password-field');
+            const phoneField = document.getElementById('phone-field');
+            const inputName = document.getElementById('input-name');
+            const inputPhone = document.getElementById('input-phone');
+            const inputPassword = document.getElementById('input-password');
+            const submitBtn = document.getElementById('auth-submit-btn');
+            const toggleText = document.getElementById('auth-toggle-text');
+
+            if (currentAuthMode === 'login') {
+                title.textContent = 'Welcome Back';
+                subtitle.textContent = 'Log in to your TriDash client portal.';
+                nameField.classList.add('hidden');
+                planField.classList.add('hidden');
+                calendarField.classList.add('hidden');
+                phoneField.classList.add('hidden');
+                passwordField.classList.remove('hidden');
+                inputName.removeAttribute('required');
+                inputPhone.removeAttribute('required');
+                inputPassword.setAttribute('required', 'true');
+                submitBtn.textContent = 'Log In';
+                toggleText.innerHTML = 'Don\'t have an account yet? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Activate your account</button>';
+            } else {
+                title.textContent = 'Activate Your Account';
+                subtitle.textContent = 'Instant setup • Cancel anytime.';
+                nameField.classList.remove('hidden');
+                planField.classList.remove('hidden');
+                calendarField.classList.remove('hidden');
+                phoneField.classList.remove('hidden');
+                passwordField.classList.add('hidden');
+                inputName.setAttribute('required', 'true');
+                inputPhone.setAttribute('required', 'true');
+                inputPassword.removeAttribute('required');
+                submitBtn.textContent = 'Continue to Activation';
+                toggleText.innerHTML = 'Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline">Log In</button>';
+            }
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            if (currentAuthMode === 'signup') {
+                alert('Account registration successful! Redirecting to your dashboard...');
+            } else {
+                alert('Login successful! Redirecting to your dashboard...');
+            }
+            closeAuthModal();
+        }
+
+        // Feedback Modal Controls
+        function toggleFeedbackModal() {
+            const modal = document.getElementById('feedback-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const btn = document.getElementById('feedback-btn');
+            btn.textContent = "✓ Feedback Saved!";
+            btn.classList.remove('bg-black', 'hover:bg-slate-800');
+            btn.classList.add('bg-emerald-600');
+
+            setTimeout(() => {
+                toggleFeedbackModal();
+                btn.textContent = "Submit Feedback";
+                btn.classList.remove('bg-emerald-600');
+                btn.classList.add('bg-black', 'hover:bg-slate-800');
+                document.getElementById('feedbackForm').reset();
+            }, 2000);
+        }
+
+        function triggerDemo() {
+            const statusBox = document.getElementById('demo-status');
+            const btn = document.getElementById('run-demo-btn');
+            
+            statusBox.classList.remove('hidden');
+            btn.textContent = "✓ Simulation Active";
+            btn.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
+            btn.classList.add('bg-emerald-600', 'text-white');
+
+            setTimeout(() => {
+                btn.textContent = "Test Live Speed Demo";
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
+                statusBox.classList.add('hidden');
+            }, 4000);
+        }
+
+        const jobSlider = document.getElementById('job-slider');
+        const callsSlider = document.getElementById('calls-slider');
+        const jobVal = document.getElementById('job-val');
+        const callsVal = document.getElementById('calls-val');
+        const lostRev = document.getElementById('lost-rev');
+
+        function calculateROI() {
+            const val = parseInt(jobSlider.value);
+            const calls = parseInt(callsSlider.value);
+            jobVal.textContent = '$' + val;
+            callsVal.textContent = calls;
+            
+            const monthlyLost = Math.round(val * calls * 4);
+            lostRev.textContent = '$' + monthlyLost.toLocaleString();
+        }
+
+        jobSlider.addEventListener('input', calculateROI);
+        callsSlider.addEventListener('input', calculateROI);
+
+        function toggleTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.toggle('hidden');
         }
     </script>
 </body>
