@@ -41,11 +41,11 @@
                     </div>
                 </div>
                 
-                <!-- DESKTOP ACTIONS -->
+                <!-- DESKTOP ACTIONS: Standard Log In Button -->
                 <div class="hidden md:flex flex-col items-end gap-1.5">
-                    <a href="#register" class="px-4 py-2 bg-black hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
-                        Register / Sign Up
-                    </a>
+                    <button type="button" id="desktop-login-btn" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
+                        Log In
+                    </button>
                 </div>
 
             </div>
@@ -69,7 +69,7 @@
         </nav>
         <div class="pt-6 pb-8 border-t border-slate-100">
             <a href="#register" class="mobile-link block w-full py-4 text-center bg-black hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-lg text-lg">
-                Register / Sign Up Now
+                Get Started / Register
             </a>
         </div>
     </div>
@@ -491,7 +491,7 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION (COMPLETE FULL LIST) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
@@ -584,7 +584,7 @@
         </div>
     </div>
 
-    <!-- BULLETPROOF EVENT LISTENER SCRIPT -->
+    <!-- SCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Hamburger Menu Toggle
@@ -605,6 +605,7 @@
 
             // 2. Login Modal Toggles
             const loginModal = document.getElementById('login-modal');
+            const desktopLoginBtn = document.getElementById('desktop-login-btn');
             const mobileLoginBtn = document.getElementById('mobile-login-btn');
             const closeModalBtn = document.getElementById('close-modal-btn');
 
@@ -617,6 +618,7 @@
                 if (loginModal) loginModal.classList.remove('active');
             }
 
+            if (desktopLoginBtn) desktopLoginBtn.addEventListener('click', openModal);
             if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openModal);
             if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
