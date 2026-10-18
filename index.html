@@ -512,12 +512,18 @@
             <form id="login-form" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Email Address</label>
-                    <input type="email" id="login-email-input" required placeholder="yourname@email.com" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
+                    <input type="email" id="login-email-input" required placeholder="" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Password</label>
-                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
+                    <input type="password" id="login-password-input" required placeholder="" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
+                </div>
+
+                <!-- SAVE / REMEMBER ME TICK BOX -->
+                <div class="flex items-center gap-2 pt-1">
+                    <input type="checkbox" id="remember-me" class="w-4 h-4 bg-black border border-slate-800 rounded text-blue-600 focus:ring-blue-600 cursor-pointer">
+                    <label for="remember-me" class="text-xs font-semibold text-slate-300 cursor-pointer">Remember these details so I don't have to keep logging in</label>
                 </div>
 
                 <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-base cursor-pointer">
@@ -598,9 +604,26 @@
             if (navDrawer) navDrawer.classList.remove('active');
         }
 
-        // Login Modal Control
+        // Login Modal Control - pre-fill saved email if remembered
         function openLoginModal() {
             const loginModal = document.getElementById('login-modal');
+            const emailInput = document.getElementById('login-email-input');
+            const passwordInput = document.getElementById('login-password-input');
+            const rememberCheckbox = document.getElementById('remember-me');
+
+            const savedEmail = localStorage.getItem('tridash_remembered_email');
+            const savedPass = localStorage.getItem('tridash_remembered_pass');
+
+            if (savedEmail && emailInput) {
+                emailInput.value = savedEmail;
+                if (savedPass && passwordInput) {
+                    passwordInput.value = savedPass;
+                }
+                if (rememberCheckbox) {
+                    rememberCheckbox.checked = true;
+                }
+            }
+
             if (loginModal) loginModal.classList.add('active');
             closeMenu();
         }
@@ -655,28 +678,36 @@
             if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginModal);
             if (closeSignupBtn) closeSignupBtn.addEventListener('click', closeSignupModal);
 
-            // Login Form Submission with Session Memory
+            // Login Form Submission with "Remember Me" logic
             const loginForm = document.getElementById('login-form');
             if (loginForm) {
                 loginForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const emailInput = document.getElementById('login-email-input');
-                    if (emailInput && emailInput.value) {
-                        localStorage.setItem('tridash_user', emailInput.value);
+                    const passwordInput = document.getElementById('login-password-input');
+                    const rememberCheckbox = document.getElementById('remember-me');
+
+                    if (rememberCheckbox && rememberCheckbox.checked) {
+                        if (emailInput) localStorage.setItem('tridash_remembered_email', emailInput.value);
+                        if (passwordInput) localStorage.setItem('tridash_remembered_pass', passwordInput.value);
+                    } else {
+                        localStorage.removeItem('tridash_remembered_email');
+                        localStorage.removeItem('tridash_remembered_pass');
                     }
+
                     alert('Login successful! Welcome to your TriDash Dashboard.');
                     closeLoginModal();
                 });
             }
 
-            // Signup Form Submission with Session Memory
+            // Signup Form Submission
             const signupForm = document.getElementById('signup-form');
             if (signupForm) {
                 signupForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const emailInput = document.getElementById('signup-email');
                     if (emailInput && emailInput.value) {
-                        localStorage.setItem('tridash_user', emailInput.value);
+                        localStorage.setItem('tridash_remembered_email', emailInput.value);
                     }
                     alert('Registration successful! Redirecting to setup portal...');
                     closeSignupModal();
