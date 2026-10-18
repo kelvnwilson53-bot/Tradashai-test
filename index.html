@@ -45,9 +45,9 @@
                     <button type="button" onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition">
                         Log In
                     </button>
-                    <button type="button" id="menu-btn" aria-label="Toggle Menu" class="p-2 rounded-lg text-slate-800 hover:bg-slate-100 transition focus:outline-none">
+                    <button type="button" id="menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu" class="p-2 rounded-lg text-slate-800 hover:bg-slate-100 transition focus:outline-none">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
@@ -74,7 +74,7 @@
             </button>
         </nav>
         <div class="pt-6 pb-8 border-t border-slate-100">
-            <button type="button" onclick="closeMenu(); openAuthModal('signup')" class="block w-full py-4 text-center bg-black hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-lg text-lg">
+            <button type="button" onclick="closeMenu(); openAuthModal('signup', 'Standard Package ($10 1st mo / $29 mo)')" class="block w-full py-4 text-center bg-black hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-lg text-lg">
                 Start your 30-day pilot for just $10
             </button>
         </div>
@@ -93,7 +93,7 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <button type="button" onclick="openAuthModal('signup')" class="w-full sm:w-auto px-8 py-4 bg-black hover:bg-slate-800 text-white font-bold text-lg rounded-xl transition shadow-lg text-center">
+            <button type="button" onclick="openAuthModal('signup', 'Standard Package ($10 1st mo / $29 mo)')" class="w-full sm:w-auto px-8 py-4 bg-black hover:bg-slate-800 text-white font-bold text-lg rounded-xl transition shadow-lg text-center">
                 Start your 30-day pilot for just $10
             </button>
             <a href="#demo" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-lg rounded-xl transition text-center">
@@ -115,12 +115,10 @@
                 </h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1: 1792284444903.jpg -->
+                <!-- Card 1: 1792284444903.jpg[span_0](start_span)[span_0](end_span) -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1792284444903.jpg" 
-                             alt="Professional Session" 
-                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <img src="1792284444903.jpg" alt="Professional Session" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
@@ -133,12 +131,10 @@
                     </div>
                 </div>
 
-                <!-- Card 2: 1792284293487.jpg -->
+                <!-- Card 2: 1792284293487.jpg[span_1](start_span)[span_1](end_span) -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1792284293487.jpg" 
-                             alt="Roofing and Construction" 
-                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <img src="1792284293487.jpg" alt="Roofing and Construction" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
@@ -151,12 +147,10 @@
                     </div>
                 </div>
 
-                <!-- Card 3: 1792284260193.jpg -->
+                <!-- Card 3: 1792284260193.jpg[span_2](start_span)[span_2](end_span) -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1792284260193.jpg" 
-                             alt="Electrical Contractor" 
-                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <img src="1792284260193.jpg" alt="Electrical Contractor" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
@@ -169,12 +163,10 @@
                     </div>
                 </div>
 
-                <!-- Card 4: 1792284328037.jpg -->
+                <!-- Card 4: 1792284328037.jpg[span_3](start_span)[span_3](end_span) -->
                 <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
                     <div class="overflow-hidden h-48 bg-slate-100">
-                        <img src="1792284328037.jpg" 
-                             alt="Plumbing and Pipe Installation" 
-                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <img src="1792284328037.jpg" alt="Plumbing and Pipe Installation" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
@@ -434,7 +426,7 @@
                         </li>
                     </ul>
 
-                    <button type="button" onclick="openAuthModal('signup', 'Standard Package ($10 1st mo / $29 mo)')" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-xl transition text-center">
+                    <button type="button" onclick="openAuthModal('signup', 'Standard Package ($10 1st mo / $29 mo)')" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-xl transition text-center cursor-pointer">
                         Choose Standard Package
                     </button>
                 </div>
@@ -481,7 +473,7 @@
                         </li>
                     </ul>
 
-                    <button type="button" onclick="openAuthModal('signup', 'Premium Pro AI Package ($39/mo)')" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg">
+                    <button type="button" onclick="openAuthModal('signup', 'Premium Pro AI Package ($39/mo)')" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg cursor-pointer">
                         Choose Premium Package (Pro AI)
                     </button>
                 </div>
@@ -553,9 +545,9 @@
             <p>© TriDash AI. All rights reserved.</p>
             <p class="text-xs text-slate-400">Questions or need setup assistance? Email Kelvin directly at <a href="mailto:kelvin@tridashai.com" class="text-slate-700 underline font-semibold">kelvin@tridashai.com</a></p>
             <div class="flex gap-6">
-                <button type="button" onclick="toggleFeedbackModal()" class="hover:text-slate-900 underline font-semibold transition">Submit Pilot Feedback</button>
-                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition">Terms & Conditions</button>
-                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition">Privacy Policy</button>
+                <button type="button" onclick="toggleFeedbackModal()" class="hover:text-slate-900 underline font-semibold transition cursor-pointer">Submit Pilot Feedback</button>
+                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition cursor-pointer">Terms & Conditions</button>
+                <button type="button" onclick="toggleTermsModal()" class="hover:text-slate-900 underline transition cursor-pointer">Privacy Policy</button>
             </div>
         </div>
     </footer>
@@ -563,7 +555,7 @@
     <!-- SIGN UP / LOGIN AUTH MODAL -->
     <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-            <button type="button" onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
+            <button type="button" onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
             
             <div class="text-center">
                 <h3 id="auth-title" class="text-2xl font-extrabold text-slate-900">Activate Your Account</h3>
@@ -605,11 +597,236 @@
                     <input type="tel" id="input-phone" placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
                 </div>
 
-                <button type="submit" id="auth-submit-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base mt-2">
+                <button type="submit" id="auth-submit-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base mt-2 cursor-pointer">
                     Continue to Activation
                 </button>
             </form>
 
             <div class="text-center pt-2">
                 <p id="auth-toggle-text" class="text-xs text-slate-500">
-                    Already have an account? <button type="
+                    Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline cursor-pointer">Log In</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PILOT FEEDBACK MODAL -->
+    <div id="feedback-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <button type="button" onclick="toggleFeedbackModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-slate-900">TriDash AI Pilot Feedback</h3>
+                <p class="text-slate-500 text-sm mt-1">Help us fine-tune the system for your daily operations.</p>
+            </div>
+
+            <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name & Business</label>
+                    <input type="text" name="business_name" required placeholder="e.g. John - Apex Electrical" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">System Satisfaction</label>
+                    <select name="rating" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                        <option value="5">⭐⭐⭐⭐⭐ 5 - Excellent (Recovered leads & boost reviews)</option>
+                        <option value="4">⭐⭐⭐⭐ 4 - Good</option>
+                        <option value="3">⭐⭐⭐ 3 - Average</option>
+                        <option value="2">⭐⭐ 2 - Needs improvement</option>
+                        <option value="1">⭐ 1 - Poor</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Most Valuable Pillar</label>
+                    <select name="top_feature" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black">
+                        <option value="missed_sms">1. Instant Lead Recovery (5-sec SMS)</option>
+                        <option value="google_reviews">2. Automated Google Review Invites</option>
+                        <option value="ai_responses">3. Human-Style AI Review Responses</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detailed Feedback & Feature Requests</label>
+                    <textarea name="comments" rows="3" required placeholder="Tell us what worked well or what features you would like added..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-black"></textarea>
+                </div>
+
+                <button type="submit" id="feedback-btn" class="w-full py-4 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-lg text-base cursor-pointer">
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS MODAL -->
+    <div id="terms-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-6 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                <h3 class="text-xl font-bold text-slate-900">Terms & Service Terms</h3>
+                <button type="button" onclick="toggleTermsModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+            </div>
+            <div class="text-sm text-slate-600 space-y-4 leading-relaxed">
+                <p><strong>Service Subscription:</strong> TriDash AI provides automated messaging and lead recovery toolsets starting at $10 during your initial 30-day pilot, transitioning to $29 per month for Standard or $39 per month for Premium Pro AI.</p>
+                <p><strong>No Long-Term Contracts:</strong> You retain complete control to pause or end your subscription at any time within your user portal without penalty or hidden cancellation fees.</p>
+                <p><strong>Data Privacy:</strong> We strictly manage lead contact numbers and business automated messages adhering to privacy standards. Your data is never sold or repurposed.</p>
+            </div>
+            <button type="button" onclick="toggleTermsModal()" class="w-full py-3 bg-black text-white font-bold rounded-xl hover:bg-slate-800 transition cursor-pointer">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const navDrawer = document.getElementById('nav-drawer');
+        let currentAuthMode = 'signup';
+
+        function toggleMenu() {
+            if (navDrawer.classList.contains('hidden')) {
+                navDrawer.classList.remove('hidden');
+                navDrawer.classList.add('flex');
+            } else {
+                closeMenu();
+            }
+        }
+
+        function closeMenu() {
+            navDrawer.classList.add('hidden');
+            navDrawer.classList.remove('flex');
+        }
+
+        // Auth Modal Controls
+        function openAuthModal(mode, planName = 'Standard Package ($10 1st mo / $29 mo)') {
+            currentAuthMode = mode;
+            document.getElementById('input-plan').value = planName;
+            updateAuthUI();
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function toggleAuthMode() {
+            currentAuthMode = currentAuthMode === 'signup' ? 'login' : 'signup';
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const nameField = document.getElementById('name-field');
+            const planField = document.getElementById('plan-field');
+            const calendarField = document.getElementById('calendar-field');
+            const passwordField = document.getElementById('password-field');
+            const phoneField = document.getElementById('phone-field');
+            const inputName = document.getElementById('input-name');
+            const inputPhone = document.getElementById('input-phone');
+            const inputPassword = document.getElementById('input-password');
+            const submitBtn = document.getElementById('auth-submit-btn');
+            const toggleText = document.getElementById('auth-toggle-text');
+
+            if (currentAuthMode === 'login') {
+                title.textContent = 'Welcome Back';
+                subtitle.textContent = 'Log in to your TriDash client portal.';
+                nameField.classList.add('hidden');
+                planField.classList.add('hidden');
+                calendarField.classList.add('hidden');
+                phoneField.classList.add('hidden');
+                passwordField.classList.remove('hidden');
+                inputName.removeAttribute('required');
+                inputPhone.removeAttribute('required');
+                inputPassword.setAttribute('required', 'true');
+                submitBtn.textContent = 'Log In';
+                toggleText.innerHTML = 'Don\'t have an account yet? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline cursor-pointer">Activate your account</button>';
+            } else {
+                title.textContent = 'Activate Your Account';
+                subtitle.textContent = 'Instant setup • Cancel anytime.';
+                nameField.classList.remove('hidden');
+                planField.classList.remove('hidden');
+                calendarField.classList.remove('hidden');
+                phoneField.classList.remove('hidden');
+                passwordField.classList.add('hidden');
+                inputName.setAttribute('required', 'true');
+                inputPhone.setAttribute('required', 'true');
+                inputPassword.removeAttribute('required');
+                submitBtn.textContent = 'Continue to Activation';
+                toggleText.innerHTML = 'Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-black font-bold underline cursor-pointer">Log In</button>';
+            }
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            if (currentAuthMode === 'signup') {
+                alert('Account registration successful! Redirecting to your dashboard...');
+            } else {
+                alert('Login successful! Redirecting to your dashboard...');
+            }
+            closeAuthModal();
+        }
+
+        // Feedback Modal Controls
+        function toggleFeedbackModal() {
+            const modal = document.getElementById('feedback-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const btn = document.getElementById('feedback-btn');
+            btn.textContent = "✓ Feedback Saved!";
+            btn.classList.remove('bg-black', 'hover:bg-slate-800');
+            btn.classList.add('bg-emerald-600');
+
+            setTimeout(() => {
+                toggleFeedbackModal();
+                btn.textContent = "Submit Feedback";
+                btn.classList.remove('bg-emerald-600');
+                btn.classList.add('bg-black', 'hover:bg-slate-800');
+                document.getElementById('feedbackForm').reset();
+            }, 2000);
+        }
+
+        function triggerDemo() {
+            const statusBox = document.getElementById('demo-status');
+            const btn = document.getElementById('run-demo-btn');
+            
+            statusBox.classList.remove('hidden');
+            btn.textContent = "✓ Simulation Active";
+            btn.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
+            btn.classList.add('bg-emerald-600', 'text-white');
+
+            setTimeout(() => {
+                btn.textContent = "Test Live Speed Demo";
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-800');
+                statusBox.classList.add('hidden');
+            }, 4000);
+        }
+
+        const jobSlider = document.getElementById('job-slider');
+        const callsSlider = document.getElementById('calls-slider');
+        const jobVal = document.getElementById('job-val');
+        const callsVal = document.getElementById('calls-val');
+        const lostRev = document.getElementById('lost-rev');
+
+        function calculateROI() {
+            const val = parseInt(jobSlider.value);
+            const calls = parseInt(callsSlider.value);
+            jobVal.textContent = '$' + val;
+            callsVal.textContent = calls;
+            
+            const monthlyLost = Math.round(val * calls * 4);
+            lostRev.textContent = '$' + monthlyLost.toLocaleString();
+        }
+
+        jobSlider.addEventListener('input', calculateROI);
+        callsSlider.addEventListener('input', calculateROI);
+
+        function toggleTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
