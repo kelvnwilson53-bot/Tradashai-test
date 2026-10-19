@@ -54,7 +54,7 @@
                 
                 <!-- DESKTOP ACTIONS: Clean Blue Log In Button -->
                 <div class="hidden md:flex flex-col items-end gap-1.5">
-                    <button type="button" id="desktop-login-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
+                    <button type="button" id="desktop-login-btn" onclick="openSignupModal('login')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
                         Log In
                     </button>
                 </div>
@@ -74,7 +74,7 @@
             <a href="#packages" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">Packages</a>
             <a href="#faq" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">FAQ</a>
             <hr class="border-slate-800 my-2">
-            <button type="button" id="drawer-login-btn" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition cursor-pointer">
+            <button type="button" id="drawer-login-btn" onclick="openSignupModal('login')" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition cursor-pointer">
                 Log In
             </button>
         </nav>
@@ -478,6 +478,30 @@
                         You paste your official Google Business review link into your portal. After completing a job, TriDash automatically dispatches an SMS review invitation to your client.
                     </p>
                 </details>
+
+                <details class="group bg-black rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-lg">
+                        How does the AI respond to reviews without sounding like a robot?
+                        <span class="ml-4 transition group-open:rotate-180 text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 leading-relaxed">
+                        TriDash AI generates human-style responses tailored specifically to local service businesses. It dynamically adapts its tone to sound warm and appreciative for 5-star praise, while remaining composed and polite when addressing critical feedback.
+                    </p>
+                </details>
+
+                <details class="group bg-black rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-lg">
+                        Are there any long-term contracts or setup fees?
+                        <span class="ml-4 transition group-open:rotate-180 text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 leading-relaxed">
+                        No. All subscriptions operate month-to-month and can be canceled at any time. There are zero setup fees or hidden commitments.
+                    </p>
+                </details>
             </div>
         </div>
     </section>
@@ -487,9 +511,37 @@
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
+    <!-- SIGNUP / LOGIN MODAL -->
+    <div id="signup-modal" class="custom-modal fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm justify-center items-center p-4">
+        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl">
+            <button type="button" onclick="closeSignupModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold cursor-pointer">
+                ✕
+            </button>
+            
+            <div id="modal-content-container">
+                <h3 id="modal-title" class="text-2xl font-extrabold text-white mb-2">Get Started</h3>
+                <p id="modal-subtitle" class="text-slate-400 text-sm mb-6">Enter your details below to set up your account.</p>
+
+                <form id="signup-form" onsubmit="handleModalSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Business Name</label>
+                        <input type="text" required placeholder="e.g. Apex Plumbing" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Email Address</label>
+                        <input type="email" required placeholder="you@yourbusiness.com" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                    </div>
+                    <button type="submit" id="modal-submit-btn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition text-sm cursor-pointer shadow-lg mt-2">
+                        Continue to Setup
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Mobile Drawer Toggle
+        // Navigation Menu Drawer Toggle
         const menuBtn = document.getElementById('menu-btn');
         const navDrawer = document.getElementById('nav-drawer');
         if (menuBtn && navDrawer) {
@@ -501,6 +553,38 @@
                     navDrawer.classList.remove('active');
                 });
             });
+        }
+
+        // Modal Handler
+        const signupModal = document.getElementById('signup-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+
+        function openSignupModal(plan) {
+            if (navDrawer) navDrawer.classList.remove('active');
+            if (signupModal) {
+                if (plan === 'login') {
+                    if (modalTitle) modalTitle.textContent = "Log In to TriDash AI";
+                    if (modalSubtitle) modalSubtitle.textContent = "Access your client dashboard and analytics.";
+                } else if (plan === 'premium') {
+                    if (modalTitle) modalTitle.textContent = "Pro AI Suite Pilot ($39/mo)";
+                    if (modalSubtitle) modalSubtitle.textContent = "Start your automated lead recovery & review suite.";
+                } else {
+                    if (modalTitle) modalTitle.textContent = "Start 30-Day Pilot ($10)";
+                    if (modalSubtitle) modalSubtitle.textContent = "Setup takes under 2 minutes.";
+                }
+                signupModal.classList.add('active');
+            }
+        }
+
+        function closeSignupModal() {
+            if (signupModal) signupModal.classList.remove('active');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            alert('Registration request received! Dashboard integration coming soon.');
+            closeSignupModal();
         }
 
         // Demo Simulation Button
@@ -535,7 +619,6 @@
             const calls = parseInt(callsSlider.value);
             if (jobVal) jobVal.textContent = '$' + val;
             if (callsVal) callsVal.textContent = calls;
-            // Calculation: Calls per week * 4 weeks * job value
             const monthlyLost = calls * 4 * val;
             if (lostRev) lostRev.textContent = '$' + monthlyLost.toLocaleString();
         }
