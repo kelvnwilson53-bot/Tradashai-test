@@ -282,7 +282,7 @@
                         <div class="p-4 bg-blue-950/30 rounded-xl border border-blue-900/50">
                             <span class="text-xs font-bold text-blue-400 uppercase">✅ TriDash AI Response</span>
                             <p class="text-xs text-slate-200 font-medium mt-2 leading-relaxed">
-                                "I’m really sorry about the delay and the lack of communication—that’s definitely not how we aim to operate. Please give me a direct call at [Phone] so I can make this right."
+                                "I’m really sorry about the delay and the lack of communication—that’s definitely not how we aim to operate. Please give me a direct call so I can make this right."
                             </p>
                         </div>
                     </div>
@@ -478,297 +478,72 @@
                         You paste your official Google Business review link into your portal. After completing a job, TriDash automatically dispatches an SMS review invitation to your client.
                     </p>
                 </details>
-
-                <details class="group bg-black rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800 shadow-sm">
-                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-lg">
-                        How does the AI respond to reviews without sounding like a robot?
-                        <span class="ml-4 transition group-open:rotate-180 text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-400 leading-relaxed">
-                        Our system uses tailored prompts to write natural, conversational replies. For 5-star reviews, it thanks the customer like a real person. For 1-star reviews, it uses de-escalation language to apologize and take the conversation offline.
-                    </p>
-                </details>
-
-                <details class="group bg-black rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800 shadow-sm">
-                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-lg">
-                        Are there any long-term contracts or setup fees?
-                        <span class="ml-4 transition group-open:rotate-180 text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-400 leading-relaxed">
-                        None at all. TriDash AI starts with a $10 30-day pilot on the Standard tier or $39/month for Pro AI, with zero setup fees. You can pause or cancel your subscription whenever you wish.
-                    </p>
-                </details>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-12 bg-black border-t border-slate-800 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>© TriDash AI. All rights reserved.</p>
-            <p class="text-xs text-slate-400">Questions or need help? Email <a href="mailto:kelvin@tridashai.com" class="text-blue-400 underline font-semibold">kelvin@tridashai.com</a></p>
-        </div>
+    <!-- FOOTER (CLEANED) -->
+    <footer class="bg-black border-t border-slate-800 py-12 px-4 text-center text-sm text-slate-500">
+        <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
-    <!-- LOG IN MODAL OVERLAY -->
-    <div id="login-modal" class="custom-modal fixed inset-0 bg-black/80 backdrop-blur-sm z-[10000] items-center justify-center p-4">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
-            <button type="button" id="close-login-btn" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl font-bold cursor-pointer">&times;</button>
-            
-            <div class="text-center">
-                <h3 class="text-2xl font-extrabold text-white">Log in to TriDash AI</h3>
-                <p class="text-slate-400 text-sm mt-1">Access your account dashboard.</p>
-            </div>
-
-            <form id="login-form" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Email Address</label>
-                    <input type="email" id="login-email-input" required placeholder="" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Password</label>
-                    <input type="password" id="login-password-input" required placeholder="" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <!-- SAVE / REMEMBER ME TICK BOX -->
-                <div class="flex items-center gap-2 pt-1">
-                    <input type="checkbox" id="remember-me" class="w-4 h-4 bg-black border border-slate-800 rounded text-blue-600 focus:ring-blue-600 cursor-pointer">
-                    <label for="remember-me" class="text-xs font-semibold text-slate-300 cursor-pointer">Remember these details so I don't have to keep logging in</label>
-                </div>
-
-                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-base cursor-pointer">
-                    Log In
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- SIGN UP MODAL OVERLAY -->
-    <div id="signup-modal" class="custom-modal fixed inset-0 bg-black/80 backdrop-blur-sm z-[10000] items-center justify-center p-4">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-            <button type="button" id="close-signup-btn" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl font-bold cursor-pointer">&times;</button>
-            
-            <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-blue-950 text-blue-400 border border-blue-900 text-xs font-bold uppercase tracking-wider rounded-full mb-2">Instant Activation</span>
-                <h3 class="text-2xl font-extrabold text-white">Create Your Account</h3>
-                <p class="text-slate-400 text-sm mt-1">Get started with TriDash AI in seconds.</p>
-            </div>
-
-            <form id="signup-form" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Full Name</label>
-                    <input type="text" id="signup-name" required placeholder="e.g. John Doe" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Business Name</label>
-                    <input type="text" id="signup-business" required placeholder="e.g. Apex Electrical" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Email Address</label>
-                    <input type="email" id="signup-email" required placeholder="" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Choose Password</label>
-                    <input type="password" id="signup-password" required minlength="8" placeholder="At least 8 characters" class="w-full px-4 py-3 bg-black border border-slate-800 text-white rounded-xl text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Selected Package</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <label class="flex items-center gap-2 p-3 border border-slate-800 bg-black rounded-xl cursor-pointer hover:bg-slate-900 transition">
-                            <input type="radio" name="modal_pkg" id="modal-pkg-standard" value="Standard" class="text-blue-600">
-                            <div>
-                                <span class="block text-xs font-bold text-white">Standard</span>
-                                <span class="block text-[10px] text-slate-400">$10 1st mo</span>
-                            </div>
-                        </label>
-                        <label class="flex items-center gap-2 p-3 border border-blue-900 bg-blue-950/40 rounded-xl cursor-pointer hover:bg-blue-950/60 transition">
-                            <input type="radio" name="modal_pkg" id="modal-pkg-premium" value="Premium" class="text-blue-600">
-                            <div>
-                                <span class="block text-xs font-bold text-white">Premium Pro</span>
-                                <span class="block text-[10px] text-blue-400 font-semibold">$39/mo</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-base cursor-pointer">
-                    Complete Registration & Activate →
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- SCRIPT -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Mobile Drawer Toggle
+        const menuBtn = document.getElementById('menu-btn');
         const navDrawer = document.getElementById('nav-drawer');
-
-        function toggleMenu() {
-            if (navDrawer) navDrawer.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            if (navDrawer) navDrawer.classList.remove('active');
-        }
-
-        // Login Modal Control - pre-fill saved email if remembered
-        function openLoginModal() {
-            const loginModal = document.getElementById('login-modal');
-            const emailInput = document.getElementById('login-email-input');
-            const passwordInput = document.getElementById('login-password-input');
-            const rememberCheckbox = document.getElementById('remember-me');
-
-            const savedEmail = localStorage.getItem('tridash_remembered_email');
-            const savedPass = localStorage.getItem('tridash_remembered_pass');
-
-            if (savedEmail && emailInput) {
-                emailInput.value = savedEmail;
-                if (savedPass && passwordInput) {
-                    passwordInput.value = savedPass;
-                }
-                if (rememberCheckbox) {
-                    rememberCheckbox.checked = true;
-                }
-            }
-
-            if (loginModal) loginModal.classList.add('active');
-            closeMenu();
-        }
-
-        function closeLoginModal() {
-            const loginModal = document.getElementById('login-modal');
-            if (loginModal) loginModal.classList.remove('active');
-        }
-
-        // Signup Modal Control
-        function openSignupModal(tier) {
-            const signupModal = document.getElementById('signup-modal');
-            if (signupModal) signupModal.classList.add('active');
-            
-            if (tier === 'premium') {
-                const radio = document.getElementById('modal-pkg-premium');
-                if (radio) radio.checked = true;
-            } else {
-                const radio = document.getElementById('modal-pkg-standard');
-                if (radio) radio.checked = true;
-            }
-            closeMenu();
-        }
-
-        function closeSignupModal() {
-            const signupModal = document.getElementById('signup-modal');
-            if (signupModal) signupModal.classList.remove('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Hamburger Menu Toggle
-            const menuBtn = document.getElementById('menu-btn');
-            if (menuBtn) {
-                menuBtn.addEventListener('click', toggleMenu);
-            }
-
-            // Close mobile menu on drawer link click
-            document.querySelectorAll('.mobile-link').forEach(link => {
-                link.addEventListener('click', closeMenu);
+        if (menuBtn && navDrawer) {
+            menuBtn.addEventListener('click', () => {
+                navDrawer.classList.toggle('active');
             });
-
-            // Modal Button Triggers
-            const desktopLoginBtn = document.getElementById('desktop-login-btn');
-            const mobileLoginBtn = document.getElementById('mobile-login-btn');
-            const drawerLoginBtn = document.getElementById('drawer-login-btn');
-            const closeLoginBtn = document.getElementById('close-login-btn');
-            const closeSignupBtn = document.getElementById('close-signup-btn');
-
-            if (desktopLoginBtn) desktopLoginBtn.addEventListener('click', openLoginModal);
-            if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openLoginModal);
-            if (drawerLoginBtn) drawerLoginBtn.addEventListener('click', openLoginModal);
-            if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginModal);
-            if (closeSignupBtn) closeSignupBtn.addEventListener('click', closeSignupModal);
-
-            // Login Form Submission with "Remember Me" logic
-            const loginForm = document.getElementById('login-form');
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const emailInput = document.getElementById('login-email-input');
-                    const passwordInput = document.getElementById('login-password-input');
-                    const rememberCheckbox = document.getElementById('remember-me');
-
-                    if (rememberCheckbox && rememberCheckbox.checked) {
-                        if (emailInput) localStorage.setItem('tridash_remembered_email', emailInput.value);
-                        if (passwordInput) localStorage.setItem('tridash_remembered_pass', passwordInput.value);
-                    } else {
-                        localStorage.removeItem('tridash_remembered_email');
-                        localStorage.removeItem('tridash_remembered_pass');
-                    }
-
-                    alert('Login successful! Welcome to your TriDash Dashboard.');
-                    closeLoginModal();
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navDrawer.classList.remove('active');
                 });
-            }
+            });
+        }
 
-            // Signup Form Submission
-            const signupForm = document.getElementById('signup-form');
-            if (signupForm) {
-                signupForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const emailInput = document.getElementById('signup-email');
-                    if (emailInput && emailInput.value) {
-                        localStorage.setItem('tridash_remembered_email', emailInput.value);
-                    }
-                    alert('Registration successful! Redirecting to setup portal...');
-                    closeSignupModal();
-                });
-            }
+        // Demo Simulation Button
+        const demoBtn = document.getElementById('run-demo-btn');
+        const demoStatus = document.getElementById('demo-status');
+        if (demoBtn) {
+            demoBtn.addEventListener('click', () => {
+                if (demoStatus) demoStatus.classList.remove('hidden');
+                demoBtn.textContent = "✓ Simulation Active";
+                demoBtn.classList.remove('bg-slate-900', 'border-slate-800');
+                demoBtn.classList.add('bg-blue-600', 'text-white');
+                
+                setTimeout(() => {
+                    demoBtn.textContent = "Test Live Speed Demo";
+                    demoBtn.classList.remove('bg-blue-600', 'text-white');
+                    demoBtn.classList.add('bg-slate-900', 'border-slate-800');
+                    if (demoStatus) demoStatus.classList.add('hidden');
+                }, 4000);
+            });
+        }
 
-            // Demo Simulation Button
-            const demoBtn = document.getElementById('run-demo-btn');
-            const demoStatus = document.getElementById('demo-status');
-            if (demoBtn) {
-                demoBtn.addEventListener('click', () => {
-                    if (demoStatus) demoStatus.classList.remove('hidden');
-                    demoBtn.textContent = "✓ Simulation Active";
-                    demoBtn.classList.remove('bg-slate-900', 'text-slate-200');
-                    demoBtn.classList.add('bg-blue-600', 'text-white');
+        // ROI Calculator
+        const jobSlider = document.getElementById('job-slider');
+        const callsSlider = document.getElementById('calls-slider');
+        const jobVal = document.getElementById('job-val');
+        const callsVal = document.getElementById('calls-val');
+        const lostRev = document.getElementById('lost-rev');
 
-                    setTimeout(() => {
-                        demoBtn.textContent = "Test Live Speed Demo";
-                        demoBtn.classList.remove('bg-blue-600', 'text-white');
-                        demoBtn.classList.add('bg-slate-900', 'text-slate-200');
-                        if (demoStatus) demoStatus.classList.add('hidden');
-                    }, 4000);
-                });
-            }
+        function calculateROI() {
+            if (!jobSlider || !callsSlider) return;
+            const val = parseInt(jobSlider.value);
+            const calls = parseInt(callsSlider.value);
+            if (jobVal) jobVal.textContent = '$' + val;
+            if (callsVal) callsVal.textContent = calls;
+            // Calculation: Calls per week * 4 weeks * job value
+            const monthlyLost = calls * 4 * val;
+            if (lostRev) lostRev.textContent = '$' + monthlyLost.toLocaleString();
+        }
 
-            // ROI Calculator
-            const jobSlider = document.getElementById('job-slider');
-            const callsSlider = document.getElementById('calls-slider');
-            const jobVal = document.getElementById('job-val');
-            const callsVal = document.getElementById('calls-val');
-            const lostRev = document.getElementById('lost-rev');
-
-            function calculateROI() {
-                if (!jobSlider || !callsSlider) return;
-                const val = parseInt(jobSlider.value);
-                const calls = parseInt(callsSlider.value);
-                if (jobVal) jobVal.textContent = '$' + val;
-                if (callsVal) callsVal.textContent = calls;
-                if (lostRev) lostRev.textContent = '$' + Math.round(val * calls * 4).toLocaleString();
-            }
-
-            if (jobSlider && callsSlider) {
-                jobSlider.addEventListener('input', calculateROI);
-                callsSlider.addEventListener('input', calculateROI);
-            }
-        });
+        if (jobSlider && callsSlider) {
+            jobSlider.addEventListener('input', calculateROI);
+            callsSlider.addEventListener('input', calculateROI);
+        }
     </script>
 </body>
 </html>
