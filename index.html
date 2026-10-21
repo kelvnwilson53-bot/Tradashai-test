@@ -10,8 +10,6 @@
         html { scroll-behavior: smooth; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .custom-modal { display: none; }
-        .custom-modal.active { display: flex !important; }
         .mobile-drawer { display: none; }
         .mobile-drawer.active { display: flex !important; }
         
@@ -50,9 +48,9 @@
                 </div>
                 
                 <div class="hidden md:flex flex-col items-end gap-1.5">
-                    <button type="button" id="desktop-login-btn" onclick="openLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
+                    <a href="/login" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm inline-block">
                         Log In
-                    </button>
+                    </a>
                 </div>
 
             </div>
@@ -70,14 +68,14 @@
             <a href="#packages" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">Packages</a>
             <a href="#faq" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">FAQ</a>
             <hr class="border-slate-800 my-2">
-            <button type="button" id="drawer-login-btn" onclick="openLoginModal()" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition cursor-pointer">
+            <a href="/login" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">
                 Log In
-            </button>
+            </a>
         </nav>
         <div class="pt-6 pb-8 border-t border-slate-800">
-            <button type="button" onclick="openSignupModal('standard')" class="block w-full py-4 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer">
+            <a href="#packages" class="mobile-link block w-full py-4 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg">
                 Get Started Now
-            </button>
+            </a>
         </div>
     </div>
 
@@ -96,10 +94,10 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <button type="button" onclick="openSignupModal('standard')" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg text-center cursor-pointer">
+            <a href="/signup?plan=standard" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg text-center">
                 Start your 30-day pilot for just $10
-            </button>
-            <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-lg rounded-xl transition text-center cursor-pointer">
+            </a>
+            <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-lg rounded-xl transition text-center">
                 See How It Works
             </a>
         </div>
@@ -425,9 +423,9 @@
                         <li class="flex items-center gap-3">Automated Google 5-Star Review Request Invites</li>
                     </ul>
 
-                    <button type="button" onclick="openSignupModal('standard')" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center cursor-pointer shadow-lg">
+                    <a href="/signup?plan=standard" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg">
                         Select Standard Package →
-                    </button>
+                    </a>
                 </div>
 
                 <!-- TIER 2 -->
@@ -452,9 +450,9 @@
                         <li class="flex items-center gap-3">Google Calendar Link Injection</li>
                     </ul>
 
-                    <button type="button" onclick="openSignupModal('premium')" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg cursor-pointer">
+                    <a href="/signup?plan=premium" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg">
                         Select Premium Package (Pro AI) →
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -522,62 +520,6 @@
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
-    <!-- LOG IN MODAL -->
-    <div id="login-modal" class="custom-modal fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm justify-center items-center p-4">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl">
-            <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold cursor-pointer">
-                ✕
-            </button>
-            
-            <div>
-                <h3 class="text-2xl font-extrabold text-white mb-2">Log In</h3>
-                <p class="text-slate-400 text-sm mb-6">Enter your account credentials to access your dashboard.</p>
-
-                <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Username or Email</label>
-                        <input type="text" required placeholder="Username or email" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Password</label>
-                        <input type="password" required placeholder="••••••••" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition text-sm cursor-pointer shadow-lg mt-2">
-                        Log In
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- SIGNUP MODAL -->
-    <div id="signup-modal" class="custom-modal fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm justify-center items-center p-4">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl">
-            <button type="button" onclick="closeSignupModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold cursor-pointer">
-                ✕
-            </button>
-            
-            <div>
-                <h3 id="modal-title" class="text-2xl font-extrabold text-white mb-2">Get Started</h3>
-                <p id="modal-subtitle" class="text-slate-400 text-sm mb-6">Enter your details below to set up your account.</p>
-
-                <form onsubmit="handleSignupSubmit(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Business Name</label>
-                        <input type="text" required placeholder="e.g. Apex Plumbing" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Email Address</label>
-                        <input type="email" required placeholder="you@yourbusiness.com" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition text-sm cursor-pointer shadow-lg mt-2">
-                        Continue to Setup
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- JAVASCRIPT LOGIC -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
@@ -591,46 +533,6 @@
                     navDrawer.classList.remove('active');
                 });
             });
-        }
-
-        const loginModal = document.getElementById('login-modal');
-        function openLoginModal() {
-            if (navDrawer) navDrawer.classList.remove('active');
-            if (loginModal) loginModal.classList.add('active');
-        }
-        function closeLoginModal() {
-            if (loginModal) loginModal.classList.remove('active');
-        }
-        function handleLoginSubmit(e) {
-            e.preventDefault();
-            alert('Login feature currently in test mode.');
-            closeLoginModal();
-        }
-
-        const signupModal = document.getElementById('signup-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalSubtitle = document.getElementById('modal-subtitle');
-
-        function openSignupModal(plan) {
-            if (navDrawer) navDrawer.classList.remove('active');
-            if (signupModal) {
-                if (plan === 'premium') {
-                    if (modalTitle) modalTitle.textContent = "Pro AI Suite Pilot ($39/mo)";
-                    if (modalSubtitle) modalSubtitle.textContent = "Start your automated lead recovery & review suite.";
-                } else {
-                    if (modalTitle) modalTitle.textContent = "Start 30-Day Pilot ($10)";
-                    if (modalSubtitle) modalSubtitle.textContent = "Setup takes under 2 minutes.";
-                }
-                signupModal.classList.add('active');
-            }
-        }
-        function closeSignupModal() {
-            if (signupModal) signupModal.classList.remove('active');
-        }
-        function handleSignupSubmit(e) {
-            e.preventDefault();
-            alert('Registration request received!');
-            closeSignupModal();
         }
 
         const demoBtn = document.getElementById('run-demo-btn');
