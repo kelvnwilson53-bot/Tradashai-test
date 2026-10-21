@@ -476,6 +476,16 @@
             });
         }
 
+        // Close mobile drawer automatically when clicking any menu link
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(navDrawer) {
+                    navDrawer.classList.remove('active');
+                }
+            });
+        });
+
         // ROI Calculator Logic
         const jobSlider = document.getElementById('job-slider');
         const callsSlider = document.getElementById('calls-slider');
