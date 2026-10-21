@@ -128,7 +128,7 @@
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg cursor-pointer">
-                        Confirm & Start Pilot →
+                        Confirm & Start 30-Day Pilot →
                     </button>
 
                     <!-- TRUST BADGES & GUARANTEES -->
@@ -153,10 +153,10 @@
                 <!-- PLAN SELECTOR TOGGLE -->
                 <div class="grid grid-cols-2 gap-2 p-1.5 bg-black rounded-xl border border-slate-800 mb-6">
                     <button type="button" id="btn-plan-standard" onclick="setPlan('standard')" class="py-2.5 text-xs font-bold rounded-lg transition">
-                        Standard ($10)
+                        Standard ($10 Pilot)
                     </button>
                     <button type="button" id="btn-plan-premium" onclick="setPlan('premium')" class="py-2.5 text-xs font-bold rounded-lg transition">
-                        Premium ($39)
+                        Premium ($39/mo)
                     </button>
                 </div>
 
@@ -164,8 +164,8 @@
                 <div class="space-y-4 text-sm">
                     <div class="flex justify-between items-start pb-4 border-b border-slate-800">
                         <div>
-                            <h4 id="plan-title" class="font-extrabold text-white text-base">Starter Lead Recovery</h4>
-                            <p id="plan-desc" class="text-xs text-blue-400 font-semibold mt-0.5">100 SMS/mo + Automated Call Recovery</p>
+                            <h4 id="plan-title" class="font-extrabold text-white text-base">Standard Package</h4>
+                            <p id="plan-desc" class="text-xs text-blue-400 font-semibold mt-0.5">$10 for first 30 days, then $29/mo</p>
                         </div>
                         <div class="text-right">
                             <span id="plan-price" class="text-2xl font-extrabold text-white">$10</span>
@@ -177,7 +177,7 @@
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">What's Included:</span>
                         <ul id="plan-features" class="space-y-2.5 text-xs text-slate-300 font-medium">
-                            <!-- Dynamic list populated by JavaScript -->
+                            <!-- Populated dynamically -->
                         </ul>
                     </div>
 
@@ -188,8 +188,8 @@
                 </div>
 
                 <div class="mt-6 p-4 bg-slate-900/80 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed">
-                    <p class="font-bold text-white mb-1">🛡️ 100% Risk-Free Guarantee</p>
-                    No setup fees, no hidden costs, and no long-term contracts. You can pause or cancel your account at any time right from your dashboard.
+                    <p class="font-bold text-white mb-1">🛡️ No Setup Fees, No Long-Term Contracts</p>
+                    Your 30-day pilot automatically transitions to $29/month after the first month. You can pause or cancel your account at any time right from your dashboard.
                 </div>
             </div>
 
@@ -206,32 +206,32 @@
         const plans = {
             standard: {
                 title: "Standard Package",
-                desc: "Starter Lead Recovery Suite",
+                desc: "$10 for first 30 days, then $29/mo",
                 price: "$10",
-                subtext: "first 30 days, then $29/mo",
+                subtext: "first 30 days",
                 dueToday: "$10.00",
-                buttonText: "Confirm & Start $10 Pilot →",
+                buttonText: "Confirm & Start 30-Day Pilot →",
                 features: [
-                    "✔️ <strong>100 SMS messages</strong> included per month (1-month rollover)",
+                    "✔️ <strong>100 SMS messages</strong> included per month (unused messages roll over to the second month only)",
                     "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
+                    "✔️ Google Calendar Booking Link Injection",
                     "✔️ Automated Google 5-Star Review Request Invites",
-                    "✔️ <strong>Automated Review Thank-You Responses</strong> (6 pre-set thank-you templates)",
-                    "✔️ Google Calendar Booking Link Injection"
+                    "✔️ <strong>Automated Review Thank-You Responses</strong>"
                 ]
             },
             premium: {
-                title: "Premium Package (Recommended)",
+                title: "Premium Package",
                 desc: "Pro AI Automation Suite",
                 price: "$39",
                 subtext: "billed monthly",
                 dueToday: "$39.00",
                 buttonText: "Confirm & Start Premium Suite →",
                 features: [
-                    "✔️ <strong>300 SMS messages</strong> included per month (1-month rollover)",
-                    "✔️ Automated Google 5-Star Review Request Invites",
-                    "✔️ <strong>AI-Powered Custom Review Responses</strong> (dynamic human-style replies & negative feedback de-escalation)",
+                    "✔️ <strong>300 SMS messages</strong> included per month (unused messages roll over to the second month only)",
+                    "✔️ <strong class='text-white'>AI-Powered Custom Review Responses</strong> & Negative Feedback De-escalation",
                     "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
-                    "✔️ Google Calendar Booking Link Injection"
+                    "✔️ Google Calendar Booking Link Injection",
+                    "✔️ Automated Google 5-Star Review Request Invites"
                 ]
             }
         };
@@ -266,10 +266,8 @@
 
         // Detect URL query param (e.g. signup.html?plan=premium)
         window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.net.search); // fallback or standard search
-            const searchStr = window.location.search;
-            const urlParamsReal = new URLSearchParams(searchStr);
-            const planParam = urlParamsReal.get('plan');
+            const urlParams = new URLSearchParams(window.location.search);
+            const planParam = urlParams.get('plan');
             setPlan(planParam === 'premium' ? 'premium' : 'standard');
         });
 
