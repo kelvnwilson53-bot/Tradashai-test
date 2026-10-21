@@ -7,189 +7,158 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        html { scroll-behavior: smooth; }
-        p, h1, h2, h3, h4, h5, h6, li {
-            orphans: 3;
-            widows: 3;
-            text-wrap: pretty;
+        .plan-btn.active {
+            background-color: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
         }
-        h1, h2, h3 { text-wrap: balance; }
     </style>
 </head>
 <body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
 
     <!-- HEADER -->
-    <header class="bg-black border-b border-slate-800 py-4 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold tracking-tight text-white">
+    <header class="border-b border-slate-800 py-4 bg-black">
+        <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-white tracking-tight">
                 TriDash<span class="text-blue-500 font-light">AI.com</span>
             </a>
-            <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-white transition flex items-center gap-1">
-                ← Back to main site
-            </a>
+            <a href="index.html" class="text-sm text-slate-400 hover:text-white transition">← Back to Home</a>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+    <main class="max-w-5xl mx-auto px-4 py-12 flex-1 w-full">
         <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-[11px] font-bold text-emerald-400 mb-3 uppercase tracking-wider">
-                🔒 256-Bit Bank-Grade Encrypted SSL Checkout
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-                Complete Your Account Setup
-            </h1>
-            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                Activate your automated lead recovery & review suite in under 2 minutes.
-            </p>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">Complete Your Account Setup</h1>
+            <p class="text-slate-400">Launch your lead recovery & review suite in under 2 minutes.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- LEFT COLUMN: ACCOUNT & PAYMENT FORM -->
-            <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
-                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="space-y-6">
-                    
-                    <!-- SECTION 1: BUSINESS & ACCOUNT INFO -->
-                    <div>
-                        <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">1</span>
-                            Account & Business Information
-                        </h2>
-                        
-                        <div class="space-y-4">
+            <!-- LEFT COLUMN: PAYMENT / SETUP FORM -->
+            <div class="lg:col-span-7 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white mb-4">1. Business Details</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Business Name</label>
+                            <input type="text" placeholder="e.g. Apex Plumbing & Heating" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Full Name</label>
-                                <input type="text" required placeholder="e.g. John Smith" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Your Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
                             </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Email Address</label>
-                                    <input type="email" required placeholder="john@yourbusiness.com" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Phone Number</label>
-                                    <input type="tel" required placeholder="(555) 000-0000" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                                </div>
-                            </div>
-
                             <div>
-                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Business Name</label>
-                                <input type="text" required placeholder="e.g. Apex Roofing & Building" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Email Address</label>
+                                <input type="email" placeholder="john@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <hr class="border-slate-800">
+                <hr class="border-slate-800">
 
-                    <!-- SECTION 2: PAYMENT DETAILS -->
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">2</span>
-                                Payment Information
-                            </h2>
-                            <span class="text-[11px] text-slate-400 font-semibold bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">
-                                💳 Card / Bank Transfer / Wise
-                            </span>
+                <div>
+                    <h2 class="text-lg font-bold text-white mb-4">2. Payment Method</h2>
+                    <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 mb-4 flex items-center justify-between">
+                        <span class="text-sm font-semibold text-white">Credit / Debit Card (Stripe Secure)</span>
+                        <span class="text-xs text-slate-500">🔒 256-Bit Encryption</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Card Number</label>
+                            <input type="text" placeholder="4242 •••• •••• 4242" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
                         </div>
-
-                        <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Card Number</label>
-                                <div class="relative">
-                                    <input type="text" required placeholder="4242 •••• •••• 4242" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600 pr-12">
-                                    <span class="absolute right-3 top-3 text-xs text-slate-500 font-bold">VISA / MC</span>
-                                </div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Expiry Date</label>
+                                <input type="text" placeholder="MM / YY" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
                             </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Expiration Date</label>
-                                    <input type="text" required placeholder="MM / YY" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Security Code (CVC)</label>
-                                    <input type="text" required placeholder="123" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
-                                </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">CVC / CVV</label>
+                                <input type="text" placeholder="123" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- TERMS & CONDITIONS CHECKBOX -->
-                    <div class="pt-2">
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" required class="mt-1 w-4 h-4 accent-blue-600 bg-black border-slate-800 rounded cursor-pointer">
-                            <span class="text-xs text-slate-400 leading-relaxed">
-                                I agree to the <a href="terms.html" target="_blank" class="text-blue-400 underline">Terms and Conditions</a> and <a href="privacy.html" target="_blank" class="text-blue-400 underline">Privacy Policy</a>. I understand I can cancel my subscription at any time with 1 click.
-                            </span>
-                        </label>
-                    </div>
-
-                    <button type="submit" id="submit-btn" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg cursor-pointer">
-                        Confirm & Start 30-Day Pilot →
-                    </button>
-
-                    <!-- TRUST BADGES & GUARANTEES -->
-                    <div class="pt-2 border-t border-slate-900 grid grid-cols-3 gap-2 text-center text-[10px] text-slate-400 font-semibold">
-                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
-                            🛡️ Bank-Grade Security
-                        </div>
-                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
-                            🔒 PCI-DSS Compliant
-                        </div>
-                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
-                            ⚡ Instant Activation
-                        </div>
-                    </div>
-                </form>
+                <button type="button" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer">
+                    Complete Order & Start Pilot
+                </button>
             </div>
 
-            <!-- RIGHT COLUMN: ORDER SUMMARY -->
-            <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl sticky top-8">
-                <h3 class="text-lg font-bold text-white mb-4">Selected Package</h3>
+            <!-- RIGHT COLUMN: PACKAGE SUMMARY -->
+            <div class="lg:col-span-5 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-6">
+                <h2 class="text-lg font-bold text-white">Selected Package</h2>
 
-                <!-- PLAN SELECTOR TOGGLE -->
-                <div class="grid grid-cols-2 gap-2 p-1.5 bg-black rounded-xl border border-slate-800 mb-6">
-                    <button type="button" id="btn-plan-standard" onclick="setPlan('standard')" class="py-2.5 text-xs font-bold rounded-lg transition">
-                        Standard ($10 Pilot)
+                <!-- PACKAGE TOGGLE SWITCH -->
+                <div class="grid grid-cols-2 gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
+                    <button type="button" id="btn-standard" onclick="selectPlan('standard')" class="plan-btn active py-2.5 rounded-lg text-xs font-bold transition text-center cursor-pointer">
+                        Standard ($15 Pilot)
                     </button>
-                    <button type="button" id="btn-plan-premium" onclick="setPlan('premium')" class="py-2.5 text-xs font-bold rounded-lg transition">
-                        Premium ($39/mo)
+                    <button type="button" id="btn-premium" onclick="selectPlan('premium')" class="plan-btn py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition text-center cursor-pointer">
+                        Premium ($20 Pilot)
                     </button>
                 </div>
 
-                <!-- DYNAMIC SUMMARY BOX -->
-                <div class="space-y-4 text-sm">
-                    <div class="flex justify-between items-start pb-4 border-b border-slate-800">
-                        <div>
-                            <h4 id="plan-title" class="font-extrabold text-white text-base">Standard Package</h4>
-                            <p id="plan-desc" class="text-xs text-blue-400 font-semibold mt-0.5">$10 for first 30 days, then $29/mo</p>
+                <!-- DYNAMIC SUMMARY CONTAINER -->
+                <div id="plan-summary" class="space-y-4">
+                    <!-- Standard Plan Content (Default) -->
+                    <div id="standard-details">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Standard Package</h3>
+                                <p class="text-xs text-blue-400 font-semibold mt-0.5">Starter Lead Recovery</p>
+                            </div>
+                            <span class="text-2xl font-extrabold text-white">$15</span>
                         </div>
-                        <div class="text-right">
-                            <span id="plan-price" class="text-2xl font-extrabold text-white">$10</span>
-                            <span id="plan-subtext" class="block text-[10px] text-slate-400 font-medium">first 30 days</span>
+                        <p class="text-xs text-slate-400 mb-4">$15 for first 30 days, then $29/mo</p>
+
+                        <div class="space-y-2 text-xs text-slate-300 border-t border-b border-slate-800 py-4">
+                            <p class="font-bold text-blue-400 uppercase tracking-wider mb-2">What's Included:</p>
+                            <p class="flex items-center gap-2">✓ <strong>100 SMS</strong> included per month</p>
+                            <p class="flex items-center gap-2">✓ Instant Missed-Call Automated SMS Response</p>
+                            <p class="flex items-center gap-2">✓ Google Calendar Booking Link Injection</p>
+                            <p class="flex items-center gap-2">✓ Automated Google Review Requests</p>
+                        </div>
+
+                        <div class="pt-4 flex justify-between items-center text-lg font-extrabold text-white">
+                            <span>Total Due Today:</span>
+                            <span class="text-blue-500">$15.00</span>
                         </div>
                     </div>
 
-                    <!-- INCLUDED FEATURES LIST -->
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">What's Included:</span>
-                        <ul id="plan-features" class="space-y-2.5 text-xs text-slate-300 font-medium">
-                            <!-- Populated dynamically -->
-                        </ul>
-                    </div>
+                    <!-- Premium Plan Content (Hidden initially) -->
+                    <div id="premium-details" class="hidden">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Premium Package</h3>
+                                <p class="text-xs text-blue-400 font-semibold mt-0.5">Pro AI Automation Suite</p>
+                            </div>
+                            <span class="text-2xl font-extrabold text-white">$20</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4">$20 for first 30 days, then $39/mo</p>
 
-                    <div class="pt-4 border-t border-slate-800 flex justify-between items-center font-bold text-white text-base">
-                        <span>Total Due Today:</span>
-                        <span id="total-due" class="text-blue-500 text-2xl font-extrabold">$10.00</span>
+                        <div class="space-y-2 text-xs text-slate-300 border-t border-b border-slate-800 py-4">
+                            <p class="font-bold text-blue-400 uppercase tracking-wider mb-2">What's Included:</p>
+                            <p class="flex items-center gap-2">✓ <strong>300 SMS</strong> included per month</p>
+                            <p class="flex items-center gap-2">✓ <strong>AI-Powered Custom Review Responses</strong></p>
+                            <p class="flex items-center gap-2">✓ Negative Feedback De-escalation</p>
+                            <p class="flex items-center gap-2">✓ Instant Missed-Call Automated SMS Response</p>
+                            <p class="flex items-center gap-2">✓ Google Calendar Booking Link Injection</p>
+                        </div>
+
+                        <div class="pt-4 flex justify-between items-center text-lg font-extrabold text-white">
+                            <span>Total Due Today:</span>
+                            <span class="text-blue-500">$20.00</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-6 p-4 bg-slate-900/80 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed">
-                    <p class="font-bold text-white mb-1">🛡️ No Setup Fees, No Long-Term Contracts</p>
-                    Your 30-day pilot automatically transitions to $29/month after the first month. You can pause or cancel your account at any time right from your dashboard.
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800/80 text-xs text-slate-400 leading-relaxed">
+                    <p class="font-semibold text-slate-300 mb-1">🔒 No Setup Fees, No Long-Term Contracts</p>
+                    <p>Your 30-day pilot automatically transitions to its regular monthly rate after the first month ($29/mo for Standard, $39/mo for Premium). You can pause or cancel your account at any time right from your dashboard.</p>
                 </div>
             </div>
 
@@ -197,83 +166,44 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-black border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500">
-        <p>&copy; TriDash AI. All rights reserved.</p>
+    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+        <p>&copy; TriDash AI. All rights reserved. <a href="terms.html" class="underline hover:text-slate-400">Terms & Conditions</a></p>
     </footer>
 
-    <!-- JAVASCRIPT FOR URL PLAN DETECTION & TOGGLE -->
+    <!-- JAVASCRIPT FOR TOGGLING TIERS & READING URL PARAMS -->
     <script>
-        const plans = {
-            standard: {
-                title: "Standard Package",
-                desc: "$10 for first 30 days, then $29/mo",
-                price: "$10",
-                subtext: "first 30 days",
-                dueToday: "$10.00",
-                buttonText: "Confirm & Start 30-Day Pilot →",
-                features: [
-                    "✔️ <strong>100 SMS messages</strong> included per month (unused messages roll over to the second month only)",
-                    "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
-                    "✔️ Google Calendar Booking Link Injection",
-                    "✔️ Automated Google 5-Star Review Request Invites",
-                    "✔️ <strong>Automated Review Thank-You Responses</strong>"
-                ]
-            },
-            premium: {
-                title: "Premium Package",
-                desc: "Pro AI Automation Suite",
-                price: "$39",
-                subtext: "billed monthly",
-                dueToday: "$39.00",
-                buttonText: "Confirm & Start Premium Suite →",
-                features: [
-                    "✔️ <strong>300 SMS messages</strong> included per month (unused messages roll over to the second month only)",
-                    "✔️ <strong class='text-white'>AI-Powered Custom Review Responses</strong> & Negative Feedback De-escalation",
-                    "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
-                    "✔️ Google Calendar Booking Link Injection",
-                    "✔️ Automated Google 5-Star Review Request Invites"
-                ]
-            }
-        };
+        function selectPlan(plan) {
+            const btnStandard = document.getElementById('btn-standard');
+            const btnPremium = document.getElementById('btn-premium');
+            const detailsStandard = document.getElementById('standard-details');
+            const detailsPremium = document.getElementById('premium-details');
 
-        function setPlan(planKey) {
-            const plan = plans[planKey] || plans.standard;
+            if (plan === 'premium') {
+                btnStandard.classList.remove('active', 'text-white');
+                btnStandard.classList.add('text-slate-400');
+                btnPremium.classList.add('active', 'text-white');
+                btnPremium.classList.remove('text-slate-400');
 
-            // Update UI fields
-            document.getElementById('plan-title').textContent = plan.title;
-            document.getElementById('plan-desc').textContent = plan.desc;
-            document.getElementById('plan-price').textContent = plan.price;
-            document.getElementById('plan-subtext').textContent = plan.subtext;
-            document.getElementById('total-due').textContent = plan.dueToday;
-            document.getElementById('submit-btn').textContent = plan.buttonText;
-
-            // Render features list
-            const featuresList = document.getElementById('plan-features');
-            featuresList.innerHTML = plan.features.map(f => `<li class="flex items-start gap-2">${f}</li>`).join('');
-
-            // Highlight selected toggle button
-            const btnStandard = document.getElementById('btn-plan-standard');
-            const btnPremium = document.getElementById('btn-plan-premium');
-
-            if (planKey === 'premium') {
-                btnPremium.className = "py-2.5 text-xs font-extrabold rounded-lg transition bg-blue-600 text-white shadow-lg border border-blue-500";
-                btnStandard.className = "py-2.5 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white";
+                detailsStandard.classList.add('hidden');
+                detailsPremium.classList.remove('hidden');
             } else {
-                btnStandard.className = "py-2.5 text-xs font-extrabold rounded-lg transition bg-blue-600 text-white shadow-lg border border-blue-500";
-                btnPremium.className = "py-2.5 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white";
+                btnPremium.classList.remove('active', 'text-white');
+                btnPremium.classList.add('text-slate-400');
+                btnStandard.classList.add('active', 'text-white');
+                btnStandard.classList.remove('text-slate-400');
+
+                detailsPremium.classList.add('hidden');
+                detailsStandard.classList.remove('hidden');
             }
         }
 
-        // Detect URL query param (e.g. signup.html?plan=premium)
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const planParam = urlParams.get('plan');
-            setPlan(planParam === 'premium' ? 'premium' : 'standard');
-        });
-
-        function handleCheckoutSubmit(e) {
-            e.preventDefault();
-            alert('Payment successfully processed! Welcome to TriDash AI.');
+        // Read query parameter (e.g. signup.html?plan=premium)
+        const urlParams = new URLSearchParams(window.location.search);
+        const planParam = urlParams.get('plan');
+        if (planParam === 'premium') {
+            selectPlan('premium');
+        } else {
+            selectPlan('standard');
         }
     </script>
 </body>
