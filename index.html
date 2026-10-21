@@ -15,7 +15,6 @@
         .mobile-drawer { display: none; }
         .mobile-drawer.active { display: flex !important; }
         
-        /* Prevent orphans, widows, and single-word trailing lines */
         p, h1, h2, h3, h4, h5, h6, li {
             orphans: 3;
             widows: 3;
@@ -36,12 +35,10 @@
                 
                 <!-- LEFT COLUMN: LOGO ON TOP, HAMBURGER UNDERNEATH -->
                 <div class="flex flex-col items-start gap-1">
-                    <!-- LOGO -->
                     <a href="#" class="text-2xl font-bold tracking-tight text-white shrink-0">
                         TriDash<span class="text-blue-500 font-light">AI.com</span>
                     </a>
 
-                    <!-- HAMBURGER BUTTON (DIRECTLY UNDERNEATH LOGO) -->
                     <div class="mt-0.5">
                         <button type="button" id="menu-btn" aria-label="Toggle Menu" class="p-1.5 -ml-1.5 rounded-lg text-slate-300 hover:bg-slate-900 transition focus:outline-none cursor-pointer flex items-center gap-1.5">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,7 +49,6 @@
                     </div>
                 </div>
                 
-                <!-- DESKTOP ACTIONS: Clean Blue Log In Button -->
                 <div class="hidden md:flex flex-col items-end gap-1.5">
                     <button type="button" id="desktop-login-btn" onclick="openLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
                         Log In
@@ -91,7 +87,6 @@
             Automated Lead Recovery & Review Management
         </div>
         
-        <!-- HERO HEADLINE -->
         <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-none mb-8 whitespace-nowrap">
             Never lose another lead.
         </h1>
@@ -114,125 +109,132 @@
         </p>
     </section>
 
-    <!-- 7-STEP PROCESS SECTION ("SEE HOW IT WORKS") -->
+    <!-- 7-STEP PROCESS SECTION (USING YOUR EXACT ORIGINAL IMAGE STRIPS STACKED 1 TO 7) -->
     <section id="how-it-works" class="py-20 bg-slate-950 border-y border-slate-800 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Step-by-Step Walkthrough</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">How TriDash AI Works for You</h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">From the exact second a call is missed to long-term automated growth, here is how the system runs in the background.</p>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">How TriDash AI Works</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">The complete 7-step automated process from your first missed call to total business growth.</p>
             </div>
 
-            <div class="space-y-12">
+            <div class="space-y-6">
                 <!-- Step 1 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">1</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">The Problem</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">The Missed Call</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            A potential customer rings your business. You're busy on a job or driving, so you miss the call—normally resulting in an instant lost contract. TriDash AI intercepts this instantly.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">1</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">The Call</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                A potential customer rings your business. You're busy, so you miss the call — but Tridash AI has your back.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284328037.jpg" alt="Missed Call Scenario" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284444903.jpg" alt="Step 1: The Call" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">2</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Instant Reaction</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Instant SMS Recovery</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Within 5 seconds, TriDash AI sends a friendly, personalized text message to let the customer know you’ll be in touch soon, stopping them from calling a competitor.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">2</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">Instant SMS Recovery</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Within seconds, Tridash AI sends a friendly, personalised text message to let the customer know you'll be in touch soon.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284444903.jpg" alt="Instant SMS Recovery" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284293487.jpg" alt="Step 2: Instant SMS Recovery" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">3</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Seamless Scheduling</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Direct Calendar Booking</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            The customer selects a time that suits them directly on your calendar link, and the appointment is confirmed instantly without back-and-forth phone tag.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">3</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">Direct Calendar Booking</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                The customer selects a time that suits them directly on your calendar, and the appointment is confirmed instantly.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284293487.jpg" alt="Calendar Booking" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284260193.jpg" alt="Step 3: Direct Calendar Booking" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">4</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Execution</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">On-Site Service Delivery</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Your technician arrives at the customer's property fully equipped and ready to work, delivering top-tier professional service and delighting the client.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">4</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">On-Site Service</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Your technician arrives at the customer's property and gets to work. Professional, reliable and fully equipped with everything needed.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284260193.jpg" alt="On-Site Service" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284328037.jpg" alt="Step 4: On-Site Service" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 5 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">5</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Reputation Builder</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Automated Review Request</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Once the job is successfully complete, TriDash AI automatically dispatches a Google review request with a direct link while customer satisfaction is at its peak.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">5</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">Automated Review Request</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Once the job is complete, Tridash AI automatically sends a Google review request with a direct link for a 5-star review.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284328037.jpg" alt="Automated Review Request" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284444903.jpg" alt="Step 5: Automated Review Request" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 6 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">6</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">AI Engagement</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Smart AI Responses</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Advanced AI monitors incoming reviews and generates warm, natural human responses instantly—thanking supporters and protecting your public reputation effortlessly.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">6</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">Smart AI Response</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Advanced AI monitors your reviews and generates warm, natural responses that sound like you, protecting your reputation automatically.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284444903.jpg" alt="Smart AI Response" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284293487.jpg" alt="Step 6: Smart AI Response" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
 
                 <!-- Step 7 -->
-                <div class="bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-16 h-16 bg-blue-600 text-white font-black text-2xl rounded-2xl flex items-center justify-center shrink-0">7</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Continuous Growth</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">The Growth Cycle</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Your business operates on autopilot. Missed calls are captured, calendars stay packed, 5-star ratings increase, and local revenue compounds month after month.
-                        </p>
+                <div class="bg-black border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-14 h-14 bg-blue-600 text-white font-black text-2xl rounded-xl flex items-center justify-center shrink-0">7</div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">The Growth Cycle</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Your business operates on autopilot. Missed calls are saved, your diary is full, and your 5-star reputation is guaranteed.
+                            </p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-72 h-40 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shrink-0">
-                        <img src="1792284293487.jpg" alt="Growth Cycle" class="w-full h-full object-cover opacity-80">
+                    <div class="w-full bg-slate-900 border-t border-slate-800 overflow-hidden">
+                        <img src="1792284260193.jpg" alt="Step 7: The Growth Cycle" class="w-full h-auto object-cover opacity-90">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INDUSTRY STATS / PROOF CARDS -->
+    <!-- INDUSTRY STATS / PROOF CARDS (WHAT BUSINESSES LOSE) -->
     <section id="stats" class="py-16 bg-black border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -629,7 +631,7 @@
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
-    <!-- LOG IN MODAL (STRICTLY USERNAME / EMAIL & PASSWORD) -->
+    <!-- LOG IN MODAL -->
     <div id="login-modal" class="custom-modal fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm justify-center items-center p-4">
         <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl">
             <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold cursor-pointer">
@@ -657,7 +659,7 @@
         </div>
     </div>
 
-    <!-- SIGNUP MODAL (FOR PACKAGES / GET STARTED) -->
+    <!-- SIGNUP MODAL -->
     <div id="signup-modal" class="custom-modal fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm justify-center items-center p-4">
         <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl">
             <button type="button" onclick="closeSignupModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold cursor-pointer">
@@ -687,7 +689,6 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Navigation Menu Drawer Toggle
         const menuBtn = document.getElementById('menu-btn');
         const navDrawer = document.getElementById('nav-drawer');
         if (menuBtn && navDrawer) {
@@ -701,7 +702,6 @@
             });
         }
 
-        // Log In Modal Functions
         const loginModal = document.getElementById('login-modal');
         function openLoginModal() {
             if (navDrawer) navDrawer.classList.remove('active');
@@ -716,7 +716,6 @@
             closeLoginModal();
         }
 
-        // Signup Modal Functions
         const signupModal = document.getElementById('signup-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalSubtitle = document.getElementById('modal-subtitle');
@@ -743,7 +742,6 @@
             closeSignupModal();
         }
 
-        // Demo Simulation Button
         const demoBtn = document.getElementById('run-demo-btn');
         const demoStatus = document.getElementById('demo-status');
         if (demoBtn) {
@@ -762,7 +760,6 @@
             });
         }
 
-        // ROI Calculator
         const jobSlider = document.getElementById('job-slider');
         const callsSlider = document.getElementById('calls-slider');
         const jobVal = document.getElementById('job-val');
@@ -774,6 +771,7 @@
             const val = parseInt(jobSlider.value);
             const calls = parseInt(callsSlider.value);
             if (jobVal) jobVal.textContent = '$' + val;
+            if (callsVal) callsVal.callsVal = calls;
             if (callsVal) callsVal.textContent = calls;
             const monthlyLost = calls * 4 * val;
             if (lostRev) lostRev.textContent = '$' + monthlyLost.toLocaleString();
