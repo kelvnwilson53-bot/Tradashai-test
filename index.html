@@ -3,211 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriDash AI - Automated Lead Recovery & Review Growth for Local Businesses</title>
+    <title>TriDash AI - The 3-in-1 Growth Engine for Local Trades</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .custom-modal { display: none; }
+        .custom-modal.active { display: flex !important; }
+        .mobile-drawer { display: none; }
+        .mobile-drawer.active { display: flex !important; }
+        
         p, h1, h2, h3, h4, h5, h6, li {
             orphans: 3;
             widows: 3;
             text-wrap: pretty;
         }
-        h1, h2, h3 { text-wrap: balance; }
+
+        h1, h2, h3 {
+            text-wrap: balance;
+        }
     </style>
 </head>
-<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white relative">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-black/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold tracking-tight text-white">
-                TriDash<span class="text-blue-500 font-light">AI.com</span>
-            </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-400">
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#how-it-works" class="hover:text-white transition">How It Works</a>
-                <a href="#pricing" class="hover:text-white transition">Pricing</a>
-            </nav>
-            <a href="signup.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-blue-600/20">
-                Start $15 Pilot
-            </a>
+    <!-- TOP HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-black border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex justify-between items-center">
+                
+                <!-- LEFT COLUMN: LOGO ON TOP, HAMBURGER UNDERNEATH -->
+                <div class="flex flex-col items-start gap-1">
+                    <a href="#" class="text-2xl font-bold tracking-tight text-white shrink-0">
+                        TriDash<span class="text-blue-500 font-light">AI.com</span>
+                    </a>
+
+                    <div class="mt-0.5">
+                        <button type="button" id="menu-btn" aria-label="Toggle Menu" class="p-1.5 -ml-1.5 rounded-lg text-slate-300 hover:bg-slate-900 transition focus:outline-none cursor-pointer flex items-center gap-1.5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                            <span class="text-xs font-semibold text-slate-400">Menu</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex flex-col items-end gap-1.5">
+                    <button type="button" id="desktop-login-btn" onclick="openLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition shadow-sm cursor-pointer">
+                        Log In
+                    </button>
+                </div>
+
+            </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-800/80 text-xs font-bold text-blue-400 mb-6 uppercase tracking-wider">
-            ⚡ Turn Missed Calls Into Booked Jobs Instantly
+    <!-- NAVIGATION DRAWER -->
+    <div id="nav-drawer" class="mobile-drawer fixed top-24 left-0 right-0 bottom-0 bg-black z-[9999] flex-col justify-between p-6 border-t border-slate-800 overflow-y-auto">
+        <nav class="space-y-3">
+            <a href="#stats" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">Industries & Stats</a>
+            <a href="#how-it-works" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">See How It Works</a>
+            <a href="#features" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">3-in-1 Engine</a>
+            <a href="#proof" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">Bot vs Human AI</a>
+            <a href="#roi" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">ROI Calculator</a>
+            <a href="#packages" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">Packages</a>
+            <a href="#faq" class="mobile-link block px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition">FAQ</a>
+            <hr class="border-slate-800 my-2">
+            <button type="button" id="drawer-login-btn" onclick="openLoginModal()" class="w-full text-left px-4 py-3 text-lg font-semibold text-slate-300 hover:bg-slate-900 rounded-lg transition cursor-pointer">
+                Log In
+            </button>
+        </nav>
+        <div class="pt-6 pb-8 border-t border-slate-800">
+            <button type="button" onclick="openSignupModal('standard')" class="block w-full py-4 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer">
+                Get Started Now
+            </button>
         </div>
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Never Lose Another Lead To An Unanswered Call
-        </h1>
-        <p class="text-slate-400 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8">
-            TriDash AI automatically responds to missed phone calls via text in 5 seconds, sends your booking calendar, and collects 5-star Google reviews on autopilot.
-        </p>
+    </div>
 
-        <!-- HERO CALL TO ACTION -->
-        <div class="flex flex-col items-center gap-3">
-            <a href="signup.html?plan=standard" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-2xl transition shadow-lg shadow-blue-600/20 text-center">
-                Start Your 30-Day Pilot for Just $15 →
+    <!-- HERO SECTION -->
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold uppercase tracking-wider text-blue-400 mb-8">
+            Automated Lead Recovery & Review Management
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-none mb-8 whitespace-nowrap">
+            Never lose another lead.
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+            TriDash AI instantly recovers missed callers via automated SMS and acts as your proactive Google review engine—collecting 5-star reviews and handling replies so you can focus on client delivery.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+            <button type="button" onclick="openSignupModal('standard')" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg text-center cursor-pointer">
+                Start your 30-day pilot for just $15
+            </button>
+            <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-lg rounded-xl transition text-center cursor-pointer">
+                See How It Works
             </a>
-            <p class="text-xs text-slate-400 font-medium">
-                $15 for your first 30 days, then $29/month • No setup fees • Cancel anytime
-            </p>
+        </div>
+        
+        <p class="text-sm font-medium text-slate-500">
+            $15 for your first 30 days, then $29/month • No setup fees • No long-term contracts
+        </p>
+    </section>
+
+    <!-- 1. INDUSTRY STATS / PROOF CARDS -->
+    <section id="stats" class="py-16 bg-black border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Turn customer feedback into opportunity<br>
+                    <span class="text-blue-500">Protect your five-star reputation.</span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="flex flex-col bg-slate-950 rounded-2xl shadow-sm border border-slate-800 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-900">
+                        <img src="1792284444903.jpg" alt="Professional Session" class="w-full h-full object-cover hover:scale-105 transition duration-500 opacity-80">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Expectation</span>
+                            <h3 class="text-lg font-bold text-white mt-1 mb-3">Consumers Expect Fast Responses</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                89% of modern consumers expect business owners to respond directly to online reviews, and 80% choose businesses that actively reply over those that stay silent <em>(BrightLocal)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flex flex-col bg-slate-950 rounded-2xl shadow-sm border border-slate-800 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-900">
+                        <img src="1792284293487.jpg" alt="Roofing and Construction" class="w-full h-full object-cover hover:scale-105 transition duration-500 opacity-80">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Revenue Impact</span>
+                            <h3 class="text-lg font-bold text-white mt-1 mb-3">Massive Revenue Loss</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Businesses that engage and respond to customer reviews earn an average of 35% more revenue than businesses that ignore review feedback <em>(Womply Research)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flex flex-col bg-slate-950 rounded-2xl shadow-sm border border-slate-800 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-900">
+                        <img src="1792284260193.jpg" alt="Electrical Contractor" class="w-full h-full object-cover hover:scale-105 transition duration-500 opacity-80">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">SEO Visibility</span>
+                            <h3 class="text-lg font-bold text-white mt-1 mb-3">Trust & Search Rank Penalty</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                97% of local consumers read owner responses when searching for local services. Leaving reviews unaddressed drops your local Google Search visibility and pushes leads straight to competitors <em>(BrightLocal / ReviewTrackers)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flex flex-col bg-slate-950 rounded-2xl shadow-sm border border-slate-800 overflow-hidden">
+                    <div class="overflow-hidden h-48 bg-slate-900">
+                        <img src="1792284328037.jpg" alt="Plumbing and Pipe Installation" class="w-full h-full object-cover hover:scale-105 transition duration-500 opacity-80">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Brand Perception</span>
+                            <h3 class="text-lg font-bold text-white mt-1 mb-3">Unfiltered Public Perception</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                42% of prospective clients report they will outright refuse to hire or buy from a local business that ignores public customer reviews entirely <em>(BrightLocal)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CORE FEATURES SECTION -->
-    <section id="features" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <!-- 2. THE 7-STEP PROCESS SECTION -->
+    <section id="how-it-works" class="py-20 bg-slate-950 border-y border-slate-800 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Step-by-Step Walkthrough</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">How TriDash AI Works</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">The complete automated 7-step process.</p>
+            </div>
+
+            <!-- STACKED INFOGRAPHIC BANNERS -->
+            <div class="space-y-4">
+                <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900">
+                    <img src="file_000000008450820788640d5210b62d14.png" alt="Step 1 & 2 Infographic" class="w-full h-auto object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900">
+                    <img src="file_000000008450820788640d5210b62d14.png" alt="Step 3 & 4 Infographic" class="w-full h-auto object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900">
+                    <img src="file_000000008450820788640d5210b62d14.png" alt="Step 5, 6 & 7 Infographic" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE 3-IN-1 GROWTH ENGINE SECTION -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">
-                Built For Local Service Businesses
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                Everything you need to capture missed callers and build an irresistible 5-star Google reputation.
+            <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Core Pillars</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-6">The 3-in-1 Growth Engine for Local Trades</h2>
+            <p class="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+                Three powerful tools working together to recover missed leads, boost your 5-star ratings, and protect your local reputation.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Feature 1 -->
-            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-8 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-2xl mb-6 font-bold">📱</div>
-                <h3 class="text-xl font-bold text-white mb-2">5-Second Missed Call Recovery</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    When you're on a job or driving, our system instantly texts callers back before they call your competitors.
+            <div class="p-8 bg-slate-950 rounded-2xl border border-slate-800 flex flex-col">
+                <div class="w-12 h-12 bg-blue-600 text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">1</div>
+                <h3 class="text-xl font-bold text-white mb-3">Instant Lead Recovery</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    When you’re on a job or driving and can’t answer the phone, our system automatically texts missed callers in 5 seconds. It captures the lead before they call a competitor.
                 </p>
             </div>
 
-            <!-- Feature 2 -->
-            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-8 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-2xl mb-6 font-bold">📅</div>
-                <h3 class="text-xl font-bold text-white mb-2">Calendar Booking Link Injection</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Automatically send your Google Calendar or booking link directly in the SMS so customers book themselves on your schedule.
+            <div class="p-8 bg-slate-950 rounded-2xl border border-slate-800 flex flex-col">
+                <div class="w-12 h-12 bg-blue-600 text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">2</div>
+                <h3 class="text-xl font-bold text-white mb-3">Automated Google Reviews</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    After a job is done, send automated, friendly SMS review requests to satisfied clients to build your 5-star Google rating effortlessly.
                 </p>
             </div>
 
-            <!-- Feature 3 -->
-            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-8 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-2xl mb-6 font-bold">⭐</div>
-                <h3 class="text-xl font-bold text-white mb-2">Google Review Engine</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Automatically prompt happy clients for 5-star Google reviews and respond professionally with automated or AI-assisted thank you notes.
+            <div class="p-8 bg-slate-950 rounded-2xl border border-slate-800 flex flex-col">
+                <div class="w-12 h-12 bg-blue-600 text-white font-bold rounded-xl flex items-center justify-center text-lg mb-6">3</div>
+                <h3 class="text-xl font-bold text-white mb-3">Human-Style AI Review Responses</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Instead of stiff, robotic replies that sound like a computer, TriDash AI writes warm, natural responses that sound just like you. It instantly thanks your happy clients and gracefully handles review de-escalation—protecting your good name and letting you get back to your day with complete peace of mind.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- HOW IT WORKS SECTION -->
-    <section id="how-it-works" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-slate-900">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">
-                How TriDash AI Works
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base">Set up in 2 minutes. Operates 24/7 in the background.</p>
-        </div>
+    <!-- PROOF: BOT VS HUMAN AI COMPARISON -->
+    <section id="proof" class="py-20 bg-slate-950 border-y border-slate-800 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">The Proof</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Bot vs. Human AI Response</h2>
+                <p class="text-slate-400 text-lg">See how TriDash AI sounds like a real business owner, not a corporate robot.</p>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 bg-slate-950/60 border border-slate-800/80 rounded-2xl">
-                <span class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm inline-flex items-center justify-center mb-4">1</span>
-                <h4 class="font-bold text-white mb-2">You Miss a Call</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">You're busy on a job or driving and can't pick up the phone.</p>
-            </div>
-            <div class="p-6 bg-slate-950/60 border border-slate-800/80 rounded-2xl">
-                <span class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm inline-flex items-center justify-center mb-4">2</span>
-                <h4 class="font-bold text-white mb-2">Instant SMS Sent</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">System texts the caller in 5 seconds with your message and booking link.</p>
-            </div>
-            <div class="p-6 bg-slate-950/60 border border-slate-800/80 rounded-2xl">
-                <span class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm inline-flex items-center justify-center mb-4">3</span>
-                <h4 class="font-bold text-white mb-2">Job Booked & Reviewed</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">The client books their appointment and receives an automated 5-star review request after.</p>
+            <div class="space-y-8">
+                <!-- 5-Star Example -->
+                <div class="bg-black rounded-2xl p-6 border border-slate-800 shadow-sm space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs font-bold uppercase text-amber-500 tracking-wider">💬 5-Star Review Example</span>
+                        <p class="text-slate-200 text-sm italic mt-1">
+                            "The team was brilliant from start to finish on our kitchen extension. Turned up on time every day, worked cleanly, and finished right on budget."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-red-950/30 rounded-xl border border-red-900/50">
+                            <span class="text-xs font-bold text-red-400 uppercase">❌ Generic Bot Response</span>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                                "Thank you for your 5-star review regarding your kitchen extension! We are delighted that our building team was punctual, worked cleanly, and completed your house extension on budget..."
+                            </p>
+                        </div>
+                        <div class="p-4 bg-blue-950/30 rounded-xl border border-blue-900/50">
+                            <span class="text-xs font-bold text-blue-400 uppercase">✅ TriDash AI Response</span>
+                            <p class="text-xs text-slate-200 font-medium mt-2 leading-relaxed">
+                                "Thanks so much for the feedback! It was a real pleasure working with you on the project, and I’m thrilled you’re happy with how the new space turned out."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1-Star Example -->
+                <div class="bg-black rounded-2xl p-6 border border-slate-800 shadow-sm space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs font-bold uppercase text-red-400 tracking-wider">💬 Review De-escalation Example</span>
+                        <p class="text-slate-200 text-sm italic mt-1">
+                            "Booked them for 9 AM to fix a leak. Nobody showed up until 11:30 AM and no one called me."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-red-950/30 rounded-xl border border-red-900/50">
+                            <span class="text-xs font-bold text-red-400 uppercase">❌ Generic Bot Response</span>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                                "We apologize for your review regarding our late arrival at 11:30 AM for your leak. As per our terms, emergency calls cause delays..."
+                            </p>
+                        </div>
+                        <div class="p-4 bg-blue-950/30 rounded-xl border border-blue-900/50">
+                            <span class="text-xs font-bold text-blue-400 uppercase">✅ TriDash AI Response</span>
+                            <p class="text-xs text-slate-200 font-medium mt-2 leading-relaxed">
+                                "I’m really sorry about the delay and the lack of communication—that’s definitely not how we aim to operate. Please give me a direct call so I can make this right."
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
-    <section id="pricing" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-slate-900">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">
-                Simple, Transparent Pricing
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base">Start with a 30-day pilot. Upgrade or cancel anytime with zero friction.</p>
-        </div>
+    <!-- ROI CALCULATOR SECTION -->
+    <section id="roi" class="py-20 bg-slate-950 border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto bg-black border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-sm">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white mb-3">Calculate Recovered Revenue</h2>
+                <p class="text-slate-400">See how much lost revenue TriDash AI recovers for your business every month.</p>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="space-y-8">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-sm font-semibold text-slate-300">Average Value per Client / Job</label>
+                        <span id="job-val" class="font-bold text-white">$150</span>
+                    </div>
+                    <input type="range" id="job-slider" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-sm font-semibold text-slate-300">Missed Calls per Week</label>
+                        <span id="calls-val" class="font-bold text-white">5</span>
+                    </div>
+                    <input type="range" id="calls-slider" min="1" max="30" step="1" value="5" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-2xl">
+                        <p class="text-xs uppercase font-bold text-slate-400 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-rev" class="text-3xl font-extrabold text-white">$3,000</p>
+                    </div>
+                    <div class="p-4 bg-blue-600 text-white rounded-2xl">
+                        <p class="text-xs uppercase font-bold text-blue-200 mb-1">TriDash AI Monthly Cost</p>
+                        <p class="text-3xl font-extrabold">$29</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="packages" class="py-20 bg-black text-white px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-5xl font-extrabold mb-4 text-white">Select Your Package</h2>
+            <p class="text-slate-400 text-lg mb-12">Straightforward pricing tailored to your business scale. No long-term contracts.</p>
+
+            <div class="space-y-8 text-left">
+                <!-- TIER 1: STANDARD PACKAGE ($15 PILOT) -->
+                <div class="bg-slate-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-800 relative">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-6 mb-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-slate-900 text-slate-300 text-xs font-bold uppercase tracking-wider rounded-full mb-2 border border-slate-800">Standard Package</span>
+                            <h3 class="text-2xl font-extrabold text-white">Starter Lead Recovery</h3>
+                        </div>
+                        <div class="mt-4 sm:mt-0 text-left sm:text-right">
+                            <span class="text-4xl font-extrabold text-white">$15</span>
+                            <span class="text-sm text-slate-400 block">first 30 days ($29/mo thereafter)</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-slate-300 text-sm font-medium">
+                        <li class="flex items-center gap-3"><strong class="text-white">100 SMS messages</strong> included per month</li>
+                        <li class="flex items-center gap-3">Instant Missed-Call Automated SMS Response (5-sec)</li>
+                        <li class="flex items-center gap-3">Google Calendar Link Injection</li>
+                        <li class="flex items-center gap-3">Automated Google 5-Star Review Request Invites</li>
+                    </ul>
+
+                    <button type="button" onclick="openSignupModal('standard')" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center cursor-pointer shadow-lg">
+                        Start Standard Pilot ($15) →
+                    </button>
+                </div>
+
+                <!-- TIER 2: PREMIUM PACKAGE ($20 PILOT) -->
+                <div class="bg-slate-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-blue-600 relative">
+                    <span class="absolute -top-3.5 left-8 bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Recommended</span>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-6 mb-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-blue-950 text-blue-400 text-xs font-bold uppercase tracking-wider rounded-full mb-2 border border-blue-900">Premium Package</span>
+                            <h3 class="text-2xl font-extrabold text-white">Pro AI Automation Suite</h3>
+                        </div>
+                        <div class="mt-4 sm:mt-0 text-left sm:text-right">
+                            <span class="text-4xl font-extrabold text-white">$20</span>
+                            <span class="text-sm text-slate-400 block">first 30 days ($39/mo thereafter)</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-slate-300 text-sm font-medium">
+                        <li class="flex items-center gap-3"><strong class="text-white">300 SMS messages</strong> included per month</li>
+                        <li class="flex items-center gap-3"><strong class="text-white">AI-Powered Custom Review Responses & Review De-escalation</strong></li>
+                        <li class="flex items-center gap-3">Instant Missed-Call Automated SMS Response</li>
+                        <li class="flex items-center gap-3">Google Calendar Link Injection</li>
+                    </ul>
+
+                    <button type="button" onclick="openSignupModal('premium')" class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-xl transition text-center shadow-lg cursor-pointer">
+                        Start Premium Pilot ($20) →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 bg-slate-950 border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
             
-            <!-- Standard Plan Card -->
-            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-8 shadow-xl flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-extrabold text-white mb-1">Standard Package</h3>
-                    <p class="text-xs text-slate-400 mb-6">Essential Lead Recovery & Reviews</p>
-
-                    <div class="mb-6">
-                        <span class="text-4xl font-extrabold text-white">$15</span>
-                        <span class="text-xs text-slate-400 font-medium">/ first 30 days</span>
-                        <p class="text-xs text-blue-400 font-semibold mt-1">then $29/month thereafter</p>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                        <li class="flex items-center gap-2">✔️ <strong>100 SMS messages/mo</strong> (unused rollover to 2nd month)</li>
-                        <li class="flex items-center gap-2">✔️ Instant Missed-Call Automated SMS (5-sec)</li>
-                        <li class="flex items-center gap-2">✔️ Google Calendar Booking Link Injection</li>
-                        <li class="flex items-center gap-2">✔️ Automated Google 5-Star Review Requests</li>
-                        <li class="flex items-center gap-2">✔️ Automated Review Thank-You Responses</li>
-                    </ul>
-                </div>
-
-                <a href="signup.html?plan=standard" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm text-center rounded-xl transition shadow-lg">
-                    Start $15 Pilot →
-                </a>
+            <div class="space-y-4">
+                <details class="group bg-black rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-lg">
+                        How does the missed-call automation work?
+                        <span class="ml-4 transition group-open:rotate-180 text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                        Whenever your business phone misses an incoming call, our system instantly triggers an automated SMS text message to the caller within 5 seconds, introducing your business and providing your calendar booking link so they can secure their spot immediately.
+                    </p>
+                </details>
             </div>
-
-            <!-- Premium Plan Card -->
-            <div class="bg-slate-950 border-2 border-blue-600 rounded-3xl p-8 shadow-xl flex flex-col justify-between relative">
-                <div class="absolute -top-3.5 right-6 px-3 py-1 bg-blue-600 text-white font-bold text-[10px] uppercase tracking-wider rounded-full shadow">
-                    Most Popular
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-extrabold text-white mb-1">Premium Package</h3>
-                    <p class="text-xs text-slate-400 mb-6">Pro AI Automation & High-Volume Suite</p>
-
-                    <div class="mb-6">
-                        <span class="text-4xl font-extrabold text-white">$20</span>
-                        <span class="text-xs text-slate-400 font-medium">/ first 30 days</span>
-                        <p class="text-xs text-blue-400 font-semibold mt-1">then $39/month thereafter</p>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                        <li class="flex items-center gap-2">✔️ <strong>300 SMS messages/mo</strong> (unused rollover to 2nd month)</li>
-                        <li class="flex items-center gap-2">✔️ <strong>AI-Powered Custom Review Responses</strong></li>
-                        <li class="flex items-center gap-2">✔️ Review De-escalation Management</li>
-                        <li class="flex items-center gap-2">✔️ Instant Missed-Call Automated SMS (5-sec)</li>
-                        <li class="flex items-center gap-2">✔️ Google Calendar Booking Link Injection</li>
-                        <li class="flex items-center gap-2">✔️ Automated Google 5-Star Review Requests</li>
-                    </ul>
-                </div>
-
-                <a href="signup.html?plan=premium" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm text-center rounded-xl transition shadow-lg">
-                    Start $20 Premium Pilot →
-                </a>
-            </div>
-
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-black border-t border-slate-800 py-8 px-4 text-center text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <div class="flex justify-center gap-6 font-semibold">
-                <a href="terms.html" class="hover:text-slate-300 transition">Terms & Conditions</a>
-                <a href="privacy.html" class="hover:text-slate-300 transition">Privacy Policy</a>
-            </div>
-            <p>&copy; TriDash AI. All rights reserved.</p>
-        </div>
+        <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
+    <!-- JAVASCRIPT FOR CALCULATOR & MODALS -->
+    <script>
+        // Mobile Drawer Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navDrawer = document.getElementById('nav-drawer');
+        if(menuBtn && navDrawer) {
+            menuBtn.addEventListener('click', () => {
+                navDrawer.classList.toggle('active');
+            });
+        }
+
+        // ROI Calculator Logic
+        const jobSlider = document.getElementById('job-slider');
+        const callsSlider = document.getElementById('calls-slider');
+        const jobVal = document.getElementById('job-val');
+        const callsVal = document.getElementById('calls-val');
+        const lostRev = document.getElementById('lost-rev');
+
+        function updateROI() {
+            if(!jobSlider || !callsSlider) return;
+            const job = parseInt(jobSlider.value);
+            const calls = parseInt(callsSlider.value);
+            jobVal.textContent = '$' + job;
+            callsVal.textContent = calls;
+            const monthlyLost = job * calls * 4;
+            lostRev.textContent = '$' + monthlyLost.toLocaleString();
+        }
+
+        if(jobSlider && callsSlider) {
+            jobSlider.addEventListener('input', updateROI);
+            callsSlider.addEventListener('input', updateROI);
+            updateROI();
+        }
+
+        function openSignupModal(plan) {
+            window.location.href = 'signup.html?plan=' + plan;
+        }
+
+        function openLoginModal() {
+            alert('Login portal coming soon.');
+        }
+    </script>
 </body>
 </html>
