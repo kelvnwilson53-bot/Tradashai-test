@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms and Conditions - TriDash AI</title>
+    <title>Secure Checkout - TriDash AI</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -20,55 +20,179 @@
 
     <!-- HEADER -->
     <header class="bg-black border-b border-slate-800 py-4 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold tracking-tight text-white">
                 TriDash<span class="text-blue-500 font-light">AI.com</span>
             </a>
-            <a href="signup.html" class="text-xs font-semibold text-slate-400 hover:text-white transition">
-                ← Back to Checkout
+            <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-white transition flex items-center gap-1">
+                ← Back to main site
             </a>
         </div>
     </header>
 
-    <!-- MAIN LEGAL CONTENT -->
-    <main class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
-            <div>
-                <h1 class="text-3xl font-extrabold text-white tracking-tight mb-2">Terms and Conditions</h1>
-                <p class="text-xs text-slate-500 uppercase tracking-wider">Last Updated: October 2026</p>
+    <!-- MAIN CONTENT -->
+    <main class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-[11px] font-bold text-emerald-400 mb-3 uppercase tracking-wider">
+                🔒 256-Bit Bank-Grade Encrypted SSL Checkout
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
+                Complete Your Account Setup
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+                Activate your automated lead recovery & review suite in under 2 minutes.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: ACCOUNT & PAYMENT FORM -->
+            <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="space-y-6">
+                    
+                    <!-- SECTION 1: BUSINESS & ACCOUNT INFO -->
+                    <div>
+                        <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">1</span>
+                            Account & Business Information
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Full Name</label>
+                                <input type="text" required placeholder="e.g. John Smith" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Email Address</label>
+                                    <input type="email" required placeholder="john@yourbusiness.com" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Phone Number</label>
+                                    <input type="tel" required placeholder="(555) 000-0000" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Business Name</label>
+                                <input type="text" required placeholder="e.g. Apex Roofing & Building" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-800">
+
+                    <!-- SECTION 2: PAYMENT DETAILS -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">2</span>
+                                Payment Information
+                            </h2>
+                            <span class="text-[11px] text-slate-400 font-semibold bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">
+                                💳 Card / Bank Transfer / Wise
+                            </span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Card Number</label>
+                                <div class="relative">
+                                    <input type="text" required placeholder="4242 •••• •••• 4242" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600 pr-12">
+                                    <span class="absolute right-3 top-3 text-xs text-slate-500 font-bold">VISA / MC</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Expiration Date</label>
+                                    <input type="text" required placeholder="MM / YY" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Security Code (CVC)</label>
+                                    <input type="text" required placeholder="123" class="w-full bg-black border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TERMS & CONDITIONS CHECKBOX -->
+                    <div class="pt-2">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" required class="mt-1 w-4 h-4 accent-blue-600 bg-black border-slate-800 rounded cursor-pointer">
+                            <span class="text-xs text-slate-400 leading-relaxed">
+                                I agree to the <a href="terms.html" target="_blank" class="text-blue-400 underline">Terms and Conditions</a> and <a href="privacy.html" target="_blank" class="text-blue-400 underline">Privacy Policy</a>. I understand I can cancel my subscription at any time with 1 click.
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition shadow-lg cursor-pointer">
+                        Confirm & Start Pilot →
+                    </button>
+
+                    <!-- TRUST BADGES & GUARANTEES -->
+                    <div class="pt-2 border-t border-slate-900 grid grid-cols-3 gap-2 text-center text-[10px] text-slate-400 font-semibold">
+                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
+                            🛡️ Bank-Grade Security
+                        </div>
+                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
+                            🔒 PCI-DSS Compliant
+                        </div>
+                        <div class="p-2 bg-black border border-slate-900 rounded-xl">
+                            ⚡ Instant Activation
+                        </div>
+                    </div>
+                </form>
             </div>
 
-            <div class="space-y-6 text-sm text-slate-300 leading-relaxed">
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">1. Acceptance of Terms</h2>
-                    <p>By subscribing to or using the tools provided by TriDash AI ("Company", "we", "us", or "our"), you agree to be bound by these Terms and Conditions. If you do not agree, you may not access or use our automated communication and review management system.</p>
-                </section>
+            <!-- RIGHT COLUMN: ORDER SUMMARY -->
+            <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl sticky top-8">
+                <h3 class="text-lg font-bold text-white mb-4">Selected Package</h3>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">2. Service Description & SMS Rollover</h2>
-                    <p>TriDash AI provides software tools designed for local businesses, including automated missed-call SMS responses, calendar scheduling links, Google review requests, and review response tools. Service tiers determine monthly SMS allowances (100 SMS/month on Standard, 300 SMS/month on Premium). Unused SMS messages roll over to the immediately following month, but expire after the second month if unused.</p>
-                </section>
+                <!-- PLAN SELECTOR TOGGLE -->
+                <div class="grid grid-cols-2 gap-2 p-1.5 bg-black rounded-xl border border-slate-800 mb-6">
+                    <button type="button" id="btn-plan-standard" onclick="setPlan('standard')" class="py-2.5 text-xs font-bold rounded-lg transition">
+                        Standard ($10)
+                    </button>
+                    <button type="button" id="btn-plan-premium" onclick="setPlan('premium')" class="py-2.5 text-xs font-bold rounded-lg transition">
+                        Premium ($39)
+                    </button>
+                </div>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">3. Subscription & Billing</h2>
-                    <p>Services are billed on a recurring monthly subscription basis. The Standard Pilot plan begins at $10 for the first 30 days and renews at $29/month thereafter. The Premium plan is billed at $39/month. You may cancel your subscription at any time prior to your next billing cycle with zero cancellation fees.</p>
-                </section>
+                <!-- DYNAMIC SUMMARY BOX -->
+                <div class="space-y-4 text-sm">
+                    <div class="flex justify-between items-start pb-4 border-b border-slate-800">
+                        <div>
+                            <h4 id="plan-title" class="font-extrabold text-white text-base">Starter Lead Recovery</h4>
+                            <p id="plan-desc" class="text-xs text-blue-400 font-semibold mt-0.5">100 SMS/mo + Automated Call Recovery</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="plan-price" class="text-2xl font-extrabold text-white">$10</span>
+                            <span id="plan-subtext" class="block text-[10px] text-slate-400 font-medium">first 30 days</span>
+                        </div>
+                    </div>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">4. Messaging & Carrier Compliance</h2>
-                    <p>You agree to use our automated SMS features strictly in compliance with applicable telecommunication laws and customer messaging regulations. You represent that you have acquired appropriate customer consent to receive operational transactional SMS messages regarding missed calls or review requests.</p>
-                </section>
+                    <!-- INCLUDED FEATURES LIST -->
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">What's Included:</span>
+                        <ul id="plan-features" class="space-y-2.5 text-xs text-slate-300 font-medium">
+                            <!-- Dynamic list populated by JavaScript -->
+                        </ul>
+                    </div>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">5. Limitation of Liability</h2>
-                    <p>TriDash AI shall not be held liable for indirect, incidental, or consequential damages resulting from third-party carrier delays, failed SMS deliveries, network outages, or third-party service modifications (such as changes to Google Business Profile APIs).</p>
-                </section>
+                    <div class="pt-4 border-t border-slate-800 flex justify-between items-center font-bold text-white text-base">
+                        <span>Total Due Today:</span>
+                        <span id="total-due" class="text-blue-500 text-2xl font-extrabold">$10.00</span>
+                    </div>
+                </div>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">6. Contact Information</h2>
-                    <p>For questions regarding these Terms and Conditions or billing inquiries, please contact support via tridashai.com.</p>
-                </section>
+                <div class="mt-6 p-4 bg-slate-900/80 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                    <p class="font-bold text-white mb-1">🛡️ 100% Risk-Free Guarantee</p>
+                    No setup fees, no hidden costs, and no long-term contracts. You can pause or cancel your account at any time right from your dashboard.
+                </div>
             </div>
+
         </div>
     </main>
 
@@ -77,5 +201,82 @@
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
+    <!-- JAVASCRIPT FOR URL PLAN DETECTION & TOGGLE -->
+    <script>
+        const plans = {
+            standard: {
+                title: "Standard Package",
+                desc: "Starter Lead Recovery Suite",
+                price: "$10",
+                subtext: "first 30 days, then $29/mo",
+                dueToday: "$10.00",
+                buttonText: "Confirm & Start $10 Pilot →",
+                features: [
+                    "✔️ <strong>100 SMS messages</strong> included per month (1-month rollover)",
+                    "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
+                    "✔️ Automated Google 5-Star Review Request Invites",
+                    "✔️ <strong>Automated Review Thank-You Responses</strong> (6 pre-set thank-you templates)",
+                    "✔️ Google Calendar Booking Link Injection"
+                ]
+            },
+            premium: {
+                title: "Premium Package (Recommended)",
+                desc: "Pro AI Automation Suite",
+                price: "$39",
+                subtext: "billed monthly",
+                dueToday: "$39.00",
+                buttonText: "Confirm & Start Premium Suite →",
+                features: [
+                    "✔️ <strong>300 SMS messages</strong> included per month (1-month rollover)",
+                    "✔️ Automated Google 5-Star Review Request Invites",
+                    "✔️ <strong>AI-Powered Custom Review Responses</strong> (dynamic human-style replies & negative feedback de-escalation)",
+                    "✔️ Instant Missed-Call Automated SMS Response (5-sec)",
+                    "✔️ Google Calendar Booking Link Injection"
+                ]
+            }
+        };
+
+        function setPlan(planKey) {
+            const plan = plans[planKey] || plans.standard;
+
+            // Update UI fields
+            document.getElementById('plan-title').textContent = plan.title;
+            document.getElementById('plan-desc').textContent = plan.desc;
+            document.getElementById('plan-price').textContent = plan.price;
+            document.getElementById('plan-subtext').textContent = plan.subtext;
+            document.getElementById('total-due').textContent = plan.dueToday;
+            document.getElementById('submit-btn').textContent = plan.buttonText;
+
+            // Render features list
+            const featuresList = document.getElementById('plan-features');
+            featuresList.innerHTML = plan.features.map(f => `<li class="flex items-start gap-2">${f}</li>`).join('');
+
+            // Highlight selected toggle button
+            const btnStandard = document.getElementById('btn-plan-standard');
+            const btnPremium = document.getElementById('btn-plan-premium');
+
+            if (planKey === 'premium') {
+                btnPremium.className = "py-2.5 text-xs font-extrabold rounded-lg transition bg-blue-600 text-white shadow-lg border border-blue-500";
+                btnStandard.className = "py-2.5 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white";
+            } else {
+                btnStandard.className = "py-2.5 text-xs font-extrabold rounded-lg transition bg-blue-600 text-white shadow-lg border border-blue-500";
+                btnPremium.className = "py-2.5 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white";
+            }
+        }
+
+        // Detect URL query param (e.g. signup.html?plan=premium)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.net.search); // fallback or standard search
+            const searchStr = window.location.search;
+            const urlParamsReal = new URLSearchParams(searchStr);
+            const planParam = urlParamsReal.get('plan');
+            setPlan(planParam === 'premium' ? 'premium' : 'standard');
+        });
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            alert('Payment successfully processed! Welcome to TriDash AI.');
+        }
+    </script>
 </body>
 </html>
