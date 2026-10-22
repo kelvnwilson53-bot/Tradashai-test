@@ -114,8 +114,22 @@
                     <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
                 </div>
 
+                <!-- TERMS & CONDITIONS CHECKBOX -->
+                <div class="flex items-start gap-3 pt-2">
+                    <input 
+                        type="checkbox" 
+                        id="terms-agreement" 
+                        name="terms_agreement" 
+                        required 
+                        class="mt-1 h-4 w-4 rounded border-slate-800 bg-slate-900 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                    >
+                    <label for="terms-agreement" class="text-xs text-slate-400 leading-relaxed cursor-pointer">
+                        I agree to the <a href="terms.html" target="_blank" class="text-blue-400 underline hover:text-blue-300">Terms & Conditions</a>, including the 30-day pilot renewal terms and cancellation policy.
+                    </label>
+                </div>
+
                 <!-- CHECKOUT SUBMIT BUTTON -->
-                <button type="button" onclick="window.location.href='thank-you.html'" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-6">
+                <button type="submit" onclick="window.location.href='thank-you.html'" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-4">
                     Start My 30-Day Pilot Now
                 </button>
             </form>
