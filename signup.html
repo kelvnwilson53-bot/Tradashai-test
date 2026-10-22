@@ -30,18 +30,15 @@
         <!-- CHECKOUT CARD -->
         <div class="bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl space-y-8">
             
-            <!-- PLAN TOGGLE SELECTION -->
+            <!-- PLAN SELECTION -->
             <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Choose Your Pilot Package</label>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">Choose Your Pilot Package</label>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     
-                    <!-- Standard Option -->
-                    <label class="relative border border-slate-800 bg-slate-900/60 p-7 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between min-h-[260px]">
-                        <input type="radio" name="plan" value="standard" checked class="peer sr-only">
-                        <div class="peer-checked:border-blue-500 peer-checked:bg-blue-950/30 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition"></div>
-                        
-                        <div class="space-y-4 relative z-10">
+                    <!-- Standard Option Panel -->
+                    <div class="border border-slate-800 bg-slate-900/60 p-7 rounded-2xl flex flex-col justify-between min-h-[340px]">
+                        <div class="space-y-4">
                             <div class="flex justify-between items-baseline">
                                 <span class="font-bold text-white text-lg">Standard Pilot</span>
                                 <span class="text-blue-400 font-extrabold text-3xl">$15</span>
@@ -55,17 +52,19 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-800 relative z-10">
+                        <div class="mt-6 pt-4 border-t border-slate-800 space-y-4">
                             <span class="block text-xs text-slate-400">Renews at <strong class="text-white font-bold">$29/mo</strong> after trial</span>
+                            <a href="signup-standard.html" class="w-full py-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold rounded-xl transition shadow-md text-sm block text-center">
+                                Select Standard Pilot ($15) →
+                            </a>
                         </div>
-                    </label>
+                    </div>
 
-                    <!-- Premium Option -->
-                    <label class="relative border border-slate-800 bg-slate-900/60 p-7 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between min-h-[260px]">
-                        <input type="radio" name="plan" value="premium" class="peer sr-only">
-                        <div class="peer-checked:border-blue-500 peer-checked:bg-blue-950/30 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition"></div>
+                    <!-- Premium Option Panel -->
+                    <div class="border border-blue-500/40 bg-slate-900/60 p-7 rounded-2xl flex flex-col justify-between min-h-[340px] relative">
+                        <span class="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Recommended</span>
                         
-                        <div class="space-y-4 relative z-10">
+                        <div class="space-y-4">
                             <div class="flex justify-between items-baseline">
                                 <span class="font-bold text-white text-lg">Premium Pilot</span>
                                 <span class="text-blue-400 font-extrabold text-3xl">$20</span>
@@ -79,60 +78,16 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-800 relative z-10">
+                        <div class="mt-6 pt-4 border-t border-slate-800 space-y-4">
                             <span class="block text-xs text-slate-400">Renews at <strong class="text-white font-bold">$39/mo</strong> after trial</span>
+                            <a href="signup-premium.html" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-sm block text-center">
+                                Select Premium Pilot ($20) →
+                            </a>
                         </div>
-                    </label>
+                    </div>
 
                 </div>
             </div>
-
-            <hr class="border-slate-800">
-
-            <!-- BUSINESS & CONTACT DETAILS -->
-            <form action="thank-you.html" method="GET" class="space-y-5">
-                <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Enter Your Business Info</span>
-                
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1.5">Business Name</label>
-                    <input type="text" required placeholder="e.g. Apex Plumbing & Heating" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Your Full Name</label>
-                        <input type="text" required placeholder="John Smith" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Business Email</label>
-                        <input type="email" required placeholder="john@apexplumbing.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1.5">Mobile / Business Phone Number</label>
-                    <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
-                </div>
-
-                <!-- TERMS & CONDITIONS CHECKBOX -->
-                <div class="flex items-start gap-3 pt-2">
-                    <input 
-                        type="checkbox" 
-                        id="terms-agreement" 
-                        name="terms_agreement" 
-                        required 
-                        class="mt-1 h-4 w-4 rounded border-slate-800 bg-slate-900 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    >
-                    <label for="terms-agreement" class="text-xs text-slate-400 leading-relaxed cursor-pointer">
-                        I agree to the <a href="terms.html" target="_blank" class="text-blue-400 underline hover:text-blue-300">Terms & Conditions</a>, including the 30-day pilot renewal terms and cancellation policy.
-                    </label>
-                </div>
-
-                <!-- CHECKOUT SUBMIT BUTTON -->
-                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-4">
-                    Start My 30-Day Pilot Now
-                </button>
-            </form>
 
             <div class="text-center text-xs text-slate-500 space-y-1 pt-2">
                 <p>🔒 Secure 256-Bit Encrypted Checkout</p>
@@ -149,18 +104,6 @@
             <a href="privacy.html" class="underline hover:text-slate-400 ml-1">Privacy Policy</a>
         </p>
     </footer>
-
-    <!-- AUTO-SELECT PLAN SCRIPT -->
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedPlan = urlParams.get('plan');
-        if (selectedPlan) {
-            const radioToSelect = document.querySelector(`input[name="plan"][value="${selectedPlan}"]`);
-            if (radioToSelect) {
-                radioToSelect.checked = true;
-            }
-        }
-    </script>
 
 </body>
 </html>
