@@ -90,7 +90,7 @@
             <hr class="border-slate-800">
 
             <!-- BUSINESS & CONTACT DETAILS -->
-            <form class="space-y-5">
+            <form action="thank-you.html" method="GET" class="space-y-5">
                 <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Enter Your Business Info</span>
                 
                 <div>
@@ -129,7 +129,7 @@
                 </div>
 
                 <!-- CHECKOUT SUBMIT BUTTON -->
-                <button type="submit" onclick="window.location.href='thank-you.html'" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-4">
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-4">
                     Start My 30-Day Pilot Now
                 </button>
             </form>
@@ -149,6 +149,18 @@
             <a href="privacy.html" class="underline hover:text-slate-400 ml-1">Privacy Policy</a>
         </p>
     </footer>
+
+    <!-- AUTO-SELECT PLAN SCRIPT -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedPlan = urlParams.get('plan');
+        if (selectedPlan) {
+            const radioToSelect = document.querySelector(`input[name="plan"][value="${selectedPlan}"]`);
+            if (radioToSelect) {
+                radioToSelect.checked = true;
+            }
+        }
+    </script>
 
 </body>
 </html>
