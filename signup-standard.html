@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Pilot Checkout - TriDash AI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER -->
+    <header class="border-b border-slate-800 py-4 bg-black">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-white tracking-tight">
+                TriDash<span class="text-blue-500 font-light">AI.com</span>
+            </a>
+            <a href="signup.html" class="text-sm text-slate-400 hover:text-white transition">← Change Package</a>
+        </div>
+    </header>
+
+    <!-- MAIN CHECKOUT SECTION -->
+    <main class="max-w-xl mx-auto px-4 py-12 flex-1 w-full space-y-8">
+        
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-500 tracking-tight">Start Your Standard Pilot</h1>
+            <p class="text-slate-400 text-base">Lock in your trial rate. Stop losing leads to voicemail.</p>
+        </div>
+
+        <!-- PACKAGE SUMMARY & FORM CARD -->
+        <div class="bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl space-y-8">
+            
+            <!-- SELECTED PLAN DISPLAY -->
+            <div class="bg-slate-900/80 p-6 rounded-2xl border border-blue-500/30 space-y-4">
+                <div class="flex justify-between items-baseline">
+                    <span class="font-bold text-white text-xl">Standard Pilot</span>
+                    <span class="text-blue-400 font-extrabold text-3xl">$15</span>
+                </div>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">30-Day Trial (Renews at $29/mo)</p>
+                
+                <div class="space-y-2 text-sm text-slate-300 pt-3 border-t border-slate-800">
+                    <p class="font-semibold text-white">✓ 250 Automated Texts per month</p>
+                    <p class="text-slate-300">✓ Automated Google Review requests sent after every job</p>
+                    <p class="text-slate-300">✓ Automated professional review responses</p>
+                </div>
+            </div>
+
+            <!-- BUSINESS & CONTACT DETAILS FORM -->
+            <form action="thank-you.html" method="GET" class="space-y-5">
+                <input type="hidden" name="plan" value="standard">
+                <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Enter Your Business Details</span>
+                
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1.5">Business Name</label>
+                    <input type="text" required placeholder="e.g. Apex Plumbing & Heating" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Your Full Name</label>
+                        <input type="text" required placeholder="John Smith" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Business Email</label>
+                        <input type="email" required placeholder="john@apexplumbing.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1.5">Mobile / Business Phone Number</label>
+                    <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 text-sm">
+                </div>
+
+                <!-- TERMS CHECKBOX -->
+                <div class="flex items-start gap-3 pt-2">
+                    <input 
+                        type="checkbox" 
+                        id="terms-agreement" 
+                        name="terms_agreement" 
+                        required 
+                        class="mt-1 h-4 w-4 rounded border-slate-800 bg-slate-900 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                    >
+                    <label for="terms-agreement" class="text-xs text-slate-400 leading-relaxed cursor-pointer">
+                        I agree to the <a href="terms.html" target="_blank" class="text-blue-400 underline hover:text-blue-300">Terms & Conditions</a>, including the 30-day pilot renewal terms ($29/mo after trial) and cancellation policy.
+                    </label>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-lg cursor-pointer mt-4">
+                    Start Standard Pilot Now ($15)
+                </button>
+            </form>
+
+            <div class="text-center text-xs text-slate-500 space-y-1 pt-2">
+                <p>🔒 Secure 256-Bit Encrypted Checkout</p>
+                <p>Cancel anytime. Takes effect at the end of your billing cycle.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+        <p>&copy; TriDash AI. All rights reserved. 
+            <a href="terms.html" class="underline hover:text-slate-400 ml-2">Terms & Conditions</a> | 
+            <a href="privacy.html" class="underline hover:text-slate-400 ml-1">Privacy Policy</a>
+        </p>
+    </footer>
+
+</body>
+</html>
