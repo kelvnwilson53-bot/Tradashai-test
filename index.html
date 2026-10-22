@@ -143,6 +143,63 @@
             </div>
         </section>
 
+        <!-- ROI / LOST REVENUE CALCULATOR SECTION -->
+        <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-16 border-t border-slate-900">
+            <div class="text-center mb-10">
+                <span class="inline-block bg-blue-600/10 text-blue-400 border border-blue-500/20 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                    Interactive ROI Calculator
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Calculate Your Recovered Revenue</h2>
+                <p class="text-slate-400 text-sm sm:text-base">See how much lost revenue TriDash AI recovers for your business every month.</p>
+            </div>
+
+            <div class="bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- SLIDERS (LEFT SIDE) -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="job-value" class="text-sm font-semibold text-slate-200">Average Value per Client / Job</label>
+                            <span id="job-value-display" class="text-lg font-bold text-blue-400">$150</span>
+                        </div>
+                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                        <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+                            <span>$50</span>
+                            <span>$500</span>
+                            <span>$1,000+</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="missed-calls" class="text-sm font-semibold text-slate-200">Missed Calls per Week</label>
+                            <span id="missed-calls-display" class="text-lg font-bold text-blue-400">5 calls</span>
+                        </div>
+                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                        <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+                            <span>1 call/wk</span>
+                            <span>10 calls/wk</span>
+                            <span>25 calls/wk</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISPLAY CARD (RIGHT SIDE) -->
+                <div class="lg:col-span-5 bg-black/60 p-6 sm:p-8 rounded-2xl border border-blue-500/30 text-center space-y-6">
+                    <div>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-red-500">$3,000</p>
+                        <p class="text-[11px] text-slate-500 mt-1">Going directly to competitors every month</p>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-slate-800">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">TriDash AI Subscription Cost</p>
+                        <p class="text-3xl font-extrabold text-blue-400">$39 <span class="text-xs text-slate-400 font-normal">/ month</span></p>
+                        <p class="text-[11px] text-emerald-400 mt-1 font-semibold">✓ Recover just ONE job and it pays for itself 3x over</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- PILOT PRICING SECTION -->
         <section class="max-w-5xl mx-auto px-4 py-20 border-t border-slate-900">
             <div class="text-center mb-12">
@@ -162,7 +219,7 @@
                         <div class="mb-6">
                             <span class="text-4xl font-extrabold text-white">$15</span>
                             <span class="text-slate-500 text-sm"> / first 30 days</span>
-                            <p class="text-[11px] text-slate-500 mt-1">Renews at $49/mo after pilot ends</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Renews at $39/mo after pilot ends</p>
                         </div>
                         <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
                             <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">✓</span> Up to 250 automated SMS responses/mo</li>
@@ -186,7 +243,7 @@
                         <div class="mb-6">
                             <span class="text-4xl font-extrabold text-blue-400">$20</span>
                             <span class="text-slate-500 text-sm"> / first 30 days</span>
-                            <p class="text-[11px] text-slate-500 mt-1">Renews at $99/mo after pilot ends</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Renews at $49/mo after pilot ends</p>
                         </div>
                         <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
                             <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">✓</span> Up to 300 automated SMS responses/mo</li>
@@ -238,6 +295,31 @@
     <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
+
+    <!-- INTERACTIVE ROI CALCULATOR SCRIPT -->
+    <script>
+        const jobValueInput = document.getElementById('job-value');
+        const missedCallsInput = document.getElementById('missed-calls');
+        const jobValueDisplay = document.getElementById('job-value-display');
+        const missedCallsDisplay = document.getElementById('missed-calls-display');
+        const lostRevenueDisplay = document.getElementById('lost-revenue');
+
+        function updateCalculator() {
+            const jobValue = parseInt(jobValueInput.value, 10);
+            const missedCalls = parseInt(missedCallsInput.value, 10);
+            
+            // Calculate monthly lost revenue: (Calls/wk * 4 weeks) * Average Job Value
+            const monthlyLost = missedCalls * 4 * jobValue;
+
+            jobValueDisplay.textContent = `$${jobValue.toLocaleString()}`;
+            missedCallsDisplay.textContent = `${missedCalls} ${missedCalls === 1 ? 'call' : 'calls'}`;
+            lostRevenueDisplay.textContent = `$${monthlyLost.toLocaleString()}`;
+        }
+
+        jobValueInput.addEventListener('input', updateCalculator);
+        missedCallsInput.addEventListener('input', updateCalculator);
+        updateCalculator();
+    </script>
 
 </body>
 </html>
