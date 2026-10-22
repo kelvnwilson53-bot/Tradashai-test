@@ -37,31 +37,39 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     
                     <!-- Standard Option -->
-                    <label class="relative border border-slate-800 bg-slate-900/50 p-4 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between">
+                    <label class="relative border border-slate-800 bg-slate-900/50 p-5 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between">
                         <input type="radio" name="plan" value="standard" checked class="peer sr-only">
-                        <div class="peer-checked:border-blue-500 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none"></div>
-                        <div>
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-white text-base">Standard Pilot</span>
-                                <span class="text-blue-400 font-extrabold text-lg">$15</span>
+                        <div class="peer-checked:border-blue-500 peer-checked:bg-blue-950/20 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition"></div>
+                        
+                        <div class="space-y-2 relative z-10">
+                            <div class="flex justify-between items-baseline">
+                                <span class="font-bold text-white text-base">Standard</span>
+                                <span class="text-blue-400 font-extrabold text-2xl">$15</span>
                             </div>
-                            <p class="text-xs text-slate-400 mb-3">Up to 250 automated SMS responses/month + Automated Google Review Follow-Up Text.</p>
+                            <p class="text-xs text-slate-300 font-medium">Google Review Follow-Ups & Responses only.</p>
                         </div>
-                        <span class="text-[10px] text-slate-500 uppercase font-semibold">Renews at $29/mo after 30 days</span>
+
+                        <div class="mt-4 pt-3 border-t border-slate-800/80 relative z-10">
+                            <span class="block text-[11px] text-slate-400 font-semibold uppercase tracking-wide">Renews at <strong class="text-white">$29/mo</strong></span>
+                        </div>
                     </label>
 
                     <!-- Premium Option -->
-                    <label class="relative border border-slate-800 bg-slate-900/50 p-4 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between">
+                    <label class="relative border border-slate-800 bg-slate-900/50 p-5 rounded-2xl cursor-pointer hover:border-slate-700 transition flex flex-col justify-between">
                         <input type="radio" name="plan" value="premium" class="peer sr-only">
-                        <div class="peer-checked:border-blue-500 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none"></div>
-                        <div>
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-white text-base">Premium Pilot</span>
-                                <span class="text-blue-400 font-extrabold text-lg">$20</span>
+                        <div class="peer-checked:border-blue-500 peer-checked:bg-blue-950/20 absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition"></div>
+                        
+                        <div class="space-y-2 relative z-10">
+                            <div class="flex justify-between items-baseline">
+                                <span class="font-bold text-white text-base">Premium</span>
+                                <span class="text-blue-400 font-extrabold text-2xl">$20</span>
                             </div>
-                            <p class="text-xs text-slate-400 mb-3">Up to 500 automated SMS responses/month + Customized AI Text Responses for Your Trade.</p>
+                            <p class="text-xs text-slate-300 font-medium">Missed-Call AI Text Assistant (500 SMS) + Reviews.</p>
                         </div>
-                        <span class="text-[10px] text-slate-500 uppercase font-semibold">Renews at $39/mo after 30 days</span>
+
+                        <div class="mt-4 pt-3 border-t border-slate-800/80 relative z-10">
+                            <span class="block text-[11px] text-slate-400 font-semibold uppercase tracking-wide">Renews at <strong class="text-white">$39/mo</strong></span>
+                        </div>
                     </label>
 
                 </div>
