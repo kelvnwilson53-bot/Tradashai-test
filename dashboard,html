@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriDash AI - Contractor Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-slate-800 bg-black/90 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            
+            <!-- BRAND LOGO -->
+            <a href="index.html" class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                TriDash<span class="text-blue-500 font-light">AI.com</span>
+                <span class="text-[10px] bg-blue-600/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-medium">Dashboard</span>
+            </a>
+
+            <!-- RIGHT SIDE: CO-FOUNDER BADGE & LOGOUT -->
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
+                    <div class="w-7 h-7 rounded-full bg-blue-600 border border-blue-400/40 flex items-center justify-center font-bold text-white text-xs">
+                        KW
+                    </div>
+                    <div class="text-left hidden sm:block">
+                        <p class="text-xs font-bold text-white leading-none">Kelvin Wilson</p>
+                        <span class="text-[10px] text-blue-400 font-medium">Co-founder</span>
+                    </div>
+                </div>
+                <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-white transition">Log Out</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- PERSONAL CO-FOUNDER WELCOME BANNER -->
+        <div class="bg-gradient-to-r from-blue-950/40 via-slate-950 to-slate-950 border border-blue-500/30 p-6 rounded-3xl flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-xl">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-600/20 border-2 border-blue-500 flex items-center justify-center text-blue-400 font-extrabold text-xl shrink-0">
+                KW
+            </div>
+            <div class="text-center sm:text-left space-y-1">
+                <div class="flex items-center justify-center sm:justify-start gap-2">
+                    <h2 class="text-lg font-bold text-white">Welcome to TriDash AI!</h2>
+                    <span class="text-[10px] bg-blue-600/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-medium">Message from Co-Founder</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+                    "Thank you for joining TriDash AI! We're here to help grow your business together. We can make this work—if you ever need anything, reach out anytime."
+                </p>
+                <p class="text-xs font-semibold text-blue-400 pt-1">— Kelvin Wilson, Co-Founder</p>
+            </div>
+        </div>
+
+        <!-- TOP STATS & USAGE TRACKER -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- STAT 1: RECOVERED REVENUE -->
+            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl">
+                <p class="text-xs font-semibold text-slate-400">Estimated Revenue Saved</p>
+                <p class="text-4xl font-extrabold text-blue-400 mt-2">$2,100</p>
+                <span class="text-[11px] text-emerald-400 font-semibold mt-1 inline-block">14 missed calls recovered this month</span>
+            </div>
+
+            <!-- STAT 2: SMS USAGE METER -->
+            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <p class="text-xs font-semibold text-slate-400">SMS Usage This Month</p>
+                        <span class="text-xs font-bold text-blue-400">185 / 250 used</span>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden mt-3 border border-slate-800">
+                        <div class="bg-blue-500 h-full rounded-full" style="width: 74%;"></div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-900 text-[11px]">
+                    <span class="text-amber-400 font-medium">⚠️ 65 texts remaining</span>
+                    <a href="#upgrade" class="text-blue-400 hover:underline font-semibold">Top Up Plan →</a>
+                </div>
+            </div>
+
+            <!-- STAT 3: GOOGLE REVIEW AUTO-PILOT -->
+            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <p class="text-xs font-semibold text-slate-400">Google Review Rating</p>
+                    <p class="text-2xl font-extrabold text-white mt-1">4.9 ★ <span class="text-xs text-slate-400 font-normal">(42 Reviews)</span></p>
+                </div>
+                <div class="pt-3 border-t border-slate-900 flex items-center justify-between text-[11px]">
+                    <span class="text-emerald-400 font-semibold">● Auto-Pilot Active</span>
+                    <span class="text-slate-500">8 review links sent</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CORE INTEGRATIONS: GOOGLE CALENDAR & ROUTING NUMBER -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- GOOGLE CALENDAR LINKING BOX -->
+            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-lg">
+                            📅
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-white">Google Calendar Sync</h3>
+                            <p class="text-xs text-slate-400">Syncs your schedule so AI knows when you are busy on a job site.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-900 flex items-center justify-between">
+                    <span class="text-xs text-emerald-400 font-medium">✓ Connected (apex.roofing@gmail.com)</span>
+                    <button class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white text-xs font-semibold rounded-xl transition">
+                        Manage Sync
+                    </button>
+                </div>
+            </div>
+
+            <!-- ROUTING NUMBER DISPLAY -->
+            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-lg">
+                            📞
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-white">Dedicated Forwarding Line</h3>
+                            <p class="text-xs text-slate-400">Forward unanswered calls to this number during work hours.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-900 flex items-center justify-between">
+                    <span class="text-xs font-mono font-bold text-white bg-black px-3 py-1.5 rounded-lg border border-slate-900">+1 (214) 888-0142</span>
+                    <span class="text-xs text-emerald-400 font-semibold">Active & Routing</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RECENT GOOGLE REVIEW MONITORING -->
+        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-base font-bold text-white">Google Review Auto-Reply Monitor</h3>
+                <span class="text-xs text-slate-500">Auto-Response Enabled</span>
+            </div>
+            
+            <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                    <span class="font-bold text-white">Dave Miller ★★★★★</span>
+                    <span class="text-slate-500">Yesterday</span>
+                </div>
+                <p class="text-xs text-slate-300">"Apex Roofing fixed our garage leak within two hours. Super professional!"</p>
+                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-[11px] text-slate-400 mt-2">
+                    💬 <strong class="text-blue-400">AI Auto-Reply Sent:</strong> "Thanks Dave! Glad we could fix the roof leak quickly for you. Appreciate your feedback!"
+                </div>
+            </div>
+        </div>
+
+        <!-- RECENT RECOVERED LEADS FEED -->
+        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6">
+            <h3 class="text-base font-bold text-white mb-4">Recent Recovered Lead Conversations</h3>
+            <div class="space-y-3">
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-white">Mark Jenkins</span>
+                            <span class="text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded-full">Dallas, TX</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-1">"Need a shingle leak fixed ASAP over the garage."</p>
+                    </div>
+                    <span class="text-[11px] text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+                        ✓ Lead Captured • 12m ago
+                    </span>
+                </div>
+
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-white">Sarah Connor</span>
+                            <span class="text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded-full">Plano, TX</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-1">"Leaking water heater in the utility room."</p>
+                    </div>
+                    <span class="text-[11px] text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+                        ✓ Booking Link Sent • 3h ago
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUPPORT CONTACT BANNER -->
+        <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <h4 class="text-sm font-bold text-white">Need help setting up call forwarding or custom texts?</h4>
+                <p class="text-xs text-slate-400 mt-1">Our technical team is standing by to assist your trade business.</p>
+            </div>
+            <a href="mailto:support@tridashai.com" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow-md whitespace-nowrap">
+                Email support@tridashai.com
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FLOATING AI SUPPORT CHATBOT WIDGET -->
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+        <!-- Floating Chat Toggle Button -->
+        <button id="chat-toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 border border-blue-400/30">
+            <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            <svg id="chat-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Chat Window Drawer -->
+        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-slate-950 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px]">
+            <!-- Chat Header -->
+            <div class="bg-slate-900 p-4 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AI</div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white leading-none">TriDash Contractor Support</h4>
+                        <span class="text-[10px] text-slate-400">Replies instantly</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages Container -->
+            <div id="chat-messages" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs max-h-[350px]">
+                <div class="bg-slate-900 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-800">
+                    Hi Kelvin! 👋 Need any help adjusting your routing number or Google Calendar settings today?
+                </div>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <form id="chat-form" class="p-3 border-t border-slate-800 bg-slate-900/50 flex gap-2">
+                <input id="chat-input" type="text" placeholder="Ask a support question..." class="flex-1 bg-slate-950 text-white text-xs px-3 py-2 rounded-xl border border-slate-800 focus:outline-none focus:border-blue-500">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl text-xs font-bold transition">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; TriDash AI. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatBox = document.getElementById('chat-box');
+        const chatIconOpen = document.getElementById('chat-icon-open');
+        const chatIconClose = document.getElementById('chat-icon-close');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        chatToggleBtn.addEventListener('click', () => {
+            chatBox.classList.toggle('hidden');
+            chatIconOpen.classList.toggle('hidden');
+            chatIconClose.classList.toggle('hidden');
+        });
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = chatInput.value.trim();
+            if(!query) return;
+
+            // Render User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs';
+            userMsg.textContent = query;
+            chatMessages.appendChild(userMsg);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Simulate Support AI Response
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'bg-slate-900 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-800 text-xs';
+                
+                const lower = query.toLowerCase();
+                if(lower.includes('forward') || lower.includes('phone') || lower.includes('number')) {
+                    aiMsg.textContent = "To forward calls, dial *71 followed by your TriDash routing number (+1 214-888-0142) on your mobile phone.";
+                } else if(lower.includes('calendar') || lower.includes('google')) {
+                    aiMsg.textContent = "You can manage or re-sync your Google Calendar by clicking the 'Manage Sync' button in your Calendar panel.";
+                } else {
+                    aiMsg.textContent = "Thanks for your query! I have logged this with support@tridashai.com. A co-founder will follow up directly.";
+                }
+
+                chatMessages.appendChild(aiMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+        });
+    </script>
+
+</body>
+</html>
