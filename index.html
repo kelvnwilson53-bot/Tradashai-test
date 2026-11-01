@@ -117,6 +117,46 @@
             transform: translateY(-2px);
         }
 
+        /* Floating Sarah Chat Widget Styles */
+        #sarah-widget-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        #sarah-chat-btn {
+            background: #d97706;
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(251, 191, 36, 0.6);
+        }
+        #sarah-chat-btn:hover {
+            transform: scale(1.08);
+            background: #b45309;
+        }
+        #sarah-chat-window {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 320px;
+            background: rgba(41, 31, 24, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
         /* Moving Slides Animation */
         @keyframes slideScroll {
             0% { transform: translateX(0); }
@@ -446,6 +486,31 @@
         </section>
     </main>
 
+    <!-- FLOATING CHATBOT WIDGET ICON -->
+    <div id="sarah-widget-container">
+        <div id="sarah-chat-window">
+            <div class="bg-amber-950/80 px-4 py-3 border-b border-amber-900/40 flex justify-between items-center">
+                <span class="text-xs font-bold text-amber-200">🤖 Chat with Sarah (AI Assistant)</span>
+                <button id="close-chat" class="text-amber-300 hover:text-white text-sm font-bold">&times;</button>
+            </div>
+            <div class="p-4 space-y-3 text-xs text-amber-100 h-64 overflow-y-auto">
+                <div class="p-2.5 rounded-xl bg-amber-950/50 border border-amber-900/40">
+                    <p class="font-semibold text-[#f59e0b] mb-0.5">Sarah:</p>
+                    <p>Hi there! 👋 Missed a call while working on site? Let me show you how I handle text-backs instantly.</p>
+                </div>
+            </div>
+            <div class="p-3 bg-amber-950/90 border-t border-amber-900/40 flex gap-2">
+                <input type="text" placeholder="Type a message..." class="w-full px-3 py-1.5 rounded-lg bg-amber-900/40 border border-amber-700/50 text-xs text-amber-100 focus:outline-none focus:ring-1 focus:ring-[#f59e0b]">
+                <button class="btn-podium-primary px-3 py-1.5 rounded-lg text-xs font-bold">Send</button>
+            </div>
+        </div>
+        <button id="sarah-chat-btn" aria-label="Open Sarah Chat Widget">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </button>
+    </div>
+
     <!-- FOOTER -->
     <footer class="border-t border-amber-900/40 bg-[#291c16]/90 py-8 text-center text-xs text-amber-200/70 mt-10 relative z-10">
         <p>&copy; TriDash AI. All rights reserved.</p>
@@ -468,6 +533,23 @@
             });
         });
 
+        // Floating Chatbot Widget Toggle
+        const chatBtn = document.getElementById('sarah-chat-btn');
+        const chatWindow = document.getElementById('sarah-chat-window');
+        const closeChat = document.getElementById('close-chat');
+
+        chatBtn.addEventListener('click', () => {
+            if (chatWindow.style.display === 'flex') {
+                chatWindow.style.display = 'none';
+            } else {
+                chatWindow.style.display = 'flex';
+            }
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+
         // ROI Calculator Logic
         const jobValueInput = document.getElementById('job-value');
         const missedCallsInput = document.getElementById('missed-calls');
@@ -481,7 +563,7 @@
             const monthlyLost = missedCalls * 4 * jobValue;
 
             jobValueDisplay.textContent = `$${jobValue.toLocaleString()}`;
-            missedCallsDisplay.textContent = `${missedCalls} `${missedCalls === 1 ? 'call' : 'calls'}`;
+            missedCallsDisplay.textContent = `${missedCalls} ${missedCalls === 1 ? 'call' : 'calls'}`;
             lostRevenueDisplay.textContent = `$${monthlyLost.toLocaleString()}`;
         }
 
