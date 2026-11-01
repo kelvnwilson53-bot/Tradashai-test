@@ -37,12 +37,13 @@
             z-index: 0;
         }
 
-        /* Translucent Frosted Glass Card Design */
+        /* Translucent Frosted Glass Card Design with Smooth Translucent Gray Backgrounds */
         .podium-card-3d {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.9);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+            background: rgba(241, 245, 249, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -51,7 +52,29 @@
         .podium-card-3d:hover {
             transform: translateY(-6px) scale(1.005);
             border-color: #2563eb;
-            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12), 0 0 20px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.08), 0 0 20px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Seamless Borderless Image Treatment with Subtle Grayscale/Monotone Shift into Full Color on Hover */
+        .blend-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: #cbd5e1;
+        }
+
+        .blend-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(35%) contrast(105%) brightness(95%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .podium-card-3d:hover .blend-image-container img {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            transform: scale(1.04);
         }
 
         /* Selected Dark Slate Contrast Cards */
@@ -126,7 +149,7 @@
                     TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
                 </a>
 
-                <button id="menu-btn" aria-label="Toggle Navigation" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[#334155] hover:text-[#0F172A] px-3 py-1.5 rounded-lg bg-white border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
+                <button id="menu-btn" aria-label="Toggle Navigation" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[#334155] hover:text-[#0F172A] px-3 py-1.5 rounded-lg bg-white/80 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
                     <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -145,7 +168,7 @@
 
         </div>
 
-        <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 shadow-lg">
+        <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
             <a href="#how-it-works" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">How It Works</a>
             <a href="#live-ticker" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">Live Reviews</a>
             <a href="#roi-calculator" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">ROI Calculator</a>
@@ -160,40 +183,41 @@
             
             <div class="lg:col-span-7 pr-0 lg:pr-4">
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
-                    🤖 Meet Sarah — Your 24/7 Digital Assistant
+                    🤖 Meet Sarah — Your 24/7 Virtual Crew Member
                 </span>
                 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[#0F172A] mb-6">
-                    Never lose another lead <br class="hidden sm:inline">
-                    <span class="text-[#2563eb]">while you're on a job.</span>
+                    No more missed calls.<br>
+                    <span class="text-[#2563eb]">No more lost jobs.</span>
                 </h1>
                 
                 <p class="text-[#334155] text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-medium">
-                    No more missed calls, no more lost jobs. Sarah instantly engages missed callers via SMS, answers basic job enquiries, captures lead details, and automatically collects 5-star Google reviews from satisfied customers.
+                    Sarah instantly engages missed callers via SMS, answers basic job enquiries, captures lead details, and automatically collects 5-star Google reviews from satisfied customers.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
                         Claim 30-Day Pilot →
                     </a>
-                    <a href="#how-it-works" class="px-8 py-4 bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold rounded-xl transition text-center shadow-sm">
+                    <a href="#how-it-works" class="px-8 py-4 bg-white/60 hover:bg-white/90 border border-slate-300/80 text-[#0F172A] font-semibold rounded-xl transition text-center shadow-sm backdrop-blur-sm">
                         See How It Works
                     </a>
                 </div>
             </div>
 
-            <!-- SARAH'S IMAGE ("sarah 1.jpg") -->
-            <div class="lg:col-span-5 rounded-3xl overflow-hidden podium-card-3d p-3">
-                <img 
-                    src="sarah%201.jpg" 
-                    alt="Sarah - Your Digital Assistant" 
-                    class="w-full h-auto object-cover block rounded-2xl hover:scale-105 transition duration-500"
-                />
+            <!-- SARAH'S IMAGE CONTAINER (BORDERLESS & GRAYED-OUT MERGE EFFECT) -->
+            <div class="lg:col-span-5 rounded-3xl podium-card-3d p-2 sm:p-3">
+                <div class="blend-image-container h-[380px] sm:h-[420px]">
+                    <img 
+                        src="sarah%201.jpg" 
+                        alt="Sarah - Your Virtual Crew Member"
+                    />
+                </div>
             </div>
         </section>
 
         <!-- STATS BAR -->
-        <section class="border-y border-slate-200/80 bg-white/70 backdrop-blur-md py-10 relative z-10">
+        <section class="border-y border-slate-200/80 bg-white/50 backdrop-blur-md py-10 relative z-10">
             <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div class="podium-card-3d p-6 rounded-2xl">
                     <p class="text-3xl font-extrabold text-[#2563eb]">85%</p>
@@ -218,21 +242,20 @@
             </div>
 
             <!-- ROOFERS (1792284293487.jpg) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl mb-8">
-                <div class="rounded-2xl overflow-hidden border border-slate-200">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
                     <img 
                         src="1792284293487.jpg" 
-                        alt="Roofing Specialist at Work" 
-                        class="w-full h-auto object-cover block hover:scale-105 transition duration-500"
+                        alt="Roofing Specialist at Work"
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Roofing Specialists</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50/80 px-2.5 py-1 rounded-md border border-blue-100">Roofing Specialists</span>
                     <h3 class="text-2xl font-bold text-[#0F172A] mt-2 mb-3">On a Ladder? <span class="text-[#2563eb]">Sarah Texts Back Instantly.</span></h3>
                     <p class="text-[#334155] text-xs sm:text-sm leading-relaxed mb-4">
                         When you're up on a roof, you can't answer calls safely. Sarah catches missed calls immediately and texts the client back so they don't ring the next roofer on Google.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div class="p-3.5 rounded-xl bg-white/70 border border-slate-200/80 text-xs backdrop-blur-sm">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Sarah's Automated Reply:</span>
                         <p class="text-[#334155]">"Hi! I'm Sarah, assistant to Kelvin. He's currently up on a roof job. Is this for an urgent roof leak repair or a future estimate?"</p>
                     </div>
@@ -240,43 +263,41 @@
             </div>
 
             <!-- PLUMBERS (1792284328037.jpg) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Plumbing & Heating</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50/80 px-2.5 py-1 rounded-md border border-blue-100">Plumbing & Heating</span>
                     <h3 class="text-2xl font-bold text-[#0F172A] mt-2 mb-3"><span class="text-[#2563eb]">Capture Emergency Leaks</span> Before Competitors</h3>
                     <p class="text-[#334155] text-xs sm:text-sm leading-relaxed mb-4">
                         If your hands are under a sink or fitting pipes, Sarah handles the initial enquiry, qualifies emergency leaks, and gets customer details sent directly to your phone.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div class="p-3.5 rounded-xl bg-white/70 border border-slate-200/80 text-xs backdrop-blur-sm">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Sarah's Automated Reply:</span>
                         <p class="text-[#334155]">"Hi there! Saw we missed your call. Kelvin is on a pipe installation. Do you have an active leak, or are you looking for a bathroom quote?"</p>
                     </div>
                 </div>
-                <div class="order-1 md:order-2 rounded-2xl overflow-hidden border border-slate-200">
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
                     <img 
                         src="1792284328037.jpg" 
-                        alt="Plumbing Specialist" 
-                        class="w-full h-auto object-cover block hover:scale-105 transition duration-500"
+                        alt="Plumbing Specialist"
                     />
                 </div>
             </div>
 
             <!-- BUILDERS / CONTRACTORS (1793498924399.jpg) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl mb-8">
-                <div class="rounded-2xl overflow-hidden border border-slate-200">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
                     <img 
                         src="1793498924399.jpg" 
-                        alt="General Contractor" 
-                        class="w-full h-auto object-cover block hover:scale-105 transition duration-500"
+                        alt="General Contractor"
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Building Contractors</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50/80 px-2.5 py-1 rounded-md border border-blue-100">Building Contractors</span>
                     <h3 class="text-2xl font-bold text-[#0F172A] mt-2 mb-3">Keep Project Leads Warm <span class="text-[#2563eb]">During Site Work</span></h3>
                     <p class="text-[#334155] text-xs sm:text-sm leading-relaxed mb-4">
                         Running power tools or managing site deliveries makes taking phone calls impossible. Sarah collects project scopes and timeline expectations automatically.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div class="p-3.5 rounded-xl bg-white/70 border border-slate-200/80 text-xs backdrop-blur-sm">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Sarah's Automated Reply:</span>
                         <p class="text-[#334155]">"Hello! Thanks for reaching out. Kelvin is on-site with power equipment running. What kind of building project or extension are you planning?"</p>
                     </div>
@@ -284,23 +305,22 @@
             </div>
 
             <!-- ADDITIONAL TRADESMAN CARD (1793498988502.jpg) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Field Service & Maintenance</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#2563eb] bg-blue-50/80 px-2.5 py-1 rounded-md border border-blue-100">Field Service & Maintenance</span>
                     <h3 class="text-2xl font-bold text-[#0F172A] mt-2 mb-3">Turn Every Missed Ring into <span class="text-[#2563eb]">A Booked Job</span></h3>
                     <p class="text-[#334155] text-xs sm:text-sm leading-relaxed mb-4">
                         No matter your specialty, Sarah ensures no prospective client slips through the cracks while you're busy delivering hands-on work.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div class="p-3.5 rounded-xl bg-white/70 border border-slate-200/80 text-xs backdrop-blur-sm">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Sarah's Automated Reply:</span>
                         <p class="text-[#334155]">"Hi! Kelvin is out on-site right now. Drop us your location and project notes, and we'll get right back to you!"</p>
                     </div>
                 </div>
-                <div class="order-1 md:order-2 rounded-2xl overflow-hidden border border-slate-200">
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
                     <img 
                         src="1793498988502.jpg" 
-                        alt="Field Service Professional" 
-                        class="w-full h-auto object-cover block hover:scale-105 transition duration-500"
+                        alt="Field Service Professional"
                     />
                 </div>
             </div>
