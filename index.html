@@ -375,4 +375,143 @@
                 <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 text-white shadow-xl">
                     <div>
                         <p class="text-xs uppercase tracking-wider font-semibold text-amber-200/80 mb-1">Estimated Monthly Lost Revenue</p>
-                        <p id="lost
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-amber-400">$3,000</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-900/40">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-amber-200/80 mb-1">Sarah Assistant Subscription</p>
+                        <p class="text-3xl font-extrabold text-[#fcd34d]">$49 <span class="text-xs text-amber-200/80 font-normal">/ month</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="max-w-4xl mx-auto px-4 py-20 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Simple, Transparent Pricing</h2>
+                <p class="text-amber-200/80 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <div class="podium-dark-card p-8 sm:p-10 rounded-3xl border border-amber-500/40 shadow-2xl relative flex flex-col justify-between text-white">
+                    <span class="absolute -top-3 right-6 btn-podium-primary text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-lg">One Card Plan</span>
+                    <div>
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Sarah Professional</h3>
+                            <p class="text-amber-200/80 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-amber-900/40">
+                            <span class="text-5xl font-extrabold text-[#fcd34d]">$49</span>
+                            <span class="text-amber-200/80 text-sm"> / month</span>
+                        </div>
+                        <ul class="space-y-3 text-xs sm:text-sm text-amber-100 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> <strong>300 Live Voice Minutes</strong> Included</li>
+                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> Real-Time Diary Booking & Automated Payment Link Dispatch</li>
+                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> Automated Google Review Request & Response Engine</li>
+                        </ul>
+                    </div>
+                    <a href="signup.html" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-lg block text-sm">
+                      start your 7-day free trial here →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA -->
+        <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
+            <div class="podium-dark-card border border-amber-900/40 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
+                <h2 class="text-3xl sm:text-4xl font-extrabold">Join today. Easy setup. No long-term contract.</h2>
+                <p class="text-amber-100/90 text-sm sm:text-base max-w-xl mx-auto">Put Sarah to work answering your calls, triaging emergencies, and collecting deposits today.</p>
+                <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105 text-base">
+                    start your 7-day trial here →
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FIXED FLOATING CHATBOT WIDGET -->
+    <div id="sarah-widget-container">
+        <div id="sarah-chat-window">
+            <div class="bg-amber-950/90 px-4 py-3 border-b border-amber-900/50 flex justify-between items-center">
+                <span class="text-xs font-bold text-amber-200">🤖 Chat with Sarah (Voice AI)</span>
+                <button id="close-chat" class="text-amber-300 hover:text-white text-base font-bold px-1">&times;</button>
+            </div>
+            <div class="p-4 space-y-3 text-xs text-amber-100 h-64 overflow-y-auto">
+                <div class="p-2.5 rounded-xl bg-amber-950/60 border border-amber-900/50">
+                    <p class="font-semibold text-[#f59e0b] mb-0.5">Sarah:</p>
+                    <p>Hi there! 👋 Need 24/7 emergency callout coverage or automated payment links? Let me show you how I work.</p>
+                </div>
+            </div>
+            <div class="p-3 bg-amber-950/95 border-t border-amber-900/50 flex gap-2">
+                <input type="text" placeholder="Type a message..." class="w-full px-3 py-1.5 rounded-lg bg-amber-900/50 border border-amber-700/60 text-xs text-amber-100 focus:outline-none focus:ring-1 focus:ring-[#f59e0b]">
+                <button class="btn-podium-primary px-3 py-1.5 rounded-lg text-xs font-bold">Send</button>
+            </div>
+        </div>
+        <button id="sarah-chat-btn" aria-label="Open Sarah Chat Widget">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-amber-900/40 bg-[#291c16]/90 py-8 text-center text-xs text-amber-200/70 mt-10 relative z-10">
+        <p>&copy; TriDash AI. All rights reserved. | Contact support: <a href="mailto:support@tridashai.com" class="underline hover:text-white">support@tridashai.com</a></p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Hamburger Menu Toggle & Auto-close on click
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Chat Widget Toggle
+        const chatBtn = document.getElementById('sarah-chat-btn');
+        const chatWindow = document.getElementById('sarah-chat-window');
+        const closeChat = document.getElementById('close-chat');
+
+        chatBtn.addEventListener('click', () => {
+            const isHidden = chatWindow.style.display === 'flex';
+            chatWindow.style.display = isHidden ? 'none' : 'flex';
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+
+        // ROI Calculator Logic
+        const jobValueInput = document.getElementById('job-value');
+        const missedCallsInput = document.getElementById('missed-calls');
+        const jobValueDisplay = document.getElementById('job-value-display');
+        const missedCallsDisplay = document.getElementById('missed-calls-display');
+        const lostRevenueDisplay = document.getElementById('lost-revenue');
+
+        function updateROI() {
+            const jobVal = parseFloat(jobValueInput.value);
+            const calls = parseFloat(missedCallsInput.value);
+
+            jobValueDisplay.textContent = `$${jobVal}`;
+            missedCallsDisplay.textContent = `${calls} call${calls > 1 ? 's' : ''}`;
+
+            // Assuming 50% conversion rate of missed calls to recovered clients over 4 weeks (approx 4.33 weeks/month)
+            const monthlyLost = jobVal * calls * 4 * 0.5;
+            lostRevenueDisplay.textContent = `$${Math.round(monthlyLost).toLocaleString()}`;
+        }
+
+        jobValueInput.addEventListener('input', updateROI);
+        missedCallsInput.addEventListener('input', updateROI);
+        updateROI();
+    </script>
+</body>
+</html>
