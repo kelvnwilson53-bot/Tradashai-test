@@ -106,6 +106,21 @@
             color: #fcd34d;
         }
 
+        /* Animated Badge Floating Effect */
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+            }
+            50% {
+                transform: translateY(-4px);
+                box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            }
+        }
+        .animated-badge {
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
         .btn-podium-primary {
             background-color: #d97706;
             color: #ffffff;
@@ -234,13 +249,13 @@
         <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-7 pr-0 lg:pr-4">
-                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
-                    🤖 Meet Sarah — Your 24/7 Voice AI Receptionist
+                <span class="inline-block podium-badge animated-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
+                    🤖 Meet Sarah, your number one 24/7 virtual sales employee.
                 </span>
                 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white mb-6">
-                    No more missed calls.<br>
-                    <span class="text-[#f59e0b]">No more lost jobs.</span>
+                    From lead capture to closure, Sarah’s got you covered.<br>
+                    <span class="text-[#f59e0b]">No missed calls — more jobs booked.</span>
                 </h1>
                 
                 <!-- HERO SUBHEADING -->
@@ -321,7 +336,7 @@
                     More Than Just an Answering Service
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Protecting Your <span class="text-[#f59e0b]">Hard-Earned Reputation</span></h2>
-                <p class="text-amber-200/80 text-sm sm:text-base max-w-2xl mx-auto">When customers ring your number, they don't get a generic automated text bot—instead they experience an empathic, live interaction with a calm authoritative proffesional - designed to put the customer at ease</p>
+                <p class="text-amber-200/80 text-sm sm:text-base max-w-2xl mx-auto">When customers ring your number, they don't get a generic automated text bot—instead they experience an empathetic, live interaction with a calm authoritative professional - designed to put the customer at ease</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
