@@ -7,14 +7,14 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ambient Background Glowing Light Orbs (Softened for Light Canvas) */
+        /* Ambient Soft Light Orbs for Depth */
         .ambient-glow-1 {
             position: absolute;
             top: -100px;
             left: -100px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%);
             filter: blur(120px);
             pointer-events: none;
             z-index: 0;
@@ -27,7 +27,7 @@
             right: -50px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, rgba(17, 24, 39, 0.05) 60%, transparent 80%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(99, 102, 241, 0.04) 60%, transparent 80%);
             filter: blur(130px);
             pointer-events: none;
             z-index: 0;
@@ -39,28 +39,18 @@
             100% { transform: scale(1.1) translateY(15px); opacity: 0.95; }
         }
 
-        /* Hero Container & Dark Cards - Charcoal (#111827) with 3D Hover */
-        .charcoal-card-3d {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Light Cards for Contrast Sections with 3D Hover Lift */
-        .light-card-3d {
+        /* Podium-Style Executive White Cards with Subtle 3D Lift */
+        .podium-card-3d {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
 
         /* Luminous Light Sweep Across Cards on Hover */
-        .charcoal-card-3d::after, .light-card-3d::after {
+        .podium-card-3d::after, .podium-dark-card::after {
             content: '';
             position: absolute;
             top: -50%;
@@ -70,7 +60,7 @@
             background: linear-gradient(
                 to right,
                 transparent 0%,
-                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.15) 50%,
                 transparent 100%
             );
             transform: rotate(30deg) translateY(-100%);
@@ -78,27 +68,37 @@
             pointer-events: none;
         }
 
-        .charcoal-card-3d:hover::after, .light-card-3d:hover::after {
+        .podium-card-3d:hover::after, .podium-dark-card:hover::after {
             transform: rotate(30deg) translateY(100%);
         }
 
-        .charcoal-card-3d:hover {
+        .podium-card-3d:hover {
             transform: translateY(-6px) scale(1.005);
-            border-color: rgba(0, 102, 255, 0.4);
-            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.25), 0 0 30px rgba(0, 102, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #2563eb;
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.08), 0 0 20px rgba(37, 99, 235, 0.1);
         }
 
-        .light-card-3d:hover {
-            transform: translateY(-6px) scale(1.005);
-            border-color: #0066FF;
-            box-shadow: 0 25px 45px rgba(15, 23, 42, 0.08), 0 0 20px rgba(0, 102, 255, 0.15);
+        /* Selected Dark Slate Contrast Feature Cards */
+        .podium-dark-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Electric Blue Badges */
-        .blue-badge-glow {
-            background: rgba(0, 102, 255, 0.12);
-            border: 1px solid rgba(0, 102, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 102, 255, 0.15);
+        .podium-dark-card:hover {
+            transform: translateY(-6px) scale(1.005);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.3);
+        }
+
+        /* Podium Blue Badge */
+        .podium-badge {
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            color: #1d4ed8;
         }
 
         /* Smooth Right-to-Left Marquee Ticker */
@@ -124,36 +124,36 @@
             animation-play-state: paused;
         }
 
-        /* Primary CTA: Electric Blue (#0066FF) */
-        .btn-electric-blue {
-            background-color: #0066FF;
+        /* Podium Action Buttons */
+        .btn-podium-primary {
+            background-color: #2563eb;
             color: #ffffff;
             transition: all 0.25s ease;
         }
-        .btn-electric-blue:hover {
-            background-color: #0052cc;
-            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
+        .btn-podium-primary:hover {
+            background-color: #1d4ed8;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
             transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="bg-[#F3F4F6] text-[#0F172A] font-sans antialiased selection:bg-[#0066FF] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
+<body class="bg-[#FAFAFA] text-[#0F172A] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
 
-    <!-- AMBIENT BACKGROUND GLOWS -->
+    <!-- AMBIENT SOFT LIGHT GLOWS -->
     <div class="ambient-glow-1"></div>
     <div class="ambient-glow-2"></div>
 
-    <!-- HEADER / NAVIGATION (CLEAN & BLENDED ON WARM LIGHT GRAY) -->
-    <header class="bg-[#F3F4F6]/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200">
+    <!-- HEADER / NAVIGATION (CLEAN, SEAMLESS LIGHT THEME) -->
+    <header class="bg-[#FAFAFA]/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200/80">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-start justify-between">
             
             <div class="flex flex-col items-start">
-                <a href="index.html" class="text-xl font-bold text-[#0F172A] tracking-tight">
-                    TriDash<span class="text-[#0066FF] font-semibold">AI.com</span>
+                <a href="index.html" class="text-xl font-extrabold text-[#0F172A] tracking-tight">
+                    TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
                 </a>
 
-                <button id="menu-btn" aria-label="Toggle Navigation" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[#0F172A] hover:text-[#0066FF] px-3 py-1.5 rounded-lg bg-white border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#0066FF] shadow-sm">
-                    <svg class="w-4 h-4 text-[#0066FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="menu-btn" aria-label="Toggle Navigation" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[#334155] hover:text-[#0F172A] px-3 py-1.5 rounded-lg bg-white border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
+                    <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     <span>Menu</span>
@@ -161,10 +161,10 @@
             </div>
 
             <div class="flex flex-col items-end gap-2 pt-1">
-                <a href="signup.html" class="btn-electric-blue text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition shadow-lg text-center">
+                <a href="signup.html" class="btn-podium-primary text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition shadow-md text-center">
                     Start 30-Day Pilot
                 </a>
-                <a href="login.html" class="text-xs font-semibold text-[#0F172A] hover:text-[#0066FF] transition">
+                <a href="login.html" class="text-xs font-semibold text-[#475569] hover:text-[#0F172A] transition">
                     Log In
                 </a>
             </div>
@@ -172,11 +172,11 @@
         </div>
 
         <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 shadow-lg">
-            <a href="#how-it-works" class="block text-sm font-semibold text-[#0F172A] hover:text-[#0066FF] transition">How It Works</a>
-            <a href="#live-ticker" class="block text-sm font-semibold text-[#0F172A] hover:text-[#0066FF] transition">Live Reviews</a>
-            <a href="#roi-calculator" class="block text-sm font-semibold text-[#0F172A] hover:text-[#0066FF] transition">ROI Calculator</a>
-            <a href="#pricing" class="block text-sm font-semibold text-[#0F172A] hover:text-[#0066FF] transition">Pilot Pricing</a>
-            <a href="#faq" class="block text-sm font-semibold text-[#0F172A] hover:text-[#0066FF] transition">FAQ</a>
+            <a href="#how-it-works" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">How It Works</a>
+            <a href="#live-ticker" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">Live Reviews</a>
+            <a href="#roi-calculator" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">ROI Calculator</a>
+            <a href="#pricing" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">Pilot Pricing</a>
+            <a href="#faq" class="block text-sm font-semibold text-[#334155] hover:text-[#2563eb] transition">FAQ</a>
         </div>
     </header>
 
@@ -184,33 +184,33 @@
     <main class="flex-1 relative z-10">
         <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- LEFT COLUMN: HERO TEXT IN CHARCOAL (#111827) CARD -->
-            <div class="lg:col-span-7 charcoal-card-3d p-8 sm:p-10 rounded-3xl text-white">
-                <span class="inline-block blue-badge-glow text-blue-300 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
+            <!-- LEFT COLUMN: UNBOXED, FLOATING HERO TEXT -->
+            <div class="lg:col-span-7 pr-0 lg:pr-4">
+                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
                     🤖 Meet Your New 24/7 Digital Crew Member
                 </span>
                 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[#0F172A] mb-6">
                     Never lose another lead <br class="hidden sm:inline">
-                    <span class="text-[#0066FF]">while you're on a job.</span>
+                    <span class="text-[#2563eb]">while you're on a job.</span>
                 </h1>
                 
-                <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
-                    TriDash AI instantly engages missed callers via SMS, answers basic job enquiries, captures lead details, and automatically collects <span class="text-[#0066FF] font-semibold">5-star Google reviews</span> from satisfied customers.
+                <p class="text-[#334155] text-base sm:text-lg mb-8 leading-relaxed max-w-xl">
+                    TriDash AI instantly engages missed callers via SMS, answers basic job enquiries, captures lead details, and automatically collects <span class="text-[#1d4ed8] font-semibold">5-star Google reviews</span> from satisfied customers.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="signup.html" class="px-8 py-4 btn-electric-blue font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
+                    <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-lg text-center hover:scale-105">
                         Claim 30-Day Pilot →
                     </a>
-                    <a href="#how-it-works" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold rounded-xl transition text-center">
+                    <a href="#how-it-works" class="px-8 py-4 bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold rounded-xl transition text-center shadow-sm">
                         See How It Works
                     </a>
                 </div>
             </div>
 
             <!-- RIGHT COLUMN: FLOATING 3D IMAGE CARD -->
-            <div class="lg:col-span-5 rounded-3xl overflow-hidden charcoal-card-3d p-3">
+            <div class="lg:col-span-5 rounded-3xl overflow-hidden podium-card-3d p-3">
                 <img 
                     src="1792284293487.jpg" 
                     alt="On-site Trade Contractor" 
@@ -220,78 +220,78 @@
         </section>
 
         <!-- STATS & PROOF BAR -->
-        <section class="border-y border-slate-300 bg-white py-10 relative z-10">
+        <section class="border-y border-slate-200/80 bg-white py-10 relative z-10">
             <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                <div class="light-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#0066FF]">85%</p>
-                    <p class="text-xs text-[#0F172A] mt-1 font-medium">Of callers go to a competitor if unanswered</p>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">85%</p>
+                    <p class="text-xs text-[#475569] mt-1 font-semibold">Of callers go to a competitor if unanswered</p>
                 </div>
-                <div class="light-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#0066FF]">5 secs</p>
-                    <p class="text-xs text-[#0F172A] mt-1 font-medium">Average automated SMS response time</p>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">5 secs</p>
+                    <p class="text-xs text-[#475569] mt-1 font-semibold">Average automated SMS response time</p>
                 </div>
-                <div class="light-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#0066FF]">3x</p>
-                    <p class="text-xs text-[#0F172A] mt-1 font-medium">More 5-star Google reviews generated</p>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">3x</p>
+                    <p class="text-xs text-[#475569] mt-1 font-semibold">More 5-star Google reviews generated</p>
                 </div>
             </div>
         </section>
 
         <!-- LIVE MARQUEE REVIEW TICKER -->
-        <section id="live-ticker" class="py-16 border-b border-slate-300 bg-[#F3F4F6] overflow-hidden relative z-10">
+        <section id="live-ticker" class="py-16 border-b border-slate-200/80 bg-[#F1F5F9]/60 overflow-hidden relative z-10">
             <div class="max-w-6xl mx-auto px-4 mb-8 text-center">
-                <p class="text-xs font-bold uppercase tracking-widest text-[#0066FF]">Live Engine in Action</p>
-                <h3 class="text-xl sm:text-2xl font-bold text-[#0F172A] mt-1">Real reviews & auto-responses flowing in real-time</h3>
+                <p class="text-xs font-bold uppercase tracking-widest text-[#2563eb]">Live Engine in Action</p>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-1">Real reviews & auto-responses flowing in real-time</h3>
             </div>
 
             <div class="marquee-wrapper">
                 <div class="marquee-track">
                     
-                    <div class="w-[380px] charcoal-card-3d p-6 rounded-2xl shrink-0 text-white">
+                    <div class="w-[380px] podium-card-3d p-6 rounded-2xl shrink-0">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">5-Star Google Review</span>
-                            <span class="text-xs text-slate-300">Kitchen Extension</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">5-Star Google Review</span>
+                            <span class="text-xs text-[#64748B]">Kitchen Extension</span>
                         </div>
-                        <p class="text-xs text-slate-200 italic mb-4">"Kelvin and his team were brilliant from start to finish. Turned up on time every day and finished right on budget."</p>
-                        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-                            <span class="font-semibold text-blue-300 block mb-1">✅ TriDash AI Auto-Reply:</span>
-                            <p class="text-slate-300">"Thanks so much for the feedback! It was a real pleasure working with you on the project."</p>
+                        <p class="text-xs text-[#334155] italic mb-4">"Kelvin and his team were brilliant from start to finish. Turned up on time every day and finished right on budget."</p>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                            <span class="font-semibold text-[#2563eb] block mb-1">✅ TriDash AI Auto-Reply:</span>
+                            <p class="text-[#334155]">"Thanks so much for the feedback! It was a real pleasure working with you on the project."</p>
                         </div>
                     </div>
 
-                    <div class="w-[380px] charcoal-card-3d p-6 rounded-2xl shrink-0 text-white">
+                    <div class="w-[380px] podium-card-3d p-6 rounded-2xl shrink-0">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-blue-300 bg-blue-500/20 px-2.5 py-1 rounded-full border border-blue-400/30">Instant Lead Recovery</span>
-                            <span class="text-xs text-slate-300">Plumbing Repair</span>
+                            <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">Instant Lead Recovery</span>
+                            <span class="text-xs text-[#64748B]">Plumbing Repair</span>
                         </div>
-                        <p class="text-xs text-slate-200 italic mb-4">"Call unanswered at 4:15 PM — Owner under truck."</p>
-                        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-                            <span class="font-semibold text-blue-300 block mb-1">⚡ Auto-SMS Sent in 4s:</span>
-                            <p class="text-slate-300">"Hi! Saw I missed your call. I'm finishing up a job right now. How can I help you today?"</p>
+                        <p class="text-xs text-[#334155] italic mb-4">"Call unanswered at 4:15 PM — Owner under truck."</p>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                            <span class="font-semibold text-[#2563eb] block mb-1">⚡ Auto-SMS Sent in 4s:</span>
+                            <p class="text-[#334155]">"Hi! Saw I missed your call. I'm finishing up a job right now. How can I help you today?"</p>
                         </div>
                     </div>
 
-                    <div class="w-[380px] charcoal-card-3d p-6 rounded-2xl shrink-0 text-white">
+                    <div class="w-[380px] podium-card-3d p-6 rounded-2xl shrink-0">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">Review Request Trigger</span>
-                            <span class="text-xs text-slate-300">Post-Job SMS</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">Review Request Trigger</span>
+                            <span class="text-xs text-[#64748B]">Post-Job SMS</span>
                         </div>
-                        <p class="text-xs text-slate-200 italic mb-4">"Job completed & invoiced via field app."</p>
-                        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-                            <span class="font-semibold text-blue-300 block mb-1">📲 Auto Review SMS Sent:</span>
-                            <p class="text-slate-300">"Thanks for choosing us today! If you have 30 seconds, would you mind leaving a quick review?"</p>
+                        <p class="text-xs text-[#334155] italic mb-4">"Job completed & invoiced via field app."</p>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                            <span class="font-semibold text-[#2563eb] block mb-1">📲 Auto Review SMS Sent:</span>
+                            <p class="text-[#334155]">"Thanks for choosing us today! If you have 30 seconds, would you mind leaving a quick review?"</p>
                         </div>
                     </div>
 
-                    <div class="w-[380px] charcoal-card-3d p-6 rounded-2xl shrink-0 text-white">
+                    <div class="w-[380px] podium-card-3d p-6 rounded-2xl shrink-0">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">5-Star Google Review</span>
-                            <span class="text-xs text-slate-300">Kitchen Extension</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">5-Star Google Review</span>
+                            <span class="text-xs text-[#64748B]">Kitchen Extension</span>
                         </div>
-                        <p class="text-xs text-slate-200 italic mb-4">"Kelvin and his team were brilliant from start to finish. Turned up on time every day and finished right on budget."</p>
-                        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-                            <span class="font-semibold text-blue-300 block mb-1">✅ TriDash AI Auto-Reply:</span>
-                            <p class="text-slate-300">"Thanks so much for the feedback! It was a real pleasure working with you on the project."</p>
+                        <p class="text-xs text-[#334155] italic mb-4">"Kelvin and his team were brilliant from start to finish. Turned up on time every day and finished right on budget."</p>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                            <span class="font-semibold text-[#2563eb] block mb-1">✅ TriDash AI Auto-Reply:</span>
+                            <p class="text-[#334155]">"Thanks so much for the feedback! It was a real pleasure working with you on the project."</p>
                         </div>
                     </div>
 
@@ -301,13 +301,13 @@
 
         <!-- PROCESS BREAKDOWN SECTION -->
         <section id="how-it-works" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-            <div class="text-center mb-10 charcoal-card-3d p-6 rounded-3xl max-w-2xl mx-auto text-white">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">How <span class="text-[#0066FF]">TriDash AI</span> Works</h2>
-                <p class="text-slate-300 text-sm sm:text-base">More Calls. More Bookings. More Growth.</p>
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F172A] mb-3">How <span class="text-[#2563eb]">TriDash AI</span> Works</h2>
+                <p class="text-[#475569] text-sm sm:text-base">More Calls. More Bookings. More Growth.</p>
             </div>
             
-            <!-- PROCESS BANNER (PROPORTION LOCKED WITH 3D LIFT) -->
-            <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden charcoal-card-3d p-3 sm:p-4 mb-16 flex items-center justify-center">
+            <!-- PROCESS BANNER (CLEAN, PROPORTION LOCKED WITH 3D LIFT) -->
+            <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden podium-card-3d p-3 sm:p-4 mb-16 flex items-center justify-center">
                 <img 
                     src="2dd9649ce06bd329f451202924389a838456efbfb52cf2f908a81b636bfd6252.png" 
                     alt="TriDash AI Process Breakdown" 
@@ -315,8 +315,8 @@
                 />
             </div>
 
-            <!-- FEATURE IMAGE GRID 1 (WITH 3D LIGHT LIFT) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center light-card-3d p-8 rounded-3xl mb-8">
+            <!-- FEATURE IMAGE GRID 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl mb-8">
                 <div class="rounded-2xl overflow-hidden border border-slate-200">
                     <img 
                         src="1792284260193.jpg" 
@@ -325,18 +325,18 @@
                     />
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3">Focus on the Job. <span class="text-[#0066FF]">Let AI Handle the Phone.</span></h3>
-                    <p class="text-[#0F172A]/80 text-xs sm:text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3">Focus on the Job. <span class="text-[#2563eb]">Let AI Handle the Phone.</span></h3>
+                    <p class="text-[#334155] text-xs sm:text-sm leading-relaxed">
                         Whether you are on a roof, under a sink, or in the middle of a build, TriDash AI works silently in the background—answering missed calls, qualifying leads, and keeping your pipeline moving.
                     </p>
                 </div>
             </div>
 
-            <!-- FEATURE IMAGE GRID 2 (WITH 3D LIGHT LIFT) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center light-card-3d p-8 rounded-3xl mb-8">
+            <!-- FEATURE IMAGE GRID 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl mb-8">
                 <div class="order-2 md:order-1">
-                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3"><span class="text-[#0066FF]">Instant Customer Engagement</span></h3>
-                    <p class="text-[#0F172A]/80 text-xs sm:text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3"><span class="text-[#2563eb]">Instant Customer Engagement</span></h3>
+                    <p class="text-[#334155] text-xs sm:text-sm leading-relaxed">
                         Never keep a client waiting. Within 5 seconds of a missed call, an interactive SMS conversation starts automatically to capture job specs and customer contact info.
                     </p>
                 </div>
@@ -349,8 +349,8 @@
                 </div>
             </div>
 
-            <!-- FEATURE IMAGE GRID 3 (WITH 3D LIGHT LIFT) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center light-card-3d p-8 rounded-3xl">
+            <!-- FEATURE IMAGE GRID 3 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-8 rounded-3xl">
                 <div class="rounded-2xl overflow-hidden border border-slate-200">
                     <img 
                         src="1792284444903.jpg" 
@@ -359,8 +359,8 @@
                     />
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3">Tailored Solutions for <span class="text-[#0066FF]">Every Trade</span></h3>
-                    <p class="text-[#0F172A]/80 text-xs sm:text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-[#0F172A] mb-3">Tailored Solutions for <span class="text-[#2563eb]">Every Trade</span></h3>
+                    <p class="text-[#334155] text-xs sm:text-sm leading-relaxed">
                         From solo trade professionals to busy clinic and service teams, our automated engagement engine ensures every incoming client enquiry gets handled instantly.
                     </p>
                 </div>
@@ -370,21 +370,21 @@
         <!-- ROI CALCULATOR SECTION -->
         <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-16 relative z-10">
             <div class="text-center mb-10">
-                <span class="inline-block bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/30 text-xs font-bold px-3 py-1.5 rounded-full mb-3">
+                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
                     Interactive ROI Calculator
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F172A] mb-3">Calculate Your <span class="text-[#0066FF]">Recovered Revenue</span></h2>
-                <p class="text-[#0F172A]/80 text-sm sm:text-base">See how much lost revenue TriDash AI recovers for your business every month.</p>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F172A] mb-3">Calculate Your <span class="text-[#2563eb]">Recovered Revenue</span></h2>
+                <p class="text-[#475569] text-sm sm:text-base">See how much lost revenue TriDash AI recovers for your business every month.</p>
             </div>
 
-            <div class="light-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-7 space-y-8">
                     <div>
                         <div class="flex justify-between items-center mb-2">
                             <label for="job-value" class="text-sm font-semibold text-[#0F172A]">Average Value per Client / Job</label>
-                            <span id="job-value-display" class="text-lg font-bold text-[#0066FF]">$150</span>
+                            <span id="job-value-display" class="text-lg font-bold text-[#2563eb]">$150</span>
                         </div>
-                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0066FF]">
+                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2563eb]">
                         <div class="flex justify-between text-[11px] text-slate-500 mt-1">
                             <span>$50</span>
                             <span>$500</span>
@@ -395,9 +395,9 @@
                     <div>
                         <div class="flex justify-between items-center mb-2">
                             <label for="missed-calls" class="text-sm font-semibold text-[#0F172A]">Missed Calls per Week</label>
-                            <span id="missed-calls-display" class="text-lg font-bold text-[#0066FF]">5 calls</span>
+                            <span id="missed-calls-display" class="text-lg font-bold text-[#2563eb]">5 calls</span>
                         </div>
-                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0066FF]">
+                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2563eb]">
                         <div class="flex justify-between text-[11px] text-slate-500 mt-1">
                             <span>1 call/wk</span>
                             <span>10 calls/wk</span>
@@ -406,16 +406,17 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 bg-[#111827] p-6 sm:p-8 rounded-2xl border border-slate-800 text-center space-y-6 text-white shadow-xl">
+                <!-- DARK SLATE FEATURE CONTAINER -->
+                <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 text-white shadow-xl">
                     <div>
                         <p class="text-xs uppercase tracking-wider font-semibold text-slate-300 mb-1">Estimated Monthly Lost Revenue</p>
-                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-red-500">$3,000</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-red-400">$3,000</p>
                         <p class="text-[11px] text-slate-400 mt-1">Going directly to competitors every month</p>
                     </div>
                     
-                    <div class="pt-4 border-t border-slate-800">
+                    <div class="pt-4 border-t border-slate-700">
                         <p class="text-xs uppercase tracking-wider font-semibold text-slate-300 mb-1">TriDash AI Subscription Cost</p>
-                        <p class="text-3xl font-extrabold text-[#0066FF]">$29 <span class="text-xs text-slate-400 font-normal">/ month</span></p>
+                        <p class="text-3xl font-extrabold text-[#60a5fa]">$29 <span class="text-xs text-slate-400 font-normal">/ month</span></p>
                     </div>
                 </div>
             </div>
@@ -425,52 +426,52 @@
         <section id="pricing" class="max-w-5xl mx-auto px-4 py-20 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F172A] mb-3">Simple Pilot Pricing</h2>
-                <p class="text-[#0F172A]/80 text-sm sm:text-base">Try TriDash AI risk-free for 30 days. No long-term contracts, cancel anytime.</p>
+                <p class="text-[#475569] text-sm sm:text-base">Try TriDash AI risk-free for 30 days. No long-term contracts, cancel anytime.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="light-card-3d p-8 rounded-3xl flex flex-col justify-between">
+                <div class="podium-card-3d p-8 rounded-3xl flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-xl font-bold text-[#0F172A]">Standard Pilot</h3>
-                            <span class="text-xs bg-slate-200 text-[#0F172A] font-semibold px-2.5 py-1 rounded-full">Popular</span>
+                            <span class="text-xs bg-slate-100 text-[#334155] font-semibold px-2.5 py-1 rounded-full">Popular</span>
                         </div>
                         <div class="mb-6">
                             <span class="text-4xl font-extrabold text-[#0F172A]">$15</span>
                             <span class="text-slate-500 text-sm"> / first 30 days</span>
                             <p class="text-[11px] text-slate-500 mt-1">Renews at $29/mo after pilot ends</p>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-[#0F172A]/80 mb-8">
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Up to 250 automated SMS responses/mo</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Instant Missed-Call Auto-Responder</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Basic Lead Capture & Notifications</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Google Review Auto-pilot</li>
+                        <ul class="space-y-3 text-xs sm:text-sm text-[#334155] mb-8">
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Up to 250 automated SMS responses/mo</li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Instant Missed-Call Auto-Responder</li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Basic Lead Capture & Notifications</li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Google Review Auto-pilot</li>
                         </ul>
                     </div>
-                    <a href="signup.html?plan=standard" class="w-full py-3.5 bg-[#111827] hover:bg-slate-800 text-white text-center font-bold rounded-xl transition block shadow-md">
+                    <a href="signup.html?plan=standard" class="w-full py-3.5 bg-[#0F172A] hover:bg-slate-800 text-white text-center font-bold rounded-xl transition block shadow-md">
                         Start Standard Pilot
                     </a>
                 </div>
 
-                <div class="charcoal-card-3d p-8 rounded-3xl border border-[#0066FF]/40 shadow-2xl relative flex flex-col justify-between text-white">
-                    <span class="absolute -top-3 right-6 btn-electric-blue text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-lg">Recommended</span>
+                <div class="podium-dark-card p-8 rounded-3xl border border-indigo-500/40 shadow-2xl relative flex flex-col justify-between text-white">
+                    <span class="absolute -top-3 right-6 btn-podium-primary text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-lg">Recommended</span>
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-xl font-bold text-white">Premium Pilot</h3>
                         </div>
                         <div class="mb-6">
-                            <span class="text-4xl font-extrabold text-[#0066FF]">$20</span>
+                            <span class="text-4xl font-extrabold text-[#60a5fa]">$20</span>
                             <span class="text-slate-300 text-sm"> / first 30 days</span>
                             <p class="text-[11px] text-slate-400 mt-1">Renews at $39/mo after pilot ends</p>
                         </div>
                         <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8">
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Up to 500 automated SMS responses/mo</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Priority Auto-Responder & Escalations</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Advanced Custom AI Voice & Text Prompts</li>
-                            <li class="flex items-center gap-2"><span class="text-[#0066FF] font-bold">✓</span> Full Google Review Engine & Analytics</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Up to 500 automated SMS responses/mo</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Priority Auto-Responder & Escalations</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Advanced Custom AI Voice & Text Prompts</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Full Google Review Engine & Analytics</li>
                         </ul>
                     </div>
-                    <a href="signup.html?plan=premium" class="w-full py-3.5 btn-electric-blue text-center font-bold rounded-xl transition block shadow-lg">
+                    <a href="signup.html?plan=premium" class="w-full py-3.5 btn-podium-primary text-center font-bold rounded-xl transition block shadow-lg">
                         Start Premium Pilot
                     </a>
                 </div>
@@ -481,27 +482,27 @@
         <section id="faq" class="max-w-4xl mx-auto px-4 py-16 relative z-10">
             <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] text-center mb-10">Frequently Asked Questions</h2>
             <div class="space-y-6">
-                <div class="light-card-3d p-6 rounded-2xl">
+                <div class="podium-card-3d p-6 rounded-2xl">
                     <h3 class="text-[#0F172A] font-bold text-base mb-2">How hard is it to set up?</h3>
-                    <p class="text-xs sm:text-sm text-[#0F172A]/80">Setup takes under 10 minutes. You simply forward missed calls to your dedicated TriDash phone number, and our system takes over from there.</p>
+                    <p class="text-xs sm:text-sm text-[#475569]">Setup takes under 10 minutes. You simply forward missed calls to your dedicated TriDash phone number, and our system takes over from there.</p>
                 </div>
-                <div class="light-card-3d p-6 rounded-2xl">
+                <div class="podium-card-3d p-6 rounded-2xl">
                     <h3 class="text-[#0F172A] font-bold text-base mb-2">Can I keep my existing phone number?</h3>
-                    <p class="text-xs sm:text-sm text-[#0F172A]/80">Yes! You don't need to change your business number. You simply set up conditional call forwarding (when unanswered or busy) to your TriDash routing number.</p>
+                    <p class="text-xs sm:text-sm text-[#475569]">Yes! You don't need to change your business number. You simply set up conditional call forwarding (when unanswered or busy) to your TriDash routing number.</p>
                 </div>
-                <div class="light-card-3d p-6 rounded-2xl">
+                <div class="podium-card-3d p-6 rounded-2xl">
                     <h3 class="text-[#0F172A] font-bold text-base mb-2">Am I locked into a long contract?</h3>
-                    <p class="text-xs sm:text-sm text-[#0F172A]/80">No. All pilots and regular subscriptions operate on a month-to-month basis. You can cancel with a single click at any time.</p>
+                    <p class="text-xs sm:text-sm text-[#475569]">No. All pilots and regular subscriptions operate on a month-to-month basis. You can cancel with a single click at any time.</p>
                 </div>
             </div>
         </section>
 
         <!-- BOTTOM CTA -->
         <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
-            <div class="charcoal-card-3d border border-slate-700 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
+            <div class="podium-dark-card border border-slate-700 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
                 <h2 class="text-3xl sm:text-4xl font-extrabold">Ready to Stop Losing Missed Call Revenue?</h2>
                 <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">Lock in your 30-day pilot today and let TriDash AI handle your calls while you handle the work.</p>
-                <a href="signup.html" class="inline-block px-8 py-4 btn-electric-blue font-bold rounded-xl transition shadow-xl hover:scale-105">
+                <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105">
                     Claim Your Pilot Now →
                 </a>
             </div>
@@ -510,7 +511,7 @@
 
     <!-- FLOATING CHATBOT WIDGET -->
     <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
-        <button id="chat-toggle-btn" class="btn-electric-blue p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105">
+        <button id="chat-toggle-btn" class="btn-podium-primary p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105">
             <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
@@ -519,11 +520,11 @@
             </svg>
         </button>
 
-        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-[#111827] border border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px] text-white">
-            <div class="bg-slate-900 p-4 border-b border-slate-800 flex items-center justify-between">
+        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px] text-[#0F172A]">
+            <div class="bg-[#0F172A] p-4 border-b border-slate-800 flex items-center justify-between text-white">
                 <div class="flex items-center gap-3">
                     <div class="relative">
-                        <div class="w-8 h-8 rounded-full bg-[#0066FF] flex items-center justify-center text-white font-bold text-xs">AI</div>
+                        <div class="w-8 h-8 rounded-full bg-[#2563eb] flex items-center justify-center text-white font-bold text-xs">AI</div>
                         <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
                     </div>
                     <div>
@@ -534,20 +535,20 @@
             </div>
 
             <div id="chat-messages" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs max-h-[350px]">
-                <div class="bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-700">
+                <div class="bg-slate-100 text-[#334155] p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-200">
                     Hi there! 👋 Welcome to TriDash AI. Have any questions about our missed-call recovery pilot or setup?
                 </div>
             </div>
 
-            <form id="chat-form" class="p-3 border-t border-slate-800 bg-slate-950/50 flex gap-2">
-                <input id="chat-input" type="text" placeholder="Type a question..." class="flex-1 bg-slate-900 text-white text-xs px-3 py-2 rounded-xl border border-slate-800 focus:outline-none focus:border-[#0066FF]">
-                <button type="submit" class="btn-electric-blue px-3 py-2 rounded-xl text-xs font-bold transition">Send</button>
+            <form id="chat-form" class="p-3 border-t border-slate-200 bg-slate-50 flex gap-2">
+                <input id="chat-input" type="text" placeholder="Type a question..." class="flex-1 bg-white text-[#0F172A] text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#2563eb]">
+                <button type="submit" class="btn-podium-primary px-3 py-2 rounded-xl text-xs font-bold transition">Send</button>
             </form>
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-300 bg-[#111827] py-8 text-center text-xs text-slate-400 mt-10 relative z-10">
+    <footer class="border-t border-slate-200 bg-[#0F172A] py-8 text-center text-xs text-slate-400 mt-10 relative z-10">
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
@@ -606,7 +607,7 @@
             if(!query) return;
 
             const userMsg = document.createElement('div');
-            userMsg.className = 'bg-[#0066FF] text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs';
+            userMsg.className = 'bg-[#2563eb] text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs';
             userMsg.textContent = query;
             chatMessages.appendChild(userMsg);
             chatInput.value = '';
@@ -614,7 +615,7 @@
 
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
-                aiMsg.className = 'bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-700 text-xs';
+                aiMsg.className = 'bg-slate-100 text-[#334155] p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-200 text-xs';
                 
                 const lower = query.toLowerCase();
                 if(lower.includes('price') || lower.includes('cost') || lower.includes('pilot')) {
