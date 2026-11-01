@@ -102,7 +102,7 @@
 
         .podium-badge {
             background: rgba(217, 119, 6, 0.2);
-            border: 1px solid rgba(217, 119, 6, 0.4);
+            border: 1px solid rgba(245, 158, 11, 0.4);
             color: #fcd34d;
         }
 
@@ -117,42 +117,42 @@
             transform: translateY(-2px);
         }
 
-        /* Optimized Mobile Floating Chat Widget */
+        /* Strictly Floating Mobile & Desktop Chat Widget (Prominently lifted up & positioned over viewport) */
         #sarah-widget-container {
             position: fixed !important;
-            bottom: 28px !important;
-            right: 16px !important;
-            z-index: 99999 !important;
+            bottom: 32px !important;
+            right: 20px !important;
+            z-index: 999999 !important;
         }
         #sarah-chat-btn {
             background: #d97706;
             color: #ffffff;
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid rgba(251, 191, 36, 0.8);
+            border: 2px solid rgba(251, 191, 36, 0.9);
         }
         #sarah-chat-btn:hover {
-            transform: scale(1.08);
+            transform: scale(1.1);
             background: #b45309;
         }
         #sarah-chat-window {
             position: absolute;
-            bottom: 68px;
+            bottom: 75px;
             right: 0;
             width: calc(100vw - 32px);
             max-width: 320px;
             background: rgba(35, 25, 20, 0.98);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(245, 158, 11, 0.4);
+            border: 1px solid rgba(245, 158, 11, 0.5);
             border-radius: 1.25rem;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
             overflow: hidden;
             display: none;
             flex-direction: column;
