@@ -3,533 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriDash AI - AI Missed Call Recovery</title>
+    <title>TriDash AI - AI Missed Call Recovery & Auto-Reviews for Trades</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --browser-bg: #1e2229;
-            --card-bg: rgba(30, 34, 43, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-blue: #0ea5e9;
-            --accent-blue-hover: #0284c7;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-        }
-
-        /* Reset all margins and paddings to eliminate borders/gaps */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            background-color: var(--browser-bg);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-        }
-
+        /* Translucent Frosted Gray Theme with Moving Slides Accent */
         body {
-            display: flex;
-            flex-direction: column;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%);
+            color: #f8fafc;
         }
 
-        /* Top Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 24px;
-            background-color: var(--browser-bg);
-            border-bottom: 1px solid var(--border-color);
-            width: 100%;
+        /* Ambient Light Glows */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%);
+            filter: blur(140px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
+        .ambient-glow-2 {
+            position: absolute;
+            top: 35%;
+            right: -50px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(99, 102, 241, 0.04) 60%, transparent 80%);
+            filter: blur(140px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .logo span {
-            color: var(--accent-blue);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .btn-trial {
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-trial:hover {
-            background-color: var(--accent-blue-hover);
-        }
-
-        .login-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.875rem;
-        }
-
-        /* Main Container */
-        main {
-            flex: 1;
-            padding: 40px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            background-color: var(--browser-bg);
-        }
-
-        /* Tradesmen Feature Card Block */
-        .trade-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 32px;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        /* On mobile/smaller screens: Text stacks on top, Image sits directly underneath */
-        @media (max-width: 900px) {
-            .trade-card {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .trade-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-
-        .trade-content h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .trade-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        /* Automated Chat Bubble */
-        .chat-bubble {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .sarah-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--accent-blue);
-        }
-
-        .chat-body {
-            font-size: 0.95rem;
-            line-height: 1.4;
-            color: #f1f5f9;
-        }
-
-        /* Image Box */
-        .trade-media {
-            border-radius: 12px;
+        /* Translucent Frosted Glass Card Design */
+        .podium-card-3d {
+            background: rgba(75, 85, 99, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(156, 163, 175, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(255, 255, 255, 0.1) inset;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            background: #0f172a;
-            aspect-ratio: 16 / 10;
         }
 
-        .trade-media img {
+        .podium-card-3d:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Seamless Borderless Image Treatment */
+        .blend-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: rgba(55, 65, 81, 0.5);
+        }
+
+        .blend-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            filter: grayscale(15%) contrast(105%) brightness(95%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        footer {
-            text-align: center;
-            padding: 24px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            background-color: var(--browser-bg);
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div style="display: flex; align-items: center; gap: 20px;">
-            <div class="logo">TriDash<span>AI</span>.com</div>
-            <button style="background: none; border: none; color: white; cursor: pointer;">&#9776; Menu</button>
-        </div>
-        <div class="nav-right">
-            <button class="btn-trial">Start your 7-day trial</button>
-            <a href="#" class="login-link">Log In</a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Plumber Section -->
-        <div class="trade-card">
-            <div class="trade-content">
-                <span class="trade-badge">Emergency Plumbing</span>
-                <h2>Under a Sink? Sarah Qualifies Burst Pipes Instantly</h2>
-                <p>If your hands are under a sink or fitting pipes, Sarah handles the initial enquiry, qualifies emergency leaks, and gets customer details sent directly to your phone.</p>
-                
-                <div class="chat-bubble">
-                    <div class="chat-header">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="sarah-avatar">
-                        <span>Sarah's Automated Reply</span>
-                    </div>
-                    <div class="chat-body">
-                        "Hi there! Saw we missed our call. Kelvin is working on a pipe installation under a sink. Do you have an active leak, or are you looking for a quote?"
-                    </div>
-                </div>
-            </div>
-            <div class="trade-media">
-                <img src="https://images.unsplash.com/photo-1542013936693-89423b547376?w=800&auto=format&fit=crop&q=80" alt="Plumber under sink">
-            </div>
-        </div>
-
-        <!-- Roofer / Contractor Section -->
-        <div class="trade-card">
-            <div class="trade-content">
-                <span class="trade-badge">Roofing & Building Contractors</span>
-                <h2>Keep Project Leads Warm During Site & Roof Work</h2>
-                <p>Up on a roof, operating power tools, or managing site deliveries makes taking calls impossible. Sarah collects project scopes and timeline expectations automatically.</p>
-                
-                <div class="chat-bubble">
-                    <div class="chat-header">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="sarah-avatar">
-                        <span>Sarah's Automated Reply</span>
-                    </div>
-                    <div class="chat-body">
-                        "Hello! Thanks for reaching out. Kelvin is on-site with power equipment running. What kind of roofing or building project are you planning?"
-                    </div>
-                </div>
-            </div>
-            <div class="trade-media">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80" alt="Roofer and building contractor on site">
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        &copy; TriDash AI. All rights reserved.
-    </footer>
-
-</body>
-</html>
-Kelvin
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriDash AI - AI Missed Call Recovery</title>
-    <style>
-        :root {
-            --browser-bg: #1e2229;
-            --card-bg: rgba(30, 34, 43, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-blue: #0ea5e9;
-            --accent-blue-hover: #0284c7;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
+        .podium-card-3d:hover .blend-image-container img {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            transform: scale(1.03);
         }
 
-        /* Reset all margins and paddings to eliminate borders/gaps */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            background-color: var(--browser-bg);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Top Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 24px;
-            background-color: var(--browser-bg);
-            border-bottom: 1px solid var(--border-color);
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: var(--accent-blue);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .btn-trial {
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-trial:hover {
-            background-color: var(--accent-blue-hover);
-        }
-
-        .login-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.875rem;
-        }
-
-        /* Main Container */
-        main {
-            flex: 1;
-            padding: 40px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            background-color: var(--browser-bg);
-        }
-
-        /* Tradesmen Feature Card Block */
-        .trade-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 32px;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        /* On mobile/smaller screens: Text stacks on top, Image sits directly underneath */
-        @media (max-width: 900px) {
-            .trade-card {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .trade-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-
-        .trade-content h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .trade-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        /* Automated Chat Bubble */
-        .chat-bubble {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .sarah-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--accent-blue);
-        }
-
-        .chat-body {
-            font-size: 0.95rem;
-            line-height: 1.4;
-            color: #f1f5f9;
-        }
-
-        /* Image Box */
-        .trade-media {
-            border-radius: 12px;
+        /* Highlight Card Styling */
+        .podium-dark-card {
+            background: rgba(55, 65, 81, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            background: #0f172a;
-            aspect-ratio: 16 / 10;
         }
 
-        .trade-media img {
+        .podium-dark-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.6);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .podium-badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+        }
+
+        .btn-podium-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .btn-podium-primary:hover {
+            background-color: #1d4ed8;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Moving Slides Animation */
+        @keyframes slideScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-
-        footer {
-            text-align: center;
-            padding: 24px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            background-color: var(--browser-bg);
+        .marquee-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: slideScroll 35s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
 
-    <header>
-        <div style="display: flex; align-items: center; gap: 20px;">
-            <div class="logo">TriDash<span>AI</span>.com</div>
-            <button style="background: none; border: none; color: white; cursor: pointer;">&#9776; Menu</button>
+    <!-- AMBIENT GLOWS -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-[#374151]/75 sticky top-0 z-50 backdrop-blur-md border-b border-gray-600/40 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-start justify-between">
+            
+            <div class="flex flex-col items-start">
+                <a href="index.html" class="text-xl font-extrabold text-white tracking-tight">
+                    TriDash<span class="text-[#3b82f6] font-semibold">AI.com</span>
+                </a>
+
+                <button id="menu-btn" aria-label="Toggle Navigation" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-slate-200 hover:text-white px-3 py-1.5 rounded-lg bg-gray-700/60 border border-gray-500/50 transition focus:outline-none focus:ring-2 focus:ring-[#3b82f6] shadow-sm">
+                    <svg class="w-4 h-4 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span>Menu</span>
+                </button>
+            </div>
+
+            <div class="flex flex-col items-end gap-2 pt-1">
+                <a href="signup.html" class="btn-podium-primary text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition shadow-md text-center">
+                    Get Started Now
+                </a>
+                <a href="login.html" class="text-xs font-semibold text-slate-300 hover:text-white transition">
+                    Log In
+                </a>
+            </div>
+
         </div>
-        <div class="nav-right">
-            <button class="btn-trial">Start your 7-day trial</button>
-            <a href="#" class="login-link">Log In</a>
+
+        <div id="mobile-menu" class="hidden border-t border-gray-600/40 bg-[#374151]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
+            <a href="#how-it-works" class="block text-sm font-semibold text-slate-200 hover:text-[#3b82f6] transition">How It Works</a>
+            <a href="#roi-calculator" class="block text-sm font-semibold text-slate-200 hover:text-[#3b82f6] transition">ROI Calculator</a>
+            <a href="#pricing" class="block text-sm font-semibold text-slate-200 hover:text-[#3b82f6] transition">Pricing</a>
         </div>
     </header>
 
-    <main>
-        <!-- Plumber Section -->
-        <div class="trade-card">
-            <div class="trade-content">
-                <span class="trade-badge">Emergency Plumbing</span>
-                <h2>Under a Sink? Sarah Qualifies Burst Pipes Instantly</h2>
-                <p>If your hands are under a sink or fitting pipes, Sarah handles the initial enquiry, qualifies emergency leaks, and gets customer details sent directly to your phone.</p>
+    <!-- HERO SECTION -->
+    <main class="flex-1 relative z-10">
+        <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 pr-0 lg:pr-4">
+                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
+                    🤖 Meet Sarah — Your 24/7 Virtual Crew Member
+                </span>
                 
-                <div class="chat-bubble">
-                    <div class="chat-header">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="sarah-avatar">
-                        <span>Sarah's Automated Reply</span>
-                    </div>
-                    <div class="chat-body">
-                        "Hi there! Saw we missed our call. Kelvin is working on a pipe installation under a sink. Do you have an active leak, or are you looking for a quote?"
-                    </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white mb-6">
+                    No more missed calls.<br>
+                    <span class="text-[#3b82f6]">No more lost jobs.</span>
+                </h1>
+                
+                <p class="text-slate-200 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-medium">
+                    Sarah instantly engages missed callers via SMS, answers basic job enquiries, captures lead details, and automatically collects 5-star Google reviews from satisfied customers.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
+                        Get Started Today →
+                    </a>
+                    <a href="#how-it-works" class="px-8 py-4 bg-gray-700/60 hover:bg-gray-600/80 border border-gray-500/60 text-white font-semibold rounded-xl transition text-center shadow-sm backdrop-blur-sm">
+                        See How It Works
+                    </a>
                 </div>
             </div>
-            <div class="trade-media">
-                <img src="https://images.unsplash.com/photo-1542013936693-89423b547376?w=800&auto=format&fit=crop&q=80" alt="Plumber under sink">
-            </div>
-        </div>
 
-        <!-- Roofer / Contractor Section -->
-        <div class="trade-card">
-            <div class="trade-content">
-                <span class="trade-badge">Roofing & Building Contractors</span>
-                <h2>Keep Project Leads Warm During Site & Roof Work</h2>
-                <p>Up on a roof, operating power tools, or managing site deliveries makes taking calls impossible. Sarah collects project scopes and timeline expectations automatically.</p>
-                
-                <div class="chat-bubble">
-                    <div class="chat-header">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="sarah-avatar">
-                        <span>Sarah's Automated Reply</span>
+            <!-- SARAH'S IMAGE CONTAINER -->
+            <div class="lg:col-span-5 rounded-3xl podium-card-3d p-2 sm:p-3">
+                <div class="blend-image-container h-[380px] sm:h-[420px]">
+                    <img 
+                        src="sarah%201.jpg" 
+                        alt="Sarah - Your Virtual Crew Member"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- MOVING SLIDES / REVIEWS TICKER -->
+        <section class="py-6 bg-gray-800/40 backdrop-blur-md border-y border-gray-600/30 overflow-hidden relative z-10">
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Sarah caught a $3,500 roofing inquiry while I was up on a pitch." — Apex Roofing
                     </div>
-                    <div class="chat-body">
-                        "Hello! Thanks for reaching out. Kelvin is on-site with power equipment running. What kind of roofing or building project are you planning?"
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Auto SMS qualified a burst pipe while my hands were tied under a sink." — Metro Plumbing
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Collected 14 five-star Google reviews in our first 30 days." — Vanguard Builders
+                    </div>
+                    <!-- Duplicate for infinite loop -->
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Sarah caught a $3,500 roofing inquiry while I was up on a pitch." — Apex Roofing
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Auto SMS qualified a burst pipe while my hands were tied under a sink." — Metro Plumbing
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-3">
+                        <span class="text-amber-400">★★★★★</span> "Collected 14 five-star Google reviews in our first 30 days." — Vanguard Builders
                     </div>
                 </div>
             </div>
-            <div class="trade-media">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80" alt="Roofer and building contractor on site">
+        </section>
+
+        <!-- STATS BAR -->
+        <section class="border-b border-gray-600/30 bg-gray-800/20 backdrop-blur-md py-10 relative z-10">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#60a5fa]">85%</p>
+                    <p class="text-xs text-slate-200 mt-1 font-semibold">Of callers go to a competitor if unanswered</p>
+                </div>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#60a5fa]">5 secs</p>
+                    <p class="text-xs text-slate-200 mt-1 font-semibold">Average automated SMS response time</p>
+                </div>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#60a5fa]">3x</p>
+                    <p class="text-xs text-slate-200 mt-1 font-semibold">More 5-star Google reviews generated</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- TRADE PROFESSIONS & BENEFITS -->
+        <section id="how-it-works" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">How <span class="text-[#3b82f6]">Sarah</span> Works for Your Trade</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Tailored automated SMS workflows for roofers, plumbers, and general builders.</p>
+            </div>
+
+            <!-- ROOFERS (1792284293487.jpg) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1792284293487.jpg" 
+                        alt="Roofing Specialist at Work"
+                    />
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#93c5fd] bg-gray-700/60 px-2.5 py-1 rounded-md border border-gray-500/50">Roofing Specialists</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">On a Roof? <span class="text-[#60a5fa]">Sarah Texts Back Instantly.</span></h3>
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed mb-4">
+                        When you're up on a roof, you can't answer calls safely. Sarah catches missed calls immediately and texts the client back so they don't ring the next roofer on Google.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-gray-800/50 border border-gray-600/40 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#60a5fa] block mb-1">💬 Sarah's Automated Reply:</span>
+                        <p class="text-slate-200">"Hi! I'm Sarah, assistant to Kelvin. He's currently up on a roof job. Is this for an urgent roof leak repair or a future estimate?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLUMBERS (1792284328037.jpg) - CORRESPONDS TO MAN ON-SITE WITH TOOLS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="order-2 md:order-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#93c5fd] bg-gray-700/60 px-2.5 py-1 rounded-md border border-gray-500/50">Plumbing & Heating</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3"><span class="text-[#60a5fa]">Under a Sink?</span> Sarah Qualifies Burst Pipes Instantly</h3>
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed mb-4">
+                        If your hands are under a sink or fitting pipes, Sarah handles the initial enquiry, qualifies emergency leaks, and gets customer details sent directly to your phone.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-gray-800/50 border border-gray-600/40 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#60a5fa] block mb-1">💬 Sarah's Automated Reply:</span>
+                        <p class="text-slate-200">"Hi there! Saw we missed your call. Kelvin is working on a pipe installation. Do you have an active leak, or are you looking for a bathroom quote?"</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1792284328037.jpg" 
+                        alt="Plumbing Specialist"
+                    />
+                </div>
+            </div>
+
+            <!-- BUILDERS / CONTRACTORS (1793498924399.jpg) - CORRESPONDS TO MAN UNDER THE SINK -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1793498924399.jpg" 
+                        alt="Builder Working Under Sink"
+                    />
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#93c5fd] bg-gray-700/60 px-2.5 py-1 rounded-md border border-gray-500/50">Building Contractors</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Keep Project Leads Warm <span class="text-[#60a5fa]">During Site Work</span></h3>
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed mb-4">
+                        Running power tools or managing site deliveries makes taking phone calls impossible. Sarah collects project scopes and timeline expectations automatically.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-gray-800/50 border border-gray-600/40 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#60a5fa] block mb-1">💬 Sarah's Automated Reply:</span>
+                        <p class="text-slate-200">"Hello! Thanks for reaching out. Kelvin is on-site with power equipment running. What kind of building project or extension are you planning?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDITIONAL TRADESMAN CARD (1793498988502.jpg) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
+                <div class="order-2 md:order-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#93c5fd] bg-gray-700/60 px-2.5 py-1 rounded-md border border-gray-500/50">Field Service & Maintenance</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Up a Ladder? <span class="text-[#60a5fa]">Turn Missed Calls Into Confirmed Jobs</span></h3>
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed mb-4">
+                        No matter your specialty, Sarah ensures no prospective client slips through the cracks while you're busy delivering hands-on work.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-gray-800/50 border border-gray-600/40 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#60a5fa] block mb-1">💬 Sarah's Automated Reply:</span>
+                        <p class="text-slate-200">"Hi! Kelvin is out on-site right now. Drop us your location and project notes, and we'll get right back to you!"</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1793498988502.jpg" 
+                        alt="Field Service Professional"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR -->
+        <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-16 relative z-10">
+            <div class="text-center mb-10">
+                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
+                    Interactive ROI Calculator
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Calculate Your <span class="text-[#3b82f6]">Recovered Revenue</span></h2>
+                <p class="text-slate-300 text-sm sm:text-base">See how much lost revenue Sarah recovers for your business every month.</p>
+            </div>
+
+            <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="job-value" class="text-sm font-semibold text-slate-100">Average Value per Client / Job</label>
+                            <span id="job-value-display" class="text-lg font-bold text-[#60a5fa]">$150</span>
+                        </div>
+                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#3b82f6]">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="missed-calls" class="text-sm font-semibold text-slate-100">Missed Calls per Week</label>
+                            <span id="missed-calls-display" class="text-lg font-bold text-[#60a5fa]">5 calls</span>
+                        </div>
+                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#3b82f6]">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 text-white shadow-xl">
+                    <div>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-300 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-red-400">$3,000</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-600/40">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-300 mb-1">Sarah Assistant Subscription</p>
+                        <p class="text-3xl font-extrabold text-[#60a5fa]">$49 <span class="text-xs text-slate-300 font-normal">/ month</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="max-w-4xl mx-auto px-4 py-20 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Simple, Transparent Pricing</h2>
+                <p class="text-slate-300 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <div class="podium-dark-card p-8 sm:p-10 rounded-3xl border border-blue-400/40 shadow-2xl relative flex flex-col justify-between text-white">
+                    <span class="absolute -top-3 right-6 btn-podium-primary text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-lg">One Card Plan</span>
+                    <div>
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Sarah Professional</h3>
+                            <p class="text-slate-300 text-xs mt-1">Complete automated missed call recovery & review engine</p>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-600/40">
+                            <span class="text-5xl font-extrabold text-[#60a5fa]">$49</span>
+                            <span class="text-slate-300 text-sm"> / month</span>
+                        </div>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-100 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> <strong>300 Voice Minutes</strong> Included</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> <strong>300 SMS Text-Backs.</strong></li>
+                        </ul>
+                    </div>
+                    <a href="signup.html" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-lg block text-sm">
+                        Get Started With Sarah →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA -->
+        <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
+            <div class="podium-dark-card border border-gray-600/40 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
+                <h2 class="text-3xl sm:text-4xl font-extrabold">Ready to Stop Losing Missed Call Revenue?</h2>
+                <p class="text-slate-200 text-sm sm:text-base max-w-xl mx-auto">Put Sarah to work for your trade business today and never miss another potential client.</p>
+                <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105 text-base">
+                    Get Started With Sarah →
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        &copy; TriDash AI. All rights reserved.
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-600/40 bg-[#374151]/90 py-8 text-center text-xs text-slate-300 mt-10 relative z-10">
+        <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
+    <!-- SCRIPTS -->
+    <script>
+        const jobValueInput = document.getElementById('job-value');
+        const missedCallsInput = document.getElementById('missed-calls');
+        const jobValueDisplay = document.getElementById('job-value-display');
+        const missedCallsDisplay = document.getElementById('missed-calls-display');
+        const lostRevenueDisplay = document.getElementById('lost-revenue');
+
+        function updateCalculator() {
+            const jobValue = parseInt(jobValueInput.value, 10);
+            const missedCalls = parseInt(missedCallsInput.value, 10);
+            const monthlyLost = missedCalls * 4 * jobValue;
+
+            jobValueDisplay.textContent = `$${jobValue.toLocaleString()}`;
+            missedCallsDisplay.textContent = `${missedCalls} ${missedCalls === 1 ? 'call' : 'calls'}`;
+            lostRevenueDisplay.textContent = `$${monthlyLost.toLocaleString()}`;
+        }
+
+        jobValueInput.addEventListener('input', updateCalculator);
+        missedCallsInput.addEventListener('input', updateCalculator);
+        updateCalculator();
+    </script>
 </body>
 </html>
