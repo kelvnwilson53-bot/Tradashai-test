@@ -8,10 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Autumn Leaves Theme (Golden Bronze, Deep Amber, and Warm Copper tones) */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: linear-gradient(135deg, #1c1512 0%, #291c16 50%, #17110e 100%);
             color: #fef3c7;
-            scroll-behavior: smooth;
         }
 
         /* Ambient Autumn Glow Orbs */
@@ -146,9 +149,10 @@
 
     <!-- HEADER / NAVIGATION -->
     <header class="bg-[#291c16]/80 sticky top-0 z-50 backdrop-blur-md border-b border-amber-900/30 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-start justify-between">
             
-            <div class="flex items-center gap-4">
+            <!-- Left Side: Company Name stacked vertically above the Hamburger Menu Button -->
+            <div class="flex flex-col items-start gap-2.5">
                 <a href="index.html" class="text-xl font-extrabold text-white tracking-tight">
                     TriDash<span class="text-[#f59e0b] font-semibold">AI.com</span>
                 </a>
@@ -161,22 +165,23 @@
                 </button>
             </div>
 
-            <div class="flex items-center gap-3">
+            <!-- Right Side: CTA and Login -->
+            <div class="flex flex-col items-end gap-2 pt-1">
                 <a href="signup.html" class="btn-podium-primary text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition shadow-md text-center">
                     Start your free 7-day trial.
                 </a>
-                <a href="login.html" class="text-xs font-semibold text-amber-200/80 hover:text-white transition hidden sm:inline">
+                <a href="login.html" class="text-xs font-semibold text-amber-200/80 hover:text-white transition">
                     Log In
                 </a>
             </div>
 
         </div>
 
+        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden border-t border-amber-900/30 bg-[#291c16]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
             <a href="#how-it-works" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">How It Works</a>
             <a href="#roi-calculator" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">ROI Calculator</a>
             <a href="#pricing" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">Pricing</a>
-            <a href="login.html" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition sm:hidden">Log In</a>
         </div>
     </header>
 
@@ -476,7 +481,7 @@
             const monthlyLost = missedCalls * 4 * jobValue;
 
             jobValueDisplay.textContent = `$${jobValue.toLocaleString()}`;
-            missedCallsDisplay.textContent = `${missedCalls} ${missedCalls === 1 ? 'call' : 'calls'}`;
+            missedCallsDisplay.textContent = `${missedCalls} `${missedCalls === 1 ? 'call' : 'calls'}`;
             lostRevenueDisplay.textContent = `$${monthlyLost.toLocaleString()}`;
         }
 
