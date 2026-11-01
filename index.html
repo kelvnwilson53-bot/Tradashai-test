@@ -7,9 +7,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Premium Executive Dark Gray Background */
+        /* Premium Executive Dark Slate / Gray Background (Podium Executive Vibe) */
         body {
-            background: linear-gradient(135deg, #090d16 0%, #111827 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #182232 0%, #111827 50%, #0f172a 100%);
             color: #f8fafc;
         }
 
@@ -20,7 +20,7 @@
             left: -100px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(59, 130, 246, 0.06) 50%, transparent 70%);
             filter: blur(140px);
             pointer-events: none;
             z-index: 0;
@@ -32,19 +32,19 @@
             right: -50px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.05) 60%, transparent 80%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.04) 60%, transparent 80%);
             filter: blur(140px);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Translucent Frosted Dark Slate Card Design */
+        /* Translucent Frosted Dark Gray Card Design (Matches Sarah Card Gray Tone) */
         .podium-card-3d {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(30, 41, 59, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(51, 65, 85, 0.8);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(255, 255, 255, 0.05) inset;
+            border: 1px solid rgba(71, 85, 105, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(255, 255, 255, 0.04) inset;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -53,7 +53,7 @@
         .podium-card-3d:hover {
             transform: translateY(-6px) scale(1.005);
             border-color: #3b82f6;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 25px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(59, 130, 246, 0.2);
         }
 
         /* Seamless Borderless Image Treatment with Subtle Grayscale/Monotone Shift into Full Color on Hover */
@@ -69,7 +69,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            filter: grayscale(30%) contrast(105%) brightness(95%);
+            filter: grayscale(25%) contrast(105%) brightness(95%);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -142,7 +142,7 @@
     <div class="ambient-glow-2"></div>
 
     <!-- HEADER / NAVIGATION -->
-    <header class="bg-[#0f172a]/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-800 shadow-lg">
+    <header class="bg-[#182232]/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-800 shadow-lg">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-start justify-between">
             
             <div class="flex flex-col items-start">
@@ -169,7 +169,7 @@
 
         </div>
 
-        <div id="mobile-menu" class="hidden border-t border-slate-800 bg-[#0f172a]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
+        <div id="mobile-menu" class="hidden border-t border-slate-800 bg-[#182232]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
             <a href="#how-it-works" class="block text-sm font-semibold text-slate-300 hover:text-[#3b82f6] transition">How It Works</a>
             <a href="#live-ticker" class="block text-sm font-semibold text-slate-300 hover:text-[#3b82f6] transition">Live Reviews</a>
             <a href="#roi-calculator" class="block text-sm font-semibold text-slate-300 hover:text-[#3b82f6] transition">ROI Calculator</a>
@@ -218,7 +218,7 @@
         </section>
 
         <!-- STATS BAR -->
-        <section class="border-y border-slate-800 bg-slate-900/60 backdrop-blur-md py-10 relative z-10">
+        <section class="border-y border-slate-800 bg-[#141c2b]/60 backdrop-blur-md py-10 relative z-10">
             <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div class="podium-card-3d p-6 rounded-2xl">
                     <p class="text-3xl font-extrabold text-[#3b82f6]">85%</p>
@@ -251,7 +251,7 @@
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#3382f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Roofing Specialists</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#3b82f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Roofing Specialists</span>
                     <h3 class="text-2xl font-bold text-white mt-2 mb-3">On a Roof? <span class="text-[#3b82f6]">Sarah Texts Back Instantly.</span></h3>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         When you're up on a roof, you can't answer calls safely. Sarah catches missed calls immediately and texts the client back so they don't ring the next roofer on Google.
@@ -266,7 +266,7 @@
             <!-- PLUMBERS (1792284328037.jpg) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#3382f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Plumbing & Heating</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#3b82f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Plumbing & Heating</span>
                     <h3 class="text-2xl font-bold text-white mt-2 mb-3"><span class="text-[#3b82f6]">Under a Sink?</span> Sarah Qualifies Burst Pipes Instantly</h3>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         If your hands are under a sink or fitting pipes, Sarah handles the initial enquiry, qualifies emergency leaks, and gets customer details sent directly to your phone.
@@ -293,7 +293,7 @@
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#3382f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Building Contractors</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#3b82f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Building Contractors</span>
                     <h3 class="text-2xl font-bold text-white mt-2 mb-3">Keep Project Leads Warm <span class="text-[#3b82f6]">During Site Work</span></h3>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         Running power tools or managing site deliveries makes taking phone calls impossible. Sarah collects project scopes and timeline expectations automatically.
@@ -308,7 +308,7 @@
             <!-- ADDITIONAL TRADESMAN CARD (1793498988502.jpg) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#3382f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Field Service & Maintenance</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#3b82f6] bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/60">Field Service & Maintenance</span>
                     <h3 class="text-2xl font-bold text-white mt-2 mb-3">Up a Ladder? <span class="text-[#3b82f6]">Turn Missed Calls Into Confirmed Jobs</span></h3>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         No matter your specialty, Sarah ensures no prospective client slips through the cracks while you're busy delivering hands-on work.
@@ -389,9 +389,10 @@
                             <span class="text-slate-400 text-sm"> / month</span>
                         </div>
                         <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8">
-                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Instant Missed-Call Auto-Responder</li>
-                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> 24/7 SMS Lead Capture & Qualification</li>
-                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Automated Google Review Engine</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> <strong>300 Voice Minutes</strong> Included / Month</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> <strong>300 SMS Text-Backs</strong> & Automated Replies</li>
+                            <li class="ext-xs sm:text-sm flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Instant Missed-Call Auto-Responder</li>
+                            <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Automated 5-Star Google Review Engine</li>
                             <li class="flex items-center gap-2"><span class="text-[#60a5fa] font-bold">✓</span> Real-Time Client Notifications</li>
                         </ul>
                     </div>
@@ -407,15 +408,15 @@
             <div class="podium-dark-card border border-slate-800 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
                 <h2 class="text-3xl sm:text-4xl font-extrabold">Ready to Stop Losing Missed Call Revenue?</h2>
                 <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">Put Sarah to work for your trade business today and never miss another potential client.</p>
-                <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105">
-                    Claim Your 30-Day Pilot Now →
+                <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105 text-base">
+                    Get Started With Sarah →
                 </a>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-800 bg-[#090d16] py-8 text-center text-xs text-slate-500 mt-10 relative z-10">
+    <footer class="border-t border-slate-800 bg-[#182232] py-8 text-center text-xs text-slate-400 mt-10 relative z-10">
         <p>&copy; TriDash AI. All rights reserved.</p>
     </footer>
 
