@@ -3,107 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriDash AI - Checkout & Pilot Signup</title>
+    <title>Start Your 7-Day Free Trial | TriDash AI</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+    <style>
+        /* Diamond White & Navy Blue Theme */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <!-- HEADER -->
-    <header class="border-b border-slate-800 py-4 bg-black">
-        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-white tracking-tight">
-                TriDash<span class="text-blue-500 font-light">AI.com</span>
-            </a>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white transition">← Back to Home</a>
+        body {
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Soft Ambient Glow Orbs */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -120px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(29, 78, 216, 0.02) 50%, transparent 70%);
+            filter: blur(140px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            top: 35%;
+            right: -80px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
+            filter: blur(150px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Diamond White Frosted Glass Cards */
+        .podium-card-3d {
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1e293b;
+        }
+
+        .podium-dark-card {
+            background: #f8fafc;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            box-shadow: 0 20px 45px rgba(30, 41, 59, 0.05);
+            position: relative;
+            overflow: hidden;
+            color: #1e293b;
+        }
+
+        .podium-badge {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #f43f5e;
+        }
+
+        /* Sleek Navy Blue CTA Button */
+        .btn-podium-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .btn-podium-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
+
+    <!-- AMBIENT GLOWS -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            
+            <!-- Left Side: Company Name -->
+            <div class="flex flex-col items-start gap-1">
+                <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
+                    TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
+                </a>
+            </div>
+
+            <!-- Right Side: Hamburger Menu Button -->
+            <div>
+                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
+                    <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span>Menu</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Mobile / Dropdown Menu -->
+        <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
+            <a href="index.html#how-it-works" class="menu-link block text-sm font-semibold text-slate-800 hover:text-[#2563eb] transition">How It Works</a>
+            <a href="index.html#roi-calculator" class="menu-link block text-sm font-semibold text-slate-800 hover:text-[#2563eb] transition">ROI Calculator</a>
+            <a href="index.html#pricing" class="menu-link block text-sm font-semibold text-slate-800 hover:text-[#2563eb] transition">Pricing</a>
+            <a href="login.html" class="menu-link block text-sm font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
         </div>
     </header>
 
-    <!-- MAIN CHECKOUT SECTION -->
-    <main class="max-w-3xl mx-auto px-4 py-12 flex-1 w-full">
-        
-        <div class="text-center mb-10">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-500 tracking-tight mb-2">Claim Your 30-Day Trade Pilot</h1>
-            <p class="text-slate-400 text-base sm:text-lg">Lock in your trial rate. Stop losing leads to voicemail.</p>
-        </div>
-
-        <!-- CHECKOUT CARD -->
-        <div class="bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl space-y-8">
+    <!-- SIGNUP MAIN CONTENT -->
+    <main class="flex-1 relative z-10 py-10 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- PLAN SELECTION -->
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">Choose Your Pilot Package</label>
+            <div class="text-center mb-10">
+                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                    🚀 7-Day Free Trial • Zero Risk • Cancel Anytime
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-3" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
+                    Put Sarah to Work Today
+                </h1>
+                <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto">
+                    Set up your 24/7 AI voice assistant in under 2 minutes. No complex software or setup required.
+                </p>
+            </div>
+
+            <form action="dashboard.html" method="GET" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    
-                    <!-- Standard Option Panel -->
-                    <div class="border border-slate-800 bg-slate-900/60 p-7 rounded-2xl flex flex-col justify-between min-h-[340px]">
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-baseline">
-                                <span class="font-bold text-white text-lg">Standard Pilot</span>
-                                <span class="text-blue-400 font-extrabold text-3xl">$15</span>
+                <!-- LEFT COLUMN: Contractor Details & Setup -->
+                <div class="lg:col-span-7 podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span>1. Your Business Details</span>
+                    </h2>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Full Name / Account Owner</label>
+                            <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Business / Trading Name</label>
+                            <input type="text" required placeholder="e.g. Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                    <option value="roofing">Roofing Specialist</option>
+                                    <option value="plumbing">Plumbing & Heating</option>
+                                    <option value="building">Building / General Contractor</option>
+                                    <option value="electrical">Electrical Services</option>
+                                    <option value="other">Other Trade / Field Service</option>
+                                </select>
                             </div>
-                            <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">For 30 Days Trial</p>
-                            
-                            <div class="space-y-2 text-sm text-slate-300 pt-3 border-t border-slate-800">
-                                <p class="font-semibold text-white">✓ 250 Automated Texts per month</p>
-                                <p class="text-slate-300">✓ Automated Google Review requests sent after every job</p>
-                                <p class="text-slate-300">✓ Automated professional review responses</p>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Mobile Phone Number</label>
+                                <input type="tel" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-800 space-y-4">
-                            <span class="block text-xs text-slate-400">Renews at <strong class="text-white font-bold">$29/mo</strong> after trial</span>
-                            <a href="signup-standard.html" class="w-full py-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold rounded-xl transition shadow-md text-sm block text-center">
-                                Select Standard Pilot ($15) →
-                            </a>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Email Address</label>
+                            <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                         </div>
                     </div>
 
-                    <!-- Premium Option Panel -->
-                    <div class="border border-blue-500/40 bg-slate-900/60 p-7 rounded-2xl flex flex-col justify-between min-h-[340px] relative">
-                        <span class="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Recommended</span>
-                        
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-baseline">
-                                <span class="font-bold text-white text-lg">Premium Pilot</span>
-                                <span class="text-blue-400 font-extrabold text-3xl">$20</span>
-                            </div>
-                            <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">For 30 Days Trial</p>
-                            
-                            <div class="space-y-2 text-sm text-slate-300 pt-3 border-t border-slate-800">
-                                <p class="font-semibold text-white">✓ 500 Automated Texts per month</p>
-                                <p class="text-slate-300">✓ Missed-Call AI Text Assistant trained for your trade</p>
-                                <p class="text-slate-300">✓ Full Google Review Management & Responses</p>
-                            </div>
-                        </div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 pt-2 flex items-center gap-2">
+                        <span>2. Basic Callout Settings</span>
+                    </h2>
 
-                        <div class="mt-6 pt-4 border-t border-slate-800 space-y-4">
-                            <span class="block text-xs text-slate-400">Renews at <strong class="text-white font-bold">$39/mo</strong> after trial</span>
-                            <a href="signup-premium.html" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg text-sm block text-center">
-                                Select Premium Pilot ($20) →
-                            </a>
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Emergency Callout / Deposit Fee ($)</label>
+                            <p class="text-[11px] text-slate-500 mb-2">Sarah will quote this amount and text a payment link for urgent callouts.</p>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-slate-500 font-bold">$</span>
+                                <input type="number" id="callout-fee" value="150" class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
                         </div>
                     </div>
 
                 </div>
-            </div>
 
-            <div class="text-center text-xs text-slate-500 space-y-1 pt-2">
-                <p>🔒 Secure 256-Bit Encrypted Checkout</p>
-                <p>Cancel anytime. Takes effect at the end of your billing cycle.</p>
-            </div>
+                <!-- RIGHT COLUMN: Order Summary & Add-Ons -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="podium-dark-card p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl space-y-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Plan Summary</h2>
+                        
+                        <!-- Base Plan -->
+                        <div class="flex justify-between items-start pb-4 border-b border-slate-200">
+                            <div>
+                                <h3 class="font-bold text-slate-900">Sarah Professional Plan</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">300 mins 24/7 voice + 300 SMS</p>
+                                <p class="text-xs text-[#2563eb] font-semibold mt-1">7 Days Free, then $59/mo</p>
+                            </div>
+                            <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo</span></span>
+                        </div>
+
+                        <!-- Add-On Option: Extra Lines for Vans -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="add-van-lines" class="mt-1 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded cursor-pointer">
+                                <div>
+                                    <label for="add-van-lines" class="font-bold text-slate-900 text-xs sm:text-sm cursor-pointer">Add Extra Van / Crew Lines</label>
+                                    <p class="text-[11px] text-slate-500">Need Sarah to answer dedicated lines for extra vans?</p>
+                                </div>
+                            </div>
+                            
+                            <div id="extra-line-controls" class="hidden pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                                <span class="text-slate-700 font-medium">Extra Lines (+ $20/mo each):</span>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" id="dec-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">-</button>
+                                    <span id="line-count" class="font-bold text-slate-900 w-4 text-center">1</span>
+                                    <button type="button" id="inc-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Due Today -->
+                        <div class="pt-2">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Due Today:</span>
+                                <span class="text-2xl font-extrabold text-[#2563eb]">$0.00</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500">Your 7-day trial starts immediately. You won't be charged until day 8 (Renews at <span id="monthly-total-display">$59.00</span>/mo).</p>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
+                            Activate Your 7-Day Free Trial →
+                        </button>
+
+                        <div class="text-center text-[11px] text-slate-400 space-y-1">
+                            <p>🔒 256-Bit Bank-Grade Encryption</p>
+                            <p>Cancel anytime with 1-click in your contractor dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
 
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p>&copy; TriDash AI. All rights reserved. 
-            <a href="terms.html" class="underline hover:text-slate-400 ml-2">Terms & Conditions</a> | 
-            <a href="privacy.html" class="underline hover:text-slate-400 ml-1">Privacy Policy</a>
-        </p>
+    <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
+            <a href="index.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Back to Home Page</a>
+        </div>
     </footer>
 
+    <!-- SCRIPTS -->
+    <script>
+        // Navigation Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Add-on Van Line Logic
+        const vanCheckbox = document.getElementById('add-van-lines');
+        const extraLineControls = document.getElementById('extra-line-controls');
+        const lineCountSpan = document.getElementById('line-count');
+        const decBtn = document.getElementById('dec-lines');
+        const incBtn = document.getElementById('inc-lines');
+        const monthlyTotalDisplay = document.getElementById('monthly-total-display');
+
+        let extraLines = 1;
+        const basePrice = 59;
+        const linePrice = 20;
+
+        function updateTotal() {
+            let total = basePrice;
+            if (vanCheckbox.checked) {
+                total += (extraLines * linePrice);
+            }
+            monthlyTotalDisplay.textContent = `$${total}.00`;
+        }
+
+        vanCheckbox.addEventListener('change', () => {
+            if (vanCheckbox.checked) {
+                extraLineControls.classList.remove('hidden');
+            } else {
+                extraLineControls.classList.add('hidden');
+            }
+            updateTotal();
+        });
+
+        incBtn.addEventListener('click', () => {
+            if (extraLines < 10) {
+                extraLines++;
+                lineCountSpan.textContent = extraLines;
+                updateTotal();
+            }
+        });
+
+        decBtn.addEventListener('click', () => {
+            if (extraLines > 1) {
+                extraLines--;
+                lineCountSpan.textContent = extraLines;
+                updateTotal();
+            }
+        });
+    </script>
 </body>
 </html>
