@@ -659,7 +659,7 @@
             jobValueDisplay.textContent = `$${jobVal}`;
             missedCallsDisplay.textContent = `${calls} call${calls > 1 ? 's' : ''}`;
 
-            const monthlyLost = jobVal * calls * 4 * 0.5;
+            const monthlyLost = jobVal * calls * 4;
             lostRevenueDisplay.textContent = `$${Math.round(monthlyLost).toLocaleString()}`;
         }
 
