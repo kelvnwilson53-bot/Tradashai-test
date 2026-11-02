@@ -177,6 +177,21 @@
             flex-direction: column;
         }
 
+        /* Floating Back to Top Button */
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 999998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Moving Slides Animation */
         @keyframes slideScroll {
             0% { transform: translateX(0); }
@@ -201,7 +216,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-[#fef08a] selection:text-[#0f172a] flex flex-col min-h-screen justify-between relative overflow-x-hidden">
+<body id="top" class="font-sans antialiased selection:bg-[#fef08a] selection:text-[#0f172a] flex flex-col min-h-screen justify-between relative overflow-x-hidden">
 
     <!-- AMBIENT GLOWS -->
     <div class="ambient-glow-1"></div>
@@ -548,6 +563,11 @@
         </section>
     </main>
 
+    <!-- FLOATING BACK TO TOP BUTTON -->
+    <a href="#top" id="back-to-top-btn" aria-label="Back to Top" class="bg-slate-800/90 hover:bg-slate-700 text-[#fef08a] border border-slate-600 px-3.5 py-2 rounded-full text-xs font-bold shadow-2xl flex items-center gap-1.5 backdrop-blur-md">
+        <span>↑</span> Top
+    </a>
+
     <!-- FIXED FLOATING CHATBOT WIDGET -->
     <div id="sarah-widget-container">
         <div id="sarah-chat-window">
@@ -575,7 +595,10 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/60 bg-[#0b0f17]/90 py-8 text-center text-xs text-slate-400 mt-10 relative z-10">
-        <p>&copy; TriDash AI. All rights reserved. | Contact support: <a href="mailto:support@tridashai.com" class="underline hover:text-white">support@tridashai.com</a></p>
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-white">support@tridashai.com</a></p>
+            <a href="#top" class="text-slate-300 hover:text-[#fef08a] transition font-semibold">Return to Top ↑</a>
+        </div>
     </footer>
 
     <!-- SCRIPTS -->
@@ -607,6 +630,16 @@
 
         closeChat.addEventListener('click', () => {
             chatWindow.style.display = 'none';
+        });
+
+        // Show/Hide Floating "Back to Top" Button on Scroll
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
         });
 
         // ROI Calculator Logic
