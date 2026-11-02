@@ -7,24 +7,24 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Autumn Leaves Theme (Golden Bronze, Deep Amber, and Warm Copper tones) */
+        /* Soft Satin Spring & Metallic Slate Theme (Zero-Glare, Soft Pastels) */
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #1c1512 0%, #291c16 50%, #17110e 100%);
-            color: #fef3c7;
+            background: linear-gradient(145deg, #0b0f17 0%, #111827 50%, #0f172a 100%);
+            color: #f8fafc;
         }
 
-        /* Ambient Autumn Glow Orbs */
+        /* Soft Spring Pastel Ambient Glow Orbs (Diffused Rose Quartz & Satin Lemon) */
         .ambient-glow-1 {
             position: absolute;
-            top: -100px;
+            top: -120px;
             left: -100px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, rgba(180, 83, 9, 0.06) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(254, 240, 138, 0.07) 0%, rgba(251, 113, 133, 0.04) 50%, transparent 70%);
             filter: blur(140px);
             pointer-events: none;
             z-index: 0;
@@ -33,31 +33,31 @@
         .ambient-glow-2 {
             position: absolute;
             top: 35%;
-            right: -50px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(194, 65, 12, 0.05) 60%, transparent 80%);
-            filter: blur(140px);
+            right: -80px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.05) 0%, rgba(192, 132, 252, 0.04) 60%, transparent 80%);
+            filter: blur(150px);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Translucent Frosted Bronze/Amber Glass Cards */
+        /* Metallic Frosted Pastel Glass Cards */
         .podium-card-3d {
-            background: rgba(41, 31, 24, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(217, 119, 6, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(251, 191, 36, 0.08) inset;
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(254, 240, 138, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.05) inset;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
 
         .podium-card-3d:hover {
-            transform: translateY(-4px);
-            border-color: #f59e0b;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 25px rgba(245, 158, 11, 0.2);
+            transform: translateY(-3px);
+            border-color: rgba(254, 240, 138, 0.35);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(254, 240, 138, 0.08);
         }
 
         /* Seamless Borderless Image Treatment */
@@ -65,7 +65,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 1.25rem;
-            background: rgba(30, 20, 15, 0.6);
+            background: rgba(15, 23, 42, 0.6);
         }
 
         .blend-image-container img {
@@ -73,65 +73,67 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            filter: grayscale(15%) contrast(105%) brightness(95%);
+            filter: grayscale(10%) contrast(102%) brightness(98%);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .podium-card-3d:hover .blend-image-container img {
             filter: grayscale(0%) contrast(100%) brightness(100%);
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         /* Highlight Card Styling */
         .podium-dark-card {
-            background: rgba(45, 32, 24, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(253, 224, 71, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
 
         .podium-dark-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(251, 191, 36, 0.6);
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
+            transform: translateY(-3px);
+            border-color: rgba(253, 224, 71, 0.45);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.55);
         }
 
         .podium-badge {
-            background: rgba(217, 119, 6, 0.2);
-            border: 1px solid rgba(217, 119, 6, 0.4);
-            color: #fcd34d;
+            background: rgba(254, 240, 138, 0.1);
+            border: 1px solid rgba(254, 240, 138, 0.25);
+            color: #fef08a;
         }
 
         /* Wider Animated Badge Floating Effect */
         @keyframes badgePulse {
             0%, 100% {
                 transform: translateY(0);
-                box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+                box-shadow: 0 0 10px rgba(254, 240, 138, 0.1);
             }
             50% {
-                transform: translateY(-4px);
-                box-shadow: 0 0 22px rgba(245, 158, 11, 0.5);
+                transform: translateY(-3px);
+                box-shadow: 0 0 18px rgba(254, 240, 138, 0.25);
             }
         }
         .animated-badge {
-            animation: badgePulse 3s ease-in-out infinite;
+            animation: badgePulse 3.5s ease-in-out infinite;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
             text-align: center;
         }
 
+        /* Soft Satin Lemon CTA Button */
         .btn-podium-primary {
-            background-color: #d97706;
-            color: #ffffff;
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: #0f172a;
+            font-weight: 700;
             transition: all 0.25s ease;
         }
         .btn-podium-primary:hover {
-            background-color: #b45309;
-            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.4);
+            background: linear-gradient(135deg, #fde047 0%, #d97706 100%);
+            box-shadow: 0 10px 25px rgba(234, 179, 8, 0.25);
             transform: translateY(-2px);
         }
 
@@ -143,22 +145,21 @@
             z-index: 999999 !important;
         }
         #sarah-chat-btn {
-            background: #d97706;
-            color: #ffffff;
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: #0f172a;
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid rgba(251, 191, 36, 0.9);
+            border: 2px solid rgba(254, 240, 138, 0.8);
         }
         #sarah-chat-btn:hover {
-            transform: scale(1.1);
-            background: #b45309;
+            transform: scale(1.08);
         }
         #sarah-chat-window {
             position: absolute;
@@ -166,11 +167,11 @@
             right: 0;
             width: calc(100vw - 32px);
             max-width: 320px;
-            background: rgba(35, 25, 20, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(245, 158, 11, 0.5);
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(254, 240, 138, 0.3);
             border-radius: 1.25rem;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             overflow: hidden;
             display: none;
             flex-direction: column;
@@ -200,24 +201,24 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-[#d97706] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
+<body class="font-sans antialiased selection:bg-[#fef08a] selection:text-[#0f172a] flex flex-col min-h-screen justify-between relative overflow-x-hidden">
 
     <!-- AMBIENT GLOWS -->
     <div class="ambient-glow-1"></div>
     <div class="ambient-glow-2"></div>
 
     <!-- HEADER / NAVIGATION -->
-    <header class="bg-[#291c16]/80 sticky top-0 z-50 backdrop-blur-md border-b border-amber-900/30 shadow-sm">
+    <header class="bg-[#0b0f17]/80 sticky top-0 z-50 backdrop-blur-md border-b border-slate-800/60 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-start justify-between">
             
             <!-- Left Side: Company Name stacked vertically above the Hamburger Menu Button -->
             <div class="flex flex-col items-start gap-2.5">
                 <a href="index.html" class="text-xl font-extrabold text-white tracking-tight">
-                    TriDash<span class="text-[#f59e0b] font-semibold">AI.com</span>
+                    TriDash<span class="text-[#fef08a] font-semibold">AI.com</span>
                 </a>
 
-                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-200 hover:text-white px-3 py-1.5 rounded-lg bg-amber-950/50 border border-amber-800/50 transition focus:outline-none focus:ring-2 focus:ring-[#f59e0b] shadow-sm">
-                    <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/60 transition focus:outline-none focus:ring-2 focus:ring-[#fef08a] shadow-sm">
+                    <svg class="w-4 h-4 text-[#fef08a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     <span>Menu</span>
@@ -229,7 +230,7 @@
                 <a href="signup.html" class="btn-podium-primary text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition shadow-md text-center">
                     Start your free 7-day trial.
                 </a>
-                <a href="login.html" class="text-xs font-semibold text-amber-200/80 hover:text-white transition">
+                <a href="login.html" class="text-xs font-semibold text-slate-400 hover:text-white transition">
                     Log In
                 </a>
             </div>
@@ -237,11 +238,11 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden border-t border-amber-900/30 bg-[#291c16]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
-            <a href="#how-it-works" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">How It Works</a>
-            <a href="#roi-calculator" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">ROI Calculator</a>
-            <a href="#pricing" class="menu-link block text-sm font-semibold text-amber-100 hover:text-[#f59e0b] transition">Pricing</a>
-            <div class="pt-2 border-t border-amber-900/45 text-xs text-amber-300">
+        <div id="mobile-menu" class="hidden border-t border-slate-800/60 bg-[#0b0f17]/95 px-6 py-4 space-y-3 shadow-lg backdrop-blur-md">
+            <a href="#how-it-works" class="menu-link block text-sm font-semibold text-slate-200 hover:text-[#fef08a] transition">How It Works</a>
+            <a href="#roi-calculator" class="menu-link block text-sm font-semibold text-slate-200 hover:text-[#fef08a] transition">ROI Calculator</a>
+            <a href="#pricing" class="menu-link block text-sm font-semibold text-slate-200 hover:text-[#fef08a] transition">Pricing</a>
+            <div class="pt-2 border-t border-slate-800/60 text-xs text-slate-400">
                 Support: <a href="mailto:support@tridashai.com" class="underline hover:text-white">support@tridashai.com</a>
             </div>
         </div>
@@ -258,11 +259,11 @@
                 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white mb-6">
                     <span class="text-white">No missed calls</span><br>
-                    <span class="text-[#f59e0b]">More jobs booked!</span>
+                    <span class="text-[#fef08a]">More jobs booked!</span>
                 </h1>
                 
                 <!-- HERO SUBHEADING -->
-                <p class="text-amber-100/90 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-medium">
+                <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-normal">
                     When your line is busy or it's out of hours, Sarah confidently handles customer queries and emergency callouts in a calm, natural, professional manner—booking appointments straight into your diary and collecting upfront deposits via automated payment links for emergency call-outs.
                 </p>
                 
@@ -270,7 +271,7 @@
                     <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
                         start your 7-day free trial here →
                     </a>
-                    <a href="#how-it-works" class="px-8 py-4 bg-amber-950/60 hover:bg-amber-900/60 border border-amber-800/50 text-amber-100 font-semibold rounded-xl transition text-center shadow-sm backdrop-blur-sm">
+                    <a href="#how-it-works" class="px-8 py-4 bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/60 text-slate-200 font-semibold rounded-xl transition text-center shadow-sm backdrop-blur-sm">
                         See How It Works
                     </a>
                 </div>
@@ -288,46 +289,46 @@
         </section>
 
         <!-- MOVING SLIDES / REVIEWS TICKER -->
-        <section class="py-6 bg-amber-950/30 backdrop-blur-md border-y border-amber-900/30 overflow-hidden relative z-10">
+        <section class="py-6 bg-slate-900/40 backdrop-blur-md border-y border-slate-800/60 overflow-hidden relative z-10">
             <div class="marquee-wrapper">
                 <div class="marquee-track">
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "85% of callers whose call goes to voicemail will call a competitor immediately."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "85% of callers whose call goes to voicemail will call a competitor immediately."
                     </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "78% of trade jobs go to the first contractor who responds."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "78% of trade jobs go to the first contractor who responds."
                     </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "Over 50% of trade businesses lose local search ranking by failing to reply to Google reviews."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "Over 50% of trade businesses lose local search ranking by failing to reply to Google reviews."
                     </div>
                     <!-- Duplicate for infinite loop -->
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "85% of callers whose call goes to voicemail will call a competitor immediately."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "85% of callers whose call goes to voicemail will call a competitor immediately."
                     </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "78% of trade jobs go to the first contractor who responds."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "78% of trade jobs go to the first contractor who responds."
                     </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-semibold text-amber-100 flex items-center gap-3">
-                        <span class="text-amber-400">★★★★★</span> "Over 50% of trade businesses lose local search ranking by failing to reply to Google reviews."
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-300 flex items-center gap-3">
+                        <span class="text-[#fef08a]">★★★★★</span> "Over 50% of trade businesses lose local search ranking by failing to reply to Google reviews."
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- STATS BAR -->
-        <section class="border-b border-amber-900/30 bg-amber-950/20 backdrop-blur-md py-10 relative z-10">
+        <section class="border-b border-slate-800/60 bg-slate-900/20 backdrop-blur-md py-10 relative z-10">
             <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div class="podium-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#f59e0b]">85%</p>
-                    <p class="text-xs text-amber-200/80 mt-1 font-semibold">Of callers go to a competitor if unanswered</p>
+                    <p class="text-3xl font-extrabold text-[#fef08a]">85%</p>
+                    <p class="text-xs text-slate-400 mt-1 font-medium">Of callers go to a competitor if unanswered</p>
                 </div>
                 <div class="podium-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#f59e0b]">24/7</p>
-                    <p class="text-xs text-amber-200/80 mt-1 font-semibold">Live voice answering & emergency callout triage</p>
+                    <p class="text-3xl font-extrabold text-[#fef08a]">24/7</p>
+                    <p class="text-xs text-slate-400 mt-1 font-medium">Live voice answering & emergency callout triage</p>
                 </div>
                 <div class="podium-card-3d p-6 rounded-2xl">
-                    <p class="text-3xl font-extrabold text-[#f59e0b]">Google Reviews</p>
-                    <p class="text-xs text-amber-200/80 mt-1 font-semibold">Automatic review requests sent on job completion with follow up & interactive Google review response.</p>
+                    <p class="text-3xl font-extrabold text-[#fef08a]">Google Reviews</p>
+                    <p class="text-xs text-slate-400 mt-1 font-medium">Automatic review requests sent on job completion with follow up & interactive Google review response.</p>
                 </div>
             </div>
         </section>
@@ -338,25 +339,25 @@
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
                     More Than Just an Answering Service
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Protecting Your <span class="text-[#f59e0b]">Hard-Earned Reputation</span></h2>
-                <p class="text-amber-200/80 text-sm sm:text-base max-w-2xl mx-auto">When customers ring your number, they don't get a generic automated text bot—instead they experience an empathetic, live interaction with a calm authoritative professional - designed to put the customer at ease</p>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Protecting Your <span class="text-[#fef08a]">Hard-Earned Reputation</span></h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">When customers ring your number, they don't get a generic automated text bot—instead they experience an empathetic, live interaction with a calm authoritative professional - designed to put the customer at ease</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="podium-card-3d p-6 rounded-3xl space-y-3">
                     <div class="text-2xl">🗣️</div>
                     <h3 class="text-lg font-bold text-white">Live Voice & Emergency Care</h3>
-                    <p class="text-xs text-amber-100/90 leading-relaxed">Sarah talks to clients live with an empathetic, professional demeanor—handling emergency queries and protecting your hard-earned reputation.</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">Sarah talks to clients live with an empathetic, professional demeanor—handling emergency queries and protecting your hard-earned reputation.</p>
                 </div>
                 <div class="podium-card-3d p-6 rounded-3xl space-y-3">
                     <div class="text-2xl">📅</div>
                     <h3 class="text-lg font-bold text-white">Instant Diary Booking</h3>
-                    <p class="text-xs text-amber-100/90 leading-relaxed">While on the phone with the customer, Sarah sorts out scheduling and drops the appointment straight into your diary so your calendar stays packed.</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">While on the phone with the customer, Sarah sorts out scheduling and drops the appointment straight into your diary so your calendar stays packed.</p>
                 </div>
                 <div class="podium-card-3d p-6 rounded-3xl space-y-3">
                     <div class="text-2xl">💳</div>
                     <h3 class="text-lg font-bold text-white">Automated Deposits & Payments</h3>
-                    <p class="text-xs text-amber-100/90 leading-relaxed">Whether you charge a standard call-out fee or require an upfront deposit, Sarah can text secure payment links straight to the client—ensuring you're covered before hitting the road.</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">Whether you charge a standard call-out fee or require an upfront deposit, Sarah can text secure payment links straight to the client—ensuring you're covered before hitting the road.</p>
                 </div>
             </div>
         </section>
@@ -364,8 +365,8 @@
         <!-- TRADE PROFESSIONS & BENEFITS -->
         <section id="how-it-works" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
             <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">How <span class="text-[#f59e0b]">Sarah</span> Works for Your Trade</h2>
-                <p class="text-amber-200/80 text-sm sm:text-base">Tailored live voice & payment workflows for roofers, plumbers, and general builders.</p>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">How <span class="text-[#fef08a]">Sarah</span> Works for Your Trade</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Tailored live voice & payment workflows for roofers, plumbers, and general builders.</p>
             </div>
 
             <!-- CARD 1: ROOFERS -->
@@ -377,14 +378,14 @@
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#fcd34d] bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-800/50">Roofing Specialists</span>
-                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Up on a Roof? <span class="text-[#f59e0b]">Sarah Answers Live.</span></h3>
-                    <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#fef08a] bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">Roofing Specialists</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Up on a Roof? <span class="text-[#fef08a]">Sarah Answers Live.</span></h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         When you're up on a pitched roof, answering calls is impossible. Sarah answers live with her voice, triages storm damage leaks, and text-confirms job bookings.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-amber-950/50 border border-amber-900/40 text-xs backdrop-blur-sm">
-                        <span class="font-semibold text-[#f59e0b] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-amber-100">"Sarah answered live, quoted our standard $150 emergency roof tarp fee, and texted the client our secure deposit link."</p>
+                    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#fef08a] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-300">"Sarah answered live, quoted our standard $150 emergency roof tarp fee, and texted the client our secure deposit link."</p>
                     </div>
                 </div>
             </div>
@@ -392,14 +393,14 @@
             <!-- CARD 2: PLUMBERS -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#fcd34d] bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-800/50">Plumbing & Heating</span>
-                    <h3 class="text-2xl font-bold text-white mt-2 mb-3"><span class="text-[#f59e0b]">Under a Sink?</span> Sarah Triage 24/7 Callouts</h3>
-                    <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#fef08a] bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">Plumbing & Heating</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3"><span class="text-[#fef08a]">Under a Sink?</span> Sarah Triage 24/7 Callouts</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         Burst pipes don't wait for business hours. Sarah handles midnight emergency callouts live over the phone and collects callout deposit payments automatically.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-amber-950/50 border border-amber-900/40 text-xs backdrop-blur-sm">
-                        <span class="font-semibold text-[#f59e0b] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-amber-100">"Picked up a 3AM leak call live, verified water shut-off instructions, and secured the emergency callout fee upfront via SMS link."</p>
+                    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#fef08a] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-300">"Picked up a 3AM leak call live, verified water shut-off instructions, and secured the emergency callout fee upfront via SMS link."</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
@@ -419,14 +420,14 @@
                     />
                 </div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#fcd34d] bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-800/50">Building Contractors</span>
-                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Running Power Tools? <span class="text-[#f59e0b]">Sarah Speaks For You</span></h3>
-                    <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#fef08a] bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">Building Contractors</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">Running Power Tools? <span class="text-[#fef08a]">Sarah Speaks For You</span></h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         Never let power tool noise drown out new business. Sarah talks with prospective clients, logs project scopes, and dispatches lead notifications straight to your pocket.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-amber-950/50 border border-amber-900/40 text-xs backdrop-blur-sm">
-                        <span class="font-semibold text-[#f59e0b] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-amber-100">"Sarah answered live while we were on site, gathered extension specs, and texted the client a booking link for next Tuesday."</p>
+                    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#fef08a] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-300">"Sarah answered live while we were on site, gathered extension specs, and texted the client a booking link for next Tuesday."</p>
                     </div>
                 </div>
             </div>
@@ -434,14 +435,14 @@
             <!-- CARD 4: FIELD SERVICE -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
                 <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#fcd34d] bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-800/50">Field Service & Maintenance</span>
-                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">On a Job? <span class="text-[#f59e0b]">Turn Calls Into Paid Bookings</span></h3>
-                    <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#fef08a] bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">Field Service & Maintenance</span>
+                    <h3 class="text-2xl font-bold text-white mt-2 mb-3">On a Job? <span class="text-[#fef08a]">Turn Calls Into Paid Bookings</span></h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         Combine live 24/7 voice reception with automated deposit payment links to ensure every single enquiry converts into confirmed revenue.
                     </p>
-                    <div class="p-3.5 rounded-xl bg-amber-950/50 border border-amber-900/40 text-xs backdrop-blur-sm">
-                        <span class="font-semibold text-[#f59e0b] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-amber-100">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
+                    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs backdrop-blur-sm">
+                        <span class="font-semibold text-[#fef08a] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-300">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
@@ -459,37 +460,37 @@
                 <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
                     Interactive ROI Calculator
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Calculate Your <span class="text-[#f59e0b]">Recovered Revenue</span></h2>
-                <p class="text-amber-200/80 text-sm sm:text-base">See how much lost revenue Sarah recovers for your business every month.</p>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Calculate Your <span class="text-[#fef08a]">Recovered Revenue</span></h2>
+                <p class="text-slate-400 text-sm sm:text-base">See how much lost revenue Sarah recovers for your business every month.</p>
             </div>
 
             <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-7 space-y-8">
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <label for="job-value" class="text-sm font-semibold text-amber-100">Average Value per Client / Job</label>
-                            <span id="job-value-display" class="text-lg font-bold text-[#f59e0b]">$150</span>
+                            <label for="job-value" class="text-sm font-semibold text-slate-200">Average Value per Client / Job</label>
+                            <span id="job-value-display" class="text-lg font-bold text-[#fef08a]">$150</span>
                         </div>
-                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-amber-900/60 rounded-lg appearance-none cursor-pointer accent-[#f59e0b]">
+                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-700/60 rounded-lg appearance-none cursor-pointer accent-[#fef08a]">
                     </div>
 
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <label for="missed-calls" class="text-sm font-semibold text-amber-100">Missed Calls per Week</label>
-                            <span id="missed-calls-display" class="text-lg font-bold text-[#f59e0b]">5 calls</span>
+                            <label for="missed-calls" class="text-sm font-semibold text-slate-200">Missed Calls per Week</label>
+                            <span id="missed-calls-display" class="text-lg font-bold text-[#fef08a]">5 calls</span>
                         </div>
-                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-amber-900/60 rounded-lg appearance-none cursor-pointer accent-[#f59e0b]">
+                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-slate-700/60 rounded-lg appearance-none cursor-pointer accent-[#fef08a]">
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 text-white shadow-xl">
                     <div>
-                        <p class="text-xs uppercase tracking-wider font-semibold text-amber-200/80 mb-1">Estimated Monthly Lost Revenue</p>
-                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-amber-400">$3,000</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-[#fef08a]">$3,000</p>
                     </div>
-                    <div class="pt-4 border-t border-amber-900/40">
-                        <p class="text-xs uppercase tracking-wider font-semibold text-amber-200/80 mb-1">Sarah Assistant Subscription</p>
-                        <p class="text-3xl font-extrabold text-[#fcd34d]">$59 <span class="text-xs text-amber-200/80 font-normal">/ month</span></p>
+                    <div class="pt-4 border-t border-slate-700/60">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Sarah Assistant Subscription</p>
+                        <p class="text-3xl font-extrabold text-white">$59 <span class="text-xs text-slate-400 font-normal">/ month</span></p>
                     </div>
                 </div>
             </div>
@@ -499,33 +500,33 @@
         <section id="pricing" class="max-w-4xl mx-auto px-4 py-20 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Simple, Transparent Pricing</h2>
-                <p class="text-amber-200/80 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
+                <p class="text-slate-400 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
             </div>
 
             <div class="max-w-md mx-auto">
-                <div class="podium-dark-card p-8 sm:p-10 rounded-3xl border border-amber-500/40 shadow-2xl relative flex flex-col justify-between text-white">
+                <div class="podium-dark-card p-8 sm:p-10 rounded-3xl border border-yellow-400/30 shadow-2xl relative flex flex-col justify-between text-white">
                     <span class="absolute -top-3 right-6 btn-podium-primary text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-lg">Most Popular</span>
                     <div>
                         <div class="mb-4">
                             <h3 class="text-2xl font-bold text-white">Sarah Professional</h3>
-                            <p class="text-amber-200/80 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
+                            <p class="text-slate-400 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
                         </div>
-                        <div class="mb-6 pb-6 border-b border-amber-900/40">
-                            <span class="text-5xl font-extrabold text-[#fcd34d]">$59</span>
-                            <span class="text-amber-200/80 text-sm"> / month</span>
+                        <div class="mb-6 pb-6 border-b border-slate-700/60">
+                            <span class="text-5xl font-extrabold text-[#fef08a]">$59</span>
+                            <span class="text-slate-400 text-sm"> / month</span>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-amber-100 mb-6">
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> <strong>1 Dedicated Main Business Line</strong></li>
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> <strong>300 Live Voice Minutes</strong></li>
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> <strong>300 SMS Messages</strong></li>
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> Real-Time Diary Booking</li>
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> Automated Deposit Payment Links</li>
-                            <li class="flex items-center gap-2"><span class="text-[#f59e0b] font-bold">✓</span> Google Review Request & Response Engine</li>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-6">
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> <strong>1 Dedicated Main Business Line</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> <strong>300 Live Voice Minutes</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> <strong>300 SMS Messages</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> Real-Time Diary Booking</li>
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> Automated Deposit Payment Links</li>
+                            <li class="flex items-center gap-2"><span class="text-[#fef08a] font-bold">✓</span> Google Review Request & Response Engine</li>
                         </ul>
                         
-                        <div class="bg-amber-950/60 border border-amber-800/50 p-3 rounded-xl mb-6 text-center">
-                            <p class="text-xs text-amber-200/90 font-medium">Need extra business lines for additional vans?</p>
-                            <p class="text-[11px] text-[#fcd34d] font-bold mt-0.5">Add extra lines for +$20 each on signup</p>
+                        <div class="bg-slate-800/80 border border-slate-700/60 p-3 rounded-xl mb-6 text-center">
+                            <p class="text-xs text-slate-300 font-medium">Need extra business lines for additional vans?</p>
+                            <p class="text-[11px] text-[#fef08a] font-bold mt-0.5">Add extra lines for +$20 each on signup</p>
                         </div>
                     </div>
                     <a href="signup.html" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-lg block text-sm">
@@ -537,9 +538,9 @@
 
         <!-- BOTTOM CTA -->
         <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
-            <div class="podium-dark-card border border-amber-900/40 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
+            <div class="podium-dark-card border border-slate-800/60 p-10 rounded-3xl space-y-6 text-white shadow-2xl">
                 <h2 class="text-3xl sm:text-4xl font-extrabold">Join today. Easy setup. No long-term contract.</h2>
-                <p class="text-amber-100/90 text-sm sm:text-base max-w-xl mx-auto">Put Sarah to work answering your calls, triaging emergencies, and collecting deposits today.</p>
+                <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">Put Sarah to work answering your calls, triaging emergencies, and collecting deposits today.</p>
                 <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl hover:scale-105 text-base">
                     start your 7-day trial here →
                 </a>
@@ -550,30 +551,30 @@
     <!-- FIXED FLOATING CHATBOT WIDGET -->
     <div id="sarah-widget-container">
         <div id="sarah-chat-window">
-            <div class="bg-amber-950/90 px-4 py-3 border-b border-amber-900/50 flex justify-between items-center">
-                <span class="text-xs font-bold text-amber-200">🤖 Chat with Sarah (Voice AI)</span>
-                <button id="close-chat" class="text-amber-300 hover:text-white text-base font-bold px-1">&times;</button>
+            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800/60 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-200">🤖 Chat with Sarah (Voice AI)</span>
+                <button id="close-chat" class="text-slate-400 hover:text-white text-base font-bold px-1">&times;</button>
             </div>
-            <div class="p-4 space-y-3 text-xs text-amber-100 h-64 overflow-y-auto">
-                <div class="p-2.5 rounded-xl bg-amber-950/60 border border-amber-900/50">
-                    <p class="font-semibold text-[#f59e0b] mb-0.5">Sarah:</p>
+            <div class="p-4 space-y-3 text-xs text-slate-200 h-64 overflow-y-auto">
+                <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                    <p class="font-semibold text-[#fef08a] mb-0.5">Sarah:</p>
                     <p>Hi there! 👋 Need 24/7 emergency callout coverage or automated payment links? Let me show you how I work.</p>
                 </div>
             </div>
-            <div class="p-3 bg-amber-950/95 border-t border-amber-900/50 flex gap-2">
-                <input type="text" placeholder="Type a message..." class="w-full px-3 py-1.5 rounded-lg bg-amber-900/50 border border-amber-700/60 text-xs text-amber-100 focus:outline-none focus:ring-1 focus:ring-[#f59e0b]">
+            <div class="p-3 bg-slate-900/95 border-t border-slate-800/60 flex gap-2">
+                <input type="text" placeholder="Type a message..." class="w-full px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-[#fef08a]">
                 <button class="btn-podium-primary px-3 py-1.5 rounded-lg text-xs font-bold">Send</button>
             </div>
         </div>
         <button id="sarah-chat-btn" aria-label="Open Sarah Chat Widget">
-            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
         </button>
     </div>
 
     <!-- FOOTER -->
-    <footer class="border-t border-amber-900/40 bg-[#291c16]/90 py-8 text-center text-xs text-amber-200/70 mt-10 relative z-10">
+    <footer class="border-t border-slate-800/60 bg-[#0b0f17]/90 py-8 text-center text-xs text-slate-400 mt-10 relative z-10">
         <p>&copy; TriDash AI. All rights reserved. | Contact support: <a href="mailto:support@tridashai.com" class="underline hover:text-white">support@tridashai.com</a></p>
     </footer>
 
