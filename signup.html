@@ -55,17 +55,6 @@
             color: #1e293b;
         }
 
-        .podium-dark-card {
-            background: #f8fafc;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            box-shadow: 0 20px 45px rgba(30, 41, 59, 0.05);
-            position: relative;
-            overflow: hidden;
-            color: #1e293b;
-        }
-
         .podium-badge {
             background: #fff1f2;
             border: 1px solid #fecdd3;
@@ -127,7 +116,7 @@
 
     <!-- SIGNUP MAIN CONTENT -->
     <main class="flex-1 relative z-10 py-10 sm:py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center mb-10">
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
@@ -141,157 +130,156 @@
                 </p>
             </div>
 
-            <form action="dashboard.html" method="GET" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <form action="dashboard.html" method="GET" class="space-y-8">
                 
-                <!-- LEFT COLUMN: Contractor Details & Payment Info -->
-                <div class="lg:col-span-7 space-y-6">
-                    
-                    <!-- Business Details Card -->
-                    <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2">
-                            <span>1. Your Business Details</span>
-                        </h2>
+                <!-- STEP 1: Business Details -->
+                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2">
+                        <span>1. Your Business Details</span>
+                    </h2>
 
-                        <div class="space-y-4 text-xs sm:text-sm">
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Full Name / Account Owner</label>
+                            <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Business / Trading Name</label>
+                            <input type="text" required placeholder="e.g. Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Full Name / Account Owner</label>
-                                <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                    <option value="roofing">Roofing Specialist</option>
+                                    <option value="plumbing">Plumbing & Heating</option>
+                                    <option value="building">Building / General Contractor</option>
+                                    <option value="electrical">Electrical Services</option>
+                                    <option value="other">Other Trade / Field Service</option>
+                                </select>
                             </div>
-
                             <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Business / Trading Name</label>
-                                <input type="text" required placeholder="e.g. Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                        <option value="roofing">Roofing Specialist</option>
-                                        <option value="plumbing">Plumbing & Heating</option>
-                                        <option value="building">Building / General Contractor</option>
-                                        <option value="electrical">Electrical Services</option>
-                                        <option value="other">Other Trade / Field Service</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block font-semibold text-slate-700 mb-1">Mobile Phone Number</label>
-                                    <input type="tel" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Email Address</label>
-                                <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <label class="block font-semibold text-slate-700 mb-1">Mobile Phone Number</label>
+                                <input type="tel" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Credit Card Verification Card -->
-                    <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center justify-between">
-                            <span>2. Payment Verification</span>
-                            <span class="text-xs font-normal text-slate-500">🔒 256-Bit Secure</span>
-                        </h2>
-                        
-                        <p class="text-xs text-slate-600">
-                            Required to activate your 7-day free trial. You will <strong class="text-slate-900">not</strong> be charged anything today. Your subscription begins automatically on day 8 unless cancelled.
-                        </p>
-
-                        <div class="space-y-4 text-xs sm:text-sm">
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Cardholder Name</label>
-                                <input type="text" required placeholder="Name on card" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Card Number</label>
-                                <div class="relative">
-                                    <input type="text" required placeholder="4532 •••• •••• ••••" maxlength="19" class="w-full pl-4 pr-12 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                    <div class="absolute right-3 top-3.5 text-xs font-bold text-slate-400">💳</div>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block font-semibold text-slate-700 mb-1">Expiration Date</label>
-                                    <input type="text" required placeholder="MM / YY" maxlength="7" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                </div>
-                                <div>
-                                    <label class="block font-semibold text-slate-700 mb-1">CVC / CVV</label>
-                                    <input type="password" required placeholder="123" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                </div>
-                            </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Email Address</label>
+                            <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                         </div>
                     </div>
-
                 </div>
 
-                <!-- RIGHT COLUMN: Order Summary & Add-Ons -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="podium-dark-card p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl space-y-6">
-                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Plan Summary</h2>
-                        
-                        <!-- Base Plan -->
-                        <div class="flex justify-between items-start pb-4 border-b border-slate-200">
+                <!-- STEP 2: Plan Selection & Add-Ons -->
+                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">2. Select Your Plan</h2>
+                    
+                    <!-- Base Plan -->
+                    <div class="flex justify-between items-start pb-4 border-b border-slate-200">
+                        <div>
+                            <h3 class="font-bold text-slate-900">Sarah Professional Plan</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">300 mins 24/7 voice + 300 SMS</p>
+                            <p class="text-xs text-[#2563eb] font-semibold mt-1">7 Days Free, then $59/mo</p>
+                        </div>
+                        <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo</span></span>
+                    </div>
+
+                    <!-- Add-On Option: Extra Lines for Vans -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="add-van-lines" class="mt-1 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded cursor-pointer">
                             <div>
-                                <h3 class="font-bold text-slate-900">Sarah Professional Plan</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">300 mins 24/7 voice + 300 SMS</p>
-                                <p class="text-xs text-[#2563eb] font-semibold mt-1">7 Days Free, then $59/mo</p>
-                            </div>
-                            <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo</span></span>
-                        </div>
-
-                        <!-- Add-On Option: Extra Lines for Vans -->
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <input type="checkbox" id="add-van-lines" class="mt-1 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded cursor-pointer">
-                                <div>
-                                    <label for="add-van-lines" class="font-bold text-slate-900 text-xs sm:text-sm cursor-pointer">Add Extra Van / Crew Lines</label>
-                                    <p class="text-[11px] text-slate-500">Need Sarah to answer dedicated lines for extra vans?</p>
-                                </div>
-                            </div>
-                            
-                            <div id="extra-line-controls" class="hidden pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                                <span class="text-slate-700 font-medium">Extra Lines (+ $20/mo each):</span>
-                                <div class="flex items-center gap-2">
-                                    <button type="button" id="dec-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">-</button>
-                                    <span id="line-count" class="font-bold text-slate-900 w-4 text-center">1</span>
-                                    <button type="button" id="inc-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">+</button>
-                                </div>
+                                <label for="add-van-lines" class="font-bold text-slate-900 text-xs sm:text-sm cursor-pointer">Add Extra Van / Crew Lines</label>
+                                <p class="text-[11px] text-slate-500">Need Sarah to answer dedicated lines for extra vans?</p>
                             </div>
                         </div>
-
-                        <!-- Total Due Today -->
-                        <div class="pt-2">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Due Today:</span>
-                                <span class="text-2xl font-extrabold text-[#2563eb]">$0.00</span>
+                        
+                        <div id="extra-line-controls" class="hidden pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-700 font-medium">Extra Lines (+ $20/mo each):</span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" id="dec-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">-</button>
+                                <span id="line-count" class="font-bold text-slate-900 w-4 text-center">1</span>
+                                <button type="button" id="inc-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">+</button>
                             </div>
-                            <p class="text-[11px] text-slate-500">Your card is verified for zero dollars today. Renews at <span id="monthly-total-display">$59.00</span>/mo starting after your 7-day trial.</p>
+                        </div>
+                    </div>
+
+                    <!-- Total Due Today Summary -->
+                    <div class="pt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Due Today:</span>
+                            <span class="text-2xl font-extrabold text-[#2563eb]">$0.00</span>
+                        </div>
+                        <p class="text-[11px] text-slate-500">Your card is verified for zero dollars today. Renews at <span id="monthly-total-display">$59.00</span>/mo starting after your 7-day trial.</p>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Payment Verification -->
+                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center justify-between">
+                        <span>3. Payment Verification</span>
+                        <span class="text-xs font-normal text-slate-500">🔒 256-Bit Secure</span>
+                    </h2>
+                    
+                    <p class="text-xs text-slate-600">
+                        Required to activate your 7-day free trial. You will <strong class="text-slate-900">not</strong> be charged anything today. Your subscription begins automatically on day 8 unless cancelled.
+                    </p>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Cardholder Name</label>
+                            <input type="text" required placeholder="Name on card" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                         </div>
 
-                        <!-- INDUSTRY-STANDARD LEGAL & COMPLIANCE CONSENT BLOCK -->
-                        <div class="space-y-3 pt-2 border-t border-slate-200 text-xs text-slate-600">
-                            <label class="flex items-start gap-2.5 cursor-pointer">
-                                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                                <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> (plus any selected add-ons) automatically after my 7-day trial ends, until I cancel.</span>
-                            </label>
-
-                            <label class="flex items-start gap-2.5 cursor-pointer">
-                                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                                <span>I agree to the <a href="terms.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Privacy Policy</a>.</span>
-                            </label>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Card Number</label>
+                            <div class="relative">
+                                <input type="text" required placeholder="4532 •••• •••• ••••" maxlength="19" class="w-full pl-4 pr-12 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <div class="absolute right-3 top-3.5 text-xs font-bold text-slate-400">💳</div>
+                            </div>
                         </div>
 
-                        <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
-                            Activate Your 7-Day Free Trial →
-                        </button>
-
-                        <div class="text-center text-[11px] text-slate-400 space-y-1">
-                            <p>🔒 Bank-Grade 256-Bit Encryption</p>
-                            <p>Cancel anytime with 1-click in your contractor dashboard.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Expiration Date</label>
+                                <input type="text" required placeholder="MM / YY" maxlength="7" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">CVC / CVV</label>
+                                <input type="password" required placeholder="123" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Legal Consent & Final CTA Button at the Very Bottom -->
+                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">4. Final Authorization & Activation</h2>
+                    
+                    <!-- INDUSTRY-STANDARD LEGAL & COMPLIANCE CONSENT BLOCK -->
+                    <div class="space-y-3 text-xs text-slate-600">
+                        <label class="flex items-start gap-2.5 cursor-pointer">
+                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                            <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> (plus any selected add-ons) automatically after my 7-day trial ends, until I cancel.</span>
+                        </label>
+
+                        <label class="flex items-start gap-2.5 cursor-pointer">
+                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                            <span>I agree to the <a href="terms.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Privacy Policy</a>.</span>
+                        </label>
+                    </div>
+
+                    <!-- THE CTA BUTTON SITS AT THE VERY BOTTOM -->
+                    <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
+                        Activate Your 7-Day Free Trial →
+                    </button>
+
+                    <div class="text-center text-[11px] text-slate-400 space-y-1">
+                        <p>🔒 Bank-Grade 256-Bit Encryption</p>
+                        <p>Cancel anytime with 1-click in your contractor dashboard.</p>
                     </div>
                 </div>
 
