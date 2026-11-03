@@ -71,7 +71,7 @@
 
     <div class="ambient-glow-1"></div>
 
-    <!-- DEV STEP SWITCHER BAR (Instant inspection without filling out form inputs) -->
+    <!-- DEV STEP SWITCHER BAR -->
     <div class="bg-slate-900 text-white text-[11px] py-1.5 px-4 text-center flex items-center justify-center gap-3 relative z-50">
         <span class="font-bold text-amber-400">🛠️ Inspection Controls:</span>
         <button onclick="goToStep(1, true)" class="underline hover:text-blue-300">Preview Step 1</button>
@@ -113,7 +113,7 @@
             
             <div class="text-center mb-8">
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 7-Day Free Trial • Zero Risk • Cancel Anytime
+                    🚀 7-Day Free Trial (50 Mins + 50 Texts Included)
                 </span>
                 <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
                     Create Your Account
@@ -198,31 +198,50 @@
                             </div>
                         </div>
 
-                        <!-- ADD-ON: EXTRA VANS / CREW LINES -->
-                        <div class="pt-3 border-t border-slate-200">
-                            <label class="block font-semibold text-slate-700 mb-1 flex items-center justify-between">
-                                <span>🚐 Extra Vans / Crew Lines ($20/mo per extra line)</span>
-                                <span class="text-[11px] text-blue-600 font-normal">Base plan includes 1 line</span>
-                            </label>
-                            <div class="flex items-center gap-3 mt-2">
-                                <input type="number" id="extra-vans-input" min="0" max="20" value="0" oninput="updatePricingSummary()" class="w-24 px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold text-center focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                <span class="text-xs text-slate-600">Additional mobile/van numbers to route AI calls directly to field crews.</span>
+                        <!-- ADD-ON PANEL: EXTRA VANS / PRO CREW LINES -->
+                        <div class="pt-3 border-t border-slate-200 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label class="font-semibold text-slate-900 text-xs sm:text-sm flex items-center gap-1.5">
+                                    <span>🚐 Extra Vans / Pro Crew Lines</span>
+                                </label>
+                                <span class="text-xs font-bold text-blue-600">$20/mo per extra line</span>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <input type="number" id="extra-vans-input" min="0" max="20" value="0" oninput="updatePricingSummary()" class="w-20 sm:w-24 px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold text-center text-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <div class="text-xs text-slate-600 leading-tight">
+                                    <p class="font-semibold text-slate-800">Add dedicated crew lines to your plan.</p>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Includes <strong class="text-slate-700">+300 call mins</strong> and <strong class="text-slate-700">+300 SMS texts</strong> per extra line monthly post-trial.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- LIVE BREAKDOWN SUMMARY -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1.5 text-xs text-slate-700 mt-3">
-                            <div class="flex justify-between">
-                                <span>Sarah Professional Base Plan:</span>
+                        <!-- LIVE BREAKDOWN SUMMARY WITH TRIAL CAP STIPULATION -->
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2 text-xs text-slate-700 mt-3">
+                            <div class="bg-amber-50 border border-amber-200 p-2.5 rounded-xl text-amber-900 font-semibold text-[11px] flex items-center justify-between">
+                                <span>🎁 7-Day Trial Allowance:</span>
+                                <span class="font-bold text-amber-700">50 Call Mins + 50 SMS Texts Included</span>
+                            </div>
+
+                            <div class="flex justify-between items-center pt-1">
+                                <div>
+                                    <span class="font-semibold text-slate-900">Base Plan (Full Quota Post-Trial):</span>
+                                    <p class="text-[11px] text-slate-500">Unlocks 300 Mins + 300 Texts/mo on Day 8</p>
+                                </div>
                                 <span class="font-semibold text-slate-900">$59.00 / mo</span>
                             </div>
-                            <div class="flex justify-between" id="extra-vans-summary-row" style="display: none;">
-                                <span id="extra-vans-text">Extra Vans (0 lines @ $20):</span>
+                            
+                            <div class="flex justify-between items-start pt-2 border-t border-slate-200" id="extra-vans-summary-row" style="display: none;">
+                                <div>
+                                    <span class="font-semibold text-slate-900" id="extra-vans-text">Extra Lines (0):</span>
+                                    <p class="text-[11px] text-blue-600 font-medium" id="extra-vans-allowance-text">+0 Mins & +0 Texts added post-trial</p>
+                                </div>
                                 <span class="font-semibold text-slate-900" id="extra-vans-cost">$0.00 / mo</span>
                             </div>
-                            <div class="flex justify-between pt-2 border-t border-slate-200 font-bold text-slate-900 text-sm">
+
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-200 font-bold text-slate-900 text-sm">
                                 <span>Total After 7-Day Trial:</span>
-                                <span id="total-monthly-price" class="text-blue-600">$59.00 / mo</span>
+                                <span id="total-monthly-price" class="text-blue-600 text-base">$59.00 / mo</span>
                             </div>
                         </div>
                     </div>
@@ -249,7 +268,7 @@
                         <p class="font-bold text-slate-900">🛡️ Why do we require payment details for a free trial?</p>
                         <p class="leading-relaxed">
                             To prevent automated bot spam and ensure uninterrupted 24/7 AI voice coverage after your trial ends. 
-                            <strong class="text-[#2563eb]">You will not be charged a single penny today ($0.00 due today).</strong> If you cancel anytime during your 7-day trial, your card will never be charged.
+                            <strong class="text-[#2563eb]">You will not be charged a single penny today ($0.00 due today).</strong> Your 7-day trial includes <strong>50 call minutes and 50 SMS texts</strong> to test the system risk-free.
                         </p>
                     </div>
 
@@ -274,11 +293,10 @@
                         </div>
                     </div>
 
-                    <!-- TERMS OF SERVICE & RECURRING BILLING AGREEMENT CHECKBOX -->
                     <div class="pt-3 space-y-3 text-xs text-slate-600 border-t border-slate-200">
                         <label class="flex items-start gap-2.5 cursor-pointer">
                             <input type="checkbox" id="terms-checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I agree to the <a href="terms.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Privacy Policy</a>. I authorize TriDash AI to start my 7-day free trial and understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid recurring monthly charges.</span>
+                            <span>I agree to the <a href="terms.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Privacy Policy</a>. I authorize TriDash AI to start my 7-day free trial (50 call mins + 50 SMS texts included) and understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid recurring monthly charges.</span>
                         </label>
                     </div>
 
@@ -311,7 +329,7 @@
         </div>
     </footer>
 
-    <!-- MULTI-STEP LOGIC & UTILITIES -->
+    <!-- MULTI-STEP LOGIC & DYNAMIC PRICING SCRIPT -->
     <script>
         // Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
@@ -334,21 +352,26 @@
             }
         }
 
-        // Dynamic Pricing Calculation for Extra Vans / Crew Lines ($20/mo each)
+        // Dynamic Pricing Calculation for Extra Vans / Pro Crew Lines ($20/mo = +300 Mins & +300 SMS each)
         function updatePricingSummary() {
             const extraLinesInput = document.getElementById('extra-vans-input');
             const extraLinesCount = parseInt(extraLinesInput.value) || 0;
             const extraCost = extraLinesCount * 20;
             const totalMonthly = 59 + extraCost;
 
+            const extraMins = extraLinesCount * 300;
+            const extraTexts = extraLinesCount * 300;
+
             const row = document.getElementById('extra-vans-summary-row');
             const textEl = document.getElementById('extra-vans-text');
+            const allowanceEl = document.getElementById('extra-vans-allowance-text');
             const costEl = document.getElementById('extra-vans-cost');
             const totalEl = document.getElementById('total-monthly-price');
 
             if (extraLinesCount > 0) {
                 row.style.display = 'flex';
-                textEl.textContent = `Extra Vans / Crew Lines (${extraLinesCount} @ $20):`;
+                textEl.textContent = `Extra Lines (${extraLinesCount} @ $20/mo):`;
+                allowanceEl.textContent = `+${extraMins} Mins & +${extraTexts} SMS added post-trial`;
                 costEl.textContent = `$${extraCost}.00 / mo`;
             } else {
                 row.style.display = 'none';
@@ -359,7 +382,6 @@
 
         // Step Navigation Controller
         function goToStep(stepNum, skipValidation = false) {
-            // Validation check (skipped if developer override button or pill click is used)
             if (stepNum === 2 && !skipValidation) {
                 const name = document.getElementById('input-name').value.trim();
                 const email = document.getElementById('input-email').value.trim();
@@ -371,15 +393,12 @@
                 }
             }
 
-            // Hide all cards
             document.getElementById('step-1-card').classList.add('hidden');
             document.getElementById('step-2-card').classList.add('hidden');
             document.getElementById('step-3-card').classList.add('hidden');
 
-            // Show active card
             document.getElementById(`step-${stepNum}-card`).classList.remove('hidden');
 
-            // Update Pills
             for (let i = 1; i <= 3; i++) {
                 const pill = document.getElementById(`pill-step-${i}`);
                 if (i <= stepNum) {
