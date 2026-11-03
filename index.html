@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Your 7-Day Free Trial | TriDash AI</title>
+    <title>TriDash AI - AI Missed Call Recovery, Voice AI & Auto-Reviews for Trades</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Diamond White & Navy Blue Theme */
+        /* Diamond White & Navy Blue Theme (Zero-Glare, Pure Diamond White Background) */
         html {
             scroll-behavior: smooth;
         }
@@ -17,7 +17,7 @@
             color: #1e293b;
         }
 
-        /* Soft Ambient Glow Orbs */
+        /* Soft Ambient Glow Orbs (Blue Tinted) */
         .ambient-glow-1 {
             position: absolute;
             top: -120px;
@@ -44,10 +44,10 @@
 
         /* Diamond White Frosted Glass Cards */
         .podium-card-3d {
-            background: #f8fafc;
+            background: #ffffff;
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.12);
             box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
@@ -55,10 +55,75 @@
             color: #1e293b;
         }
 
+        .podium-card-3d:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: 0 25px 50px rgba(30, 41, 59, 0.08), 0 0 20px rgba(37, 99, 235, 0.08);
+        }
+
+        /* Seamless Borderless Image Treatment */
+        .blend-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .blend-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .podium-card-3d:hover .blend-image-container img {
+            transform: scale(1.02);
+        }
+
+        /* Highlight Card Styling */
+        .podium-dark-card {
+            background: #f8fafc;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            box-shadow: 0 20px 45px rgba(30, 41, 59, 0.05);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1e293b;
+        }
+
+        .podium-dark-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 30px 60px rgba(30, 41, 59, 0.1);
+        }
+
         .podium-badge {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
             color: #2563eb;
+        }
+
+        /* Wider Animated Badge Floating Effect */
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 0 10px rgba(37, 99, 235, 0.1);
+            }
+            50% {
+                transform: translateY(-3px);
+                box-shadow: 0 0 18px rgba(37, 99, 235, 0.2);
+            }
+        }
+        .animated-badge {
+            animation: badgePulse 3.5s ease-in-out infinite;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            text-align: center;
         }
 
         /* Sleek Navy Blue CTA Button */
@@ -74,6 +139,29 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
             transform: translateY(-2px);
         }
+
+        /* Moving Slides Animation */
+        @keyframes slideScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: slideScroll 35s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
@@ -83,7 +171,7 @@
     <div class="ambient-glow-2"></div>
 
     <!-- HEADER / NAVIGATION -->
-    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm relative">
+    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             
             <!-- Left Side: Company Name -->
@@ -93,7 +181,7 @@
                 </a>
             </div>
 
-            <!-- Right Side: Hamburger Menu Button & Right-Aligned Dropdown -->
+            <!-- Right Side: Hamburger Menu Button Top Right with Right-Aligned Dropdown -->
             <div class="relative">
                 <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
                     <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,200 +190,331 @@
                     <span>Menu</span>
                 </button>
 
-                <!-- Right-Aligned Floating Menu Dropdown -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2 shadow-xl backdrop-blur-md z-50">
-                    <a href="index.html#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
-                    <a href="index.html#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
-                    <a href="index.html#pricing" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">Pricing</a>
+                <!-- Right-Aligned Dropdown Menu -->
+                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2.5 shadow-xl backdrop-blur-md z-50">
+                    <a href="#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
+                    <a href="#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
+                    <a href="#pricing" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">Pricing</a>
                     <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
+                    <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+                        Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a>
+                    </div>
                 </div>
             </div>
 
         </div>
     </header>
 
-    <!-- SIGNUP MAIN CONTENT -->
-    <main class="flex-1 relative z-10 py-10 sm:py-16">
-        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- HERO SECTION -->
+    <main class="flex-1 relative z-10">
+        <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <div class="text-center mb-10">
-                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 7-Day Free Trial • Zero Risk • Cancel Anytime
+            <div class="lg:col-span-7 pr-0 lg:pr-4">
+                <span class="inline-block podium-badge animated-badge text-xs font-bold py-2 rounded-full mb-6 shadow-sm">
+                    🤖 Meet Sarah your 24/7 virtual sales employee
                 </span>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-3" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
-                    Put Sarah to Work Today
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6" style="font-family: 'Times New Roman', Times, serif; font-style: italic; color: #000000;">
+                    <span class="whitespace-nowrap">No more missed calls</span><br>
+                    <span>more jobs booked</span>
                 </h1>
-                <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto">
-                    Set up your 24/7 AI voice assistant in under 2 minutes. No complex software or setup required.
+                
+                <!-- HERO SUBHEADING -->
+                <p class="text-slate-700 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-normal">
+                    When your line is busy or it's out of hours, Sarah confidently handles customer queries and emergency callouts in a calm, natural, professional manner—booking appointments straight into your diary and collecting upfront deposits via automated payment links for emergency call-outs.
                 </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
+                        start your 7-day free trial here →
+                    </a>
+                    <a href="#how-it-works" class="px-8 py-4 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-semibold rounded-xl transition text-center shadow-sm backdrop-blur-sm">
+                        See How It Works
+                    </a>
+                </div>
             </div>
 
-            <form action="dashboard.html" method="GET" class="space-y-8">
-                
-                <!-- STEP 1: Account Credentials & Business Details -->
-                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2">
-                        <span>1. Create Account & Business Details</span>
-                    </h2>
+            <!-- SARAH'S IMAGE CONTAINER -->
+            <div class="lg:col-span-5 rounded-3xl podium-card-3d p-2 sm:p-3">
+                <div class="blend-image-container h-[380px] sm:h-[420px]">
+                    <img 
+                        src="sarah%201.jpg" 
+                        alt="Sarah - Your Virtual Crew Member"
+                    />
+                </div>
+            </div>
+        </section>
 
-                    <div class="space-y-4 text-xs sm:text-sm">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Full Name / Account Owner</label>
-                                <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Email Address (Login ID)</label>
-                                <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Create Account Password</label>
-                            <input type="password" required placeholder="Minimum 8 characters" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Business / Trading Name</label>
-                            <input type="text" required placeholder="e.g. Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
-                                <select class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                    <option value="roofing">Roofing Specialist</option>
-                                    <option value="plumbing">Plumbing & Heating</option>
-                                    <option value="building">Building / General Contractor</option>
-                                    <option value="electrical">Electrical Services</option>
-                                    <option value="other">Other Trade / Field Service</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Mobile Phone Number</label>
-                                <input type="tel" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                        </div>
+        <!-- MOVING SLIDES / REVIEWS TICKER (Genuine Trade Citations) -->
+        <section class="py-6 bg-slate-50/80 backdrop-blur-md border-y border-slate-200 overflow-hidden relative z-10">
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "85% of callers whose call goes to voicemail will hang up and call a competitor immediately." <span class="text-slate-400 text-[10px] ml-1">(Invoca Trade Study)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "The odds of contacting a lead decrease by 10x if the first response takes longer than 5 minutes." <span class="text-slate-400 text-[10px] ml-1">(Lead Response Management Study)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "78% of local service jobs are awarded to the first contractor who responds to the inquiry." <span class="text-slate-400 text-[10px] ml-1">(Harvard Business Review)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "Over 50% of local trade businesses lose search visibility and customer trust by failing to reply to online reviews." <span class="text-slate-400 text-[10px] ml-1">(BrightLocal Research)</span>
+                    </div>
+                    <!-- Duplicate for infinite smooth loop -->
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "85% of callers whose call goes to voicemail will hang up and call a competitor immediately." <span class="text-slate-400 text-[10px] ml-1">(Invoca Trade Study)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "The odds of contacting a lead decrease by 10x if the first response takes longer than 5 minutes." <span class="text-slate-400 text-[10px] ml-1">(Lead Response Management Study)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "78% of local service jobs are awarded to the first contractor who responds to the inquiry." <span class="text-slate-400 text-[10px] ml-1">(Harvard Business Review)</span>
+                    </div>
+                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
+                        <span class="text-[#2563eb] font-bold">📊</span> "Over 50% of local trade businesses lose search visibility and customer trust by failing to reply to online reviews." <span class="text-slate-400 text-[10px] ml-1">(BrightLocal Research)</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- STEP 2: Plan Selection & Add-Ons -->
-                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">2. Select Your Plan</h2>
-                    
-                    <!-- Base Plan -->
-                    <div class="flex justify-between items-start pb-4 border-b border-slate-200">
-                        <div>
-                            <h3 class="font-bold text-slate-900">Sarah Professional Plan</h3>
-                            <p class="text-xs text-slate-500 mt-0.5">300 mins 24/7 voice + 300 SMS</p>
-                            <p class="text-xs text-[#2563eb] font-semibold mt-1">7 Days Free, then $59/mo</p>
-                        </div>
-                        <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo</span></span>
-                    </div>
-
-                    <!-- Add-On Option: Extra Lines for Vans -->
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" id="add-van-lines" class="mt-1 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded cursor-pointer">
-                            <div>
-                                <label for="add-van-lines" class="font-bold text-slate-900 text-xs sm:text-sm cursor-pointer">Add Extra Van / Crew Lines</label>
-                                <p class="text-[11px] text-slate-500">Need Sarah to answer dedicated lines for extra vans?</p>
-                            </div>
-                        </div>
-                        
-                        <div id="extra-line-controls" class="hidden pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-700 font-medium">Extra Lines (+ $20/mo each):</span>
-                            <div class="flex items-center gap-2">
-                                <button type="button" id="dec-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">-</button>
-                                <span id="line-count" class="font-bold text-slate-900 w-4 text-center">1</span>
-                                <button type="button" id="inc-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Total Due Today Summary -->
-                    <div class="pt-2">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Due Today:</span>
-                            <span class="text-2xl font-extrabold text-[#2563eb]">$0.00</span>
-                        </div>
-                        <p class="text-[11px] text-slate-500">Your account is created. Renews at <span id="monthly-total-display">$59.00</span>/mo starting after your 7-day trial.</p>
-                    </div>
+        <!-- STATS BAR -->
+        <section class="border-b border-slate-200 bg-white py-10 relative z-10">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">85%</p>
+                    <p class="text-xs text-slate-600 mt-1 font-medium">Of callers go to a competitor if unanswered</p>
                 </div>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">24/7</p>
+                    <p class="text-xs text-slate-600 mt-1 font-medium">Live voice answering & emergency callout triage</p>
+                </div>
+                <div class="podium-card-3d p-6 rounded-2xl">
+                    <p class="text-3xl font-extrabold text-[#2563eb]">Google Reviews</p>
+                    <p class="text-xs text-slate-600 mt-1 font-medium">Automatic review requests sent on job completion with follow up & interactive Google review response.</p>
+                </div>
+            </div>
+        </section>
 
-                <!-- STEP 3: Payment Verification -->
-                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center justify-between">
-                        <span>3. Payment Verification</span>
-                        <span class="text-xs font-normal text-slate-500">🔒 256-Bit Secure</span>
-                    </h2>
-                    
-                    <p class="text-xs text-slate-600">
-                        Required to activate your 7-day free trial. You will <strong class="text-slate-900">not</strong> be charged anything today. Your subscription begins automatically on day 8 unless cancelled.
+        <!-- MORE THAN JUST AN ANSWERING SERVICE -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+            <div class="text-center mb-12">
+                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                    More Than Just an Answering Service
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Protecting Your <span class="text-[#2563eb]">Hard-Earned Reputation</span></h2>
+                <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">When customers ring your number, they don't get a generic automated text bot—instead they experience an empathetic, live interaction with a calm authoritative professional - designed to put the customer at ease</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
+                    <div class="text-2xl">🗣️</div>
+                    <h3 class="text-lg font-bold text-slate-900">Live Voice & Emergency Care</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">Sarah talks to clients live with an empathetic, professional demeanor—handling emergency queries and protecting your hard-earned reputation.</p>
+                </div>
+                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
+                    <div class="text-2xl">📅</div>
+                    <h3 class="text-lg font-bold text-slate-900">Instant Diary Booking</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">While on the phone with the customer, Sarah sorts out scheduling and drops the appointment straight into your diary so your calendar stays packed.</p>
+                </div>
+                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
+                    <div class="text-2xl">💳</div>
+                    <h3 class="text-lg font-bold text-slate-900">Automated Deposits & Payments</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">Whether you charge a standard call-out fee or require an upfront deposit, Sarah can text secure payment links straight to the client—ensuring you're covered before hitting the road.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRADE PROFESSIONS & BENEFITS -->
+        <section id="how-it-works" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">How <span class="text-[#2563eb]">Sarah</span> Works for Your Trade</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Tailored live voice & payment workflows for roofers, plumbers, and general builders.</p>
+            </div>
+
+            <!-- CARD 1: ROOFERS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1792284293487.jpg" 
+                        alt="Roofing Specialist at Work"
+                    />
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Roofing Specialists</span>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3">Up on a Roof? <span class="text-[#2563eb]">Sarah Answers Live.</span></h3>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
+                        When you're up on a pitched roof, answering calls is impossible. Sarah answers live with her voice, triages storm damage leaks, and text-confirms job bookings.
                     </p>
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                        <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-700">"Sarah answered live, quoted our standard $150 emergency roof tarp fee, and texted the client our secure deposit link."</p>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="space-y-4 text-xs sm:text-sm">
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Cardholder Name</label>
-                            <input type="text" required placeholder="Name on card" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
+            <!-- CARD 2: PLUMBERS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="order-2 md:order-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Plumbing & Heating</span>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3"><span class="text-[#2563eb]">Under a Sink?</span> Sarah Triage 24/7 Callouts</h3>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
+                        Burst pipes don't wait for business hours. Sarah handles midnight emergency callouts live over the phone and collects callout deposit payments automatically.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                        <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-700">"Picked up a 3AM leak call live, verified water shut-off instructions, and secured the emergency callout fee upfront via SMS link."</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1793498924399.jpg" 
+                        alt="Plumber Working Under Sink"
+                    />
+                </div>
+            </div>
 
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Card Number</label>
-                            <div class="relative">
-                                <input type="text" required placeholder="4532 •••• •••• ••••" maxlength="19" class="w-full pl-4 pr-12 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                <div class="absolute right-3 top-3.5 text-xs font-bold text-slate-400">💳</div>
-                            </div>
-                        </div>
+            <!-- CARD 3: BUILDERS / CONTRACTORS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
+                <div class="blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1792284328037.jpg" 
+                        alt="General Contractor on Site"
+                    />
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Building Contractors</span>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3">Running Power Tools? <span class="text-[#2563eb]">Sarah Speaks For You</span></h3>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
+                        Never let power tool noise drown out new business. Sarah talks with prospective clients, logs project scopes, and dispatches lead notifications straight to your pocket.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                        <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-700">"Sarah answered live while we were on site, gathered extension specs, and texted the client a booking link for next Tuesday."</p>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Expiration Date</label>
-                                <input type="text" required placeholder="MM / YY" maxlength="7" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">CVC / CVV</label>
-                                <input type="password" required placeholder="123" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
+            <!-- CARD 4: FIELD SERVICE -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
+                <div class="order-2 md:order-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Field Service & Maintenance</span>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3">On a Job? <span class="text-[#2563eb]">Turn Calls Into Paid Bookings</span></h3>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
+                        Combine live 24/7 voice reception with automated deposit payment links to ensure every single enquiry converts into confirmed revenue.
+                    </p>
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                        <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
+                        <p class="text-slate-700">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
+                    <img 
+                        src="1793498988502.jpg" 
+                        alt="Field Service Professional"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR -->
+        <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-16 relative z-10">
+            <div class="text-center mb-10">
+                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
+                    Interactive ROI Calculator
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Calculate Your <span class="text-[#2563eb]">Recovered Revenue</span></h2>
+                <p class="text-slate-600 text-sm sm:text-base">See how much lost revenue Sarah recovers for your business every month.</p>
+            </div>
+
+            <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="job-value" class="text-sm font-semibold text-slate-800">Average Value per Client / Job</label>
+                            <span id="job-value-display" class="text-lg font-bold text-[#2563eb]">$150</span>
                         </div>
+                        <input type="range" id="job-value" min="50" max="1000" step="25" value="150" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2563eb]">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="missed-calls" class="text-sm font-semibold text-slate-800">Missed Calls per Week</label>
+                            <span id="missed-calls-display" class="text-lg font-bold text-[#2563eb]">5 calls</span>
+                        </div>
+                        <input type="range" id="missed-calls" min="1" max="25" step="1" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2563eb]">
                     </div>
                 </div>
 
-                <!-- STEP 4: Legal Consent & Final CTA Button at the Very Bottom -->
-                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl space-y-6">
-                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">4. Final Authorization & Activation</h2>
-                    
-                    <!-- INDUSTRY-STANDARD LEGAL & COMPLIANCE CONSENT BLOCK -->
-                    <div class="space-y-3 text-xs text-slate-600">
-                        <label class="flex items-start gap-2.5 cursor-pointer">
-                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> (plus any selected add-ons) automatically after my 7-day trial ends, until I cancel.</span>
-                        </label>
-
-                        <label class="flex items-start gap-2.5 cursor-pointer">
-                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I agree to the <a href="terms.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Privacy Policy</a>.</span>
-                        </label>
+                <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 shadow-xl">
+                    <div>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-[#2563eb]">$3,000</p>
                     </div>
-
-                    <!-- THE CTA BUTTON SITS AT THE VERY BOTTOM -->
-                    <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
-                        Activate Your 7-Day Free Trial →
-                    </button>
-
-                    <div class="text-center text-[11px] text-slate-400 space-y-1">
-                        <p>🔒 Bank-Grade 256-Bit Encryption</p>
-                        <p>Cancel anytime with 1-click in your contractor dashboard.</p>
+                    <div class="pt-4 border-t border-slate-200">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-1">Sarah Assistant Subscription</p>
+                        <p class="text-3xl font-extrabold text-slate-900">$59 <span class="text-xs text-slate-500 font-normal">/ month</span></p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-            </form>
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="max-w-4xl mx-auto px-4 py-20 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Simple, Transparent Pricing</h2>
+                <p class="text-slate-600 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
+            </div>
 
-        </div>
+            <div class="max-w-md mx-auto">
+                <div class="podium-dark-card p-8 sm:p-10 rounded-3xl border border-blue-200 shadow-2xl relative flex flex-col justify-between">
+                    <div>
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-slate-900">Sarah Professional</h3>
+                            <p class="text-slate-600 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-slate-200">
+                            <span class="text-5xl font-extrabold text-slate-900">$59</span>
+                            <span class="text-slate-600 text-sm"> / month</span>
+                        </div>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>1 Dedicated Main Business Line</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>300 Live Voice Minutes</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>300 SMS Messages</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Real-Time Diary Booking</li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Automated Deposit Payment Links</li>
+                            <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Google Review Request & Response Engine</li>
+                        </ul>
+                        
+                        <div class="bg-slate-100 border border-slate-200 p-3 rounded-xl mb-6 text-center">
+                            <p class="text-xs text-slate-700 font-medium">Need extra business lines for additional vans?</p>
+                            <p class="text-[11px] text-[#2563eb] font-bold mt-0.5">Add extra lines for +$20 each on signup</p>
+                        </div>
+                    </div>
+                    <a href="signup.html" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-lg block text-sm">
+                        start your 7-day free trial here →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA SECTION -->
+        <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
+            <div class="podium-card-3d p-8 sm:p-12 rounded-3xl space-y-6">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Ready to Stop Losing Calls to Competitors?</h2>
+                <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">Set up Sarah in under 2 minutes. Start your 7-day free trial today with zero risk.</p>
+                <div class="pt-2">
+                    <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-sm sm:text-base hover:scale-105">
+                        start your 7-day free trial here →
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- FOOTER WITH LEGAL LINKS -->
-    <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 bg-white py-10 text-center text-xs text-slate-500 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
             <div class="flex items-center gap-4">
@@ -303,7 +522,7 @@
                 <span>•</span>
                 <a href="privacy.html" class="hover:text-slate-900 transition">Privacy Policy</a>
                 <span>•</span>
-                <a href="index.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Home</a>
+                <a href="login.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Log In</a>
             </div>
         </div>
     </footer>
@@ -325,50 +544,29 @@
             }
         });
 
-        // Add-on Van Line Logic
-        const vanCheckbox = document.getElementById('add-van-lines');
-        const extraLineControls = document.getElementById('extra-line-controls');
-        const lineCountSpan = document.getElementById('line-count');
-        const decBtn = document.getElementById('dec-lines');
-        const incBtn = document.getElementById('inc-lines');
-        const monthlyTotalDisplay = document.getElementById('monthly-total-display');
+        // ROI Calculator Logic
+        const jobValueSlider = document.getElementById('job-value');
+        const jobValueDisplay = document.getElementById('job-value-display');
+        const missedCallsSlider = document.getElementById('missed-calls');
+        const missedCallsDisplay = document.getElementById('missed-calls-display');
+        const lostRevenueOutput = document.getElementById('lost-revenue');
 
-        let extraLines = 1;
-        const basePrice = 59;
-        const linePrice = 20;
-
-        function updateTotal() {
-            let total = basePrice;
-            if (vanCheckbox.checked) {
-                total += (extraLines * linePrice);
-            }
-            monthlyTotalDisplay.textContent = `$${total}.00`;
+        function updateROI() {
+            const val = parseInt(jobValueSlider.value);
+            const calls = parseInt(missedCallsSlider.value);
+            
+            jobValueDisplay.textContent = `$${val}`;
+            missedCallsDisplay.textContent = `${calls} call${calls > 1 ? 's' : ''}`;
+            
+            // Calculation: Calls per week * 4 weeks * average job value
+            const monthlyLost = calls * 4 * val;
+            lostRevenueOutput.textContent = `$${monthlyLost.toLocaleString()}`;
         }
 
-        vanCheckbox.addEventListener('change', () => {
-            if (vanCheckbox.checked) {
-                extraLineControls.classList.remove('hidden');
-            } else {
-                extraLineControls.classList.add('hidden');
-            }
-            updateTotal();
-        });
-
-        incBtn.addEventListener('click', () => {
-            if (extraLines < 10) {
-                extraLines++;
-                lineCountSpan.textContent = extraLines;
-                updateTotal();
-            }
-        });
-
-        decBtn.addEventListener('click', () => {
-            if (extraLines > 1) {
-                extraLines--;
-                lineCountSpan.textContent = extraLines;
-                updateTotal();
-            }
-        });
+        if (jobValueSlider && missedCallsSlider) {
+            jobValueSlider.addEventListener('input', updateROI);
+            missedCallsSlider.addEventListener('input', updateROI);
+        }
     </script>
 </body>
 </html>
