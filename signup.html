@@ -42,7 +42,7 @@
             z-index: 0;
         }
 
-        /* Diamond White Frosted Glass Cards (Unified Card Style with Slight Blueness) */
+        /* Diamond White Frosted Glass Cards */
         .podium-card-3d {
             background: #f8fafc;
             backdrop-filter: blur(24px);
@@ -271,6 +271,19 @@
                             <p class="text-[11px] text-slate-500">Your card is verified for zero dollars today. Renews at <span id="monthly-total-display">$59.00</span>/mo starting after your 7-day trial.</p>
                         </div>
 
+                        <!-- INDUSTRY-STANDARD LEGAL & COMPLIANCE CONSENT BLOCK -->
+                        <div class="space-y-3 pt-2 border-t border-slate-200 text-xs text-slate-600">
+                            <label class="flex items-start gap-2.5 cursor-pointer">
+                                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                                <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> (plus any selected add-ons) automatically after my 7-day trial ends, until I cancel.</span>
+                            </label>
+
+                            <label class="flex items-start gap-2.5 cursor-pointer">
+                                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                                <span>I agree to the <a href="terms.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" class="text-[#2563eb] underline font-semibold hover:text-blue-700">Privacy Policy</a>.</span>
+                            </label>
+                        </div>
+
                         <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
                             Activate Your 7-Day Free Trial →
                         </button>
@@ -287,11 +300,17 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER WITH LEGAL LINKS -->
     <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
-            <a href="index.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Back to Home Page</a>
+            <div class="flex items-center gap-4">
+                <a href="terms.html" class="hover:text-slate-900 transition">Terms of Service</a>
+                <span>•</span>
+                <a href="privacy.html" class="hover:text-slate-900 transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="index.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Home</a>
+            </div>
         </div>
     </footer>
 
