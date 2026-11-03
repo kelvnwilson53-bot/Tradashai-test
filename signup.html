@@ -274,10 +274,11 @@
                         </div>
                     </div>
 
+                    <!-- TERMS OF SERVICE & RECURRING BILLING AGREEMENT CHECKBOX -->
                     <div class="pt-3 space-y-3 text-xs text-slate-600 border-t border-slate-200">
                         <label class="flex items-start gap-2.5 cursor-pointer">
-                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I authorize TriDash AI to start my 7-day free trial. I understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid being billed the recurring monthly fee.</span>
+                            <input type="checkbox" id="terms-checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                            <span>I agree to the <a href="terms.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Privacy Policy</a>. I authorize TriDash AI to start my 7-day free trial and understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid recurring monthly charges.</span>
                         </label>
                     </div>
 
@@ -393,6 +394,11 @@
 
         // Final Submit Action
         function completeRegistration() {
+            const termsBox = document.getElementById('terms-checkbox');
+            if (!termsBox.checked) {
+                alert('Please check the box to accept the Terms of Service and Privacy Policy before proceeding.');
+                return;
+            }
             window.location.href = 'dashboard.html';
         }
     </script>
