@@ -121,8 +121,8 @@
         }
         .animated-badge {
             animation: badgePulse 3.5s ease-in-out infinite;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+            padding-left: 1.75rem;
+            padding-right: 1.75rem;
             text-align: center;
         }
 
@@ -251,7 +251,7 @@
         <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-7 pr-0 lg:pr-4">
-                <span class="inline-block podium-badge animated-badge text-xs font-bold py-2 rounded-full mb-6 shadow-sm">
+                <span class="inline-block podium-badge animated-badge text-sm sm:text-base font-extrabold py-2.5 rounded-full mb-6 shadow-sm">
                     🤖 Meet Sarah your 24/7 virtual sales employee
                 </span>
                 
@@ -518,7 +518,7 @@
                             <span class="text-5xl font-extrabold text-slate-900">$59</span>
                             <span class="text-slate-600 text-sm"> / month</span>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-700 mb-6">
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-700 mb-8">
                             <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>1 Dedicated Main Business Line</strong></li>
                             <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>300 Live Voice Minutes</strong></li>
                             <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> <strong>300 SMS Messages</strong></li>
@@ -526,11 +526,6 @@
                             <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Automated Deposit Payment Links</li>
                             <li class="flex items-center gap-2"><span class="text-[#2563eb] font-bold">✓</span> Google Review Request & Response Engine</li>
                         </ul>
-                        
-                        <div class="bg-slate-100 border border-slate-200 p-3 rounded-xl mb-6 text-center">
-                            <p class="text-xs text-slate-700 font-medium">Need extra business lines for additional vans?</p>
-                            <p class="text-[11px] text-[#2563eb] font-bold mt-0.5">Add extra lines for +$20 each on signup</p>
-                        </div>
                     </div>
                     <a href="signup.html" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-lg block text-sm">
                         start your 7-day free trial here →
@@ -542,121 +537,160 @@
         <!-- BOTTOM CTA SECTION -->
         <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
             <div class="podium-card-3d p-8 sm:p-12 rounded-3xl space-y-6">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Ready to Stop Losing Calls to Competitors?</h2>
-                <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">Set up Sarah in under 2 minutes. Start your 7-day free trial today with zero risk.</p>
-                <div class="pt-2">
-                    <a href="signup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-sm sm:text-base hover:scale-105">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Ready to Stop Missing Calls?</h2>
+                <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">Set up your virtual receptionist Sarah in under 60 seconds. No complex setup, no software installation required.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                    <a href="signup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center">
                         start your 7-day free trial here →
                     </a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- FLOATING SARAH CHAT WIDGET (Mobile & Desktop) -->
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-10 text-xs text-slate-600 mt-20 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="font-bold text-slate-900 text-sm">TriDash AI</p>
+                <p class="text-slate-500 mt-1">Professional live voice reception & emergency triage for multi-trade contractors.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-slate-600 font-medium">
+                <a href="#how-it-works" class="hover:text-[#2563eb] transition">How It Works</a>
+                <a href="#roi-calculator" class="hover:text-[#2563eb] transition">ROI Calculator</a>
+                <a href="#pricing" class="hover:text-[#2563eb] transition">Pricing</a>
+                <a href="mailto:support@tridashai.com" class="hover:text-[#2563eb] transition">Support</a>
+            </div>
+            <div class="text-center md:text-right text-slate-400">
+                &copy; 2026 TriDash AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WIDGET & CHAT PANEL -->
     <div id="sarah-widget-container">
-        <!-- Chat Toggle Button -->
+        <div id="sarah-chat-window">
+            <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="font-bold text-xs">Sarah | TriDash AI Assistant</span>
+                </div>
+                <button id="sarah-close-btn" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+            <div id="sarah-chat-messages" class="p-4 space-y-3 h-64 overflow-y-auto text-xs bg-slate-50">
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-slate-700 shadow-sm">
+                    Hi there! 👋 I'm Sarah, your virtual trade receptionist. Have any questions about how I handle after-hours emergency calls or book jobs straight into your calendar? Ask away!
+                </div>
+            </div>
+            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="sarah-user-input" placeholder="Type your question..." class="flex-1 px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:border-[#2563eb]">
+                <button id="sarah-send-btn" class="px-4 py-2 btn-podium-primary text-xs font-bold rounded-lg">Send</button>
+            </div>
+        </div>
         <div id="sarah-chat-btn" title="Chat with Sarah AI">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
             </svg>
         </div>
-        <!-- Chat Window Pop-up -->
-        <div id="sarah-chat-window">
-            <div class="bg-[#2563eb] text-white p-3.5 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="font-bold text-xs">Sarah | TriDash AI Assistant</span>
-                </div>
-                <button id="sarah-close-btn" class="text-white hover:text-slate-200 text-sm font-bold px-1.5">✕</button>
-            </div>
-            <div class="p-4 space-y-3 text-xs bg-slate-50 min-h-[200px] max-h-[280px] overflow-y-auto">
-                <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm max-w-[85%]">
-                    <p class="font-bold text-slate-900 mb-0.5">Sarah 🎙️</p>
-                    <p class="text-slate-700">Hi there! I'm Sarah, your 24/7 virtual trade receptionist. Have any questions about how I can handle your missed calls?</p>
-                </div>
-            </div>
-            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
-                <input type="text" placeholder="Type a message to Sarah..." class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                <button class="bg-[#2563eb] text-white px-3 py-2 rounded-xl text-xs font-bold hover:bg-blue-700 transition">Send</button>
-            </div>
-        </div>
     </div>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-200 bg-white py-10 text-center text-xs text-slate-500 relative z-10">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
-            <div class="flex items-center gap-4">
-                <a href="terms.html" class="hover:text-slate-900 transition">Terms of Service</a>
-                <span>•</span>
-                <a href="privacy.html" class="hover:text-slate-900 transition">Privacy Policy</a>
-                <span>•</span>
-                <a href="login.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Log In</a>
-            </div>
-        </div>
-    </footer>
 
     <!-- SCRIPTS -->
     <script>
-        // Navigation Menu (Right-Aligned Dropdown Toggle)
+        // Toggle Mobile Dropdown Menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close menu when clicking outside
-        window.addEventListener('click', () => {
-            if (!mobileMenu.classList.contains('hidden')) {
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
         });
 
-        // Floating Sarah Chat Widget Toggle
-        const chatBtn = document.getElementById('sarah-chat-btn');
-        const chatWindow = document.getElementById('sarah-chat-window');
-        const closeBtn = document.getElementById('sarah-close-btn');
-
-        chatBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (chatWindow.style.display === 'flex') {
-                chatWindow.style.display = 'none';
-            } else {
-                chatWindow.style.display = 'flex';
-            }
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
 
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            chatWindow.style.display = 'none';
-        });
-
-        // ROI Calculator Logic
-        const jobValueSlider = document.getElementById('job-value');
+        // ROI Calculator Script
+        const jobValueInput = document.getElementById('job-value');
+        const missedCallsInput = document.getElementById('missed-calls');
         const jobValueDisplay = document.getElementById('job-value-display');
-        const missedCallsSlider = document.getElementById('missed-calls');
         const missedCallsDisplay = document.getElementById('missed-calls-display');
-        const lostRevenueOutput = document.getElementById('lost-revenue');
+        const lostRevenueDisplay = document.getElementById('lost-revenue');
 
-        function updateROI() {
-            const val = parseInt(jobValueSlider.value);
-            const calls = parseInt(missedCallsSlider.value);
-            
+        function calculateROI() {
+            const val = parseInt(jobValueInput.value);
+            const calls = parseInt(missedCallsInput.value);
+
             jobValueDisplay.textContent = `$${val}`;
-            missedCallsDisplay.textContent = `${calls} call${calls > 1 ? 's' : ''}`;
-            
-            // Calculation: Calls per week * 4 weeks * average job value
-            const monthlyLost = calls * 4 * val;
-            lostRevenueOutput.textContent = `$${monthlyLost.toLocaleString()}`;
+            missedCallsDisplay.textContent = `${calls} ${calls === 1 ? 'call' : 'calls'}`;
+
+            // Assuming 4 weeks per month, and 80% conversion rate of missed calls recovered
+            const monthlyRecovered = Math.round(val * (calls * 4) * 0.8);
+            lostRevenueDisplay.textContent = `$${monthlyRecovered.toLocaleString()}`;
         }
 
-        if (jobValueSlider && missedCallsSlider) {
-            jobValueSlider.addEventListener('input', updateROI);
-            missedCallsSlider.addEventListener('input', updateROI);
+        jobValueInput.addEventListener('input', calculateROI);
+        missedCallsInput.addEventListener('input', calculateROI);
+        calculateROI();
+
+        // Floating Chat Widget Script
+        const sarahBtn = document.getElementById('sarah-chat-btn');
+        const sarahWindow = document.getElementById('sarah-chat-window');
+        const sarahCloseBtn = document.getElementById('sarah-close-btn');
+        const sarahSendBtn = document.getElementById('sarah-send-btn');
+        const sarahUserInput = document.getElementById('sarah-user-input');
+        const sarahMessages = document.getElementById('sarah-chat-messages');
+
+        sarahBtn.addEventListener('click', () => {
+            sarahWindow.style.display = sarahWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        sarahCloseBtn.addEventListener('click', () => {
+            sarahWindow.style.display = 'none';
+        });
+
+        function handleSarahChat() {
+            const text = sarahUserInput.value.trim();
+            if (!text) return;
+
+            // Append user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'bg-blue-600 text-white p-3 rounded-xl ml-6 text-right';
+            userDiv.textContent = text;
+            sarahMessages.appendChild(userDiv);
+            sarahUserInput.value = '';
+            sarahMessages.scrollTop = sarahMessages.scrollHeight;
+
+            // Simulated Sarah Response
+            setTimeout(() => {
+                const sarahDiv = document.createElement('div');
+                sarahDiv.className = 'bg-white p-3 rounded-xl border border-slate-200 text-slate-700 mr-6 shadow-sm';
+                
+                const lower = text.toLowerCase();
+                if (lower.includes('price') || lower.includes('cost') || lower.includes('plan')) {
+                    sarahDiv.textContent = "Our Sarah Professional plan is just $59/month for 300 live voice minutes, 300 SMS, and complete emergency triage!";
+                } else if (lower.includes('emergency') || lower.includes('night') || lower.includes('after hours')) {
+                    sarahDiv.textContent = "I handle after-hours emergencies by checking your on-call directory and firing an urgent SMS with an ACK loop to your technician!";
+                } else {
+                    sarahDiv.textContent = "That's a great question! I answer your calls 24/7, book appointments into your diary, and collect deposits via SMS payment links.";
+                }
+
+                sarahMessages.appendChild(sarahDiv);
+                sarahMessages.scrollTop = sarahMessages.scrollHeight;
+            }, 600);
         }
+
+        sarahSendBtn.addEventListener('click', handleSarahChat);
+        sarahUserInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSarahChat();
+        });
     </script>
 </body>
 </html>
