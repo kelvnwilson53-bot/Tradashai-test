@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Your 7-Day Free Trial | TriDash AI</title>
+    <title>Sign Up | TriDash AI</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -55,7 +55,6 @@
             color: #1e293b;
         }
 
-        /* Updated Badge to Blue Theme */
         .podium-badge {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
@@ -127,24 +126,43 @@
                     Put Sarah to Work Today
                 </h1>
                 <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto">
-                    Set up your 24/7 AI voice assistant in under 2 minutes. No complex software or setup required.
+                    Set up your account and 24/7 AI voice assistant in under 2 minutes.
                 </p>
             </div>
 
             <form action="dashboard.html" method="GET" class="space-y-8">
                 
-                <!-- STEP 1: Business Details -->
+                <!-- STEP 1: Industry-Standard Account Creation (Credentials First) -->
                 <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
                     <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2">
-                        <span>1. Your Business Details</span>
+                        <span>1. Create Your Account Credentials</span>
                     </h2>
 
                     <div class="space-y-4 text-xs sm:text-sm">
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Full Name / Account Owner</label>
-                            <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Full Name / Owner</label>
+                                <input type="text" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Email Address (Login ID)</label>
+                                <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
                         </div>
 
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Account Password</label>
+                            <input type="password" required placeholder="Minimum 8 characters" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            <p class="text-[11px] text-slate-500 mt-1">You will use this password to log in to your dashboard anytime.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Business Details & Plan Selection -->
+                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">2. Business Details & Plan</h2>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Business / Trading Name</label>
                             <input type="text" required placeholder="e.g. Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
@@ -166,55 +184,15 @@
                                 <input type="tel" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                         </div>
-
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Email Address</label>
-                            <input type="email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
                     </div>
-                </div>
-
-                <!-- STEP 2: Plan Selection & Add-Ons -->
-                <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-6">
-                    <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">2. Select Your Plan</h2>
                     
-                    <!-- Base Plan -->
-                    <div class="flex justify-between items-start pb-4 border-b border-slate-200">
+                    <!-- Base Plan Box -->
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
                         <div>
                             <h3 class="font-bold text-slate-900">Sarah Professional Plan</h3>
-                            <p class="text-xs text-slate-500 mt-0.5">300 mins 24/7 voice + 300 SMS</p>
-                            <p class="text-xs text-[#2563eb] font-semibold mt-1">7 Days Free, then $59/mo</p>
+                            <p class="text-xs text-slate-500">300 mins 24/7 voice + 300 SMS</p>
                         </div>
-                        <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo</span></span>
-                    </div>
-
-                    <!-- Add-On Option: Extra Lines for Vans -->
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" id="add-van-lines" class="mt-1 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded cursor-pointer">
-                            <div>
-                                <label for="add-van-lines" class="font-bold text-slate-900 text-xs sm:text-sm cursor-pointer">Add Extra Van / Crew Lines</label>
-                                <p class="text-[11px] text-slate-500">Need Sarah to answer dedicated lines for extra vans?</p>
-                            </div>
-                        </div>
-                        
-                        <div id="extra-line-controls" class="hidden pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-700 font-medium">Extra Lines (+ $20/mo each):</span>
-                            <div class="flex items-center gap-2">
-                                <button type="button" id="dec-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">-</button>
-                                <span id="line-count" class="font-bold text-slate-900 w-4 text-center">1</span>
-                                <button type="button" id="inc-lines" class="w-7 h-7 bg-slate-100 text-slate-800 font-bold rounded-lg border border-slate-300 flex items-center justify-center">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Total Due Today Summary -->
-                    <div class="pt-2">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Due Today:</span>
-                            <span class="text-2xl font-extrabold text-[#2563eb]">$0.00</span>
-                        </div>
-                        <p class="text-[11px] text-slate-500">Your card is verified for zero dollars today. Renews at <span id="monthly-total-display">$59.00</span>/mo starting after your 7-day trial.</p>
+                        <span class="font-extrabold text-slate-900 text-lg">$59<span class="text-xs text-slate-500 font-normal">/mo after trial</span></span>
                     </div>
                 </div>
 
@@ -226,7 +204,7 @@
                     </h2>
                     
                     <p class="text-xs text-slate-600">
-                        Required to activate your 7-day free trial. You will <strong class="text-slate-900">not</strong> be charged anything today. Your subscription begins automatically on day 8 unless cancelled.
+                        Required to activate your 7-day free trial. You will <strong class="text-slate-900">not</strong> be charged anything today ($0.00 due today).
                     </p>
 
                     <div class="space-y-4 text-xs sm:text-sm">
@@ -256,15 +234,14 @@
                     </div>
                 </div>
 
-                <!-- STEP 4: Legal Consent & Final CTA Button at the Very Bottom -->
+                <!-- STEP 4: Legal Consent & Final Activation CTA -->
                 <div class="podium-card-3d p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl space-y-6">
                     <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">4. Final Authorization & Activation</h2>
                     
-                    <!-- INDUSTRY-STANDARD LEGAL & COMPLIANCE CONSENT BLOCK -->
                     <div class="space-y-3 text-xs text-slate-600">
                         <label class="flex items-start gap-2.5 cursor-pointer">
                             <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> (plus any selected add-ons) automatically after my 7-day trial ends, until I cancel.</span>
+                            <span>I authorize TriDash AI to charge my card <strong class="text-slate-900">$59.00/mo</strong> automatically after my 7-day trial ends, until I cancel.</span>
                         </label>
 
                         <label class="flex items-start gap-2.5 cursor-pointer">
@@ -273,7 +250,6 @@
                         </label>
                     </div>
 
-                    <!-- THE CTA BUTTON SITS AT THE VERY BOTTOM -->
                     <button type="submit" class="w-full py-4 btn-podium-primary text-center font-bold rounded-xl transition shadow-xl text-sm hover:scale-[1.02]">
                         Activate Your 7-Day Free Trial →
                     </button>
@@ -317,51 +293,6 @@
         window.addEventListener('click', () => {
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
-            }
-        });
-
-        // Add-on Van Line Logic
-        const vanCheckbox = document.getElementById('add-van-lines');
-        const extraLineControls = document.getElementById('extra-line-controls');
-        const lineCountSpan = document.getElementById('line-count');
-        const decBtn = document.getElementById('dec-lines');
-        const incBtn = document.getElementById('inc-lines');
-        const monthlyTotalDisplay = document.getElementById('monthly-total-display');
-
-        let extraLines = 1;
-        const basePrice = 59;
-        const linePrice = 20;
-
-        function updateTotal() {
-            let total = basePrice;
-            if (vanCheckbox.checked) {
-                total += (extraLines * linePrice);
-            }
-            monthlyTotalDisplay.textContent = `$${total}.00`;
-        }
-
-        vanCheckbox.addEventListener('change', () => {
-            if (vanCheckbox.checked) {
-                extraLineControls.classList.remove('hidden');
-            } else {
-                extraLineControls.classList.add('hidden');
-            }
-            updateTotal();
-        });
-
-        incBtn.addEventListener('click', () => {
-            if (extraLines < 10) {
-                extraLines++;
-                lineCountSpan.textContent = extraLines;
-                updateTotal();
-            }
-        });
-
-        decBtn.addEventListener('click', () => {
-            if (extraLines > 1) {
-                extraLines--;
-                lineCountSpan.textContent = extraLines;
-                updateTotal();
             }
         });
     </script>
