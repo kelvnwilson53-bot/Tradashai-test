@@ -7,7 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Diamond White & Navy Blue Theme (Zero-Glare, Pure Diamond White Background) */
+        /* Diamond White & Navy Blue Theme */
         html {
             scroll-behavior: smooth;
         }
@@ -15,16 +15,17 @@
         body {
             background: #ffffff;
             color: #1e293b;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
-        /* Soft Ambient Glow Orbs (Blue Tinted) */
+        /* Ambient Glow Orbs */
         .ambient-glow-1 {
             position: absolute;
             top: -120px;
             left: -100px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(29, 78, 216, 0.02) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(29, 78, 216, 0.02) 50%, transparent 70%);
             filter: blur(140px);
             pointer-events: none;
             z-index: 0;
@@ -36,13 +37,13 @@
             right: -80px;
             width: 550px;
             height: 550px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
             filter: blur(150px);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Diamond White Frosted Glass Cards */
+        /* Diamond White Glass Cards */
         .podium-card-3d {
             background: #ffffff;
             backdrop-filter: blur(24px);
@@ -96,19 +97,12 @@
             color: #1e293b;
         }
 
-        .podium-dark-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 30px 60px rgba(30, 41, 59, 0.1);
-        }
-
         .podium-badge {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
-            color: #2563eb;
         }
 
-        /* Wider Animated Badge Floating Effect */
+        /* Animated Badge Floating Effect */
         @keyframes badgePulse {
             0%, 100% {
                 transform: translateY(0);
@@ -126,7 +120,7 @@
             text-align: center;
         }
 
-        /* Sleek Navy Blue CTA Button */
+        /* Navy Blue CTA Button */
         .btn-podium-primary {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: #ffffff;
@@ -162,6 +156,19 @@
         .marquee-track:hover {
             animation-play-state: paused;
         }
+
+        /* Mobile Modal Center Positioning for Chat Widget */
+        @media (max-width: 640px) {
+            .mobile-modal-chat {
+                bottom: auto !important;
+                right: auto !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 92% !important;
+                max-width: 350px !important;
+            }
+        }
     </style>
 </head>
 <body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
@@ -171,20 +178,20 @@
     <div class="ambient-glow-2"></div>
 
     <!-- HEADER / NAVIGATION -->
-    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+    <header class="bg-white/95 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-start justify-between">
             
-            <!-- LEFT SIDE: CLEAN TRIDASH AI LOGO -->
-            <div class="flex items-center">
+            <!-- LEFT SIDE: LOGO AT TOP-LEFT -->
+            <div class="flex items-center pt-1">
                 <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
                     TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
                 </a>
             </div>
 
-            <!-- RIGHT SIDE: LOG IN, HAMBURGER MENU, & CHAT SUPPORT STACKED -->
-            <div class="flex flex-col items-end gap-1.5">
+            <!-- RIGHT SIDE: BALANCED STACK (LOG IN -> MENU -> CHAT SUPPORT) -->
+            <div class="flex flex-col items-end gap-2">
                 <!-- Log In Button Top Right -->
-                <a href="login.html" class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-lg border border-slate-200 transition shadow-sm">
+                <a href="login.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-lg border border-slate-200 transition shadow-sm">
                     <span>🔐</span>
                     <span>Log In</span>
                 </a>
@@ -207,8 +214,8 @@
                     </div>
                 </div>
 
-                <!-- Chat Support Button Underneath Menu on Right -->
-                <button id="header-support-btn" onclick="toggleChatWidget()" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-white bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] hover:from-[#1d4ed8] hover:to-[#1e40af] px-3 py-1.5 rounded-lg transition shadow-md hover:scale-105 border border-blue-400/30">
+                <!-- Chat Support Button Underneath Menu -->
+                <button id="header-support-btn" onclick="toggleChatWidget()" class="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] hover:from-[#1d4ed8] hover:to-[#1e40af] px-3.5 py-1.5 rounded-lg transition shadow-md hover:scale-105 border border-blue-400/30">
                     <span>💬</span>
                     <span>Chat Support</span>
                 </button>
@@ -227,7 +234,7 @@
                     <span class="text-slate-900">🤖 Meet </span><span class="text-[#2563eb]">Sarah</span><span class="text-slate-900"> your 24/7 virtual sales employee</span>
                 </div>
                 
-                <!-- HERO HEADING (Restored to Centered / Aligned) -->
+                <!-- HERO HEADING (Times New Roman, Centered, Non-Italic) -->
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-center lg:text-left" style="font-family: 'Times New Roman', Times, serif; font-style: normal; color: #000000;">
                     <span class="whitespace-nowrap">No more missed calls</span><br>
                     <span>more jobs booked</span>
@@ -253,13 +260,14 @@
                 <div class="blend-image-container h-[380px] sm:h-[420px]">
                     <img 
                         src="sarah%201.jpg" 
-                        alt="Sarah - Your Virtual Crew Member"
+                        alt="Sarah - Your Virtual Sales Employee"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/2563eb/ffffff?text=Sarah+AI+Receptionist';"
                     />
                 </div>
             </div>
         </section>
 
-        <!-- MOVING SLIDES / REVIEWS TICKER (Genuine Trade Citations) -->
+        <!-- MOVING SLIDES / REVIEWS TICKER -->
         <section class="py-6 bg-slate-50/80 backdrop-blur-md border-y border-slate-200 overflow-hidden relative z-10">
             <div class="marquee-wrapper">
                 <div class="marquee-track">
@@ -275,18 +283,12 @@
                     <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
                         <span class="text-[#2563eb] font-bold">📊</span> "Over 50% of local trade businesses lose search visibility and customer trust by failing to reply to online reviews." <span class="text-slate-400 text-[10px] ml-1">(BrightLocal Research)</span>
                     </div>
-                    <!-- Duplicate for infinite smooth loop -->
+                    <!-- Duplicate for infinite loop -->
                     <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
                         <span class="text-[#2563eb] font-bold">📊</span> "85% of callers whose call goes to voicemail will hang up and call a competitor immediately." <span class="text-slate-400 text-[10px] ml-1">(Invoca Trade Study)</span>
                     </div>
                     <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
                         <span class="text-[#2563eb] font-bold">📊</span> "The odds of contacting a lead decrease by 10x if the first response takes longer than 5 minutes." <span class="text-slate-400 text-[10px] ml-1">(Lead Response Management Study)</span>
-                    </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
-                        <span class="text-[#2563eb] font-bold">📊</span> "78% of local service jobs are awarded to the first contractor who responds to the inquiry." <span class="text-slate-400 text-[10px] ml-1">(Harvard Business Review)</span>
-                    </div>
-                    <div class="podium-card-3d px-6 py-3 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-3">
-                        <span class="text-[#2563eb] font-bold">📊</span> "Over 50% of local trade businesses lose search visibility and customer trust by failing to reply to online reviews." <span class="text-slate-400 text-[10px] ml-1">(BrightLocal Research)</span>
                     </div>
                 </div>
             </div>
@@ -313,7 +315,7 @@
         <!-- MORE THAN JUST AN ANSWERING SERVICE -->
         <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
             <div class="text-center mb-12">
-                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 text-[#2563eb]">
                     More Than Just an Answering Service
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Protecting Your <span class="text-[#2563eb]">Hard-Earned Reputation</span></h2>
@@ -352,6 +354,7 @@
                     <img 
                         src="1792284293487.jpg" 
                         alt="Roofing Specialist at Work"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x350/f8fafc/1e293b?text=Roofing+Specialist';"
                     />
                 </div>
                 <div>
@@ -384,6 +387,7 @@
                     <img 
                         src="1793498924399.jpg" 
                         alt="Plumber Working Under Sink"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x350/f8fafc/1e293b?text=Plumbing+Specialist';"
                     />
                 </div>
             </div>
@@ -394,6 +398,7 @@
                     <img 
                         src="1792284328037.jpg" 
                         alt="General Contractor on Site"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x350/f8fafc/1e293b?text=Building+Contractor';"
                     />
                 </div>
                 <div>
@@ -408,33 +413,12 @@
                     </div>
                 </div>
             </div>
-
-            <!-- CARD 4: FIELD SERVICE -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl">
-                <div class="order-2 md:order-1">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Field Service & Maintenance</span>
-                    <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3">On a Job? <span class="text-[#2563eb]">Turn Calls Into Paid Bookings</span></h3>
-                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
-                        Combine live 24/7 voice reception with automated deposit payment links to ensure every single enquiry converts into confirmed revenue.
-                    </p>
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
-                        <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-slate-700">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
-                    <img 
-                        src="1793498988502.jpg" 
-                        alt="Field Service Professional"
-                    />
-                </div>
-            </div>
         </section>
 
         <!-- ROI CALCULATOR -->
         <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-16 relative z-10">
             <div class="text-center mb-10">
-                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
+                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3 text-[#2563eb]">
                     Interactive ROI Calculator
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Calculate Your <span class="text-[#2563eb]">Recovered Revenue</span></h2>
@@ -535,8 +519,8 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE CHAT SUPPORT WINDOW -->
-    <div id="chat-widget-box" class="hidden fixed bottom-6 right-6 w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-[999999] overflow-hidden">
+    <!-- MOBILE-OPTIMIZED FLOATING CHAT WIDGET OVERLAY -->
+    <div id="chat-widget-box" class="hidden fixed bottom-6 right-6 w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-[999999] overflow-hidden mobile-modal-chat">
         <div class="bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] p-4 text-white flex items-center justify-between">
             <div class="flex items-center gap-2.5">
                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">🤖</div>
@@ -545,7 +529,7 @@
                     <p class="text-[10px] text-blue-100">Live Support • Online</p>
                 </div>
             </div>
-            <button onclick="toggleChatWidget()" class="text-white hover:text-slate-200 text-lg font-bold">&times;</button>
+            <button onclick="toggleChatWidget()" class="text-white hover:text-slate-200 text-lg font-bold p-1">&times;</button>
         </div>
         <div class="p-4 bg-slate-50 h-56 overflow-y-auto space-y-3 text-xs">
             <div class="bg-white p-3 rounded-xl border border-slate-200 text-slate-700 shadow-sm max-w-[85%]">
@@ -601,7 +585,7 @@
             jobValueDisplay.textContent = `$${val.toLocaleString()}`;
             missedCallsDisplay.textContent = `${calls} ${calls === 1 ? 'call' : 'calls'}`;
 
-            // Calculation: assuming 50% of missed calls are convertible leads per week * 4 weeks
+            // 50% conversion estimation * 4 weeks
             const monthlyLost = val * (calls * 0.5) * 4;
             lostRevenueDisplay.textContent = `$${Math.round(monthlyLost).toLocaleString()}`;
         }
