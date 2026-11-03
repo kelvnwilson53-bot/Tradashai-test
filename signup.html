@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Your 7-Day Free Trial | TriDash AI</title>
+    <title>Create Your Account | TriDash AI</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -43,6 +43,17 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
             transform: translateY(-2px);
         }
+
+        .step-pill-active {
+            background-color: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+        .step-pill-inactive {
+            background-color: #f8fafc;
+            color: #64748b;
+            border-color: #e2e8f0;
+        }
     </style>
 </head>
 <body class="font-sans antialiased flex flex-col min-h-screen justify-between relative overflow-x-hidden">
@@ -55,69 +66,210 @@
             <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
                 TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
             </a>
-            <a href="login.html" class="text-xs font-semibold text-[#2563eb] hover:underline">Log In</a>
+            <div class="text-xs text-slate-600">
+                Already registered? <a href="login.html" class="font-bold text-[#2563eb] hover:underline">Log In</a>
+            </div>
         </div>
     </header>
 
-    <!-- SIGNUP MAIN -->
-    <main class="flex-1 flex items-center justify-center py-12 px-4 relative z-10">
-        <div class="w-full max-w-md">
+    <!-- MAIN FORM WIZARD -->
+    <main class="flex-1 flex items-center justify-center py-10 px-4 relative z-10">
+        <div class="w-full max-w-lg">
             
-            <div class="text-center mb-8">
-                <span class="inline-block bg-blue-50 border border-blue-200 text-[#2563eb] text-xs font-bold px-4 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 7-Day Free Trial • Cancel Anytime
+            <!-- STEP INDICATOR HEADER -->
+            <div class="mb-8 text-center">
+                <span class="inline-block bg-blue-50 border border-blue-200 text-[#2563eb] text-xs font-bold px-4 py-1.5 rounded-full mb-4 shadow-sm">
+                    🚀 7-Day Free Trial • $59/mo Flat Plan
                 </span>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Get Started with <span class="text-[#2563eb]">Sarah</span>
+                    Set Up Your Account
                 </h1>
-                <p class="text-xs sm:text-sm text-slate-600 mt-2">
-                    Single line receptionist engine. $59/month after trial.
-                </p>
+                
+                <!-- 3-STAGE PROGRESS BAR -->
+                <div class="flex items-center justify-center gap-2 mt-6">
+                    <div id="badge-step-1" class="step-pill-active text-[11px] font-bold px-3 py-1 rounded-full border transition-all">
+                        1. Account Credentials
+                    </div>
+                    <span class="text-slate-300">──</span>
+                    <div id="badge-step-2" class="step-pill-inactive text-[11px] font-bold px-3 py-1 rounded-full border transition-all">
+                        2. Business Details
+                    </div>
+                    <span class="text-slate-300">──</span>
+                    <div id="badge-step-3" class="step-pill-inactive text-[11px] font-bold px-3 py-1 rounded-full border transition-all">
+                        3. Activation
+                    </div>
+                </div>
             </div>
 
-            <!-- LEAN FORM CARD -->
+            <!-- FORM CARD -->
             <div class="podium-card-3d p-6 sm:p-8 rounded-3xl">
-                <form action="dashboard.html" method="GET" class="space-y-5">
+                <form id="signup-wizard-form" action="dashboard.html" method="GET">
                     
-                    <div>
-                        <label for="business-name" class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                            Business / Company Name
-                        </label>
-                        <input type="text" id="business-name" name="business_name" required placeholder="e.g. Apex Plumbing & Building" class="w-full px-4 py-3 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent bg-slate-50">
+                    <!-- ================= STAGE 1: ACCOUNT CREDENTIALS ================= -->
+                    <div id="stage-1" class="space-y-4">
+                        <h2 class="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2 uppercase tracking-wider">
+                            Step 1: Security & Credentials
+                        </h2>
+
+                        <div>
+                            <label for="email" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Email Address (Username) *
+                            </label>
+                            <input type="email" id="email" name="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Password *
+                            </label>
+                            <input type="password" id="password" name="password" required placeholder="Minimum 8 characters" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label for="confirm-password" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Confirm Password *
+                            </label>
+                            <input type="password" id="confirm-password" name="confirm_password" required placeholder="Re-enter password" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div class="flex items-start gap-2 pt-2">
+                            <input type="checkbox" id="terms" required class="mt-0.5 rounded border-slate-300 text-[#2563eb] focus:ring-[#2563eb]">
+                            <label for="terms" class="text-xs text-slate-600">
+                                I agree to the <a href="#" class="text-[#2563eb] underline">Terms of Service</a> and <a href="#" class="text-[#2563eb] underline">Privacy Policy</a>.
+                            </label>
+                        </div>
+
+                        <button type="button" onclick="goToStage(2)" class="w-full py-3.5 btn-podium-primary font-bold rounded-xl text-sm transition shadow-lg mt-4">
+                            Next: Business Details →
+                        </button>
                     </div>
 
-                    <div>
-                        <label for="phone-number" class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                            Main Business Phone Number
-                        </label>
-                        <input type="tel" id="phone-number" name="phone_number" required placeholder="e.g. (555) 000-0000" class="w-full px-4 py-3 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent bg-slate-50">
+                    <!-- ================= STAGE 2: BUSINESS DETAILS ================= -->
+                    <div id="stage-2" class="space-y-4 hidden">
+                        <h2 class="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2 uppercase tracking-wider">
+                            Step 2: Business & Operations Profile
+                        </h2>
+
+                        <div>
+                            <label for="owner-name" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Full Name (Owner / Primary Contact) *
+                            </label>
+                            <input type="text" id="owner-name" name="owner_name" placeholder="John Doe" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label for="business-name" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Registered Business / Trading Name *
+                            </label>
+                            <input type="text" id="business-name" name="business_name" placeholder="Apex Plumbing & Heating" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label for="phone-number" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Main Business Phone Number *
+                            </label>
+                            <input type="tel" id="phone-number" name="phone_number" placeholder="(555) 000-0000" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label for="timezone" class="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
+                                Primary Operating Timezone *
+                            </label>
+                            <select id="timezone" name="timezone" class="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] bg-slate-50 text-slate-700">
+                                <option value="EST">Eastern Time (US & Canada)</option>
+                                <option value="CST">Central Time (US & Canada)</option>
+                                <option value="MST">Mountain Time (US & Canada)</option>
+                                <option value="PST">Pacific Time (US & Canada)</option>
+                                <option value="GMT">Greenwich Mean Time (UK / Europe)</option>
+                            </select>
+                        </div>
+
+                        <div class="flex gap-3 mt-4">
+                            <button type="button" onclick="goToStage(1)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl text-sm transition">
+                                ← Back
+                            </button>
+                            <button type="button" onclick="goToStage(3)" class="w-2/3 py-3.5 btn-podium-primary font-bold rounded-xl text-sm transition shadow-lg">
+                                Next: Activation →
+                            </button>
+                        </div>
                     </div>
 
-                    <div>
-                        <label for="email" class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                            Email Address
-                        </label>
-                        <input type="email" id="email" name="email" required placeholder="you@yourcompany.com" class="w-full px-4 py-3 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent bg-slate-50">
+                    <!-- ================= STAGE 3: ACTIVATION & VERIFICATION ================= -->
+                    <div id="stage-3" class="space-y-4 hidden">
+                        <h2 class="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2 uppercase tracking-wider">
+                            Step 3: Account Activation & Trial
+                        </h2>
+
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl text-xs space-y-2 text-slate-700">
+                            <div class="font-bold text-[#2563eb] text-sm">Summary of Plan:</div>
+                            <div class="flex justify-between border-b border-blue-100 pb-1">
+                                <span>Plan Type:</span>
+                                <strong>Sarah Professional (Single Line)</strong>
+                            </div>
+                            <div class="flex justify-between border-b border-blue-100 pb-1">
+                                <span>Trial Period:</span>
+                                <strong>7 Days Free</strong>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ongoing Subscription:</span>
+                                <strong>$59 / month after trial</strong>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-500 text-center">
+                            🔒 You will not be charged today. Trade directories and routing settings can be edited inside your dashboard.
+                        </div>
+
+                        <div class="flex gap-3 mt-4">
+                            <button type="button" onclick="goToStage(2)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl text-sm transition">
+                                ← Back
+                            </button>
+                            <button type="submit" class="w-2/3 py-3.5 btn-podium-primary font-bold rounded-xl text-sm transition shadow-lg">
+                                Complete Setup & Launch Dashboard →
+                            </button>
+                        </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 btn-podium-primary font-bold rounded-xl text-sm transition shadow-lg mt-2">
-                        Continue →
-                    </button>
-                    
                 </form>
-
-                <p class="text-[11px] text-center text-slate-400 mt-4">
-                    Zero setup fees. Configure your trade settings inside the dashboard.
-                </p>
             </div>
 
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-xs text-slate-500 text-center relative z-10">
+    <footer class="bg-white border-t border-slate-200 py-4 text-xs text-slate-500 text-center relative z-10">
         &copy; 2026 TriDash AI. All rights reserved.
     </footer>
 
+    <!-- WIZARD STEP CONTROLLER SCRIPT -->
+    <script>
+        function goToStage(stageNumber) {
+            // Hide all stages
+            document.getElementById('stage-1').classList.add('hidden');
+            document.getElementById('stage-2').classList.add('hidden');
+            document.getElementById('stage-3').classList.add('hidden');
+
+            // Reset badges
+            const b1 = document.getElementById('badge-step-1');
+            const b2 = document.getElementById('badge-step-2');
+            const b3 = document.getElementById('badge-step-3');
+
+            b1.className = 'step-pill-inactive text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+            b2.className = 'step-pill-inactive text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+            b3.className = 'step-pill-inactive text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+
+            // Show selected stage & highlight badge
+            if (stageNumber === 1) {
+                document.getElementById('stage-1').classList.remove('hidden');
+                b1.className = 'step-pill-active text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+            } else if (stageNumber === 2) {
+                document.getElementById('stage-2').classList.remove('hidden');
+                b2.className = 'step-pill-active text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+            } else if (stageNumber === 3) {
+                document.getElementById('stage-3').classList.remove('hidden');
+                b3.className = 'step-pill-active text-[11px] font-bold px-3 py-1 rounded-full border transition-all';
+            }
+        }
+    </script>
 </body>
 </html>
