@@ -162,6 +162,47 @@
         .marquee-track:hover {
             animation-play-state: paused;
         }
+
+        /* Floating Mobile & Desktop Chat Widget Styles */
+        #sarah-widget-container {
+            position: fixed !important;
+            bottom: 25px !important;
+            right: 20px !important;
+            z-index: 999999 !important;
+        }
+        #sarah-chat-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+        #sarah-chat-btn:hover {
+            transform: scale(1.08);
+        }
+        #sarah-chat-window {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: calc(100vw - 32px);
+            max-width: 340px;
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            border: 1px solid #cbd5e1;
+            border-radius: 1.25rem;
+            box-shadow: 0 25px 60px rgba(30, 41, 59, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            color: #1e293b;
+        }
     </style>
 </head>
 <body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
@@ -513,6 +554,36 @@
 
     </main>
 
+    <!-- FLOATING SARAH CHAT WIDGET (Mobile & Desktop) -->
+    <div id="sarah-widget-container">
+        <!-- Chat Toggle Button -->
+        <div id="sarah-chat-btn" title="Chat with Sarah AI">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+            </svg>
+        </div>
+        <!-- Chat Window Pop-up -->
+        <div id="sarah-chat-window">
+            <div class="bg-[#2563eb] text-white p-3.5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-bold text-xs">Sarah | TriDash AI Assistant</span>
+                </div>
+                <button id="sarah-close-btn" class="text-white hover:text-slate-200 text-sm font-bold px-1.5">✕</button>
+            </div>
+            <div class="p-4 space-y-3 text-xs bg-slate-50 min-h-[200px] max-h-[280px] overflow-y-auto">
+                <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm max-w-[85%]">
+                    <p class="font-bold text-slate-900 mb-0.5">Sarah 🎙️</p>
+                    <p class="text-slate-700">Hi there! I'm Sarah, your 24/7 virtual trade receptionist. Have any questions about how I can handle your missed calls?</p>
+                </div>
+            </div>
+            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" placeholder="Type a message to Sarah..." class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                <button class="bg-[#2563eb] text-white px-3 py-2 rounded-xl text-xs font-bold hover:bg-blue-700 transition">Send</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="border-t border-slate-200 bg-white py-10 text-center text-xs text-slate-500 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -542,6 +613,25 @@
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
             }
+        });
+
+        // Floating Sarah Chat Widget Toggle
+        const chatBtn = document.getElementById('sarah-chat-btn');
+        const chatWindow = document.getElementById('sarah-chat-window');
+        const closeBtn = document.getElementById('sarah-close-btn');
+
+        chatBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (chatWindow.style.display === 'flex') {
+                chatWindow.style.display = 'none';
+            } else {
+                chatWindow.style.display = 'flex';
+            }
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatWindow.style.display = 'none';
         });
 
         // ROI Calculator Logic
