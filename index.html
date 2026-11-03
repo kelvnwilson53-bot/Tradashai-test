@@ -544,7 +544,7 @@
             });
         });
 
-        // ROI Calculator Logic
+        // ROI Calculator Logic (Direct Lost Revenue: Job Value * Missed Calls per week * 4 weeks)
         const jobValueInput = document.getElementById('job-value');
         const jobValueDisplay = document.getElementById('job-value-display');
         const missedCallsInput = document.getElementById('missed-calls');
@@ -558,8 +558,8 @@
             jobValueDisplay.textContent = `$${val.toLocaleString()}`;
             missedCallsDisplay.textContent = `${calls} ${calls === 1 ? 'call' : 'calls'}`;
 
-            // Calculation: assuming 50% of missed calls are convertible leads per week * 4 weeks
-            const monthlyLost = val * (calls * 0.5) * 4;
+            // Direct Monthly Calculation: (Value per job) * (Missed calls per week) * 4 weeks
+            const monthlyLost = val * calls * 4;
             lostRevenueDisplay.textContent = `$${Math.round(monthlyLost).toLocaleString()}`;
         }
 
