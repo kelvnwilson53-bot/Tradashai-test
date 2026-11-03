@@ -71,6 +71,16 @@
 
     <div class="ambient-glow-1"></div>
 
+    <!-- DEV STEP SWITCHER BAR (Instant inspection without filling out form inputs) -->
+    <div class="bg-slate-900 text-white text-[11px] py-1.5 px-4 text-center flex items-center justify-center gap-3 relative z-50">
+        <span class="font-bold text-amber-400">🛠️ Inspection Controls:</span>
+        <button onclick="goToStep(1, true)" class="underline hover:text-blue-300">Preview Step 1</button>
+        <span>•</span>
+        <button onclick="goToStep(2, true)" class="underline hover:text-blue-300">Preview Step 2</button>
+        <span>•</span>
+        <button onclick="goToStep(3, true)" class="underline hover:text-blue-300">Preview Step 3</button>
+    </div>
+
     <!-- HEADER / NAVIGATION -->
     <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -103,7 +113,7 @@
             
             <div class="text-center mb-8">
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 7-Day Free Trial • Zero Risk
+                    🚀 7-Day Free Trial • Zero Risk • Cancel Anytime
                 </span>
                 <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
                     Create Your Account
@@ -113,22 +123,22 @@
 
             <!-- MULTI-STEP PROGRESS BAR -->
             <div class="flex items-center justify-between mb-8 text-xs font-bold">
-                <div id="pill-step-1" class="step-pill active px-4 py-2 rounded-full border border-slate-300 flex items-center gap-1.5">
+                <div id="pill-step-1" onclick="goToStep(1, true)" class="step-pill active px-4 py-2 rounded-full border border-slate-300 flex items-center gap-1.5 cursor-pointer">
                     <span>1.</span> Account
                 </div>
                 <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-                <div id="pill-step-2" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5">
+                <div id="pill-step-2" onclick="goToStep(2, true)" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5 cursor-pointer">
                     <span>2.</span> Business
                 </div>
                 <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-                <div id="pill-step-3" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5">
+                <div id="pill-step-3" onclick="goToStep(3, true)" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5 cursor-pointer">
                     <span>3.</span> Billing
                 </div>
             </div>
 
             <form id="signup-form" onsubmit="return false;" class="space-y-6">
                 
-                <!-- STEP 1: ACCOUNT REGISTRATION (Credentials First) -->
+                <!-- STEP 1: ACCOUNT REGISTRATION (Single Password + Modern Reveal Toggle) -->
                 <div id="step-1-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">
                         Step 1: Create Login Credentials
@@ -145,7 +155,13 @@
                         </div>
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Create Password</label>
-                            <input type="password" id="input-password" required placeholder="At least 8 characters" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            <div class="relative">
+                                <input type="password" id="input-password" required placeholder="At least 8 characters" class="w-full pl-4 pr-10 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3.5 text-slate-400 hover:text-slate-600 focus:outline-none" title="Show/Hide Password">
+                                    <span id="eye-icon">👁️</span>
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mt-1">You will use this password to log in to your dashboard anytime.</p>
                         </div>
                     </div>
 
@@ -182,7 +198,7 @@
                     </div>
 
                     <div class="flex gap-3 pt-2">
-                        <button type="button" onclick="goToStep(1)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
+                        <button type="button" onclick="goToStep(1, true)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
                             ← Back
                         </button>
                         <button type="button" onclick="goToStep(3)" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm">
@@ -191,18 +207,23 @@
                     </div>
                 </div>
 
-                <!-- STEP 3: BILLING & TRIAL ACTIVATION -->
+                <!-- STEP 3: BILLING & TRIAL ACTIVATION (With Explicit Trust & Guarantee Help) -->
                 <div id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3 flex justify-between items-center">
                         <span>Step 3: Trial Activation ($0.00 Today)</span>
-                        <span class="text-xs font-normal text-slate-400">🔒 256-Bit SSL</span>
+                        <span class="text-xs font-normal text-slate-400">🔒 256-Bit SSL Secure</span>
                     </h2>
 
-                    <div class="p-3 rounded-xl bg-blue-50 border border-blue-100 text-xs text-slate-700">
-                        <strong>Selected Plan:</strong> Sarah Professional ($59/mo after 7-day free trial). Cancel anytime with 1 click.
+                    <!-- EXPLICIT TRUST & TRANSPARENCY HELP BOX -->
+                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl space-y-2 text-xs text-slate-700">
+                        <p class="font-bold text-slate-900">🛡️ Why do we require payment details for a free trial?</p>
+                        <p class="leading-relaxed">
+                            To prevent automated bot spam and ensure uninterrupted 24/7 AI voice coverage after your trial ends. 
+                            <strong class="text-[#2563eb]">You will not be charged a single penny today.</strong> If you cancel anytime during your 7-day trial, your card will never be charged.
+                        </p>
                     </div>
 
-                    <div class="space-y-4 text-xs sm:text-sm">
+                    <div class="space-y-4 text-xs sm:text-sm pt-2">
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Cardholder Name</label>
                             <input type="text" placeholder="Name on card" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
@@ -213,18 +234,25 @@
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Expiry</label>
+                                <label class="block font-semibold text-slate-700 mb-1">Expiry Date</label>
                                 <input type="text" placeholder="MM / YY" maxlength="5" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-700 mb-1">CVC</label>
+                                <label class="block font-semibold text-slate-700 mb-1">CVC Code</label>
                                 <input type="password" placeholder="123" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex gap-3 pt-2">
-                        <button type="button" onclick="goToStep(2)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
+                    <div class="pt-3 space-y-3 text-xs text-slate-600 border-t border-slate-200">
+                        <label class="flex items-start gap-2.5 cursor-pointer">
+                            <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
+                            <span>I authorize TriDash AI to start my 7-day free trial. I understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid being billed $59/mo.</span>
+                        </label>
+                    </div>
+
+                    <div class="flex gap-3 pt-3">
+                        <button type="button" onclick="goToStep(2, true)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
                             ← Back
                         </button>
                         <button type="button" onclick="completeRegistration()" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm hover:scale-[1.02]">
@@ -252,7 +280,7 @@
         </div>
     </footer>
 
-    <!-- MULTI-STEP LOGIC -->
+    <!-- MULTI-STEP LOGIC & UTILITIES -->
     <script>
         // Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
@@ -262,10 +290,23 @@
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Toggle Password Unmasking
+        function togglePasswordVisibility() {
+            const input = document.getElementById('input-password');
+            const icon = document.getElementById('eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                icon.textContent = '👁️';
+            }
+        }
+
         // Step Navigation Controller
-        function goToStep(stepNum) {
-            // Step 1 Validation
-            if (stepNum === 2) {
+        function goToStep(stepNum, skipValidation = false) {
+            // Validation check (skipped if developer override button or pill click is used)
+            if (stepNum === 2 && !skipValidation) {
                 const name = document.getElementById('input-name').value.trim();
                 const email = document.getElementById('input-email').value.trim();
                 const pass = document.getElementById('input-password').value.trim();
@@ -299,7 +340,6 @@
 
         // Final Submit Action
         function completeRegistration() {
-            // Redirect to dashboard upon completion
             window.location.href = 'dashboard.html';
         }
     </script>
