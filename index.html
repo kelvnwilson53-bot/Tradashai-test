@@ -559,7 +559,6 @@
                 <a href="#how-it-works" class="hover:text-[#2563eb] transition">How It Works</a>
                 <a href="#roi-calculator" class="hover:text-[#2563eb] transition">ROI Calculator</a>
                 <a href="#pricing" class="hover:text-[#2563eb] transition">Pricing</a>
-                <a href="mailto:support@tridashai.com" class="hover:text-[#2563eb] transition">Support</a>
             </div>
             <div class="text-center md:text-right text-slate-400">
                 &copy; 2026 TriDash AI. All rights reserved.
@@ -682,15 +681,15 @@
                     sarahDiv.textContent = "That's a great question! I answer your calls 24/7, book appointments into your diary, and collect deposits via SMS payment links.";
                 }
 
-                sarahMessages.appendChild(sarahDiv);
-                sarahMessages.scrollTop = sarahMessages.scrollHeight;
-            }, 600);
-        }
+            sarahMessages.appendChild(sarahDiv);
+            sarahMessages.scrollTop = sarahMessages.scrollHeight;
+        }, 600);
+    }
 
-        sarahSendBtn.addEventListener('click', handleSarahChat);
-        sarahUserInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSarahChat();
-        });
-    </script>
+    sarahSendBtn.addEventListener('click', handleSarahChat);
+    sarahUserInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSarahChat();
+    });
+</script>
 </body>
 </html>
