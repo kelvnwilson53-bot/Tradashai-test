@@ -174,36 +174,44 @@
     <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             
-            <!-- LEFT SIDE: LOGO ON TOP, CHAT SUPPORT BUTTON UNDERNEATH -->
-            <div class="flex flex-col items-start gap-1.5">
-                <!-- Logo Top Left -->
+            <!-- LEFT SIDE: CLEAN TRIDASH AI LOGO -->
+            <div class="flex items-center">
                 <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
                     TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
                 </a>
+            </div>
 
-                <!-- Chat Support Widget Button Underneath Logo -->
+            <!-- RIGHT SIDE: LOG IN, HAMBURGER MENU, & CHAT SUPPORT STACKED -->
+            <div class="flex flex-col items-end gap-1.5">
+                <!-- Log In Button Top Right -->
+                <a href="login.html" class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-lg border border-slate-200 transition shadow-sm">
+                    <span>🔐</span>
+                    <span>Log In</span>
+                </a>
+
+                <!-- Hamburger Menu Button -->
+                <div class="relative">
+                    <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
+                        <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span>Menu</span>
+                    </button>
+
+                    <!-- Right-Aligned Dropdown Menu -->
+                    <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2.5 shadow-xl backdrop-blur-md z-50">
+                        <a href="#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
+                        <a href="#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
+                        <a href="#pricing" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">Pricing</a>
+                        <a href="signup.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Start Free Trial</a>
+                    </div>
+                </div>
+
+                <!-- Chat Support Button Underneath Menu on Right -->
                 <button id="header-support-btn" onclick="toggleChatWidget()" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-white bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] hover:from-[#1d4ed8] hover:to-[#1e40af] px-3 py-1.5 rounded-lg transition shadow-md hover:scale-105 border border-blue-400/30">
                     <span>💬</span>
                     <span>Chat Support</span>
                 </button>
-            </div>
-
-            <!-- RIGHT SIDE: HAMBURGER MENU BUTTON TOP RIGHT WITH RIGHT-ALIGNED DROPDOWN -->
-            <div class="relative">
-                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
-                    <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <span>Menu</span>
-                </button>
-
-                <!-- Right-Aligned Dropdown Menu -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2.5 shadow-xl backdrop-blur-md z-50">
-                    <a href="#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
-                    <a href="#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
-                    <a href="#pricing" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">Pricing</a>
-                    <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
-                </div>
             </div>
 
         </div>
@@ -219,7 +227,7 @@
                     <span class="text-slate-900">🤖 Meet </span><span class="text-[#2563eb]">Sarah</span><span class="text-slate-900"> your 24/7 virtual sales employee</span>
                 </div>
                 
-                <!-- HERO HEADING (Times New Roman, Centered/Aligned, Non-Italic) -->
+                <!-- HERO HEADING (Restored to Centered / Aligned) -->
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-center lg:text-left" style="font-family: 'Times New Roman', Times, serif; font-style: normal; color: #000000;">
                     <span class="whitespace-nowrap">No more missed calls</span><br>
                     <span>more jobs booked</span>
@@ -527,8 +535,8 @@
         </div>
     </footer>
 
-    <!-- CHAT SUPPORT WINDOW (POSITIONED NEXT TO TOP-LEFT CHAT SUPPORT BUTTON) -->
-    <div id="chat-widget-box" class="hidden fixed top-20 left-4 sm:left-8 w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-[999999] overflow-hidden">
+    <!-- INTERACTIVE CHAT SUPPORT WINDOW -->
+    <div id="chat-widget-box" class="hidden fixed bottom-6 right-6 w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-[999999] overflow-hidden">
         <div class="bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] p-4 text-white flex items-center justify-between">
             <div class="flex items-center gap-2.5">
                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">🤖</div>
