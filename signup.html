@@ -138,7 +138,7 @@
 
             <form id="signup-form" onsubmit="return false;" class="space-y-6">
                 
-                <!-- STEP 1: ACCOUNT REGISTRATION (Single Password + Modern Reveal Toggle) -->
+                <!-- STEP 1: ACCOUNT REGISTRATION -->
                 <div id="step-1-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">
                         Step 1: Create Login Credentials
@@ -171,10 +171,10 @@
                     <p class="text-center text-[11px] text-slate-400">Already have an account? <a href="login.html" class="text-[#2563eb] underline font-semibold">Log in here</a></p>
                 </div>
 
-                <!-- STEP 2: BUSINESS DETAILS -->
+                <!-- STEP 2: BUSINESS DETAILS & EXTRA VANS / CREW LINES ADD-ON -->
                 <div id="step-2-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">
-                        Step 2: Business & Trade Profile
+                        Step 2: Business & Extra Vans Setup
                     </h2>
 
                     <div class="space-y-4 text-xs sm:text-sm">
@@ -182,18 +182,48 @@
                             <label class="block font-semibold text-slate-700 mb-1">Company / Trading Name</label>
                             <input type="text" id="input-company" placeholder="Apex Roofing & Maintenance" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                         </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
-                            <select id="input-trade" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                <option value="roofing">Roofing Specialist</option>
-                                <option value="plumbing">Plumbing & Heating</option>
-                                <option value="building">Building / General Contractor</option>
-                                <option value="electrical">Electrical Services</option>
-                            </select>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Trade Category</label>
+                                <select id="input-trade" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                    <option value="roofing">Roofing Specialist</option>
+                                    <option value="plumbing">Plumbing & Heating</option>
+                                    <option value="building">Building / General Contractor</option>
+                                    <option value="electrical">Electrical Services</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Business Mobile Phone</label>
+                                <input type="tel" id="input-phone" placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Business Mobile Phone</label>
-                            <input type="tel" id="input-phone" placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+
+                        <!-- ADD-ON: EXTRA VANS / CREW LINES -->
+                        <div class="pt-3 border-t border-slate-200">
+                            <label class="block font-semibold text-slate-700 mb-1 flex items-center justify-between">
+                                <span>🚐 Extra Vans / Crew Lines ($20/mo per extra line)</span>
+                                <span class="text-[11px] text-blue-600 font-normal">Base plan includes 1 line</span>
+                            </label>
+                            <div class="flex items-center gap-3 mt-2">
+                                <input type="number" id="extra-vans-input" min="0" max="20" value="0" oninput="updatePricingSummary()" class="w-24 px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold text-center focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <span class="text-xs text-slate-600">Additional mobile/van numbers to route AI calls directly to field crews.</span>
+                            </div>
+                        </div>
+
+                        <!-- LIVE BREAKDOWN SUMMARY -->
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1.5 text-xs text-slate-700 mt-3">
+                            <div class="flex justify-between">
+                                <span>Sarah Professional Base Plan:</span>
+                                <span class="font-semibold text-slate-900">$59.00 / mo</span>
+                            </div>
+                            <div class="flex justify-between" id="extra-vans-summary-row" style="display: none;">
+                                <span id="extra-vans-text">Extra Vans (0 lines @ $20):</span>
+                                <span class="font-semibold text-slate-900" id="extra-vans-cost">$0.00 / mo</span>
+                            </div>
+                            <div class="flex justify-between pt-2 border-t border-slate-200 font-bold text-slate-900 text-sm">
+                                <span>Total After 7-Day Trial:</span>
+                                <span id="total-monthly-price" class="text-blue-600">$59.00 / mo</span>
+                            </div>
                         </div>
                     </div>
 
@@ -207,7 +237,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 3: BILLING & TRIAL ACTIVATION (With Explicit Trust & Guarantee Help) -->
+                <!-- STEP 3: BILLING & TRIAL ACTIVATION -->
                 <div id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3 flex justify-between items-center">
                         <span>Step 3: Trial Activation ($0.00 Today)</span>
@@ -219,7 +249,7 @@
                         <p class="font-bold text-slate-900">🛡️ Why do we require payment details for a free trial?</p>
                         <p class="leading-relaxed">
                             To prevent automated bot spam and ensure uninterrupted 24/7 AI voice coverage after your trial ends. 
-                            <strong class="text-[#2563eb]">You will not be charged a single penny today.</strong> If you cancel anytime during your 7-day trial, your card will never be charged.
+                            <strong class="text-[#2563eb]">You will not be charged a single penny today ($0.00 due today).</strong> If you cancel anytime during your 7-day trial, your card will never be charged.
                         </p>
                     </div>
 
@@ -247,7 +277,7 @@
                     <div class="pt-3 space-y-3 text-xs text-slate-600 border-t border-slate-200">
                         <label class="flex items-start gap-2.5 cursor-pointer">
                             <input type="checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I authorize TriDash AI to start my 7-day free trial. I understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid being billed $59/mo.</span>
+                            <span>I authorize TriDash AI to start my 7-day free trial. I understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid being billed the recurring monthly fee.</span>
                         </label>
                     </div>
 
@@ -301,6 +331,29 @@
                 input.type = 'password';
                 icon.textContent = '👁️';
             }
+        }
+
+        // Dynamic Pricing Calculation for Extra Vans / Crew Lines ($20/mo each)
+        function updatePricingSummary() {
+            const extraLinesInput = document.getElementById('extra-vans-input');
+            const extraLinesCount = parseInt(extraLinesInput.value) || 0;
+            const extraCost = extraLinesCount * 20;
+            const totalMonthly = 59 + extraCost;
+
+            const row = document.getElementById('extra-vans-summary-row');
+            const textEl = document.getElementById('extra-vans-text');
+            const costEl = document.getElementById('extra-vans-cost');
+            const totalEl = document.getElementById('total-monthly-price');
+
+            if (extraLinesCount > 0) {
+                row.style.display = 'flex';
+                textEl.textContent = `Extra Vans / Crew Lines (${extraLinesCount} @ $20):`;
+                costEl.textContent = `$${extraCost}.00 / mo`;
+            } else {
+                row.style.display = 'none';
+            }
+
+            totalEl.textContent = `$${totalMonthly}.00 / mo`;
         }
 
         // Step Navigation Controller
