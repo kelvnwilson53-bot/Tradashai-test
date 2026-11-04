@@ -6,22 +6,73 @@
     <title>TriDash AI - Contractor Dashboard</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Diamond White & Crisp Contrasting Border Theme */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Diamond White Cards with Crisp Borders */
+        .podium-card-3d {
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(15, 23, 42, 0.15);
+            box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1e293b;
+        }
+
+        .podium-card-3d:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 20px 40px rgba(30, 41, 59, 0.08);
+        }
+
+        .podium-badge {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #2563eb;
+        }
+
+        /* Sleek Navy Blue CTA Button */
+        .btn-podium-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .btn-podium-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
-<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative">
+<body class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="border-b border-slate-800 bg-black/90 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             
             <!-- BRAND LOGO -->
-            <a href="index.html" class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-                TriDash<span class="text-blue-500 font-light">AI.com</span>
-                <span class="text-[10px] bg-blue-600/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-medium">Dashboard</span>
+            <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                <span class="text-[#2563eb]">Tri</span>Dashai
+                <span class="text-[10px] bg-blue-50 text-[#2563eb] border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
             <!-- RIGHT SIDE: LOGOUT -->
             <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-white transition">Log Out</a>
+                <span class="text-xs font-semibold text-slate-600 hidden sm:inline">Active Line: +1 (214) 888-0142</span>
+                <a href="index.html" class="text-xs font-semibold text-slate-500 hover:text-slate-900 transition bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg">Log Out</a>
             </div>
 
         </div>
@@ -30,330 +81,280 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-6">
 
-        <!-- 1. WELCOME SECTION -->
-        <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl space-y-1 shadow-xl">
-            <h2 class="text-lg font-bold text-white">Welcome to TriDash AI!</h2>
-            <p class="text-sm text-slate-300 leading-relaxed">
-                Complete the quick setup below to get your assistant running.
-            </p>
-        </div>
-
-        <!-- 2. DISMISSIBLE SETUP INSTRUCTIONS BOX -->
-        <div id="setup-instructions-box" class="bg-slate-950 border border-blue-500/30 p-6 rounded-3xl space-y-5 shadow-xl transition-all">
-            <div class="flex items-center justify-between border-b border-slate-900 pb-4">
-                <div>
-                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-wider">Setup Instructions</h3>
-                    <p class="text-xs text-slate-400">Complete these 3 steps once to activate your assistant.</p>
-                </div>
-                
-                <!-- DISMISS BUTTON -->
-                <button id="dismiss-setup-btn" class="text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
-                    <span>✕ Dismiss Setup Guide</span>
-                </button>
+        <!-- 1. WELCOME SECTION & SYSTEM STATUS -->
+        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
+            <div class="space-y-1">
+                <span class="inline-block podium-badge text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    ● 24/7 AI Dispatcher Active
+                </span>
+                <h2 class="text-xl font-extrabold text-slate-900 mt-2">Dashboard & Live Performance</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Your dispatcher is answering missed calls instantly, qualifying leads, and syncing bookings.
+                </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- STEP 1 -->
-                <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl space-y-2">
-                    <span class="text-xs font-bold text-blue-400 uppercase">Step 1: Forwarding</span>
-                    <h4 class="text-xs font-bold text-white">Call Forwarding Code</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Dial <strong class="text-white font-mono bg-slate-900 px-1 py-0.5 rounded border border-slate-800">*71 +1 (214) 888-0142</strong> on your mobile phone so missed calls route directly to your <strong class="text-slate-200 font-semibold">TriDash AI assistant</strong> when you're busy on site.
-                    </p>
-                </div>
-
-                <!-- STEP 2 -->
-                <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl space-y-2">
-                    <span class="text-xs font-bold text-blue-400 uppercase">Step 2: Calendar</span>
-                    <h4 class="text-xs font-bold text-white">Sync Google Calendar</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Sync your calendar to prevent <strong class="text-slate-200 font-semibold">TriDash AI</strong> from booking appointments over busy hours when you're tied up on a job.
-                    </p>
-                    <button class="w-full mt-2 py-1.5 bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white text-xs font-semibold rounded-lg border border-blue-500/30 transition">
-                        Connect Calendar →
-                    </button>
-                </div>
-
-                <!-- STEP 3 -->
-                <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl space-y-2">
-                    <span class="text-xs font-bold text-blue-400 uppercase">Step 3: Verification</span>
-                    <h4 class="text-xs font-bold text-white">Test It Out</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Call your phone from a friend's device, don't answer, and watch <strong class="text-slate-200 font-semibold">TriDash AI</strong> send a text back within seconds.
-                    </p>
-                </div>
+            <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-2xl text-xs font-bold text-emerald-700">
+                <span>🟢 System Online</span>
             </div>
         </div>
 
-        <!-- 3. TOP METRICS CARDS -->
+        <!-- 2. TOP METRICS CARDS (MONTHLY ROI & USAGE) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <!-- CARD 1: SAVED REVENUE -->
-            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Estimated Saved Revenue</p>
-                    <p class="text-3xl font-extrabold text-blue-400 mt-2">$0</p>
-                </div>
-                <p class="text-xs text-slate-500 mt-4">0 missed calls recovered this month</p>
-            </div>
-
-            <!-- CARD 2: MONTHLY SMS USAGE -->
-            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+            <!-- CARD 1: MONTHLY ROI RECOVERED -->
+            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
                 <div>
                     <div class="flex justify-between items-center">
-                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Monthly SMS Usage</p>
-                        <span class="text-xs font-bold text-emerald-400">Standard Plan</span>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Monthly Recovered Revenue</p>
+                        <span id="roi-ticket-tag" class="text-xs font-semibold text-[#2563eb] bg-blue-50 px-2 py-0.5 rounded border border-blue-200">$300 / pop</span>
+                    </div>
+                    <p id="roi-total-display" class="text-4xl font-extrabold text-[#2563eb] mt-3">$3,600</p>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 pt-3 border-t border-slate-100">12 missed calls recovered this month</p>
+            </div>
+
+            <!-- CARD 2: MONTHLY SMS & VOICE USAGE -->
+            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
+                <div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">SMS & Voice Meters</p>
+                        <span class="text-xs font-bold text-[#2563eb]">Standard Plan</span>
                     </div>
                     
-                    <div class="w-full bg-slate-900 h-3 rounded-full overflow-hidden mt-4 border border-slate-800">
-                        <div class="bg-blue-500 h-full rounded-full" style="width: 0%;"></div>
+                    <div class="space-y-3 mt-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>SMS Texts</span>
+                                <span class="font-bold text-slate-900">210 / 300</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-[#2563eb] h-full rounded-full" style="width: 70%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Voice Minutes</span>
+                                <span class="font-bold text-slate-900">180 / 300 min</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-emerald-600 h-full rounded-full" style="width: 60%;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-sm font-semibold text-white mt-3">0 / 250 texts used</p>
                 </div>
-                <p class="text-xs text-slate-500 mt-2">250 texts remaining for this billing cycle</p>
+
+                <!-- BOOST BUTTON (STRIPE) -->
+                <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-[11px] text-slate-500">Alerts sent at 250 & 300</span>
+                    <button id="open-boost-modal" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                        + Buy Boost
+                    </button>
+                </div>
             </div>
 
             <!-- CARD 3: GOOGLE REVIEWS -->
-            <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col justify-between">
+            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
                 <div>
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Google Review Auto-Reply</p>
-                    <p class="text-xl font-bold text-white mt-2">Auto-Pilot Active</p>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Google Review Auto-Reply</p>
+                    <p class="text-xl font-extrabold text-slate-900 mt-2">Auto-Pilot Active</p>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">Automatically thanking 5-star clients and responding professionally to feedback.</p>
                 </div>
-                <div class="pt-4 border-t border-slate-900 flex items-center justify-between text-xs">
-                    <span class="text-emerald-400 font-semibold">● Monitoring Active</span>
-                    <span class="text-slate-500">0 replies sent</span>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+                    <span class="text-emerald-600">● 4.9★ Rating Monitored</span>
+                    <span class="text-slate-500">14 replies sent</span>
                 </div>
             </div>
 
+        </div>
+
+        <!-- 3. PHONE ROUTING, SERVICE AREA & JOB VALUE SETTINGS -->
+        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+            <div class="border-b border-slate-100 pb-4">
+                <h3 class="text-base font-extrabold text-slate-900">AI Training & Business Settings</h3>
+                <p class="text-xs text-slate-600">Configure your forwarding numbers, local service area, and average job ticket value for accurate ROI tracking.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- ROUTING CARD -->
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Call Forwarding</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Route missed calls to your AI line: <strong class="text-slate-900 font-mono">+1 (214) 888-0142</strong>.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-500 border-t border-slate-200">
+                        <p>ℹ️ To turn off forwarding, dial <code class="bg-white px-1 py-0.5 rounded border border-slate-300 font-mono text-slate-800 font-bold">##002#</code>.</p>
+                    </div>
+                </div>
+
+                <!-- SERVICE AREA CONFIGURATION -->
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">AI Local Service Area</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Cities and zip codes your business covers.
+                    </p>
+                    <div>
+                        <input type="text" id="service-areas" value="Dallas, Fort Worth, Plano, Arlington, Frisco" class="w-full bg-white border border-slate-300 text-slate-900 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-[#2563eb] mb-2">
+                        <button onclick="alert('Service areas updated successfully!')" class="w-full py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition">Save Areas</button>
+                    </div>
+                </div>
+
+                <!-- AVERAGE JOB VALUE CONFIGURATION -->
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Average Job Value ($)</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Set your typical ticket size to calculate live monthly ROI.
+                    </p>
+                    <div>
+                        <input type="number" id="custom-job-value" value="300" min="50" step="25" class="w-full bg-white border border-slate-300 text-slate-900 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-[#2563eb] mb-2">
+                        <button id="save-job-value-btn" class="w-full py-1.5 btn-podium-primary text-xs font-bold rounded-xl transition">Update ROI</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 4. CENTERPIECE: RECENT MISSED-CALL ACTIVITY FEED -->
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-900 pb-3">
-                <h3 class="text-base font-bold text-white">Recent Recovered Lead Activity</h3>
-                <span class="text-xs text-slate-500">Real-time updates</span>
+        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-base font-extrabold text-slate-900">Recent Recovered Lead Activity</h3>
+                <span class="text-xs text-slate-500">Live sync active</span>
             </div>
             
-            <div class="bg-black/50 border border-slate-900 p-8 rounded-2xl text-center space-y-2">
-                <div class="text-2xl">📱</div>
-                <p class="text-xs font-bold text-white">No missed call conversations logged yet</p>
-                <p class="text-xs text-slate-400 max-w-sm mx-auto">
-                    Once set up, whenever you miss an incoming call while busy, the text conversation and captured job details will display here in real time.
-                </p>
+            <div class="space-y-3">
+                <!-- SAMPLE ACTIVITY ITEM 1 -->
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center font-bold text-xs">📞</div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold text-slate-900">Roof Leak Inquiry</span>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Booked (Est. Ticket)</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600 mt-0.5">Missed call from +1 (214) 555-0192 • Text-back sent instantly</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-slate-500 whitespace-nowrap">12 mins ago</span>
+                </div>
+
+                <!-- SAMPLE ACTIVITY ITEM 2 -->
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center font-bold text-xs">💧</div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold text-slate-900">Emergency Burst Pipe Triage</span>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Deposit Paid</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600 mt-0.5">Missed call from +1 (972) 555-8831 • Qualified & payment link sent</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-slate-500 whitespace-nowrap">1 hour ago</span>
+                </div>
             </div>
         </div>
 
-        <!-- 5. COMPACT SUBSCRIPTION & BILLING PANEL (AT THE BOTTOM) -->
-        <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl shadow-xl space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-900 pb-3">
+        <!-- 5. SUBSCRIPTION & BILLING PANEL -->
+        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                 <div>
-                    <h3 class="text-sm font-bold text-white">Subscription & Billing</h3>
-                    <p class="text-xs text-slate-400">View current tier, payment cycle, and available package upgrades.</p>
+                    <h3 class="text-sm font-extrabold text-slate-900">Subscription & Billing</h3>
+                    <p class="text-xs text-slate-600">Managed securely via Stripe & Lemon Squeezy.</p>
                 </div>
-                <span class="self-start sm:self-auto text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
-                    ● Account Active
+                <span class="self-start sm:self-auto text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+                    ● Account Active ($59/mo)
                 </span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                
-                <!-- CURRENT TIER & RENEWAL -->
-                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl space-y-2 text-xs">
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2 text-xs">
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-400">Current Plan:</span>
-                        <span class="font-bold text-white">Standard (250 SMS/mo)</span>
+                        <span class="text-slate-600">Current Tier:</span>
+                        <span class="font-bold text-slate-900">TriDash AI Professional ($59/mo)</span>
                     </div>
-                    <div class="flex justify-between items-center border-t border-slate-900 pt-2">
-                        <span class="text-slate-400">Next Billing Date:</span>
-                        <span class="font-bold text-blue-400">November 1, 2026</span>
+                    <div class="flex justify-between items-center border-t border-slate-200 pt-2">
+                        <span class="text-slate-600">Next Renewal Date:</span>
+                        <span class="font-bold text-[#2563eb]">December 1, 2026</span>
                     </div>
-                    <p class="text-[11px] text-slate-500 pt-1">
-                        ℹ️ Email billing reminders and invoices are sent 3 days before renewal.
-                    </p>
                 </div>
 
-                <!-- UPGRADE ACTION BOX -->
-                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
-                        <h4 class="text-xs font-bold text-white">Need More SMS Volume?</h4>
-                        <p class="text-xs text-slate-400 mt-1">
-                            Double your monthly allowance from 250 to 500 texts.
-                        </p>
+                        <h4 class="text-xs font-bold text-slate-900">Need Extra Minutes or SMS?</h4>
+                        <p class="text-xs text-slate-600 mt-0.5">Top up instantly via Stripe without changing your monthly tier.</p>
                     </div>
-                    <button id="open-upgrade-modal-btn" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow-md">
-                        Upgrade to Premium (500 SMS) →
+                    <button id="open-boost-modal-main" class="w-full py-2.5 btn-podium-primary text-xs font-bold rounded-xl transition shadow-md">
+                        Buy Minute / SMS Boost →
                     </button>
                 </div>
-
             </div>
-        </div>
-
-        <!-- 6. NEED HELP BANNER -->
-        <div class="bg-slate-950 border border-slate-800 p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <h4 class="text-sm font-bold text-white">Need help setting up call forwarding or custom texts?</h4>
-                <p class="text-xs text-slate-400 mt-1">We are here to help grow your business. Contact support anytime.</p>
-            </div>
-            <a href="mailto:support@tridashai.com" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow-md whitespace-nowrap">
-                Email support@tridashai.com
-            </a>
         </div>
 
     </main>
 
-    <!-- UPGRADE PACKAGE MODAL -->
-    <div id="upgrade-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-950 border border-slate-800 max-w-md w-full rounded-3xl p-6 space-y-5 shadow-2xl relative">
-            <div class="flex items-center justify-between border-b border-slate-900 pb-3">
-                <h3 class="text-base font-bold text-white">Upgrade Subscription Plan</h3>
-                <button id="close-upgrade-modal-btn" class="text-slate-400 hover:text-white text-sm font-bold px-2 py-1">✕</button>
+    <!-- BOOST MODAL -->
+    <div id="boost-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="podium-card-3d max-w-md w-full rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-base font-extrabold text-slate-900">Instant Usage Boost</h3>
+                <button id="close-boost-modal" class="text-slate-400 hover:text-slate-900 text-sm font-bold px-2 py-1">✕</button>
             </div>
-
-            <div class="space-y-3 text-xs">
-                <div class="bg-blue-600/10 border border-blue-500/30 p-4 rounded-2xl space-y-1">
-                    <span class="text-blue-400 font-bold uppercase tracking-wider text-[10px]">PREMIUM TIER</span>
-                    <h4 class="text-sm font-bold text-white">Premium Package — $39/mo (500 SMS)</h4>
-                    <p class="text-slate-300">Upgrade from standard template replies to the Full Conversational AI Engine, allowing your assistant to handle complex lead questions and multi-turn dialogues automatically.</p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Add an extra 100 SMS messages and 100 voice minutes to your account immediately. Processed securely via Stripe.
+            </p>
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-xs font-bold text-slate-900">100 SMS + 100 Voice Pack</h4>
+                    <p class="text-[11px] text-slate-600">One-time add-on</p>
                 </div>
-                
-                <ul class="space-y-2 text-slate-400 pt-1">
-                    <li class="flex items-center gap-2 text-slate-300">✓ <strong>500 SMS text replies</strong> per month for higher lead volumes</li>
-                    <li class="flex items-center gap-2 text-slate-300">✓ <strong>Full Conversational AI Engine</strong> (handles custom inquiries & dynamic scheduling)</li>
-                    <li class="flex items-center gap-2 text-slate-300">✓ Takes effect at the start of your next billing cycle</li>
-                </ul>
+                <span class="text-lg font-extrabold text-[#2563eb]">$15</span>
             </div>
-
             <div class="flex gap-3 pt-2">
-                <button id="cancel-upgrade-btn" class="w-1/2 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold rounded-xl border border-slate-800 transition">
-                    Back
-                </button>
-                <a href="mailto:support@tridashai.com?subject=Upgrade%20Request:%20Premium%20Plan%20($39/mo)" class="w-1/2 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition text-center shadow-md flex items-center justify-center">
-                    Upgrade
-                </a>
+                <button id="cancel-boost" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition">Cancel</button>
+                <button onclick="alert('Boost purchased successfully via Stripe!'); document.getElementById('boost-modal').classList.add('hidden');" class="w-1/2 py-2.5 btn-podium-primary text-xs font-bold rounded-xl transition shadow-md">Confirm Purchase</button>
             </div>
-        </div>
-    </div>
-
-    <!-- FLOATING SUPPORT CHATBOT WIDGET -->
-    <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
-        <button id="chat-toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 border border-blue-400/30">
-            <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-            <svg id="chat-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-slate-950 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px]">
-            <div class="bg-slate-900 p-4 border-b border-slate-800 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AI</div>
-                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white leading-none">TriDash Support</h4>
-                        <span class="text-[10px] text-slate-400">Replies instantly</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="chat-messages" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs max-h-[350px]">
-                <div class="bg-slate-900 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-800">
-                    Hi! 👋 Need any help setting up call forwarding or syncing your Google Calendar today?
-                </div>
-            </div>
-
-            <form id="chat-form" class="p-3 border-t border-slate-800 bg-slate-900/50 flex gap-2">
-                <input id="chat-input" type="text" placeholder="Ask a support question..." class="flex-1 bg-slate-950 text-white text-xs px-3 py-2 rounded-xl border border-slate-800 focus:outline-none focus:border-blue-500">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl text-xs font-bold transition">Send</button>
-            </form>
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-        <p>&copy; TriDash AI. All rights reserved.</p>
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 TriDashai. All rights reserved.</p>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // DISMISS SETUP GUIDE LOGIC
-        const setupBox = document.getElementById('setup-instructions-box');
-        const dismissBtn = document.getElementById('dismiss-setup-btn');
+        // Boost Modal Logic
+        const boostModal = document.getElementById('boost-modal');
+        const openBoostBtn = document.getElementById('open-boost-modal');
+        const openBoostMainBtn = document.getElementById('open-boost-modal-main');
+        const closeBoostBtn = document.getElementById('close-boost-modal');
+        const cancelBoostBtn = document.getElementById('cancel-boost');
 
-        if (localStorage.getItem('tridash_setup_dismissed') === 'true') {
-            setupBox.style.display = 'none';
+        if(openBoostBtn) openBoostBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        if(closeBoostBtn) closeBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
+        if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
+
+        // Dynamic ROI Calculator Logic based on Custom Job Value (12 recovered calls default this month)
+        const jobValueInput = document.getElementById('custom-job-value');
+        const saveJobValueBtn = document.getElementById('save-job-value-btn');
+        const roiTotalDisplay = document.getElementById('roi-total-display');
+        const roiTicketTag = document.getElementById('roi-ticket-tag');
+
+        function updateDashboardROI() {
+            const ticketSize = parseInt(jobValueInput.value) || 300;
+            const recoveredCalls = 12; // Static recovered calls count for the current month
+            const totalRecovered = ticketSize * recoveredCalls;
+
+            roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
+            roiTicketTag.textContent = `$${ticketSize} / pop`;
         }
 
-        dismissBtn.addEventListener('click', () => {
-            setupBox.style.display = 'none';
-            localStorage.setItem('tridash_setup_dismissed', 'true');
+        saveJobValueBtn.addEventListener('click', () => {
+            updateDashboardROI();
+            alert(`Average job value updated to $${jobValueInput.value}! Monthly ROI re-calculated.`);
         });
 
-        // UPGRADE MODAL CONTROLS
-        const upgradeModal = document.getElementById('upgrade-modal');
-        const openUpgradeBtn = document.getElementById('open-upgrade-modal-btn');
-        const closeUpgradeBtn = document.getElementById('close-upgrade-modal-btn');
-        const cancelUpgradeBtn = document.getElementById('cancel-upgrade-btn');
-
-        openUpgradeBtn.addEventListener('click', () => {
-            upgradeModal.classList.remove('hidden');
-        });
-
-        closeUpgradeBtn.addEventListener('click', () => {
-            upgradeModal.classList.add('hidden');
-        });
-
-        cancelUpgradeBtn.addEventListener('click', () => {
-            upgradeModal.classList.add('hidden');
-        });
-
-        // Floating Chat Toggle Logic
-        const chatToggleBtn = document.getElementById('chat-toggle-btn');
-        const chatBox = document.getElementById('chat-box');
-        const chatIconOpen = document.getElementById('chat-icon-open');
-        const chatIconClose = document.getElementById('chat-icon-close');
-        const chatForm = document.getElementById('chat-form');
-        const chatInput = document.getElementById('chat-input');
-        const chatMessages = document.getElementById('chat-messages');
-
-        chatToggleBtn.addEventListener('click', () => {
-            chatBox.classList.toggle('hidden');
-            chatIconOpen.classList.toggle('hidden');
-            chatIconClose.classList.toggle('hidden');
-        });
-
-        chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const query = chatInput.value.trim();
-            if(!query) return;
-
-            const userMsg = document.createElement('div');
-            userMsg.className = 'bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs';
-            userMsg.textContent = query;
-            chatMessages.appendChild(userMsg);
-            chatInput.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            setTimeout(() => {
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'bg-slate-900 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-800 text-xs';
-                
-                const lower = query.toLowerCase();
-                if(lower.includes('forward') || lower.includes('phone') || lower.includes('number')) {
-                    aiMsg.textContent = "To forward calls, dial *71 followed by your TriDash routing number (+1 214-888-0142) on your mobile phone.";
-                } else if(lower.includes('calendar') || lower.includes('google')) {
-                    aiMsg.textContent = "You can connect your Google Calendar inside Step 2 in the Setup Instructions box.";
-                } else {
-                    aiMsg.textContent = "Thanks for reaching out! I have logged this with support@tridashai.com, and our team will follow up directly.";
-                }
-
-                chatMessages.appendChild(aiMsg);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 600);
-        });
+        // Initialize on load
+        updateDashboardROI();
     </script>
 
 </body>
