@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | TriDash AI</title>
+    <title>Sign Up | TriDashai</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -85,8 +85,8 @@
     <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex flex-col items-start gap-1">
-                <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
-                    TriDash<span class="text-[#2563eb] font-semibold">AI.com</span>
+                <a href="index.html" class="text-xl font-extrabold tracking-tight italic whitespace-nowrap leading-none">
+                    <span class="text-[#2563eb]">Tri</span><span class="text-slate-900">Dashai</span>
                 </a>
             </div>
 
@@ -100,7 +100,7 @@
 
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2 shadow-xl backdrop-blur-md z-50">
                     <a href="index.html#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
-                    <a href="index.html#pricing" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">Pricing</a>
+                    <a href="index.html#pricing" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Pricing</a>
                     <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
                 </div>
             </div>
@@ -113,7 +113,7 @@
             
             <div class="text-center mb-8">
                 <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 7-Day Free Trial • Zero Risk • Cancel Anytime
+                    🚀 14-Day Free Trial • No Credit Card Required • Instant Setup
                 </span>
                 <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
                     Create Your Account
@@ -132,7 +132,7 @@
                 </div>
                 <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
                 <div id="pill-step-3" onclick="goToStep(3, true)" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5 cursor-pointer">
-                    <span>3.</span> Billing
+                    <span>3.</span> Activate
                 </div>
             </div>
 
@@ -190,11 +190,11 @@
                         <!-- PLAN SUMMARY BREAKDOWN -->
                         <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1.5 text-xs text-slate-700 mt-3">
                             <div class="flex justify-between">
-                                <span>Sarah Professional (Single Line):</span>
-                                <span class="font-semibold text-slate-900">$59.00 / mo</span>
+                                <span>14-Day Free Trial (No Card Needed):</span>
+                                <span class="font-semibold text-emerald-600">$0.00 Today</span>
                             </div>
                             <div class="flex justify-between pt-2 border-t border-slate-200 font-bold text-slate-900 text-sm">
-                                <span>Total After 7-Day Trial:</span>
+                                <span>After Trial (Cancel Anytime):</span>
                                 <span class="text-blue-600">$59.00 / mo</span>
                             </div>
                         </div>
@@ -205,62 +205,38 @@
                             ← Back
                         </button>
                         <button type="button" onclick="goToStep(3)" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm">
-                            Continue →
+                            Complete Setup →
                         </button>
                     </div>
                 </div>
 
-                <!-- STEP 3: BILLING & TRIAL ACTIVATION -->
-                <div id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3 flex justify-between items-center">
-                        <span>Step 3: Trial Activation ($0.00 Today)</span>
-                        <span class="text-xs font-normal text-slate-400">🔒 256-Bit SSL Secure</span>
-                    </h2>
-
-                    <!-- EXPLICIT TRUST & TRANSPARENCY HELP BOX -->
-                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl space-y-2 text-xs text-slate-700">
-                        <p class="font-bold text-slate-900">🛡️ Why do we require payment details for a free trial?</p>
-                        <p class="leading-relaxed">
-                            To prevent automated bot spam and ensure uninterrupted 24/7 AI voice coverage after your trial ends. 
-                            <strong class="text-[#2563eb]">You will not be charged a single penny today ($0.00 due today).</strong> If you cancel anytime during your 7-day trial, your card will never be charged.
+                <!-- STEP 3: INSTANT ACTIVATION (No Credit Card Required) -->
+                <div id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden text-center">
+                    <div class="w-16 h-16 bg-blue-50 text-[#2563eb] rounded-2xl mx-auto flex items-center justify-center text-3xl font-bold border border-blue-200 shadow-sm">
+                        🚀
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-slate-900">
+                            You're Ready to Go!
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed mt-1">
+                            Your account is created. Your <strong class="text-[#2563eb]">14-day free trial</strong> is active with <strong class="text-slate-900">no credit card required today</strong>.
                         </p>
                     </div>
 
-                    <div class="space-y-4 text-xs sm:text-sm pt-2">
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Cardholder Name</label>
-                            <input type="text" placeholder="Name on card" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Card Number</label>
-                            <input type="text" placeholder="4532 •••• •••• ••••" maxlength="19" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Expiry Date</label>
-                                <input type="text" placeholder="MM / YY" maxlength="5" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-700 mb-1">CVC Code</label>
-                                <input type="password" placeholder="123" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                            </div>
-                        </div>
+                    <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl text-left space-y-2 text-xs text-slate-700 my-2">
+                        <div class="font-bold text-slate-900">What happens when you enter your dashboard:</div>
+                        <div class="flex items-center gap-2"><span>1️⃣</span> Claim your dedicated Sarah AI phone line instantly</div>
+                        <div class="flex items-center gap-2"><span>2️⃣</span> Set up call forwarding for missed calls</div>
+                        <div class="flex items-center gap-2"><span>3️⃣</span> Start capturing booked jobs automatically</div>
                     </div>
 
-                    <!-- TERMS OF SERVICE & RECURRING BILLING AGREEMENT CHECKBOX -->
-                    <div class="pt-3 space-y-3 text-xs text-slate-600 border-t border-slate-200">
-                        <label class="flex items-start gap-2.5 cursor-pointer">
-                            <input type="checkbox" id="terms-checkbox" required class="mt-0.5 w-4 h-4 text-[#2563eb] accent-[#2563eb] rounded shrink-0">
-                            <span>I agree to the <a href="terms.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Terms of Service</a> and <a href="privacy.html" target="_blank" onclick="event.stopPropagation();" class="text-[#2563eb] font-semibold underline hover:text-blue-700">Privacy Policy</a>. I authorize TriDash AI to start my 7-day free trial and understand I can cancel anytime with 1-click in my dashboard before the trial ends to avoid recurring monthly charges.</span>
-                        </label>
-                    </div>
-
-                    <div class="flex gap-3 pt-3">
+                    <div class="flex gap-3 pt-2">
                         <button type="button" onclick="goToStep(2, true)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
                             ← Back
                         </button>
-                        <button type="button" onclick="completeRegistration()" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm hover:scale-[1.02]">
-                            Activate 7-Day Free Trial →
+                        <button type="button" onclick="completeRegistration()" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm hover:scale-[1.02] shadow-lg">
+                            Enter Your Dashboard →
                         </button>
                     </div>
                 </div>
@@ -273,7 +249,7 @@
     <!-- FOOTER -->
     <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; TriDash AI. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
+            <p>&copy; TriDashai. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
             <div class="flex items-center gap-4">
                 <a href="terms.html" class="hover:text-slate-900 transition">Terms of Service</a>
                 <span>•</span>
@@ -309,7 +285,7 @@
 
         // Step Navigation Controller
         function goToStep(stepNum, skipValidation = false) {
-            // Validation check
+            // Validation check for Step 1
             if (stepNum === 2 && !skipValidation) {
                 const name = document.getElementById('input-name').value.trim();
                 const email = document.getElementById('input-email').value.trim();
@@ -344,11 +320,6 @@
 
         // Final Submit Action
         function completeRegistration() {
-            const termsBox = document.getElementById('terms-checkbox');
-            if (!termsBox.checked) {
-                alert('Please check the box to accept the Terms of Service and Privacy Policy before proceeding.');
-                return;
-            }
             window.location.href = 'dashboard.html';
         }
     </script>
