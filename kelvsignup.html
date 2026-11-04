@@ -1,174 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | TriDashai.com</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #ffffff;
-            color: #1e293b;
-        }
-
-        .ambient-glow-1 {
-            position: absolute;
-            top: -120px;
-            left: -100px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(29, 78, 216, 0.02) 50%, transparent 70%);
-            filter: blur(140px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .podium-card-3d {
-            background: #ffffff;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(37, 99, 235, 0.12);
-            box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            color: #1e293b;
-        }
-
-        .podium-badge {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            color: #2563eb;
-        }
-
-        .btn-podium-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: #ffffff;
-            font-weight: 700;
-            transition: all 0.25s ease;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        .btn-podium-primary:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .step-pill.active {
-            background-color: #2563eb;
-            color: #ffffff;
-            border-color: #2563eb;
-        }
-    </style>
-</head>
-<body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
-
-    <div class="ambient-glow-1"></div>
-
-    <!-- DEV STEP SWITCHER BAR -->
-    <div class="bg-slate-900 text-white text-[11px] py-1.5 px-4 text-center flex items-center justify-center gap-3 relative z-50">
-        <span class="font-bold text-amber-400">🛠️ Inspection Controls:</span>
-        <button onclick="goToStep(1, true)" class="underline hover:text-blue-300">Preview Step 1</button>
-        <span>•</span>
-        <button onclick="goToStep(2, true)" class="underline hover:text-blue-300">Preview Step 2</button>
-        <span>•</span>
-        <button onclick="goToStep(3, true)" class="underline hover:text-blue-300">Preview Step 3</button>
-    </div>
-
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <div class="flex flex-col items-start gap-1">
-                <a href="index.html" class="text-xl font-extrabold tracking-tight whitespace-nowrap leading-none not-italic">
-                    <span class="text-[#2563eb]">Tri</span><span class="text-slate-900">Dashai.com</span>
-                </a>
-            </div>
-
-            <div class="relative">
-                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
-                    <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <span>Menu</span>
-                </button>
-
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2 shadow-xl backdrop-blur-md z-50">
-                    <a href="index.html#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
-                    <a href="index.html#pricing" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Pricing</a>
-                    <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- SIGNUP MAIN CONTENT -->
-    <main class="flex-1 relative z-10 py-10 sm:py-16">
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center mb-8">
-                <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    🚀 14-Day Free Trial • No Credit Card Required
-                </span>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
-                    Create Your Account
-                </h1>
-                <p class="text-slate-600 text-xs sm:text-sm">Set up your AI receptionist in 60 seconds.</p>
-            </div>
-
-            <!-- MULTI-STEP PROGRESS BAR -->
-            <div class="flex items-center justify-between mb-8 text-xs font-bold">
-                <div id="pill-step-1" onclick="goToStep(1, true)" class="step-pill active px-4 py-2 rounded-full border border-slate-300 flex items-center gap-1.5 cursor-pointer">
-                    <span>1.</span> Account
-                </div>
-                <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-                <div id="pill-step-2" onclick="goToStep(2, true)" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5 cursor-pointer">
-                    <span>2.</span> Trade & Setup
-                </div>
-                <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-                <div id="pill-step-3" onclick="goToStep(3, true)" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400 flex items-center gap-1.5 cursor-pointer">
-                    <span>3.</span> Activate
-                </div>
-            </div>
-
-            <form id="signup-form" onsubmit="return false;" class="space-y-6">
-                
-                <!-- STEP 1: ACCOUNT REGISTRATION -->
-                <div id="step-1-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">
-                        Step 1: Create Login Credentials
-                    </h2>
-
-                    <div class="space-y-4 text-xs sm:text-sm">
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Full Name</label>
-                            <input type="text" id="input-name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Email Address (Your Login ID)</label>
-                            <input type="email" id="input-email" required placeholder="john@apexroofing.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-700 mb-1">Create Password</label>
-                            <div class="relative">
-                                <input type="password" id="input-password" required placeholder="At least 8 characters" class="w-full pl-4 pr-10 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                                <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3.5 text-slate-400 hover:text-slate-600 focus:outline-none" title="Show/Hide Password">
-                                    <span id="eye-icon">👁️</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" onclick="goToStep(2)" class="w-full py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm mt-4">
-                        Continue to Trade Setup →
-                    </button>
-                    <p class="text-center text-[11px] text-slate-400">Already have an account? <a href="login.html" class="text-[#2563eb] underline font-semibold">Log in here</a></p>
-                </div>
-
                 <!-- STEP 2: BUSINESS PROFILE & EMERGENCY SETTINGS -->
                 <div id="step-2-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
                     <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">
@@ -178,7 +7,7 @@
                     <div class="space-y-4 text-xs sm:text-sm">
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Business Name</label>
-                            <input type="text" id="input-company" placeholder="e.g. Apex Plumbing & Drainage" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            <input type="text" id="input-company" placeholder="e.g. Apex Multi-Trade Services" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                         </div>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -187,22 +16,23 @@
                                 <input type="tel" id="input-phone" placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-700 mb-1">Primary Trade</label>
-                                <select id="input-trade" onchange="checkCustomTrade(this.value)" class="w-full px-3 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                                <label class="block font-semibold text-slate-700 mb-1">Primary Trade Focus</label>
+                                <select id="input-trade" class="w-full px-3 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
                                     <option value="plumber">Plumbing & Drainage</option>
                                     <option value="roofer">Roofing & Guttering</option>
                                     <option value="electrician">Electrical Services</option>
                                     <option value="builder">General Building</option>
                                     <option value="hvac">HVAC & Heating</option>
-                                    <option value="other">Other Field Service</option>
+                                    <option value="multi">Multi-Trade / General Contractor</option>
                                 </select>
                             </div>
                         </div>
 
-                        <!-- CUSTOM TRADE FIELD (Hidden by default, pops open if 'Other' is selected) -->
-                        <div id="custom-trade-wrapper" class="hidden">
-                            <label class="block font-semibold text-slate-700 mb-1">Specify Your Trade / Service</label>
-                            <input type="text" id="input-custom-trade" placeholder="e.g. Locksmith, Pest Control, Garage Doors" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                        <!-- MULTI-TRADE SPECIFICATION BOX -->
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Multi-Trade / Additional Services (Optional)</label>
+                            <input type="text" id="input-multitrades" placeholder="e.g. Plumbing, roofing repairs, and general building" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                            <p class="text-[11px] text-slate-500 mt-1">If you handle multiple trades, list them here so Sarah knows what jobs to accept.</p>
                         </div>
 
                         <!-- EMERGENCY CALL-OUT QUICK-START BLOCK -->
@@ -227,121 +57,3 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- STEP 3: INSTANT ACTIVATION & LEGAL NOTICE -->
-                <div id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden text-center">
-                    <div class="w-16 h-16 bg-blue-50 text-[#2563eb] rounded-2xl mx-auto flex items-center justify-center text-3xl font-bold border border-blue-200 shadow-sm">
-                        🚀
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-extrabold text-slate-900">
-                            Ready to Start Your Free Trial
-                        </h2>
-                        <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed mt-1">
-                            Your 14-day trial is $0.00 today. No credit card required upfront.
-                        </p>
-                    </div>
-
-                    <!-- IMPLICIT LEGAL NOTICE / CLICKWRAP AGREEMENT -->
-                    <p class="text-[11px] text-slate-500 leading-relaxed px-2 text-left bg-slate-50 border border-slate-200 p-3 rounded-xl">
-                        By clicking "Enter Your Dashboard", you agree to our 
-                        <a href="terms.html" target="_blank" class="text-[#2563eb] underline font-semibold">Terms of Service</a> 
-                        and 
-                        <a href="privacy.html" target="_blank" class="text-[#2563eb] underline font-semibold">Privacy Policy</a>.
-                    </p>
-
-                    <div class="flex gap-3 pt-2">
-                        <button type="button" onclick="goToStep(2, true)" class="w-1/3 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold rounded-xl transition text-xs">
-                            ← Back
-                        </button>
-                        <button type="button" onclick="completeRegistration()" class="w-2/3 py-3.5 btn-podium-primary text-center font-bold rounded-xl transition text-xs sm:text-sm hover:scale-[1.02] shadow-lg">
-                            Enter Your Dashboard →
-                        </button>
-                    </div>
-                </div>
-
-            </form>
-
-        </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; TriDashai.com. All rights reserved.</p>
-            <div class="flex items-center gap-4">
-                <a href="terms.html" class="hover:text-slate-900 transition">Terms of Service</a>
-                <span>•</span>
-                <a href="privacy.html" class="hover:text-slate-900 transition">Privacy Policy</a>
-                <span>•</span>
-                <a href="login.html" class="text-slate-700 hover:text-[#2563eb] transition font-semibold">Log In</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SCRIPT LOGIC -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        function togglePasswordVisibility() {
-            const input = document.getElementById('input-password');
-            const icon = document.getElementById('eye-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                icon.textContent = '👁️';
-            }
-        }
-
-        function checkCustomTrade(val) {
-            const customWrapper = document.getElementById('custom-trade-wrapper');
-            if (val === 'other') {
-                customWrapper.classList.remove('hidden');
-            } else {
-                customWrapper.classList.add('hidden');
-            }
-        }
-
-        function goToStep(stepNum, skipValidation = false) {
-            if (stepNum === 2 && !skipValidation) {
-                const name = document.getElementById('input-name').value.trim();
-                const email = document.getElementById('input-email').value.trim();
-                const pass = document.getElementById('input-password').value.trim();
-
-                if (!name || !email || !pass) {
-                    alert('Please complete your name, email, and password first.');
-                    return;
-                }
-            }
-
-            document.getElementById('step-1-card').classList.add('hidden');
-            document.getElementById('step-2-card').classList.add('hidden');
-            document.getElementById('step-3-card').classList.add('hidden');
-
-            document.getElementById(`step-${stepNum}-card`).classList.remove('hidden');
-
-            for (let i = 1; i <= 3; i++) {
-                const pill = document.getElementById(`pill-step-${i}`);
-                if (i <= stepNum) {
-                    pill.classList.add('active');
-                    pill.classList.remove('text-slate-400');
-                } else {
-                    pill.classList.remove('active');
-                    pill.classList.add('text-slate-400');
-                }
-            }
-        }
-
-        function completeRegistration() {
-            window.location.href = 'dashboard.html';
-        }
-    </script>
-</body>
-</html>
