@@ -155,7 +155,7 @@
         }
         .marquee-track {
             display: flex;
-            gap: 1.5rem;
+            gap: 2.5rem;
             width: max-content;
             animation: slideScroll 35s linear infinite;
         }
@@ -205,35 +205,22 @@
 
     <!-- HERO SECTION -->
     <main class="flex-1 relative z-10">
-        <section class="max-w-6xl mx-auto px-4 py-8 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+            <!-- HERO BADGE -->
+            <div class="inline-block podium-badge animated-badge text-sm sm:text-base font-extrabold py-2.5 rounded-full mb-6 shadow-sm whitespace-nowrap">
+                <span class="text-slate-900">⚠️ Stop Funding Your Competitor’s Truck</span>
+            </div>
             
-            <div class="lg:col-span-7 pr-0 lg:pr-4 text-center lg:text-left">
-                <!-- HERO BADGE -->
-                <div class="inline-block podium-badge animated-badge text-sm sm:text-base font-extrabold py-2.5 rounded-full mb-6 shadow-sm whitespace-nowrap">
-                    <span class="text-slate-900">⚠️ Stop Funding Your Competitor’s Truck</span>
-                </div>
-                
-                <!-- HERO HEADING -->
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-center lg:text-left text-slate-900">
-                    <span class="block">No more missed calls.</span>
-                    <span class="block">$300 in your pocket, not your competitor's.</span>
-                </h1>
-                
-                <!-- HERO SUBHEADING -->
-                <p class="text-slate-700 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-normal mx-auto lg:mx-0 text-center lg:text-left">
-                    Missing just a single call is costing you $300 in lost income—amounting to $44,000 per year on average. That's a huge loss for you and a massive win for your competitor while you're under a sink or up on a roof.
-                </p>
-            </div>
-
-            <!-- DISPATCHER IMAGE CONTAINER -->
-            <div class="lg:col-span-5 rounded-3xl podium-card-3d p-2 sm:p-3">
-                <div class="blend-image-container h-[380px] sm:h-[420px]">
-                    <img 
-                        src="sarah%201.jpg" 
-                        alt="AI Virtual Crew Member in Action"
-                    />
-                </div>
-            </div>
+            <!-- HERO HEADING -->
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-slate-900">
+                <span class="block">No more missed calls.</span>
+                <span class="block">$300 in your pocket, not your competitor's.</span>
+            </h1>
+            
+            <!-- HERO SUBHEADING -->
+            <p class="text-slate-700 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                Missing just a single call is costing you $300 in lost income—amounting to $44,000 per year on average. That's a huge loss for you and a massive win for your competitor while you're under a sink or up on a roof.
+            </p>
         </section>
 
         <!-- ROI CALCULATOR (IMMEDIATELY AFTER HERO) -->
@@ -243,7 +230,7 @@
                     Interactive ROI Calculator
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">See What Missed Calls Are <span class="text-[#2563eb]">Costing You</span></h2>
-                <p class="text-slate-600 text-sm sm:text-base">Calculate your exact annual revenue loss based on an average $300 per service call.</p>
+                <p class="text-slate-600 text-sm sm:text-base">Calculate your exact monthly revenue loss based on an average $300 per service call.</p>
             </div>
 
             <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -267,8 +254,8 @@
 
                 <div class="lg:col-span-5 podium-dark-card p-6 sm:p-8 rounded-2xl text-center space-y-6 shadow-xl">
                     <div>
-                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-1">Estimated Annual Lost Revenue</p>
-                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-[#2563eb]">$43,200</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-1">Estimated Monthly Lost Revenue</p>
+                        <p id="lost-revenue" class="text-4xl sm:text-5xl font-extrabold text-[#2563eb]">$3,600</p>
                     </div>
                     <div class="pt-4 border-t border-slate-200">
                         <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-1">TriDash AI Subscription</p>
@@ -291,72 +278,72 @@
             </div>
         </section>
 
-        <!-- OFFICIAL INFRASTRUCTURE REASSURANCE TICKER -->
-        <section class="py-8 bg-slate-50/80 backdrop-blur-md border-b border-slate-200 overflow-hidden relative z-10">
-            <div class="max-w-6xl mx-auto px-4 mb-4 text-center">
+        <!-- OFFICIAL TRANSPARENT FLOATING INFRASTRUCTURE TICKER -->
+        <section class="py-10 bg-slate-50/50 backdrop-blur-md border-b border-slate-200 overflow-hidden relative z-10">
+            <div class="max-w-6xl mx-auto px-4 mb-6 text-center">
                 <p class="text-xs uppercase tracking-wider font-bold text-slate-400">Powered by Enterprise-Grade Infrastructure You Can Trust</p>
             </div>
             <div class="marquee-wrapper">
                 <div class="marquee-track" style="animation-duration: 35s;">
                     
                     <!-- STRIPE -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#635BFF]" viewBox="0 0 24 24" fill="currentColor"><path d="M13.97 10.31c-.93-.31-1.35-.55-1.35-1.08 0-.47.43-.77 1.2-.77.92 0 1.7.35 2.33.99l1.1-1.42c-.89-.83-2.03-1.28-3.43-1.28-2.11 0-3.57 1.12-3.57 2.92 0 1.63 1.05 2.31 3.1 2.98 1.06.35 1.5.63 1.5 1.2 0 .54-.51.91-1.47.91-1.12 0-2.09-.48-2.84-1.39l-1.16 1.39c.95 1.13 2.22 1.74 4 1.74 2.22 0 3.73-1.11 3.73-3.03 0-1.63-1.01-2.31-3.21-3.02z"/></svg>
                         <span>Stripe</span>
                     </div>
 
                     <!-- TWILIO -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
-                        <svg class="w-5 h-5 text-[#F22F46]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 100 12 6 6 0 000-12zm0 9.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="#fff"/></svg>
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
+                        <svg class="w-5 h-5 text-[#F22F46]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 100 12 6 6 0 000-12zm0 9.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7 z" fill="#fff"/></svg>
                         <span>Twilio</span>
                     </div>
 
                     <!-- LEMON SQUEEZY -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#FFC232]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         <span>Lemon Squeezy</span>
                     </div>
 
                     <!-- FIREBASE -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#FFCA28]" viewBox="0 0 24 24" fill="currentColor"><path d="M3.59 2.58c-.34.2-.42.67-.18.99l3.59 4.8-2.61 7.68a.75.75 0 00.99.92l14.18-5.91a.75.75 0 00.32-1.02L13.1 3.2a.75.75 0 00-.98-.26L3.59 2.58z"/></svg>
                         <span>Firebase</span>
                     </div>
 
                     <!-- WISE -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#00B9FF]" viewBox="0 0 24 24" fill="currentColor"><path d="M2 13h5l3-9h5l-4 13h-5l-1 4h14"/></svg>
                         <span>Wise</span>
                     </div>
 
                     <!-- CLOUDFLARE -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#F38020]" viewBox="0 0 24 24" fill="currentColor"><path d="M16.36 10.04c-.45-2.07-2.28-3.61-4.47-3.61-1.74 0-3.25 1-4 2.48C6.31 9.17 5 10.5 5 12.17c0 1.76 1.43 3.19 3.19 3.19h9.12c1.43 0 2.59-1.16 2.59-2.59 0-1.32-1-2.41-2.34-2.56z"/></svg>
                         <span>Cloudflare</span>
                     </div>
 
                     <!-- DUPLICATE SET FOR INFINITE SMOOTH LOOP -->
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#635BFF]" viewBox="0 0 24 24" fill="currentColor"><path d="M13.97 10.31c-.93-.31-1.35-.55-1.35-1.08 0-.47.43-.77 1.2-.77.92 0 1.7.35 2.33.99l1.1-1.42c-.89-.83-2.03-1.28-3.43-1.28-2.11 0-3.57 1.12-3.57 2.92 0 1.63 1.05 2.31 3.1 2.98 1.06.35 1.5.63 1.5 1.2 0 .54-.51.91-1.47.91-1.12 0-2.09-.48-2.84-1.39l-1.16 1.39c.95 1.13 2.22 1.74 4 1.74 2.22 0 3.73-1.11 3.73-3.03 0-1.63-1.01-2.31-3.21-3.02z"/></svg>
                         <span>Stripe</span>
                     </div>
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#F22F46]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 100 12 6 6 0 000-12zm0 9.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="#fff"/></svg>
                         <span>Twilio</span>
                     </div>
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#FFC232]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         <span>Lemon Squeezy</span>
                     </div>
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#FFCA28]" viewBox="0 0 24 24" fill="currentColor"><path d="M3.59 2.58c-.34.2-.42.67-.18.99l3.59 4.8-2.61 7.68a.75.75 0 00.99.92l14.18-5.91a.75.75 0 00.32-1.02L13.1 3.2a.75.75 0 00-.98-.26L3.59 2.58z"/></svg>
                         <span>Firebase</span>
                     </div>
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#00B9FF]" viewBox="0 0 24 24" fill="currentColor"><path d="M2 13h5l3-9h5l-4 13h-5l-1 4h14"/></svg>
                         <span>Wise</span>
                     </div>
-                    <div class="podium-card-3d px-5 py-3 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-4 text-xs font-bold text-slate-700 whitespace-nowrap">
                         <svg class="w-5 h-5 text-[#F38020]" viewBox="0 0 24 24" fill="currentColor"><path d="M16.36 10.04c-.45-2.07-2.28-3.61-4.47-3.61-1.74 0-3.25 1-4 2.48C6.31 9.17 5 10.5 5 12.17c0 1.76 1.43 3.19 3.19 3.19h9.12c1.43 0 2.59-1.16 2.59-2.59 0-1.32-1-2.41-2.34-2.56z"/></svg>
                         <span>Cloudflare</span>
                     </div>
@@ -585,7 +572,7 @@
             });
         });
 
-        // ROI Calculator Logic (Direct Annual Lost Revenue: Job Value * Missed Calls per week * 52 weeks)
+        // ROI Calculator Logic (Monthly Lost Revenue: Job Value * Missed Calls per week * 4 weeks)
         const jobValueInput = document.getElementById('job-value');
         const jobValueDisplay = document.getElementById('job-value-display');
         const missedCallsInput = document.getElementById('missed-calls');
@@ -599,9 +586,9 @@
             jobValueDisplay.textContent = `$${val.toLocaleString()}`;
             missedCallsDisplay.textContent = `${calls} ${calls === 1 ? 'call' : 'calls'}`;
 
-            // Annual Calculation: (Value per job) * (Missed calls per week) * 52 weeks
-            const annualLost = val * calls * 52;
-            lostRevenueDisplay.textContent = `$${Math.round(annualLost).toLocaleString()}`;
+            // Monthly Calculation: (Value per job) * (Missed calls per week) * 4 weeks
+            const monthlyLost = val * calls * 4;
+            lostRevenueDisplay.textContent = `$${Math.round(monthlyLost).toLocaleString()}`;
         }
 
         jobValueInput.addEventListener('input', calculateROI);
