@@ -3,82 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - TriDashai.com</title>
+    <title>Privacy Policy | TriDashai.com</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html {
             scroll-behavior: smooth;
         }
-        p, h1, h2, h3, h4, h5, h6, li {
-            orphans: 3;
-            widows: 3;
-            text-wrap: pretty;
+
+        body {
+            background: #ffffff;
+            color: #1e293b;
         }
-        h1, h2, h3 {
-            text-wrap: balance;
+
+        .ambient-glow-1 {
+            position: absolute;
+            top: -120px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(29, 78, 216, 0.02) 50%, transparent 70%);
+            filter: blur(140px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .podium-card-3d {
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
+            position: relative;
+            overflow: hidden;
+            color: #1e293b;
         }
     </style>
 </head>
-<body class="bg-black text-slate-300 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+<body id="top" class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative overflow-x-hidden">
 
-    <!-- HEADER -->
-    <header class="bg-black border-b border-slate-800 py-4 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold tracking-tight text-white">
-                TriDash<span class="text-blue-500 font-light">ai.com</span>
-            </a>
-            <a href="kelvsignup.html" class="text-xs font-semibold text-slate-400 hover:text-white transition">
-                ← Back to Sign Up
+    <div class="ambient-glow-1"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex flex-col items-start gap-1">
+                <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight">
+                    TriDash<span class="text-[#2563eb] font-semibold">ai.com</span>
+                </a>
+            </div>
+
+            <a href="kelvsignup.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200 transition focus:outline-none focus:ring-2 focus:ring-[#2563eb] shadow-sm">
+                <span>← Back to Sign Up</span>
             </a>
         </div>
     </header>
 
     <!-- MAIN LEGAL CONTENT -->
-    <main class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
-        <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
-            <div>
-                <h1 class="text-3xl font-extrabold text-white tracking-tight mb-2">Privacy Policy</h1>
-                <p class="text-xs text-slate-500 uppercase tracking-wider">Last Updated: November 2026</p>
+    <main class="flex-1 relative z-10 py-10 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-10">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3" style="font-family: 'Times New Roman', Times, serif; font-style: italic;">
+                    Privacy Policy
+                </h1>
+                <p class="text-slate-500 text-xs sm:text-sm">Last Updated: November 2026 • Effective Immediately</p>
             </div>
 
-            <div class="space-y-6 text-sm text-slate-300 leading-relaxed">
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">1. Information We Collect</h2>
-                    <p>When you register for a 14-day free trial or subscribe to TriDashai.com, we collect the personal and business details required to fulfill our service, including your name, email address, phone number, and business name. For initial trial registration, no payment card details are collected. Payment details are processed securely via our PCI-compliant Merchant of Record (Lemon Squeezy) only when you choose to activate a paid subscription.</p>
+            <div class="podium-card-3d p-6 sm:p-10 rounded-3xl space-y-8 text-xs sm:text-sm text-slate-700 leading-relaxed">
+
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        1. Information We Collect
+                    </h2>
+                    <p>
+                        When you register for a 14-day free trial or subscribe to TriDashai.com, we collect the personal and business details required to fulfill our service, including your name, email address, phone number, and business name. For initial trial registration, no payment card details are collected. Payment details are processed securely via our PCI-compliant Merchant of Record (Lemon Squeezy) only when you choose to activate a paid subscription.
+                    </p>
                 </section>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">2. How We Use Your Information</h2>
-                    <p>We use collected information strictly to manage your account, automate transactional SMS responses to missed callers on your business line, dispatch review request messages to your clients, and deliver AI-assisted review management services.</p>
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        2. How We Use Your Information
+                    </h2>
+                    <p>
+                        We use collected information strictly to manage your account, automate transactional SMS responses to missed callers on your business line, dispatch review request messages to your clients, and deliver AI-assisted review management services.
+                    </p>
                 </section>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">3. Data Sharing & Third Parties</h2>
-                    <p>TriDashai.com does not sell, rent, or trade subscriber or end-customer personal data to third parties for marketing purposes. Data is shared exclusively with necessary service infrastructure partners (such as telecommunication carriers for SMS delivery and encrypted payment processors) solely to operate the platform.</p>
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        3. Data Sharing & Third Parties
+                    </h2>
+                    <p>
+                        TriDashai.com does not sell, rent, or trade subscriber or end-customer personal data to third parties for marketing purposes. Data is shared exclusively with necessary service infrastructure partners (such as telecommunication carriers for SMS delivery and encrypted payment processors) solely to operate the platform.
+                    </p>
                 </section>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">4. Data Security</h2>
-                    <p>We implement 256-bit SSL encryption across all web pages and maintain industry-standard administrative and technical safeguards to protect your personal information against unauthorized access, loss, or disclosure.</p>
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        4. Data Security
+                    </h2>
+                    <p>
+                        We implement 256-bit SSL encryption across all web pages and maintain industry-standard administrative and technical safeguards to protect your personal information against unauthorized access, loss, or disclosure.
+                    </p>
                 </section>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">5. Your Data Rights</h2>
-                    <p>You may request access to, correction of, or complete deletion of your personal account data at any time by contacting our support team or canceling your account subscription.</p>
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        5. Your Data Rights
+                    </h2>
+                    <p>
+                        You may request access to, correction of, or complete deletion of your personal account data at any time by contacting our support team or canceling your account subscription.
+                    </p>
                 </section>
 
-                <section>
-                    <h2 class="text-lg font-bold text-white mb-2">6. Contact Us</h2>
-                    <p>If you have any questions or concerns regarding this Privacy Policy, please reach out through <a href="https://tridashai.com" class="text-blue-400 underline">TriDashai.com</a> or via support@tridashai.com.</p>
+                <section class="space-y-3">
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">
+                        6. Contact Us
+                    </h2>
+                    <p>
+                        If you have any questions or concerns regarding this Privacy Policy, please reach out through <a href="https://tridashai.com" class="text-[#2563eb] underline">TriDashai.com</a> or via support@tridashai.com.
+                    </p>
                 </section>
+
             </div>
+
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-black border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500">
-        <p>&copy; TriDashai.com. All rights reserved.</p>
+    <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; TriDashai.com. All rights reserved. | Support: <a href="mailto:support@tridashai.com" class="underline hover:text-slate-900">support@tridashai.com</a></p>
+            <div class="flex items-center gap-4">
+                <a href="terms.html" class="hover:text-slate-900 transition">Terms of Service</a>
+                <span>•</span>
+                <a href="privacy.html" class="text-slate-900 font-semibold transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="kelvsignup.html" class="hover:text-slate-900 transition">Sign Up</a>
+            </div>
+        </div>
     </footer>
 
 </body>
