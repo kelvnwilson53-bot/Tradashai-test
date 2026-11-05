@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,56 +7,82 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* High-Contrast Dark Theme Styles */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
+        /* Default Dark Theme Styles */
+        body.dark-theme {
             background: #000000;
             color: #cbd5e1;
         }
-
-        .dashboard-card {
+        body.dark-theme .dashboard-card {
             background: #090d16;
             border: 1px solid rgba(51, 65, 85, 0.6);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            transition: all 0.3s ease;
         }
-
-        .dashboard-card:hover {
-            border-color: rgba(37, 99, 235, 0.7);
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
-        }
-
-        .dashboard-input {
+        body.dark-theme .dashboard-input {
             background: #020617;
             border: 1px solid #334155;
             color: #ffffff;
         }
-
-        .dashboard-input:focus {
-            border-color: #2563eb;
-            outline: none;
+        body.dark-theme header {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #1e293b;
         }
 
+        /* Light Theme Styles (White Background Option) */
+        body.light-theme {
+            background: #f8fafc;
+            color: #334155;
+        }
+        body.light-theme .dashboard-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        body.light-theme .dashboard-input {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+        }
+        body.light-theme header {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #e2e8f0;
+        }
+        body.light-theme .text-white {
+            color: #0f172a !important;
+        }
+        body.light-theme .text-slate-300, 
+        body.light-theme .text-slate-400 {
+            color: #475569 !important;
+        }
+        body.light-theme .bg-black\/50, 
+        body.light-theme .bg-black\/70, 
+        body.light-theme .bg-slate-900 {
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+        body.light-theme code {
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
         .btn-primary-blue {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: #ffffff;
             font-weight: 700;
             transition: all 0.25s ease;
         }
-
         .btn-primary-blue:hover {
             background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative">
+<body class="dark-theme font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative transition-colors duration-300">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="border-b border-slate-800 bg-black/90 backdrop-blur sticky top-0 z-50">
+    <header class="border-b backdrop-blur sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             
             <!-- BRAND LOGO -->
@@ -65,10 +91,14 @@
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2.5 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
-            <!-- RIGHT SIDE: LOGOUT -->
-            <div class="flex items-center gap-4">
-                <span class="text-xs font-semibold text-slate-300 hidden sm:inline bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">Active Line: +1 (214) 888-0142</span>
-                <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white transition bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">Log Out</a>
+            <!-- RIGHT SIDE CONTROLS: THEME TOGGLE & LOGOUT -->
+            <div class="flex items-center gap-3">
+                <!-- THEME TOGGLE BUTTON -->
+                <button id="theme-toggle-btn" class="text-xs font-semibold text-slate-300 hover:text-white transition bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
+                    <span id="theme-icon">☀️</span> <span id="theme-text">White Background</span>
+                </button>
+                <span class="text-xs font-semibold text-slate-300 hidden sm:inline bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl">Active Line: +1 (214) 888-0142</span>
+                <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white transition bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl">Log Out</a>
             </div>
 
         </div>
@@ -77,45 +107,80 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-6">
 
-        <!-- 1. WELCOME SECTION & SYSTEM STATUS -->
-        <div class="dashboard-card p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-                <span class="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    ● 24/7 AI Dispatcher Active
+        <!-- 1. QUICK START / SETUP STAGE (STAGE 1) -->
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6 border-2 border-blue-500/40">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                    <span class="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-1">
+                        ● Quick Start Setup
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white">Get Started in 2 Simple Steps</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-0.5">Connect your tools below so your AI assistant can start answering missed calls instantly.</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-xl self-start sm:self-auto">
+                    2 Min Setup
                 </span>
-                <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">Dashboard & Live Performance</h2>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Your dispatcher is answering missed calls instantly, qualifying leads, and syncing bookings.
-                </p>
-            </div>
-            <div class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-4 py-2.5 rounded-2xl text-xs font-bold text-emerald-400">
-                <span>🟢 System Online</span>
-            </div>
-        </div>
-
-        <!-- 2. BUSINESS SETTINGS (RENAMED & CLEARLY SPACED) -->
-        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h3 class="text-base sm:text-lg font-extrabold text-white">Business Settings</h3>
-                <p class="text-xs sm:text-sm text-slate-300">Manage your call forwarding routing, local service coverage, and average job ticket value for ROI tracking.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- ROUTING CARD -->
-                <div class="bg-black/70 border border-slate-700 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- STEP 1: CALL FORWARDING (PLAIN ENGLISH) -->
+                <div class="bg-black/50 border border-slate-700 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
                     <div>
-                        <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Call Forwarding</h4>
-                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                            Route missed calls to your AI line: <strong class="text-white text-sm sm:text-base font-mono bg-slate-900 px-2 py-1 rounded border border-slate-600 block mt-2">+1 (214) 888-0142</strong>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Step 1: Call Forwarding</h4>
+                            <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-mono font-bold">One-Time Setup</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
+                            Automatically send missed calls to your TriDashai AI assistant when you're busy on a job.
                         </p>
+                        
+                        <!-- DIAL STRING BOX -->
+                        <div class="bg-slate-900 border border-slate-700 p-3 rounded-xl space-y-1 text-center">
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">To turn it on, open your phone dial pad and dial:</span>
+                            <code class="text-xs sm:text-sm font-mono font-extrabold text-white bg-black px-2 py-1 rounded border border-slate-800 block select-all">
+                                *71 +1 (214) 888-0142
+                            </code>
+                        </div>
                     </div>
-                    <div class="pt-3 text-xs text-slate-300 border-t border-slate-800">
-                        <p>ℹ️ To turn off forwarding, dial <code class="bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 font-mono text-white font-bold">##002#</code>.</p>
+
+                    <div class="pt-3 border-t border-slate-800 text-xs text-slate-300">
+                        <p class="text-[11px] text-slate-400">
+                            <strong>Want to turn it off later?</strong> Open your dial pad and type <code class="bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 font-mono text-white font-bold">##002#</code> then press call to clear all forwarding rules.
+                        </p>
                     </div>
                 </div>
 
+                <!-- STEP 2: CONNECT GOOGLE CALENDAR -->
+                <div class="bg-black/50 border border-slate-700 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Step 2: Calendar Sync</h4>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">Prevents Double-Booking</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
+                            Connect your Google Calendar so the AI dispatcher instantly knows when you are booked on a job and never schedules over your working hours.
+                        </p>
+                    </div>
+                    <div class="space-y-2.5">
+                        <button onclick="alert('Google Calendar connected successfully!'); this.textContent='✓ Calendar Connected'; this.classList.remove('btn-primary-blue'); this.classList.add('bg-emerald-600', 'text-white');" class="w-full py-3 btn-primary-blue text-xs sm:text-sm font-bold rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                            <span>📅</span> Connect Google Calendar
+                        </button>
+                        <p class="text-[11px] text-slate-400 text-center">Secure read/write access for scheduling only.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. BUSINESS SETTINGS (SERVICE AREA & JOB VALUE) -->
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
+            <div class="border-b border-slate-800 pb-4">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">Business Settings</h3>
+                <p class="text-xs sm:text-sm text-slate-300">Configure your local coverage and average job ticket value for accurate ROI tracking.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- SERVICE AREA CONFIGURATION -->
-                <div class="bg-black/70 border border-slate-700 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div class="bg-black/50 border border-slate-700 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
                         <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Local Service Area</h4>
                         <p class="text-xs sm:text-sm text-slate-200 leading-relaxed mb-3">
@@ -129,7 +194,7 @@
                 </div>
 
                 <!-- AVERAGE JOB VALUE CONFIGURATION -->
-                <div class="bg-black/70 border border-slate-700 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div class="bg-black/50 border border-slate-700 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
                         <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Average Job Value ($)</h4>
                         <p class="text-xs sm:text-sm text-slate-200 leading-relaxed mb-3">
@@ -316,7 +381,7 @@
         </div>
     </div>
 
-    <!-- FLOATING SUPPORT CHATBOT WIDGET (DISTINCT CONTRAST BACKGROUND) -->
+    <!-- FLOATING SUPPORT CHATBOT WIDGET -->
     <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
         <button id="chat-toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 border border-blue-400/30">
             <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -327,7 +392,7 @@
             </svg>
         </button>
 
-        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-[#0c1222] border-2 border-slate-600 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px]">
+        <div id="chat-box" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 dashboard-card border-2 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[500px]">
             <div class="bg-slate-900 p-4 border-b border-slate-700 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="relative">
@@ -343,13 +408,12 @@
 
             <div id="chat-messages" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs sm:text-sm max-h-[350px]">
                 <div class="bg-slate-900 text-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-700">
-                    Hi! 👋 Need any help adjusting your service areas, job ticket value, or setting up call forwarding today?
+                    Hi! 👋 Need any help with your quick start setup or call forwarding today?
                 </div>
             </div>
 
-            <!-- DISTINCT CONTAINER BACKGROUND -->
             <form id="chat-form" class="p-3 border-t border-slate-700 bg-slate-900 flex gap-2 items-center">
-                <input id="chat-input" type="text" placeholder="Ask a support question..." class="flex-1 bg-black text-white text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-600 focus:outline-none focus:border-blue-500 font-medium placeholder-slate-400">
+                <input id="chat-input" type="text" placeholder="Ask a support question..." class="flex-1 dashboard-input text-xs sm:text-sm px-3.5 py-2.5 rounded-xl font-medium placeholder-slate-400">
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition shadow">Send</button>
             </form>
         </div>
@@ -362,6 +426,26 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // Light / Dark Background Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const htmlRoot = document.getElementById('html-root');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Background';
+            } else {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'White Background';
+            }
+        });
+
         // Boost Modal Logic
         const boostModal = document.getElementById('boost-modal');
         const openBoostBtn = document.getElementById('open-boost-modal');
@@ -370,11 +454,11 @@
         const cancelBoostBtn = document.getElementById('cancel-boost');
 
         if(openBoostBtn) openBoostBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
-        if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.add('hidden')); // simplified
         if(closeBoostBtn) closeBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
         if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
 
-        // Dynamic ROI Calculator Logic based on Custom Job Value (12 recovered calls default this month)
+        // Dynamic ROI Calculator Logic
         const jobValueInput = document.getElementById('custom-job-value');
         const saveJobValueBtn = document.getElementById('save-job-value-btn');
         const roiTotalDisplay = document.getElementById('roi-total-display');
@@ -382,7 +466,7 @@
 
         function updateDashboardROI() {
             const ticketSize = parseInt(jobValueInput.value) || 300;
-            const recoveredCalls = 12; // Static recovered calls count for the current month
+            const recoveredCalls = 12; 
             const totalRecovered = ticketSize * recoveredCalls;
 
             roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
@@ -394,7 +478,6 @@
             alert(`Average job value updated to $${jobValueInput.value}! Monthly ROI re-calculated.`);
         });
 
-        // Initialize on load
         updateDashboardROI();
 
         // Floating Chat Toggle Logic
@@ -430,13 +513,11 @@
                 
                 const lower = query.toLowerCase();
                 if(lower.includes('forward') || lower.includes('phone') || lower.includes('number')) {
-                    aiMsg.textContent = "To forward calls, dial *71 followed by your TriDashai routing number (+1 214-888-0142) on your mobile phone.";
-                } else if(lower.includes('boost') || lower.includes('rollover') || lower.includes('expire')) {
-                    aiMsg.textContent = "Boost packs include a 90-day rollover window so you're fully covered for heavy workloads and storm seasons without losing your credits.";
-                } else if(lower.includes('job value') || lower.includes('roi')) {
-                    aiMsg.textContent = "You can update your average job ticket value in the business settings box at the top of your dashboard to instantly recalculate your monthly recovered revenue.";
+                    aiMsg.textContent = "To set up call forwarding, dial *71 followed by your TriDashai number (+1 214-888-0142) on your phone keypad once.";
+                } else if(lower.includes('calendar') || lower.includes('sync')) {
+                    aiMsg.textContent = "Click the 'Connect Google Calendar' button in the quick start setup box above to link your calendar securely.";
                 } else {
-                    aiMsg.textContent = "Thanks for reaching out! I've logged this inquiry, and our support team will follow up directly if needed.";
+                    aiMsg.textContent = "Thanks for reaching out! Let me know if you need help with your quick setup steps.";
                 }
 
                 chatMessages.appendChild(aiMsg);
