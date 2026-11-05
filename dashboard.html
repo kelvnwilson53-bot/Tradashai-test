@@ -7,72 +7,68 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Diamond White & Crisp Contrasting Border Theme */
+        /* High-Contrast Dark Theme Styles */
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: #ffffff;
-            color: #1e293b;
+            background: #000000;
+            color: #cbd5e1;
         }
 
-        /* Diamond White Cards with Crisp Borders */
-        .podium-card-3d {
-            background: #ffffff;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(15, 23, 42, 0.15);
-            box-shadow: 0 15px 35px rgba(30, 41, 59, 0.04), 0 1px 1px rgba(255, 255, 255, 1) inset;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            color: #1e293b;
+        .dashboard-card {
+            background: #090d16;
+            border: 1px solid rgba(51, 65, 85, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
-        .podium-card-3d:hover {
-            transform: translateY(-2px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 20px 40px rgba(30, 41, 59, 0.08);
+        .dashboard-card:hover {
+            border-color: rgba(37, 99, 235, 0.5);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
         }
 
-        .podium-badge {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            color: #2563eb;
+        .dashboard-input {
+            background: #020617;
+            border: 1px solid #1e293b;
+            color: #ffffff;
         }
 
-        /* Sleek Navy Blue CTA Button */
-        .btn-podium-primary {
+        .dashboard-input:focus {
+            border-color: #2563eb;
+            outline: none;
+        }
+
+        .btn-primary-blue {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: #ffffff;
             font-weight: 700;
             transition: all 0.25s ease;
-            border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .btn-podium-primary:hover {
+
+        .btn-primary-blue:hover {
             background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col min-h-screen justify-between relative">
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <header class="border-b border-slate-800 bg-black/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             
             <!-- BRAND LOGO -->
-            <a href="index.html" class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-                <span class="text-[#2563eb]">Tri</span>Dashai
-                <span class="text-[10px] bg-blue-50 text-[#2563eb] border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">Dashboard</span>
+            <a href="index.html" class="text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <span class="text-blue-500">Tri</span>Dashai
+                <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2.5 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
             <!-- RIGHT SIDE: LOGOUT -->
             <div class="flex items-center gap-4">
-                <span class="text-xs font-semibold text-slate-600 hidden sm:inline">Active Line: +1 (214) 888-0142</span>
-                <a href="index.html" class="text-xs font-semibold text-slate-500 hover:text-slate-900 transition bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg">Log Out</a>
+                <span class="text-xs font-semibold text-slate-400 hidden sm:inline">Active Line: +1 (214) 888-0142</span>
+                <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-white transition bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg">Log Out</a>
             </div>
 
         </div>
@@ -82,169 +78,169 @@
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-6">
 
         <!-- 1. WELCOME SECTION & SYSTEM STATUS -->
-        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div class="space-y-1">
-                <span class="inline-block podium-badge text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                <span class="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                     ● 24/7 AI Dispatcher Active
                 </span>
-                <h2 class="text-xl font-extrabold text-slate-900 mt-2">Dashboard & Live Performance</h2>
-                <p class="text-xs text-slate-600 leading-relaxed">
+                <h2 class="text-xl font-extrabold text-white mt-2">Dashboard & Live Performance</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
                     Your dispatcher is answering missed calls instantly, qualifying leads, and syncing bookings.
                 </p>
             </div>
-            <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-2xl text-xs font-bold text-emerald-700">
+            <div class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-4 py-2 rounded-2xl text-xs font-bold text-emerald-400">
                 <span>🟢 System Online</span>
             </div>
         </div>
 
-        <!-- 2. TOP METRICS CARDS (MONTHLY ROI & USAGE) -->
+        <!-- 2. AI TRAINING & BUSINESS SETTINGS (PLACED IMMEDIATELY AT THE TOP) -->
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
+            <div class="border-b border-slate-900 pb-4">
+                <h3 class="text-base font-extrabold text-white">AI Training & Business Settings</h3>
+                <p class="text-xs text-slate-400">Configure your forwarding numbers, local service area, and average job ticket value for accurate ROI tracking.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- ROUTING CARD -->
+                <div class="bg-black/50 border border-slate-900 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Call Forwarding</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Route missed calls to your AI line: <strong class="text-white font-mono">+1 (214) 888-0142</strong>.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-500 border-t border-slate-900">
+                        <p>ℹ️ To turn off forwarding, dial <code class="bg-slate-900 px-1 py-0.5 rounded border border-slate-800 font-mono text-slate-300 font-bold">##002#</code>.</p>
+                    </div>
+                </div>
+
+                <!-- SERVICE AREA CONFIGURATION -->
+                <div class="bg-black/50 border border-slate-900 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">AI Local Service Area</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Cities and zip codes your business covers.
+                    </p>
+                    <div>
+                        <input type="text" id="service-areas" value="Dallas, Fort Worth, Plano, Arlington, Frisco" class="w-full dashboard-input text-xs px-3 py-2 rounded-xl mb-2">
+                        <button onclick="alert('Service areas updated successfully!')" class="w-full py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold rounded-xl border border-slate-800 transition">Save Areas</button>
+                    </div>
+                </div>
+
+                <!-- AVERAGE JOB VALUE CONFIGURATION -->
+                <div class="bg-black/50 border border-slate-900 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Average Job Value ($)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Set your typical ticket size to calculate live monthly ROI.
+                    </p>
+                    <div>
+                        <input type="number" id="custom-job-value" value="300" min="50" step="25" class="w-full dashboard-input text-xs px-3 py-2 rounded-xl mb-2">
+                        <button id="save-job-value-btn" class="w-full py-1.5 btn-primary-blue text-xs font-bold rounded-xl transition">Update ROI</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. TOP METRICS CARDS (MONTHLY ROI & USAGE) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             <!-- CARD 1: MONTHLY ROI RECOVERED -->
-            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
+            <div class="dashboard-card p-6 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Monthly Recovered Revenue</p>
-                        <span id="roi-ticket-tag" class="text-xs font-semibold text-[#2563eb] bg-blue-50 px-2 py-0.5 rounded border border-blue-200">$300 / pop</span>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Monthly Recovered Revenue</p>
+                        <span id="roi-ticket-tag" class="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">$300 / pop</span>
                     </div>
-                    <p id="roi-total-display" class="text-4xl font-extrabold text-[#2563eb] mt-3">$3,600</p>
+                    <p id="roi-total-display" class="text-4xl font-extrabold text-blue-400 mt-3">$3,600</p>
                 </div>
-                <p class="text-xs text-slate-500 mt-4 pt-3 border-t border-slate-100">12 missed calls recovered this month</p>
+                <p class="text-xs text-slate-500 mt-4 pt-3 border-t border-slate-900">12 missed calls recovered this month</p>
             </div>
 
             <!-- CARD 2: MONTHLY SMS & VOICE USAGE -->
-            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
+            <div class="dashboard-card p-6 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">SMS & Voice Meters</p>
-                        <span class="text-xs font-bold text-[#2563eb]">Standard Plan</span>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">SMS & Voice Meters</p>
+                        <span class="text-xs font-bold text-blue-400">Standard Plan</span>
                     </div>
                     
                     <div class="space-y-3 mt-4">
                         <div>
-                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1">
                                 <span>SMS Texts</span>
-                                <span class="font-bold text-slate-900">210 / 300</span>
+                                <span class="font-bold text-white">210 / 300</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
-                                <div class="bg-[#2563eb] h-full rounded-full" style="width: 70%;"></div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-blue-600 h-full rounded-full" style="width: 70%;"></div>
                             </div>
                         </div>
 
                         <div>
-                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1">
                                 <span>Voice Minutes</span>
-                                <span class="font-bold text-slate-900">180 / 300 min</span>
+                                <span class="font-bold text-white">180 / 300 min</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
-                                <div class="bg-emerald-600 h-full rounded-full" style="width: 60%;"></div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-emerald-500 h-full rounded-full" style="width: 60%;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- BOOST BUTTON (STRIPE) -->
-                <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                <div class="pt-4 mt-4 border-t border-slate-900 flex items-center justify-between">
                     <span class="text-[11px] text-slate-500">Alerts sent at 250 & 300</span>
-                    <button id="open-boost-modal" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                    <button id="open-boost-modal" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold rounded-lg border border-slate-800 transition shadow-sm">
                         + Buy Boost
                     </button>
                 </div>
             </div>
 
             <!-- CARD 3: GOOGLE REVIEWS -->
-            <div class="podium-card-3d p-6 rounded-3xl flex flex-col justify-between shadow-xl">
+            <div class="dashboard-card p-6 rounded-3xl flex flex-col justify-between">
                 <div>
-                    <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Google Review Auto-Reply</p>
-                    <p class="text-xl font-extrabold text-slate-900 mt-2">Auto-Pilot Active</p>
-                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">Automatically thanking 5-star clients and responding professionally to feedback.</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Google Review Auto-Reply</p>
+                    <p class="text-xl font-extrabold text-white mt-2">Auto-Pilot Active</p>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">Automatically thanking 5-star clients and responding professionally to feedback.</p>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                    <span class="text-emerald-600">● 4.9★ Rating Monitored</span>
+                <div class="pt-4 border-t border-slate-900 flex items-center justify-between text-xs font-semibold">
+                    <span class="text-emerald-400">● 4.9★ Rating Monitored</span>
                     <span class="text-slate-500">14 replies sent</span>
                 </div>
             </div>
 
         </div>
 
-        <!-- 3. PHONE ROUTING, SERVICE AREA & JOB VALUE SETTINGS -->
-        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
-            <div class="border-b border-slate-100 pb-4">
-                <h3 class="text-base font-extrabold text-slate-900">AI Training & Business Settings</h3>
-                <p class="text-xs text-slate-600">Configure your forwarding numbers, local service area, and average job ticket value for accurate ROI tracking.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- ROUTING CARD -->
-                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
-                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Call Forwarding</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Route missed calls to your AI line: <strong class="text-slate-900 font-mono">+1 (214) 888-0142</strong>.
-                    </p>
-                    <div class="pt-2 text-[11px] text-slate-500 border-t border-slate-200">
-                        <p>ℹ️ To turn off forwarding, dial <code class="bg-white px-1 py-0.5 rounded border border-slate-300 font-mono text-slate-800 font-bold">##002#</code>.</p>
-                    </div>
-                </div>
-
-                <!-- SERVICE AREA CONFIGURATION -->
-                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
-                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">AI Local Service Area</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Cities and zip codes your business covers.
-                    </p>
-                    <div>
-                        <input type="text" id="service-areas" value="Dallas, Fort Worth, Plano, Arlington, Frisco" class="w-full bg-white border border-slate-300 text-slate-900 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-[#2563eb] mb-2">
-                        <button onclick="alert('Service areas updated successfully!')" class="w-full py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition">Save Areas</button>
-                    </div>
-                </div>
-
-                <!-- AVERAGE JOB VALUE CONFIGURATION -->
-                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
-                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Average Job Value ($)</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Set your typical ticket size to calculate live monthly ROI.
-                    </p>
-                    <div>
-                        <input type="number" id="custom-job-value" value="300" min="50" step="25" class="w-full bg-white border border-slate-300 text-slate-900 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-[#2563eb] mb-2">
-                        <button id="save-job-value-btn" class="w-full py-1.5 btn-podium-primary text-xs font-bold rounded-xl transition">Update ROI</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- 4. CENTERPIECE: RECENT MISSED-CALL ACTIVITY FEED -->
-        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 class="text-base font-extrabold text-slate-900">Recent Recovered Lead Activity</h3>
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-900 pb-3">
+                <h3 class="text-base font-extrabold text-white">Recent Recovered Lead Activity</h3>
                 <span class="text-xs text-slate-500">Live sync active</span>
             </div>
             
             <div class="space-y-3">
                 <!-- SAMPLE ACTIVITY ITEM 1 -->
-                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center font-bold text-xs">📞</div>
+                        <div class="w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-xs">📞</div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-slate-900">Roof Leak Inquiry</span>
-                                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Booked (Est. Ticket)</span>
+                                <span class="text-xs font-bold text-white">Roof Leak Inquiry</span>
+                                <span class="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Booked (Est. Ticket)</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 mt-0.5">Missed call from +1 (214) 555-0192 • Text-back sent instantly</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Missed call from +1 (214) 555-0192 • Text-back sent instantly</p>
                         </div>
                     </div>
                     <span class="text-[11px] text-slate-500 whitespace-nowrap">12 mins ago</span>
                 </div>
 
                 <!-- SAMPLE ACTIVITY ITEM 2 -->
-                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center font-bold text-xs">💧</div>
+                        <div class="w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-xs">💧</div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-slate-900">Emergency Burst Pipe Triage</span>
-                                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Deposit Paid</span>
+                                <span class="text-xs font-bold text-white">Emergency Burst Pipe Triage</span>
+                                <span class="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Deposit Paid</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 mt-0.5">Missed call from +1 (972) 555-8831 • Qualified & payment link sent</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Missed call from +1 (972) 555-8831 • Qualified & payment link sent</p>
                         </div>
                     </div>
                     <span class="text-[11px] text-slate-500 whitespace-nowrap">1 hour ago</span>
@@ -253,35 +249,35 @@
         </div>
 
         <!-- 5. SUBSCRIPTION & BILLING PANEL -->
-        <div class="podium-card-3d p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+        <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-900 pb-3">
                 <div>
-                    <h3 class="text-sm font-extrabold text-slate-900">Subscription & Billing</h3>
-                    <p class="text-xs text-slate-600">Managed securely via Stripe & Lemon Squeezy.</p>
+                    <h3 class="text-sm font-extrabold text-white">Subscription & Billing</h3>
+                    <p class="text-xs text-slate-400">Managed securely via Stripe & Lemon Squeezy.</p>
                 </div>
-                <span class="self-start sm:self-auto text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+                <span class="self-start sm:self-auto text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
                     ● Account Active ($59/mo)
                 </span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2 text-xs">
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl space-y-2 text-xs">
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-600">Current Tier:</span>
-                        <span class="font-bold text-slate-900">TriDash AI Professional ($59/mo)</span>
+                        <span class="text-slate-400">Current Tier:</span>
+                        <span class="font-bold text-white">TriDash AI Professional ($59/mo)</span>
                     </div>
-                    <div class="flex justify-between items-center border-t border-slate-200 pt-2">
-                        <span class="text-slate-600">Next Renewal Date:</span>
-                        <span class="font-bold text-[#2563eb]">December 1, 2026</span>
+                    <div class="flex justify-between items-center border-t border-slate-900 pt-2">
+                        <span class="text-slate-400">Next Renewal Date:</span>
+                        <span class="font-bold text-blue-400">December 1, 2026</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div class="bg-black/50 border border-slate-900 p-4 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
-                        <h4 class="text-xs font-bold text-slate-900">Need Extra Minutes or SMS?</h4>
-                        <p class="text-xs text-slate-600 mt-0.5">Top up instantly via Stripe without changing your monthly tier.</p>
+                        <h4 class="text-xs font-bold text-white">Need Extra Minutes or SMS?</h4>
+                        <p class="text-xs text-slate-400 mt-0.5">Top up instantly via Stripe without changing your monthly tier.</p>
                     </div>
-                    <button id="open-boost-modal-main" class="w-full py-2.5 btn-podium-primary text-xs font-bold rounded-xl transition shadow-md">
+                    <button id="open-boost-modal-main" class="w-full py-2.5 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md">
                         Buy Minute / SMS Boost →
                     </button>
                 </div>
@@ -291,31 +287,31 @@
     </main>
 
     <!-- BOOST MODAL -->
-    <div id="boost-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="podium-card-3d max-w-md w-full rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 class="text-base font-extrabold text-slate-900">Instant Usage Boost</h3>
-                <button id="close-boost-modal" class="text-slate-400 hover:text-slate-900 text-sm font-bold px-2 py-1">✕</button>
+    <div id="boost-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="dashboard-card max-w-md w-full rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-900 pb-3">
+                <h3 class="text-base font-extrabold text-white">Instant Usage Boost</h3>
+                <button id="close-boost-modal" class="text-slate-400 hover:text-white text-sm font-bold px-2 py-1">✕</button>
             </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <p class="text-xs text-slate-400 leading-relaxed">
                 Add an extra 100 SMS messages and 100 voice minutes to your account immediately. Processed securely via Stripe.
             </p>
-            <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl flex justify-between items-center">
+            <div class="bg-blue-600/10 border border-blue-500/30 p-4 rounded-2xl flex justify-between items-center">
                 <div>
-                    <h4 class="text-xs font-bold text-slate-900">100 SMS + 100 Voice Pack</h4>
-                    <p class="text-[11px] text-slate-600">One-time add-on</p>
+                    <h4 class="text-xs font-bold text-white">100 SMS + 100 Voice Pack</h4>
+                    <p class="text-[11px] text-slate-400">One-time add-on</p>
                 </div>
-                <span class="text-lg font-extrabold text-[#2563eb]">$15</span>
+                <span class="text-lg font-extrabold text-blue-400">$15</span>
             </div>
             <div class="flex gap-3 pt-2">
-                <button id="cancel-boost" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition">Cancel</button>
-                <button onclick="alert('Boost purchased successfully via Stripe!'); document.getElementById('boost-modal').classList.add('hidden');" class="w-1/2 py-2.5 btn-podium-primary text-xs font-bold rounded-xl transition shadow-md">Confirm Purchase</button>
+                <button id="cancel-boost" class="w-1/2 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold rounded-xl border border-slate-800 transition">Cancel</button>
+                <button onclick="alert('Boost purchased successfully via Stripe!'); document.getElementById('boost-modal').classList.add('hidden');" class="w-1/2 py-2.5 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md">Confirm Purchase</button>
             </div>
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+    <footer class="border-t border-slate-800 bg-black py-6 text-center text-xs text-slate-500">
         <p>&copy; 2026 TriDashai. All rights reserved.</p>
     </footer>
 
