@@ -97,53 +97,42 @@
             
             <!-- BRAND LOGO -->
             <a href="index.html" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight flex items-center gap-1.5 cursor-pointer">
-                <span class="text-blue-500">Try</span>-AI
+                <span class="text-blue-500">Tri</span>DashAI
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
-            <!-- RIGHT SIDE CONTROLS -->
-            <div class="flex items-center gap-3 sm:gap-4">
-                <!-- WORDLESS THEME SYMBOL -->
-                <button id="theme-toggle-btn" class="w-9 h-9 bg-transparent hover:bg-slate-800/40 rounded-xl flex items-center justify-center text-lg transition" title="Toggle Background">
+            <!-- CENTERED THEME TOGGLE ICON -->
+            <div class="flex items-center justify-center">
+                <button id="theme-toggle-btn" class="w-9 h-9 bg-transparent hover:bg-slate-800/40 rounded-xl flex items-center justify-center text-lg transition cursor-pointer" title="Toggle Background">
                     <span id="theme-icon">☀️</span>
                 </button>
+            </div>
 
-                <!-- DIRECT DESKTOP SETTINGS LINK -->
-                <a href="settings.html" class="hidden sm:inline-block text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 border border-slate-700/60 px-3.5 py-2 rounded-xl transition">Settings & Voice Setup</a>
-
-                <!-- HAMBURGER MENU BUTTON -->
-                <button id="hamburger-btn" class="w-10 h-10 bg-slate-900/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl flex flex-col items-center justify-center gap-1 transition shadow-sm cursor-pointer" title="Navigation Menu">
-                    <span class="w-4 h-0.5 bg-slate-300 rounded-full"></span>
-                    <span class="w-4 h-0.5 bg-slate-300 rounded-full"></span>
-                    <span class="w-4 h-0.5 bg-slate-300 rounded-full"></span>
-                </button>
+            <!-- RIGHT SIDE CONTROLS: VOICE SETUP & LOG OUT STACKED -->
+            <div class="flex flex-col items-end gap-1.5">
+                <a href="settings.html" class="text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 border border-slate-700/60 px-3.5 py-1.5 rounded-xl transition shadow-sm">
+                    Voice Setup
+                </a>
+                <a href="#" onclick="alert('Logged out successfully.');" class="text-[11px] font-semibold text-red-400 hover:text-red-300 bg-slate-900/60 border border-slate-700/60 px-3.5 py-1 rounded-xl transition shadow-sm">
+                    Log Out
+                </a>
             </div>
 
         </div>
     </header>
 
-    <!-- MOBILE QUICK NAV DRAWER (Voice Setup & Logout Only) -->
+    <!-- MOBILE QUICK NAV DRAWER -->
     <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-end">
         <div class="dashboard-card w-72 h-full p-6 space-y-6 flex flex-col shadow-2xl border-l border-slate-700">
             <div class="flex items-center justify-between border-b border-slate-800 pb-4">
                 <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Navigation</h3>
                 <button id="close-drawer" class="text-slate-400 hover:text-white text-base font-bold px-2 py-1 cursor-pointer">✕</button>
             </div>
-            <nav class="space-y-3 text-xs sm:text-sm font-semibold flex-1 flex flex-col justify-between">
-                <div class="space-y-3">
-                    <!-- VOICE SETUP LINK -->
-                    <a href="settings.html" class="block p-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30 transition">
-                        <div class="font-bold">⚙️ Voice Setup</div>
-                        <div class="text-[10px] text-slate-400 font-normal mt-0.5">Configure your assistant voice and settings</div>
-                    </a>
-                </div>
-
-                <!-- LOG OUT / SWITCH ACCOUNT -->
-                <div class="pt-4 border-t border-slate-800/80">
-                    <a href="#" onclick="alert('Logged out successfully.');" class="block p-3 rounded-xl bg-slate-900/40 hover:bg-red-500/10 text-slate-400 hover:text-red-400 border border-slate-800 transition text-center font-bold">
-                        Log Out
-                    </a>
-                </div>
+            <nav class="space-y-3 text-xs sm:text-sm font-semibold flex-1">
+                <a href="settings.html" class="block p-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30 transition">
+                    <div class="font-bold">⚙️ Voice Setup</div>
+                    <div class="text-[10px] text-slate-400 font-normal mt-0.5">Configure your assistant voice and settings</div>
+                </a>
             </nav>
         </div>
     </div>
@@ -167,11 +156,11 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- STEP 1: CALL FORWARDING (ONE-TIME SETUP INPUT + DAILY TOGGLE) -->
+                <!-- STEP 1: CALL FORWARDING (ONE-TIME SETUP + DAILY TOGGLE) -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Setup & Toggle</h4>
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Toggle</h4>
                             <!-- PERSISTENT TOGGLE SWITCH -->
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="forwarding-toggle" class="sr-only peer" checked onchange="toggleForwardingStatus(this)">
@@ -180,22 +169,22 @@
                             </label>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                            Enter your activation code once below. Afterwards, use the toggle above to turn forwarding on or off daily without re-typing.
+                            Set your carrier codes once below. Afterwards, simply toggle on or off daily without re-typing.
                         </p>
                         
                         <!-- ONE-TIME SETUP INPUT BOX -->
-                        <div class="space-y-2 mb-3">
-                            <label for="forwarding-input-code" class="text-[11px] font-bold text-slate-300 block">Initial Activation / Deactivation Code (#002 / *71):</label>
+                        <div class="space-y-2 mb-3 bg-black/40 border border-slate-700/40 p-3 rounded-xl">
+                            <label for="forwarding-input-code" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">One-Time Activation / Deactivation Codes:</label>
                             <div class="flex gap-2">
                                 <input type="text" id="forwarding-input-code" value="*71 +1 (214) 888-0142" class="dashboard-input text-xs font-mono px-3 py-2 rounded-xl flex-1">
-                                <button onclick="alert('Forwarding code saved successfully! You can now use the toggle above.')" class="px-3.5 py-2 bg-slate-900/60 hover:bg-slate-800 text-xs font-bold text-white rounded-xl border border-slate-700/60 transition cursor-pointer">Save</button>
+                                <button onclick="alert('Carrier forwarding codes saved successfully! You can now use the toggle above daily.')" class="px-3.5 py-2 bg-slate-900/60 hover:bg-slate-800 text-xs font-bold text-white rounded-xl border border-slate-700/60 transition cursor-pointer">Save</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-3 border-t border-slate-800/40 text-xs text-slate-300">
                         <p class="text-[11px] text-slate-400">
-                            Deactivation code: <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">##002#</code>
+                            Clear / Deactivate code: <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">##002#</code>
                         </p>
                     </div>
                 </div>
@@ -389,7 +378,7 @@
                         <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl text-xs space-y-2">
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-300">Current Tier:</span>
-                                <span class="font-bold text-white">Try-AI Professional</span>
+                                <span class="font-bold text-white">TriDashAI Professional</span>
                             </div>
                             <div class="flex justify-between items-center border-t border-slate-800/40 pt-2">
                                 <span class="text-slate-300">Next Renewal:</span>
@@ -480,7 +469,7 @@
                         <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
                     </div>
                     <div>
-                        <h4 class="text-sm font-bold text-white leading-none">Try-AI Support</h4>
+                        <h4 class="text-sm font-bold text-white leading-none">TriDashAI Support</h4>
                         <span class="text-[10px] text-slate-400">Replies instantly</span>
                     </div>
                 </div>
@@ -501,7 +490,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/40 bg-black/40 py-6 text-center text-xs text-slate-400">
-        <p>&copy; 2026 Try-AI. All rights reserved.</p>
+        <p>&copy; 2026 TriDashAI. All rights reserved.</p>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
@@ -522,34 +511,19 @@
             }
         });
 
-        // Mobile Hamburger Drawer Logic (Explicitly Wired)
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
-        const closeDrawerBtn = document.getElementById('close-drawer');
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNavDrawer.classList.remove('hidden');
-        });
-        closeDrawerBtn.addEventListener('click', () => {
-            mobileNavDrawer.classList.add('hidden');
-        });
-        mobileNavDrawer.addEventListener('click', (e) => {
-            if (e.target === mobileNavDrawer) {
-                mobileNavDrawer.classList.add('hidden');
-            }
-        });
-
-        // Call Forwarding Toggle Switch Logic
+        // Call Forwarding Toggle Switch Logic (Fires saved config on toggle)
         function toggleForwardingStatus(checkbox) {
             const statusText = document.getElementById('toggle-status-text');
+            const savedCode = document.getElementById('forwarding-input-code').value;
+            
             if (checkbox.checked) {
                 statusText.textContent = 'ON';
                 statusText.className = 'ml-2 text-xs font-bold text-emerald-400';
-                alert('Call forwarding activated! Missed calls will now route to your AI assistant.');
+                alert(`Call forwarding activated using configured string: "${savedCode}"`);
             } else {
                 statusText.textContent = 'OFF';
                 statusText.className = 'ml-2 text-xs font-bold text-slate-400';
-                alert('Call forwarding deactivated. Calls are now ringing directly on your mobile.');
+                alert('Call forwarding deactivated (Executing ##002# clear rule). Calls ringing directly.');
             }
         }
 
@@ -599,7 +573,7 @@
 
         updateDashboardROI();
 
-        // Floating Chat Toggle Logic (Explicitly Wired)
+        // Floating Chat Toggle Logic
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
         const chatBox = document.getElementById('chat-box');
         const chatIconOpen = document.getElementById('chat-icon-open');
