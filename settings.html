@@ -38,63 +38,103 @@
 
         <div class="space-y-1">
             <h1 class="text-xl font-extrabold text-white">AI Receptionist Settings</h1>
-            <p class="text-xs text-slate-400">Manage your voice archetype and core business parameters in one master control panel.</p>
+            <p class="text-xs text-slate-400">Choose your voice archetype, select male or female, and set your core business rules.</p>
         </div>
 
-        <!-- VOICE ARCHETYPE SECTION -->
+        <!-- VOICE ARCHETYPE & GENDER SECTION -->
         <div class="dashboard-card p-6 rounded-3xl space-y-4">
             <div class="border-b border-slate-800/80 pb-3">
-                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Voice Archetype</h2>
-                <p class="text-xs text-slate-400 mt-0.5">Select the tone your AI uses when answering missed customer calls.</p>
+                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Voice Archetype & Gender</h2>
+                <p class="text-xs text-slate-400 mt-0.5">Select the tone and speaker voice your AI uses when answering missed calls.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <!-- Option 1 -->
-                <label class="cursor-pointer border border-blue-600 bg-blue-950/40 p-4 rounded-2xl flex flex-col gap-1 transition relative">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-white">Professional Specialist</span>
-                        <input type="radio" name="voice_archetype" checked class="text-blue-600">
+                <!-- Option 1: Professional Specialist -->
+                <div class="border border-blue-600 bg-blue-950/40 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white">Professional Specialist</span>
+                            <input type="radio" name="voice_archetype" checked class="text-blue-600">
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Clear, crisp, corporate, and dependable for scheduling.</p>
                     </div>
-                    <p class="text-[11px] text-slate-400">Clear, crisp, corporate, and dependable for scheduling.</p>
-                </label>
+                    <div class="flex items-center justify-between pt-2 border-t border-blue-900/50">
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" class="text-blue-600"> Female</label>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Option 2 -->
-                <label class="cursor-pointer border border-slate-800 hover:border-slate-700 bg-slate-900/50 p-4 rounded-2xl flex flex-col gap-1 transition">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-white">Calm Reassuring Guide</span>
-                        <input type="radio" name="voice_archetype" class="text-blue-600">
+                <!-- Option 2: Calm Reassuring Guide -->
+                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white">Calm Reassuring Guide</span>
+                            <input type="radio" name="voice_archetype" class="text-blue-600">
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Soft, empathetic, and steady for emergency calls.</p>
                     </div>
-                    <p class="text-[11px] text-slate-400">Soft, empathetic, and steady for emergency calls.</p>
-                </label>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" class="text-blue-600"> Female</label>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Option 3 -->
-                <label class="cursor-pointer border border-slate-800 hover:border-slate-700 bg-slate-900/50 p-4 rounded-2xl flex flex-col gap-1 transition">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-white">Direct & Authoritative Rep</span>
-                        <input type="radio" name="voice_archetype" class="text-blue-600">
+                <!-- Option 3: Direct & Authoritative Rep -->
+                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white">Direct & Authoritative Rep</span>
+                            <input type="radio" name="voice_archetype" class="text-blue-600">
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Confident, firm, and efficient for commercial lines.</p>
                     </div>
-                    <p class="text-[11px] text-slate-400">Confident, firm, and efficient for commercial lines.</p>
-                </label>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" class="text-blue-600"> Female</label>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Option 4 -->
-                <label class="cursor-pointer border border-slate-800 hover:border-slate-700 bg-slate-900/50 p-4 rounded-2xl flex flex-col gap-1 transition">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-white">Grounded Local Expert</span>
-                        <input type="radio" name="voice_archetype" class="text-blue-600">
+                <!-- Option 4: Grounded Local Expert -->
+                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white">Grounded Local Expert</span>
+                            <input type="radio" name="voice_archetype" class="text-blue-600">
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Warm, mature, and approachable community tradesperson.</p>
                     </div>
-                    <p class="text-[11px] text-slate-400">Warm, mature, and approachable community tradesperson.</p>
-                </label>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" class="text-blue-600"> Female</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- BUSINESS QUICK-TRAINING SECTION -->
+        <!-- VIRTUAL ASSISTANT QUICK TRAINING SECTION -->
         <div class="dashboard-card p-6 rounded-3xl space-y-4">
             <div class="border-b border-slate-800/80 pb-3">
-                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Business Quick-Training</h2>
-                <p class="text-xs text-slate-400 mt-0.5">Core rules the AI references when quoting terms to clients.</p>
+                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Virtual Assistant Quick Training</h2>
+                <p class="text-xs text-slate-400 mt-0.5">The exact trade name and details the AI uses when answering.</p>
             </div>
 
             <div class="space-y-4 pt-2">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Company / Trade Name</label>
+                    <input type="text" value="Apex Plumbing Solutions" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Pricing & Call-Out Policy</label>
                     <input type="text" value="Free estimates on major jobs; $75 standard call-out fee." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
