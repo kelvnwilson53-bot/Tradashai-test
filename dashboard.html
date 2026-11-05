@@ -190,7 +190,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- SERVICE AREA CONFIGURATION (INTERACTIVE INPUT) -->
+                <!-- SERVICE AREA CONFIGURATION -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
                         <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Local Service Area</h4>
@@ -204,7 +204,7 @@
                     </div>
                 </div>
 
-                <!-- AVERAGE JOB VALUE CONFIGURATION (INTERACTIVE INPUT) -->
+                <!-- AVERAGE JOB VALUE CONFIGURATION -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
                     <div>
                         <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Average Job Value ($)</h4>
@@ -364,7 +364,7 @@
                         <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl flex items-center justify-between gap-3">
                             <div>
                                 <h4 class="text-xs font-bold text-white">Need Extra Minutes/SMS?</h4>
-                                <p class="text-[11px] text-slate-300">Top up via Stripe ($15 pack).</p>
+                                <p class="text-[11px] text-slate-300">Choose from $7, $12, or $20 boost tiers.</p>
                             </div>
                             <button id="open-boost-modal-main" class="px-3.5 py-2 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md whitespace-nowrap">
                                 + Buy Boost
@@ -377,26 +377,50 @@
 
     </main>
 
-    <!-- BOOST MODAL -->
+    <!-- BOOST MODAL WITH TIERED PRICING ($7, $12, $20) & 90-DAY ROLLOVER -->
     <div id="boost-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="dashboard-card max-w-md w-full rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative">
+        <div class="dashboard-card max-w-lg w-full rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative">
             <div class="flex items-center justify-between border-b border-slate-800/40 pb-3">
-                <h3 class="text-base font-extrabold text-white">Instant Usage Boost</h3>
+                <h3 class="text-base font-extrabold text-white">Instant Usage Boost Tiers</h3>
                 <button id="close-boost-modal" class="text-slate-400 hover:text-white text-sm font-bold px-2 py-1">✕</button>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Add extra usage instantly. Processed securely via Stripe with complete price transparency and zero hidden fees.
+                Select a top-up pack below. All packs include a <strong>90-day rollover</strong> so your credits never go to waste. Processed securely via Stripe.
             </p>
-            <div class="bg-blue-600/10 border border-blue-500/30 p-4 rounded-2xl flex justify-between items-center">
-                <div>
-                    <h4 class="text-xs sm:text-sm font-bold text-white">100 SMS + 100 Voice Pack</h4>
-                    <p class="text-[11px] text-slate-300">One-time add-on • <strong>90-day rollover included</strong></p>
+
+            <!-- TIERED OPTIONS -->
+            <div class="space-y-3">
+                <!-- TIER 1: $7 -->
+                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('50 SMS + 50 Voice', '$7')">
+                    <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-white">Starter Boost</h4>
+                        <p class="text-[11px] text-slate-300">50 SMS + 50 Voice Minutes • 90-day rollover</p>
+                    </div>
+                    <span class="text-base sm:text-lg font-extrabold text-blue-400">$7</span>
                 </div>
-                <span class="text-lg font-extrabold text-blue-400">$15</span>
+
+                <!-- TIER 2: $12 (POPULAR) -->
+                <div class="bg-blue-600/10 border border-blue-500/40 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer relative" onclick="selectBoostTier('100 SMS + 100 Voice', '$12')">
+                    <span class="absolute -top-2.5 right-4 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Most Popular</span>
+                    <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-white">Pro Boost</h4>
+                        <p class="text-[11px] text-slate-300">100 SMS + 100 Voice Minutes • 90-day rollover</p>
+                    </div>
+                    <span class="text-base sm:text-lg font-extrabold text-blue-400">$12</span>
+                </div>
+
+                <!-- TIER 3: $20 -->
+                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('250 SMS + 250 Voice', '$20')">
+                    <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-white">Heavy-Duty Boost</h4>
+                        <p class="text-[11px] text-slate-300">250 SMS + 250 Voice Minutes • 90-day rollover</p>
+                    </div>
+                    <span class="text-base sm:text-lg font-extrabold text-blue-400">$20</span>
+                </div>
             </div>
+
             <div class="flex gap-3 pt-2">
-                <button id="cancel-boost" class="w-1/2 py-2.5 bg-slate-900/40 hover:bg-slate-800 text-slate-300 text-xs font-bold rounded-xl border border-slate-700/40 transition">Cancel</button>
-                <button onclick="alert('Redirecting securely to Stripe checkout...'); document.getElementById('boost-modal').classList.add('hidden');" class="w-1/2 py-2.5 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md">Confirm Purchase</button>
+                <button id="cancel-boost" class="w-full py-2.5 bg-slate-900/40 hover:bg-slate-800 text-slate-300 text-xs font-bold rounded-xl border border-slate-700/40 transition">Cancel</button>
             </div>
         </div>
     </div>
@@ -473,6 +497,11 @@
         if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
         if(closeBoostBtn) closeBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
         if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
+
+        function selectBoostTier(packName, price) {
+            alert(`Selected ${packName} for ${price}. Redirecting securely to Stripe checkout...`);
+            boostModal.classList.add('hidden');
+        }
 
         // Dynamic ROI Calculator Logic
         const jobValueInput = document.getElementById('custom-job-value');
