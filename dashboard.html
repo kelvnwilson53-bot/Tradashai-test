@@ -111,9 +111,6 @@
                 <!-- DIRECT DESKTOP SETTINGS LINK -->
                 <a href="settings.html" class="hidden sm:inline-block text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 border border-slate-700/60 px-3.5 py-2 rounded-xl transition">Settings & Voice Setup</a>
 
-                <!-- LOG OUT LINK -->
-                <a href="#" class="text-xs font-semibold text-slate-300 hover:text-white transition py-1">Log Out</a>
-
                 <!-- HAMBURGER MENU BUTTON -->
                 <button id="hamburger-btn" class="w-10 h-10 bg-slate-900/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl flex flex-col items-center justify-center gap-1 transition shadow-sm cursor-pointer" title="Navigation Menu">
                     <span class="w-4 h-0.5 bg-slate-300 rounded-full"></span>
@@ -125,23 +122,32 @@
         </div>
     </header>
 
-    <!-- MOBILE QUICK NAV DRAWER (FULLY WIRED WITH SETTINGS) -->
+    <!-- MOBILE QUICK NAV DRAWER -->
     <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-end">
         <div class="dashboard-card w-72 h-full p-6 space-y-6 flex flex-col shadow-2xl border-l border-slate-700">
             <div class="flex items-center justify-between border-b border-slate-800 pb-4">
                 <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Dashboard Navigation</h3>
                 <button id="close-drawer" class="text-slate-400 hover:text-white text-base font-bold px-2 py-1 cursor-pointer">✕</button>
             </div>
-            <nav class="space-y-3 text-xs sm:text-sm font-semibold">
-                <a href="#stage-1" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 1: Quick Setup</a>
-                <a href="#stage-2" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 2: Business Settings</a>
-                <a href="#stage-3" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 3: Live Metrics & ROI</a>
-                
-                <!-- PROMINENT SETTINGS LINK IN DRAWER -->
-                <div class="pt-2 border-t border-slate-800/80">
-                    <a href="settings.html" class="block p-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30 transition">
-                        <div class="font-bold">⚙️ Settings & Voice Setup</div>
-                        <div class="text-[10px] text-slate-400 font-normal mt-0.5">Choose your assistant voice, male/female type, and business rules</div>
+            <nav class="space-y-3 text-xs sm:text-sm font-semibold flex-1 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <a href="#stage-1" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 1: Quick Setup</a>
+                    <a href="#stage-2" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 2: Business Settings</a>
+                    <a href="#stage-3" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="block p-3 rounded-xl bg-black/40 hover:bg-blue-600/20 text-slate-200 transition">Stage 3: Live Metrics & ROI</a>
+                    
+                    <!-- PROMINENT SETTINGS LINK IN DRAWER -->
+                    <div class="pt-2 border-t border-slate-800/80">
+                        <a href="settings.html" class="block p-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30 transition">
+                            <div class="font-bold">⚙️ Settings & Voice Setup</div>
+                            <div class="text-[10px] text-slate-400 font-normal mt-0.5">Choose your assistant voice, male/female type, and business rules</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LOG OUT / SWITCH ACCOUNT AT THE BOTTOM OF THE LIST -->
+                <div class="pt-4 border-t border-slate-800/80">
+                    <a href="#" onclick="alert('Logged out successfully.');" class="block p-3 rounded-xl bg-slate-900/40 hover:bg-red-500/10 text-slate-400 hover:text-red-400 border border-slate-800 transition text-center font-bold">
+                        Log Out / Switch Account
                     </a>
                 </div>
             </nav>
