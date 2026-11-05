@@ -1,34 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Settings | TriDashai</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
-        body {
+        /* Dynamic Theme Styles */
+        .dark body {
             background: #090d16;
             color: #cbd5e1;
         }
-        .dashboard-card {
+        .light body {
+            background: #f8fafc;
+            color: #334155;
+        }
+        
+        .dark .dashboard-card {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(51, 65, 85, 0.4);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
+        .light .dashboard-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .custom-input {
+            background: #0f172a;
+            border-color: #334155;
+            color: white;
+        }
+        .light .custom-input {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        .dark .card-option-active {
+            border-color: #2563eb;
+            background: rgba(30, 58, 138, 0.4);
+        }
+        .light .card-option-active {
+            border-color: #2563eb;
+            background: rgba(239, 246, 255, 0.9);
+        }
+
+        .dark .card-option-inactive {
+            border-color: #1e293b;
+            background: rgba(15, 23, 42, 0.5);
+        }
+        .light .card-option-inactive {
+            border-color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.6);
+        }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between">
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between transition-colors duration-200">
 
     <!-- HEADER -->
-    <header class="border-b border-slate-800/60 sticky top-0 z-40 bg-black/80 backdrop-blur-md">
+    <header class="border-b border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 sticky top-0 z-40 bg-black/80 dark:bg-black/80 light:bg-white/90 backdrop-blur-md">
         <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-extrabold text-white tracking-tight flex items-center gap-1.5">
+            <a href="index.html" class="text-xl font-extrabold text-white dark:text-white light:text-slate-900 tracking-tight flex items-center gap-1.5">
                 <span class="text-blue-500">Tri</span>Dashai
             </a>
             <div class="flex items-center gap-3">
-                <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 px-3.5 py-2 rounded-xl transition">Back to Dashboard</a>
+                <!-- THEME TOGGLE BUTTON -->
+                <button onclick="toggleTheme()" id="theme-toggle-btn" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-3.5 py-2 rounded-xl transition hover:opacity-80">
+                    Light Mode
+                </button>
+                <a href="index.html" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-3.5 py-2 rounded-xl transition">Back to Dashboard</a>
             </div>
         </div>
     </header>
@@ -37,86 +87,86 @@
     <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8 space-y-6">
 
         <div class="space-y-1">
-            <h1 class="text-xl font-extrabold text-white">AI Receptionist Settings</h1>
-            <p class="text-xs text-slate-400">Choose your voice archetype, select male or female, and set your core business rules.</p>
+            <h1 class="text-xl font-extrabold text-white dark:text-white light:text-slate-900">AI Receptionist Settings</h1>
+            <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">Choose your voice archetype, select male or female, and set your core business rules.</p>
         </div>
 
         <!-- VOICE ARCHETYPE & GENDER SECTION -->
         <div class="dashboard-card p-6 rounded-3xl space-y-4">
-            <div class="border-b border-slate-800/80 pb-3">
-                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Voice Archetype & Gender</h2>
-                <p class="text-xs text-slate-400 mt-0.5">Select the tone and speaker voice your AI uses when answering missed calls.</p>
+            <div class="border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 pb-3">
+                <h2 class="text-sm font-bold text-white dark:text-white light:text-slate-900 uppercase tracking-wider">Voice Archetype & Gender</h2>
+                <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-0.5">Select the tone and speaker voice your AI uses when answering missed calls.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <!-- Option 1: Professional Specialist -->
-                <div class="border border-blue-600 bg-blue-950/40 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                <div class="card-option-active border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white">Professional Specialist</span>
+                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Professional Specialist</span>
                             <input type="radio" name="voice_archetype" checked class="text-blue-600">
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Clear, crisp, corporate, and dependable for scheduling.</p>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Clear, crisp, corporate, and dependable for scheduling.</p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-blue-900/50">
-                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-blue-900/50 dark:border-blue-900/50 light:border-blue-200">
+                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Gender:</span>
                         <div class="flex items-center gap-3">
-                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" class="text-blue-600"> Female</label>
+                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="prof_gender" class="text-blue-600"> Female</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Option 2: Calm Reassuring Guide -->
-                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                <div class="card-option-inactive border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white">Calm Reassuring Guide</span>
+                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Calm Reassuring Guide</span>
                             <input type="radio" name="voice_archetype" class="text-blue-600">
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Soft, empathetic, and steady for emergency calls.</p>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Soft, empathetic, and steady for emergency calls.</p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
+                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Gender:</span>
                         <div class="flex items-center gap-3">
-                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" class="text-blue-600"> Female</label>
+                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_gender" class="text-blue-600"> Female</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Option 3: Direct & Authoritative Rep -->
-                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                <div class="card-option-inactive border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white">Direct & Authoritative Rep</span>
+                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Direct & Authoritative Rep</span>
                             <input type="radio" name="voice_archetype" class="text-blue-600">
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Confident, firm, and efficient for commercial lines.</p>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Confident, firm, and efficient for commercial lines.</p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
+                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Gender:</span>
                         <div class="flex items-center gap-3">
-                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" class="text-blue-600"> Female</label>
+                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_gender" class="text-blue-600"> Female</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Option 4: Grounded Local Expert -->
-                <div class="border border-slate-800 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                <div class="card-option-inactive border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white">Grounded Local Expert</span>
+                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Grounded Local Expert</span>
                             <input type="radio" name="voice_archetype" class="text-blue-600">
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Warm, mature, and approachable community tradesperson.</p>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Warm, mature, and approachable community tradesperson.</p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                        <span class="text-[10px] text-slate-400 uppercase font-semibold">Voice Gender:</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
+                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Gender:</span>
                         <div class="flex items-center gap-3">
-                            <label class="text-[11px] text-white flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" class="text-blue-600"> Female</label>
+                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" checked class="text-blue-600"> Male</label>
+                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_gender" class="text-blue-600"> Female</label>
                         </div>
                     </div>
                 </div>
@@ -125,39 +175,55 @@
 
         <!-- VIRTUAL ASSISTANT QUICK TRAINING SECTION -->
         <div class="dashboard-card p-6 rounded-3xl space-y-4">
-            <div class="border-b border-slate-800/80 pb-3">
-                <h2 class="text-sm font-bold text-white uppercase tracking-wider">Virtual Assistant Quick Training</h2>
-                <p class="text-xs text-slate-400 mt-0.5">The exact trade name and details the AI uses when answering.</p>
+            <div class="border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 pb-3">
+                <h2 class="text-sm font-bold text-white dark:text-white light:text-slate-900 uppercase tracking-wider">Virtual Assistant Quick Training</h2>
+                <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-0.5">The exact trade name and details the AI uses when answering.</p>
             </div>
 
             <div class="space-y-4 pt-2">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Company / Trade Name</label>
-                    <input type="text" value="Apex Plumbing Solutions" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Company / Trade Name</label>
+                    <input type="text" value="Apex Plumbing Solutions" class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Pricing & Call-Out Policy</label>
-                    <input type="text" value="Free estimates on major jobs; $75 standard call-out fee." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Pricing & Call-Out Policy</label>
+                    <input type="text" value="Free estimates on major jobs; $75 standard call-out fee." class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Service Coverage Areas</label>
-                    <input type="text" value="Carcar City, Minglanilla, San Fernando, and surrounding districts." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Service Coverage Areas</label>
+                    <input type="text" value="Carcar City, Minglanilla, San Fernando, and surrounding districts." class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
                 </div>
             </div>
         </div>
 
         <!-- SAVE BUTTON BAR -->
         <div class="flex justify-end gap-3 pt-2">
-            <a href="index.html" class="text-xs font-semibold text-slate-300 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition">Cancel</a>
+            <a href="index.html" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 px-5 py-3 rounded-xl bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:opacity-80 transition">Cancel</a>
             <button onclick="alert('Settings updated successfully!')" class="text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Save Settings</button>
         </div>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-800/60 bg-black/40 py-6 text-center text-xs text-slate-400">
+    <footer class="border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 bg-black/40 dark:bg-black/40 light:bg-slate-100 py-6 text-center text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">
         <p>&copy; 2026 TriDashai. All rights reserved.</p>
     </footer>
 
+    <!-- THEME TOGGLE SCRIPT -->
+    <script>
+        function toggleTheme() {
+            const html = document.getElementById('html-root');
+            const btn = document.getElementById('theme-toggle-btn');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                btn.innerText = 'Dark Mode';
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                btn.innerText = 'Light Mode';
+            }
+        }
+    </script>
 </body>
 </html>
