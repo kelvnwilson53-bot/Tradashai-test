@@ -84,7 +84,7 @@
             transition: all 0.25s ease;
         }
         .btn-primary-blue:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #1d4ed8 100%, #1e40af 100%);
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
     </style>
@@ -145,20 +145,38 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- STEP 1: CALL FORWARDING -->
+                <!-- STEP 1: CALL FORWARDING WITH FUNCTIONAL TOGGLE & STATUS PANEL -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding</h4>
-                            <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-mono font-bold">One-Time Setup</span>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Control</h4>
+                            
+                            <!-- FUNCTIONAL TOGGLE SWITCH -->
+                            <div class="flex items-center gap-2.5">
+                                <span id="toggle-status-label" class="text-xs font-bold text-emerald-400">ON</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="forwarding-toggle" class="sr-only peer" checked onchange="handleForwardingToggle(this)">
+                                    <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                </label>
+                            </div>
                         </div>
+
+                        <!-- INSTANT STATUS PANEL -->
+                        <div id="forwarding-status-panel" class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300">
+                            <div class="flex items-center gap-2">
+                                <span id="status-dot" class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                                <span id="status-text" class="text-xs font-bold text-emerald-400">Routing to TriDashAI Assistant</span>
+                            </div>
+                            <span id="status-code-tag" class="text-[10px] font-mono text-slate-300 bg-black/40 px-2 py-0.5 rounded">*71 Active</span>
+                        </div>
+
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                            Automatically send missed calls to your TriDashAI assistant when you're busy on a job.
+                            Missed calls automatically route to your AI. Flip off to route calls normally back to your mobile device.
                         </p>
                         
-                        <!-- DIAL STRING BOX -->
+                        <!-- ONE-TIME SETUP CODE BOX -->
                         <div class="bg-black/40 border border-slate-700/40 p-3 rounded-xl space-y-1 text-center">
-                            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">To turn it on, dial this once on your phone keypad:</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Initial carrier activation string:</span>
                             <code class="text-xs sm:text-sm font-mono font-extrabold text-white bg-black/60 px-2.5 py-1.5 rounded border border-slate-700/50 block select-all">
                                 *71 +1 (214) 888-0142
                             </code>
@@ -167,7 +185,7 @@
 
                     <div class="pt-3 border-t border-slate-800/40 text-xs text-slate-300">
                         <p class="text-[11px] text-slate-400">
-                            <strong>Want to turn it off?</strong> Dial <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">##002#</code> to clear all forwarding rules.
+                            Deactivation clear rule: <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">##002#</code>
                         </p>
                     </div>
                 </div>
@@ -508,6 +526,37 @@
                 mobileMenu.classList.add('hidden');
             }
         });
+
+        // Functional Call Forwarding Toggle & Status Panel Logic
+        function handleForwardingToggle(checkbox) {
+            const statusLabel = document.getElementById('toggle-status-label');
+            const statusPanel = document.getElementById('forwarding-status-panel');
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+            const statusCodeTag = document.getElementById('status-code-tag');
+
+            if (checkbox.checked) {
+                // ON State
+                statusLabel.textContent = 'ON';
+                statusLabel.className = 'text-xs font-bold text-emerald-400';
+                
+                statusPanel.className = 'bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300';
+                statusDot.className = 'w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse';
+                statusText.className = 'text-xs font-bold text-emerald-400';
+                statusText.textContent = 'Routing to TriDashAI Assistant';
+                statusCodeTag.textContent = '*71 Active';
+            } else {
+                // OFF State
+                statusLabel.textContent = 'OFF';
+                statusLabel.className = 'text-xs font-bold text-slate-400';
+                
+                statusPanel.className = 'bg-slate-800/40 border border-slate-700/40 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300';
+                statusDot.className = 'w-2.5 h-2.5 bg-slate-500 rounded-full';
+                statusText.className = 'text-xs font-bold text-slate-400';
+                statusText.textContent = 'Call Forwarding Disabled (Ringing Mobile)';
+                statusCodeTag.textContent = '##002# Cleared';
+            }
+        }
 
         // Boost Modal Logic
         const boostModal = document.getElementById('boost-modal');
