@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriDashai - Contractor Dashboard</title>
+    <title>TriDashAI - Contractor Dashboard</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -95,9 +95,9 @@
     <header class="border-b sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             
-            <!-- BRAND LOGO (LINKS BACK TO HOME LANDING PAGE) -->
+            <!-- BRAND LOGO -->
             <a href="index.html" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight flex items-center gap-1.5 cursor-pointer">
-                <span class="text-blue-500">Tri</span>Dashai
+                <span class="text-blue-500">Try</span>-AI
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
@@ -122,7 +122,7 @@
         </div>
     </header>
 
-    <!-- MOBILE QUICK NAV DRAWER (UPDATED: Voice Setup & Logout Only) -->
+    <!-- MOBILE QUICK NAV DRAWER (Voice Setup & Logout Only) -->
     <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-end">
         <div class="dashboard-card w-72 h-full p-6 space-y-6 flex flex-col shadow-2xl border-l border-slate-700">
             <div class="flex items-center justify-between border-b border-slate-800 pb-4">
@@ -131,14 +131,14 @@
             </div>
             <nav class="space-y-3 text-xs sm:text-sm font-semibold flex-1 flex flex-col justify-between">
                 <div class="space-y-3">
-                    <!-- PROMINENT VOICE SETUP LINK -->
+                    <!-- VOICE SETUP LINK -->
                     <a href="settings.html" class="block p-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30 transition">
                         <div class="font-bold">⚙️ Voice Setup</div>
                         <div class="text-[10px] text-slate-400 font-normal mt-0.5">Configure your assistant voice and settings</div>
                     </a>
                 </div>
 
-                <!-- LOG OUT / SWITCH ACCOUNT AT THE BOTTOM -->
+                <!-- LOG OUT / SWITCH ACCOUNT -->
                 <div class="pt-4 border-t border-slate-800/80">
                     <a href="#" onclick="alert('Logged out successfully.');" class="block p-3 rounded-xl bg-slate-900/40 hover:bg-red-500/10 text-slate-400 hover:text-red-400 border border-slate-800 transition text-center font-bold">
                         Log Out
@@ -167,11 +167,11 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- STEP 1: CALL FORWARDING WITH PERSISTENT TOGGLE -->
+                <!-- STEP 1: CALL FORWARDING (ONE-TIME SETUP INPUT + DAILY TOGGLE) -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Status</h4>
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Setup & Toggle</h4>
                             <!-- PERSISTENT TOGGLE SWITCH -->
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="forwarding-toggle" class="sr-only peer" checked onchange="toggleForwardingStatus(this)">
@@ -180,21 +180,22 @@
                             </label>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                            Missed calls automatically route to your TriDashai AI assistant. Toggle off to route calls normally back to your mobile device.
+                            Enter your activation code once below. Afterwards, use the toggle above to turn forwarding on or off daily without re-typing.
                         </p>
                         
-                        <!-- CONFIGURATIONS / DIAL STRING BOX -->
-                        <div class="bg-black/40 border border-slate-700/40 p-3 rounded-xl space-y-1 text-center">
-                            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Configured Forwarding Number:</span>
-                            <code class="text-xs sm:text-sm font-mono font-extrabold text-white bg-black/60 px-2.5 py-1.5 rounded border border-slate-700/50 block select-all">
-                                +1 (214) 888-0142
-                            </code>
+                        <!-- ONE-TIME SETUP INPUT BOX -->
+                        <div class="space-y-2 mb-3">
+                            <label for="forwarding-input-code" class="text-[11px] font-bold text-slate-300 block">Initial Activation / Deactivation Code (#002 / *71):</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="forwarding-input-code" value="*71 +1 (214) 888-0142" class="dashboard-input text-xs font-mono px-3 py-2 rounded-xl flex-1">
+                                <button onclick="alert('Forwarding code saved successfully! You can now use the toggle above.')" class="px-3.5 py-2 bg-slate-900/60 hover:bg-slate-800 text-xs font-bold text-white rounded-xl border border-slate-700/60 transition cursor-pointer">Save</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="pt-3 border-t border-slate-800/40 text-xs text-slate-300">
                         <p class="text-[11px] text-slate-400">
-                            Initial setup dial string: <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">*71 +1 (214) 888-0142</code>
+                            Deactivation code: <code class="bg-black/40 px-1.5 py-0.5 rounded border border-slate-700/40 font-mono text-white font-bold">##002#</code>
                         </p>
                     </div>
                 </div>
@@ -388,7 +389,7 @@
                         <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl text-xs space-y-2">
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-300">Current Tier:</span>
-                                <span class="font-bold text-white">TriDashai Professional</span>
+                                <span class="font-bold text-white">Try-AI Professional</span>
                             </div>
                             <div class="flex justify-between items-center border-t border-slate-800/40 pt-2">
                                 <span class="text-slate-300">Next Renewal:</span>
@@ -460,7 +461,7 @@
         </div>
     </div>
 
-    <!-- FLOATING SUPPORT CHATBOT WIDGET (FULLY WIRED) -->
+    <!-- FLOATING SUPPORT CHATBOT WIDGET -->
     <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
         <button id="chat-toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 border border-blue-400/30 cursor-pointer">
             <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -479,7 +480,7 @@
                         <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
                     </div>
                     <div>
-                        <h4 class="text-sm font-bold text-white leading-none">TriDashai Support</h4>
+                        <h4 class="text-sm font-bold text-white leading-none">Try-AI Support</h4>
                         <span class="text-[10px] text-slate-400">Replies instantly</span>
                     </div>
                 </div>
@@ -500,7 +501,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/40 bg-black/40 py-6 text-center text-xs text-slate-400">
-        <p>&copy; 2026 TriDashai. All rights reserved.</p>
+        <p>&copy; 2026 Try-AI. All rights reserved.</p>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
