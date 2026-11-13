@@ -25,7 +25,7 @@
       <div class="text-center mb-7">
         <span class="inline-flex rounded-full bg-blue-50 border border-blue-100 text-blue-700 px-4 py-2 text-xs font-bold">7-DAY FREE TRIAL · NO CREDIT CARD</span>
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-5">Get your business set up</h1>
-        <p class="text-slate-600 mt-3 text-sm sm:text-base">Create your login and tell us the basics. You can complete the detailed call-handling setup from your dashboard later.</p>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base">Create your account and verify your email. Your seven-day trial begins after verification.</p>
       </div>
       <section class="panel rounded-3xl p-6 sm:p-9">
         <div id="message" role="alert" class="hidden rounded-xl p-3 text-sm mb-5"></div>
@@ -67,12 +67,12 @@
             </div>
           </div>
           <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
-            <div class="font-bold">Your trial starts at $0 today.</div>
-            <p class="mt-1 text-blue-800">7 days free. No credit card required. If you choose to continue, the plan is $89/month and includes 250 voice minutes plus 300 SMS segments each billing month.</p>
+            <div class="font-bold">Your trial starts after email verification.</div>
+            <p class="mt-1 text-blue-800">No charge today and no credit card required. Once your email is verified, your seven-day trial begins. If you choose to continue, the plan is $89/month and includes 250 voice minutes plus 300 SMS segments each billing month.</p>
             <p class="mt-2 text-xs text-blue-800">Both incoming and outgoing SMS segments count toward the allowance. Monthly allowances reset each billing cycle and do not roll over. Extra-use packs are shown in your dashboard but checkout is not connected yet.</p>
           </div>
           <p class="text-xs text-slate-500">By creating an account, you agree to our <a class="text-blue-700 underline" href="terms.html" target="_blank">Terms of Service</a> and <a class="text-blue-700 underline" href="privacy.html" target="_blank">Privacy Policy</a>.</p>
-          <button id="create-account" type="submit" class="primary w-full rounded-xl py-4 shadow-lg disabled:opacity-60">Create my account →</button>
+          <button id="create-account" type="submit" class="primary w-full rounded-xl py-4 shadow-lg disabled:opacity-60">Create account & verify email →</button>
         </form>
       </section>
       <p class="text-center text-xs text-slate-500 mt-6">You can add service areas, operating hours, emergency rules and receptionist preferences after signing in.</p>
@@ -120,12 +120,19 @@
         await user.updateProfile({displayName:fullName});
         const profile={
           uid:user.uid,fullName,email:user.email,businessName,businessPhone,primaryTrade,
-          profileComplete:false,setupComplete:false,accountStatus:'trial',trialDays:7,
-          trialStartedAt:firebase.firestore.FieldValue.serverTimestamp(),
-          createdAt:firebase.firestore.FieldValue.serverTimestamp()
+          profileComplete:false,setupComplete:false,accountStatus:'pending_verification',
+          trialDays:7,trialStartedAt:null,createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+          emailVerified:false
         };
         await db.collection('businesses').doc(user.uid).set(profile);
-        window.location.replace('dashboard.html');
+        const actionCodeSettings={
+          url:'https://tridashai.com/verify-email.html',
+          handleCodeInApp:false
+        };
+        await user.sendEmailVerification(actionCodeSettings);
+        await auth.signOut();
+        form.classList.add('hidden');
+        showMessage('Your account has been created. We have sent a verification link to '+email+'. Please open that email, click Verify Email, then return here and log in. Check your spam folder if it does not arrive.',false);
       }catch(error){
         if(createdUser){
           try{await createdUser.delete();}catch(rollbackError){console.error('Could not roll back incomplete signup:',rollbackError);}
@@ -140,7 +147,7 @@
         };
         showMessage(messages[error.code]||'We could not complete registration: '+(error.message||'Please try again.'));
         button.disabled=false;
-        button.textContent='Create my account →';
+        button.textContent='Create account & verify email →';
       }
     });
   </script>
