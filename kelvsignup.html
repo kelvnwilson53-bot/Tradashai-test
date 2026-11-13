@@ -3,190 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up | TriDashai.com</title>
+  <title>Start Your Free Trial | TriDashAI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body{background:#fff;color:#1e293b}
-    .ambient-glow-1{position:absolute;top:-120px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.04),transparent 70%);filter:blur(140px);pointer-events:none;z-index:0}
-    .podium-card-3d{background:#fff;border:1px solid rgba(37,99,235,.12);box-shadow:0 15px 35px rgba(30,41,59,.04);position:relative;overflow:hidden;color:#1e293b}
-    .podium-badge{background:#eff6ff;border:1px solid #bfdbfe;color:#2563eb}
-    .btn-podium-primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700;border:1px solid rgba(255,255,255,.4)}
-    .step-pill.active{background:#2563eb;color:#fff;border-color:#2563eb}
+    body{background:#f8fafc;color:#0f172a}
+    .panel{background:#fff;border:1px solid #e2e8f0;box-shadow:0 24px 60px rgba(15,23,42,.08)}
+    .field{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:13px 14px;background:#fff;color:#0f172a}
+    .field:focus{outline:2px solid #2563eb;outline-offset:1px}
+    .primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700}
   </style>
 </head>
-
-<body class="font-sans antialiased flex flex-col min-h-screen justify-between relative overflow-x-hidden">
-
-  <div class="ambient-glow-1"></div>
-
-  <div class="bg-slate-900 text-white text-[11px] py-1.5 px-4 text-center flex items-center justify-center gap-3 relative z-50">
-    <span class="font-bold text-amber-400">Inspection Controls:</span>
-    <button type="button" onclick="goToStep(1,true)" class="underline">Preview Step 1</button>
-    <span>•</span>
-    <button type="button" onclick="goToStep(2,true)" class="underline">Preview Step 2</button>
-    <span>•</span>
-    <button type="button" onclick="goToStep(3,true)" class="underline">Preview Step 3</button>
-  </div>
-
-  <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-extrabold tracking-tight">
-        <span class="text-blue-600">Tri</span><span class="text-slate-900">Dashai.com</span>
-      </a>
-
-      <div class="relative">
-        <button id="menu-btn" type="button" class="text-xs font-semibold text-slate-700 px-3 py-2 rounded-lg bg-slate-100 border border-slate-200">☰ Menu</button>
-
-        <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2 shadow-xl z-50">
-          <a href="index.html#how-it-works" class="block text-xs font-semibold text-slate-700">How It Works</a>
-          <a href="index.html#pricing" class="block text-xs font-semibold text-blue-600">Pricing</a>
-          <a href="login.html" class="block text-xs font-semibold text-blue-600 pt-2 border-t">Log In</a>
-        </div>
-      </div>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-extrabold tracking-tight"><span class="text-blue-600">Tri</span>DashAI</a>
+      <a href="login.html" class="text-sm font-semibold text-blue-700">Already have an account? Log in</a>
     </div>
   </header>
-
-  <main class="flex-1 relative z-10 py-10 sm:py-16">
-    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="text-center mb-8">
-        <span class="inline-block podium-badge text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">14-Day Free Trial • No Credit Card Required</span>
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Create Your Account</h1>
-        <p class="text-slate-600 text-xs sm:text-sm">Set up your TriDashAI account.</p>
+  <main class="flex-1 px-4 py-10 sm:py-16">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-7">
+        <span class="inline-flex rounded-full bg-blue-50 border border-blue-100 text-blue-700 px-4 py-2 text-xs font-bold">7-DAY FREE TRIAL · NO CREDIT CARD</span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-5">Get your business set up</h1>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base">Create your login and tell us the basics. You can complete the detailed call-handling setup from your dashboard later.</p>
       </div>
-
-      <div class="flex items-center justify-between mb-8 text-xs font-bold">
-        <div id="pill-step-1" class="step-pill active px-4 py-2 rounded-full border border-slate-300">1. Account</div>
-        <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-        <div id="pill-step-2" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400">2. Trade &amp; Setup</div>
-        <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
-        <div id="pill-step-3" class="step-pill px-4 py-2 rounded-full border border-slate-300 text-slate-400">3. Activate</div>
-      </div>
-
-      <div id="message" role="alert" class="hidden rounded-xl p-3 text-sm mb-4"></div>
-
-      <form id="signup-form" class="space-y-6" novalidate>
-
-        <!-- STEP 1 -->
-        <section id="step-1-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5">
-          <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">Step 1: Create Login Credentials</h2>
-
-          <div class="space-y-4 text-sm">
-            <div>
-              <label for="input-name" class="block font-semibold text-slate-700 mb-1">Full Name</label>
-              <input id="input-name" type="text" autocomplete="name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-
-            <div>
-              <label for="input-email" class="block font-semibold text-slate-700 mb-1">Email Address (Your Login ID)</label>
-              <input id="input-email" type="email" autocomplete="email" required placeholder="john@business.com" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-
-            <div>
-              <label for="input-password" class="block font-semibold text-slate-700 mb-1">Create Password</label>
-              <input id="input-password" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-          </div>
-
-          <button type="button" onclick="goToStep(2)" class="w-full py-3.5 btn-podium-primary rounded-xl mt-4">Continue to Trade Setup →</button>
-
-          <p class="text-center text-[11px] text-slate-400">
-            Already have an account? <a href="login.html" class="text-blue-600 underline font-semibold">Log in here</a>
-          </p>
-        </section>
-
-        <!-- STEP 2 -->
-        <section id="step-2-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden">
-          <h2 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">Step 2: Business &amp; Trade Configuration</h2>
-
-          <div class="space-y-4 text-sm">
-
-            <div>
-              <label for="input-company" class="block font-semibold text-slate-700 mb-1">Business Name</label>
-              <input id="input-company" type="text" required placeholder="Your business name" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="input-phone" class="block font-semibold text-slate-700 mb-1">Business Phone</label>
-                <input id="input-phone" type="tel" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-              </div>
-
-              <div>
-                <label for="input-trade" class="block font-semibold text-slate-700 mb-1">Primary Trade Focus</label>
-                <select id="input-trade" class="w-full px-3 py-3 rounded-xl border border-slate-300">
-                  <option value="plumber">Plumbing &amp; Drainage</option>
-                  <option value="roofer">Roofing &amp; Guttering</option>
-                  <option value="electrician">Electrical Services</option>
-                  <option value="builder">General Building</option>
-                  <option value="hvac">HVAC &amp; Heating</option>
-                  <option value="multi">Multi-Trade / General Contractor</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="input-multitrades" class="block font-semibold text-slate-700 mb-1">Additional Services (Optional)</label>
-              <input id="input-multitrades" type="text" placeholder="Other services you provide" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-
-            <div>
-              <label for="input-hours" class="block font-semibold text-slate-700 mb-1">Normal Operating Hours</label>
-              <input id="input-hours" type="text" value="Mon - Sat: 8:00 AM - 5:00 PM" class="w-full px-4 py-3 rounded-xl border border-slate-300">
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
-              <label class="flex items-center justify-between font-semibold text-slate-900">
-                Enable 24/7 Emergency Call Handling?
-                <input type="checkbox" id="emergency-toggle" checked class="w-4 h-4">
+      <section class="panel rounded-3xl p-6 sm:p-9">
+        <div id="message" role="alert" class="hidden rounded-xl p-3 text-sm mb-5"></div>
+        <form id="signup-form" class="space-y-5">
+          <div>
+            <h2 class="font-bold text-lg">Your account</h2>
+            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+              <label class="block text-sm font-semibold">Full name
+                <input id="full-name" class="field mt-1.5" type="text" autocomplete="name" placeholder="Your name" required>
               </label>
-
-              <div>
-                <label for="input-emergency-fee" class="block text-[11px] font-semibold text-slate-600 mb-1">Emergency Call-Out Fee</label>
-                <input id="input-emergency-fee" type="text" placeholder="Enter your fee, or leave blank" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2">
-              </div>
+              <label class="block text-sm font-semibold">Email address
+                <input id="email" class="field mt-1.5" type="email" autocomplete="email" placeholder="you@business.com" required>
+              </label>
+            </div>
+            <label class="block text-sm font-semibold mt-4">Create a password
+              <input id="password" class="field mt-1.5" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
+            </label>
+          </div>
+          <div class="border-t border-slate-100 pt-5">
+            <h2 class="font-bold text-lg">Your business</h2>
+            <label class="block text-sm font-semibold mt-4">Business name
+              <input id="business-name" class="field mt-1.5" type="text" autocomplete="organization" placeholder="Your business name" required>
+            </label>
+            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+              <label class="block text-sm font-semibold">Business phone
+                <input id="business-phone" class="field mt-1.5" type="tel" autocomplete="tel" placeholder="+1 (555) 000-0000" required>
+              </label>
+              <label class="block text-sm font-semibold">Main trade
+                <select id="trade" class="field mt-1.5" required>
+                  <option value="">Choose your trade</option>
+                  <option value="plumber">Plumbing</option>
+                  <option value="roofer">Roofing</option>
+                  <option value="hvac">HVAC</option>
+                  <option value="electrician">Electrical</option>
+                  <option value="builder">General building</option>
+                  <option value="multi">Multi-trade / Other</option>
+                </select>
+              </label>
             </div>
           </div>
-
-          <div class="flex gap-3 pt-2">
-            <button type="button" onclick="goToStep(1,true)" class="w-1/3 py-3.5 bg-slate-100 border rounded-xl">← Back</button>
-            <button type="button" onclick="goToStep(3)" class="w-2/3 py-3.5 btn-podium-primary rounded-xl">Continue to Activation →</button>
+          <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
+            <div class="font-bold">Your trial starts at $0 today.</div>
+            <p class="mt-1 text-blue-800">7 days free. No credit card required. The subscription is $89/month after the trial if you choose to continue.</p>
           </div>
-        </section>
-
-        <!-- STEP 3 -->
-        <section id="step-3-card" class="podium-card-3d p-6 sm:p-8 rounded-3xl space-y-5 hidden text-center">
-          <div class="text-4xl">🚀</div>
-
-          <h2 class="text-xl font-extrabold text-slate-900">Ready to Start Your Free Trial</h2>
-
-          <p class="text-xs sm:text-sm text-slate-600">Your 14-day trial is $0.00 today. No credit card required upfront.</p>
-
-          <p class="text-[11px] text-slate-500 text-left bg-slate-50 border p-3 rounded-xl">
-            By clicking "Create Account", you agree to our
-            <a href="terms.html" target="_blank" class="text-blue-600 underline">Terms of Service</a>
-            and
-            <a href="privacy.html" target="_blank" class="text-blue-600 underline">Privacy Policy</a>.
-          </p>
-
-          <div class="flex gap-3 pt-2">
-            <button type="button" onclick="goToStep(2,true)" class="w-1/3 py-3.5 bg-slate-100 border rounded-xl">← Back</button>
-            <button id="create-account-button" type="button" onclick="completeRegistration()" class="w-2/3 py-3.5 btn-podium-primary rounded-xl">Create Account →</button>
-          </div>
-        </section>
-
-      </form>
+          <p class="text-xs text-slate-500">By creating an account, you agree to our <a class="text-blue-700 underline" href="terms.html" target="_blank">Terms of Service</a> and <a class="text-blue-700 underline" href="privacy.html" target="_blank">Privacy Policy</a>.</p>
+          <button id="create-account" type="submit" class="primary w-full rounded-xl py-4 shadow-lg disabled:opacity-60">Create my account →</button>
+        </form>
+      </section>
+      <p class="text-center text-xs text-slate-500 mt-6">You can add service areas, operating hours, emergency rules and receptionist preferences after signing in.</p>
     </div>
   </main>
-
-  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
-    <p>&copy; TriDashai.com. All rights reserved.</p>
-  </footer>
-
+  <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">© 2026 TriDashAI. All rights reserved.</footer>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",
@@ -197,121 +91,50 @@
       appId: "1:753320728065:web:83745fcca31b12e08a5200",
       measurementId: "G-W9MYFE3B77"
     };
-
     firebase.initializeApp(firebaseConfig);
-
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    const messageBox = document.getElementById('message');
-    const byId = id => document.getElementById(id);
-
-    function showMessage(message, isError = true) {
-      messageBox.textContent = message;
-      messageBox.className = 'rounded-xl p-3 text-sm mb-4 ' + (isError
-        ? 'bg-red-50 text-red-700 border border-red-200'
-        : 'bg-green-50 text-green-700 border border-green-200');
-      messageBox.classList.remove('hidden');
+    const auth=firebase.auth();
+    const db=firebase.firestore();
+    const form=document.getElementById('signup-form');
+    const message=document.getElementById('message');
+    const button=document.getElementById('create-account');
+    function showMessage(text,isError=true){
+      message.textContent=text;
+      message.className='rounded-xl p-3 text-sm mb-5 '+(isError?'bg-red-50 text-red-700 border border-red-200':'bg-green-50 text-green-700 border border-green-200');
+      message.classList.remove('hidden');
     }
-
-    function goToStep(stepNum, skipValidation = false) {
-      if (stepNum === 2 && !skipValidation) {
-        const name = byId('input-name').value.trim();
-        const email = byId('input-email').value.trim();
-        const pass = byId('input-password').value;
-
-        if (!name || !email || !pass) {
-          showMessage('Please enter your name, email address, and password.');
-          return;
-        }
-
-        if (pass.length < 8) {
-          showMessage('Your password must be at least 8 characters.');
-          return;
-        }
-
-        if (!byId('input-email').checkValidity()) {
-          showMessage('Please enter a valid email address.');
-          return;
-        }
-      }
-
-      if (stepNum === 3 && !skipValidation) {
-        if (!byId('input-company').value.trim() || !byId('input-phone').value.trim()) {
-          showMessage('Please enter your business name and business phone number.');
-          return;
-        }
-      }
-
-      [1, 2, 3].forEach(n => {
-        byId(`step-${n}-card`).classList.toggle('hidden', n !== stepNum);
-        byId(`pill-step-${n}`).classList.toggle('active', n <= stepNum);
-        byId(`pill-step-${n}`).classList.toggle('text-slate-400', n > stepNum);
-      });
-
-      messageBox.classList.add('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    byId('menu-btn').addEventListener('click', e => {
-      e.stopPropagation();
-      byId('mobile-menu').classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', () => {
-      byId('mobile-menu').classList.add('hidden');
-    });
-
-    async function completeRegistration() {
-      const button = byId('create-account-button');
-      button.disabled = true;
-      button.textContent = 'Creating your account…';
-
-      try {
-        const credential = await auth.createUserWithEmailAndPassword(
-          byId('input-email').value.trim(),
-          byId('input-password').value
-        );
-
-        const user = credential.user;
-
-        await user.updateProfile({
-          displayName: byId('input-name').value.trim()
-        });
-
-        const profile = {
-          uid: user.uid,
-          fullName: byId('input-name').value.trim(),
-          email: user.email,
-          businessName: byId('input-company').value.trim(),
-          businessPhone: byId('input-phone').value.trim(),
-          primaryTrade: byId('input-trade').value,
-          additionalServices: byId('input-multitrades').value.trim(),
-          operatingHours: byId('input-hours').value.trim(),
-          emergencyCallHandling: byId('emergency-toggle').checked,
-          emergencyCallOutFee: byId('input-emergency-fee').value.trim(),
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          trialDays: 14,
-          accountStatus: 'trial'
+    form.addEventListener('submit',async event=>{
+      event.preventDefault();
+      button.disabled=true;
+      button.textContent='Creating your account…';
+      const fullName=document.getElementById('full-name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const businessName=document.getElementById('business-name').value.trim();
+      const businessPhone=document.getElementById('business-phone').value.trim();
+      const primaryTrade=document.getElementById('trade').value;
+      try{
+        const credential=await auth.createUserWithEmailAndPassword(email,document.getElementById('password').value);
+        const user=credential.user;
+        await user.updateProfile({displayName:fullName});
+        const profile={
+          uid:user.uid,fullName,email:user.email,businessName,businessPhone,primaryTrade,
+          profileComplete:false,setupComplete:false,accountStatus:'trial',trialDays:7,
+          trialStartedAt:firebase.firestore.FieldValue.serverTimestamp(),
+          createdAt:firebase.firestore.FieldValue.serverTimestamp()
         };
-
         await db.collection('businesses').doc(user.uid).set(profile);
-
         window.location.replace('dashboard.html');
-
-      } catch (error) {
-        const messages = {
-          'auth/email-already-in-use': 'An account already exists with this email. Please log in instead.',
-          'auth/invalid-email': 'Please enter a valid email address.',
-          'auth/weak-password': 'Please choose a stronger password (at least 8 characters).',
-          'permission-denied': 'Your account was created, but the business profile could not be saved. Please contact support before trying to register again.'
+      }catch(error){
+        const messages={
+          'auth/email-already-in-use':'An account already exists with this email. Please log in instead.',
+          'auth/invalid-email':'Please enter a valid email address.',
+          'auth/weak-password':'Please choose a password with at least 8 characters.',
+          'permission-denied':'Your login was created, but we could not save the business profile. Please contact support before trying to register again.'
         };
-
-        showMessage(messages[error.code] || error.message || 'We could not create your account. Please try again.');
-
-        button.disabled = false;
-        button.textContent = 'Create Account →';
+        showMessage(messages[error.code]||'We could not complete registration: '+(error.message||'Please try again.'));
+        button.disabled=false;
+        button.textContent='Create my account →';
       }
-    }
+    });
   </script>
 </body>
 </html>
