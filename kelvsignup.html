@@ -68,7 +68,8 @@
           </div>
           <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
             <div class="font-bold">Your trial starts at $0 today.</div>
-            <p class="mt-1 text-blue-800">7 days free. No credit card required. The subscription is $89/month after the trial if you choose to continue.</p>
+            <p class="mt-1 text-blue-800">7 days free. No credit card required. If you choose to continue, the plan is $89/month and includes 250 voice minutes plus 500 SMS segments each billing month.</p>
+            <p class="mt-2 text-xs text-blue-800">Both incoming and outgoing SMS segments count toward the allowance. Monthly allowances reset each billing cycle and do not roll over. Extra-use packs are shown in your dashboard but checkout is not connected yet.</p>
           </div>
           <p class="text-xs text-slate-500">By creating an account, you agree to our <a class="text-blue-700 underline" href="terms.html" target="_blank">Terms of Service</a> and <a class="text-blue-700 underline" href="privacy.html" target="_blank">Privacy Policy</a>.</p>
           <button id="create-account" type="submit" class="primary w-full rounded-xl py-4 shadow-lg disabled:opacity-60">Create my account →</button>
@@ -111,9 +112,11 @@
       const businessName=document.getElementById('business-name').value.trim();
       const businessPhone=document.getElementById('business-phone').value.trim();
       const primaryTrade=document.getElementById('trade').value;
+      let createdUser=null;
       try{
         const credential=await auth.createUserWithEmailAndPassword(email,document.getElementById('password').value);
         const user=credential.user;
+        createdUser=user;
         await user.updateProfile({displayName:fullName});
         const profile={
           uid:user.uid,fullName,email:user.email,businessName,businessPhone,primaryTrade,
@@ -124,11 +127,16 @@
         await db.collection('businesses').doc(user.uid).set(profile);
         window.location.replace('dashboard.html');
       }catch(error){
+        if(createdUser){
+          try{await createdUser.delete();}catch(rollbackError){console.error('Could not roll back incomplete signup:',rollbackError);}
+        }
         const messages={
           'auth/email-already-in-use':'An account already exists with this email. Please log in instead.',
           'auth/invalid-email':'Please enter a valid email address.',
           'auth/weak-password':'Please choose a password with at least 8 characters.',
-          'permission-denied':'Your login was created, but we could not save the business profile. Please contact support before trying to register again.'
+          'permission-denied':'We could not save your business profile to Firebase. Your new login will be rolled back; please try again later or contact support.',
+          'firestore/permission-denied':'We could not save your business profile to Firebase. Your new login will be rolled back; please contact support.',
+          'firestore/unavailable':'Firebase is temporarily unavailable. Please try again in a moment.'
         };
         showMessage(messages[error.code]||'We could not complete registration: '+(error.message||'Please try again.'));
         button.disabled=false;
