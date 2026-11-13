@@ -3,52 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verify Email | TriDashAI</title>
+  <title>Email Verified | TriDashAI</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center p-4">
   <main class="max-w-md w-full bg-white border border-slate-200 rounded-3xl shadow-xl p-8 text-center">
     <a href="index.html" class="text-xl font-extrabold"><span class="text-blue-600">Tri</span>DashAI</a>
-    <h1 class="text-2xl font-extrabold mt-6">Email verification</h1>
-    <p id="status" class="text-sm text-slate-600 mt-3">Checking your verification link…</p>
-    <a id="login-link" href="login.html" class="hidden inline-block mt-6 rounded-xl bg-blue-600 text-white font-bold px-6 py-3">Go to login</a>
+    <div class="mx-auto mt-7 w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl">✓</div>
+    <h1 class="text-2xl font-extrabold mt-5">Check your email verification</h1>
+    <p class="text-sm text-slate-600 mt-3">If you arrived here after clicking the Firebase verification link, your email address has been verified. Your seven-day trial will begin when you log in.</p>
+    <a href="login.html" class="inline-block mt-6 rounded-xl bg-blue-600 text-white font-bold px-6 py-3">Go to login</a>
   </main>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script>
-    const firebaseConfig={
-      apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",
-      authDomain:"tridashai-app.firebaseapp.com",
-      projectId:"tridashai-app",
-      storageBucket:"tridashai-app.firebasestorage.app",
-      messagingSenderId:"753320728065",
-      appId:"1:753320728065:web:83745fcca31b12e08a5200",
-      measurementId:"G-W9MYFE3B77"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth=firebase.auth();
-    const params=new URLSearchParams(window.location.search);
-    const status=document.getElementById('status');
-    const login=document.getElementById('login-link');
-    (async()=>{
-      const mode=params.get('mode');
-      const code=params.get('oobCode');
-      if(mode!=='verifyEmail'||!code){
-        status.textContent='This verification link is incomplete or invalid. Please request a new one from the login page.';
-        login.classList.remove('hidden');
-        return;
-      }
-      try{
-        await auth.applyActionCode(code);
-        status.textContent='Your email address has been verified. Your seven-day trial will begin when you log in. Please sign in to continue.';
-        login.classList.remove('hidden');
-      }catch(error){
-        status.textContent=error.code==='auth/expired-action-code'
-          ? 'This verification link has expired. Please log in and request a new one.'
-          : 'This verification link is invalid or has already been used. Please try logging in.';
-        login.classList.remove('hidden');
-      }
-    })();
-  </script>
 </body>
 </html>
