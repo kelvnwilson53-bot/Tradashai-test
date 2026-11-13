@@ -500,6 +500,12 @@
           const data=profile.data();
           const heading=document.querySelector('#stage-1 h2');
           if(heading && data.businessName) heading.textContent=data.businessName+' — Quick Setup';
+          if(!data.setupComplete) {
+            const banner=document.createElement('div');
+            banner.className='mx-4 mt-4 rounded-xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-100';
+            banner.innerHTML='<strong>One more step:</strong> add your service areas, operating hours and call-handling preferences. <a class="underline font-bold" href="settings.html">Complete your business setup</a>.';
+            document.querySelector('main').prepend(banner);
+          }
           const area=document.getElementById('service-areas');
           const job=document.getElementById('custom-job-value');
           if(area && data.serviceAreas) area.value=data.serviceAreas;
