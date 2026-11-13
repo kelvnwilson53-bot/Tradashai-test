@@ -1,190 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" id="html-root" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Settings | TriDashai</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
-    <style>
-        .dark body {
-            background: #000000;
-            color: #cbd5e1;
-        }
-        .light body {
-            background: #f1f5f9;
-            color: #334155;
-        }
-        
-        .dark .dashboard-card {
-            background: rgba(9, 13, 22, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        .light .dashboard-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(203, 213, 225, 0.5);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-        }
-
-        .dark .custom-input {
-            background: rgba(2, 6, 23, 0.75);
-            border: 1px solid rgba(51, 65, 85, 0.6);
-            color: white;
-        }
-        .light .custom-input {
-            background: rgba(241, 245, 249, 0.9);
-            border: 1px solid rgba(203, 213, 225, 0.8);
-            color: #0f172a;
-        }
-
-        .dark .card-option-active {
-            border-color: #2563eb;
-            background: rgba(30, 58, 138, 0.4);
-        }
-        .light .card-option-active {
-            border-color: #2563eb;
-            background: rgba(239, 246, 255, 0.9);
-        }
-
-        .dark .card-option-inactive {
-            border-color: rgba(51, 65, 85, 0.4);
-            background: rgba(9, 13, 22, 0.4);
-        }
-        .light .card-option-inactive {
-            border-color: rgba(203, 213, 225, 0.5);
-            background: rgba(255, 255, 255, 0.6);
-        }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Setup | TriDashAI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e2e8f0;box-shadow:0 18px 45px rgba(15,23,42,.06)}
+.field{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 14px;background:#fff;color:#0f172a}
+.field:focus{outline:2px solid #2563eb;outline-offset:1px}
+.primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700}
+</style>
 </head>
-<body class="font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between transition-colors duration-300">
-
-    <!-- HEADER -->
-    <header class="border-b sticky top-0 z-40 bg-black/80 dark:bg-black/80 light:bg-white/90 backdrop-blur-md">
-        <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
-            <a href="dashboard.html" class="text-xl font-extrabold text-white dark:text-white light:text-slate-900 tracking-tight flex items-center gap-1.5">
-                <span class="text-blue-500">Tri</span>Dashai
-            </a>
-            <div class="flex items-center gap-3">
-                <a href="dashboard.html" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-3.5 py-2 rounded-xl transition">Back to Dashboard</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- SETTINGS MAIN CONTENT -->
-    <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8 space-y-6">
-
-        <div class="space-y-1">
-            <h1 class="text-xl font-extrabold text-white dark:text-white light:text-slate-900">AI Receptionist Settings</h1>
-            <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">Choose your voice style, select voice type, and set your core business rules.</p>
-        </div>
-
-        <!-- VOICE STYLE & TONE SECTION -->
-        <div class="dashboard-card p-6 rounded-3xl space-y-4">
-            <div class="border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 pb-3">
-                <h2 class="text-sm font-bold text-white dark:text-white light:text-slate-900 uppercase tracking-wider">Voice Style & Tone</h2>
-                <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-0.5">Select the tone and speaker voice your AI uses when answering missed calls.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <!-- Option 1: Calm & Steady Hand -->
-                <div class="card-option-active border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Calm & Steady Hand</span>
-                            <input type="radio" name="voice_archetype" checked class="text-blue-600">
-                        </div>
-                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Patient and reassuring for callers.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-blue-900/50 dark:border-blue-900/50 light:border-blue-200">
-                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Type:</span>
-                        <div class="flex items-center gap-2">
-                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_voice" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="calm_voice" class="text-blue-600"> Female</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Option 2: Firm, Authoritative & Calm -->
-                <div class="card-option-inactive border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Firm, Authoritative & Calm</span>
-                            <input type="radio" name="voice_archetype" class="text-blue-600">
-                        </div>
-                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Steady, in complete control, and reassuring under pressure.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
-                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Type:</span>
-                        <div class="flex items-center gap-2">
-                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_voice" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="direct_voice" class="text-blue-600"> Female</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Option 3: Local Mate / Friendly Expert -->
-                <div class="card-option-inactive border p-4 rounded-2xl flex flex-col justify-between gap-3 transition">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-white dark:text-white light:text-slate-900">Local Mate / Friendly Expert</span>
-                            <input type="radio" name="voice_archetype" class="text-blue-600">
-                        </div>
-                        <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">Warm, approachable, and sounds like a trusted local tradesperson.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
-                        <span class="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase font-semibold">Voice Type:</span>
-                        <div class="flex items-center gap-2">
-                            <label class="text-[11px] text-white dark:text-white light:text-slate-800 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_voice" checked class="text-blue-600"> Male</label>
-                            <label class="text-[11px] text-slate-300 dark:text-slate-300 light:text-slate-600 flex items-center gap-1 cursor-pointer"><input type="radio" name="local_voice" class="text-blue-600"> Female</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIRTUAL ASSISTANT QUICK TRAINING SECTION -->
-        <div class="dashboard-card p-6 rounded-3xl space-y-4">
-            <div class="border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 pb-3">
-                <h2 class="text-sm font-bold text-white dark:text-white light:text-slate-900 uppercase tracking-wider">Virtual Assistant Quick Training</h2>
-                <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-0.5">The exact trade name and details the AI uses when answering.</p>
-            </div>
-
-            <div class="space-y-4 pt-2">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Company / Trade Name</label>
-                    <input type="text" value="Apex Plumbing Solutions" class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Pricing & Call-Out Policy</label>
-                    <input type="text" value="Free estimates on major jobs; $75 standard call-out fee." class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">Service Coverage Areas</label>
-                    <input type="text" value="Carcar City, Minglanilla, San Fernando, and surrounding districts." class="custom-input w-full border rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-blue-500">
-                </div>
-            </div>
-        </div>
-
-        <!-- SAVE BUTTON BAR -->
-        <div class="flex justify-end gap-3 pt-2">
-            <a href="dashboard.html" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 px-5 py-3 rounded-xl bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:opacity-80 transition">Cancel</a>
-            <button onclick="alert('Settings updated successfully!')" class="text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Save Settings</button>
-        </div>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 bg-black/40 dark:bg-black/40 light:bg-slate-100 py-6 text-center text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">
-        <p>&copy; 2026 TriDashai. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+<body class="min-h-screen flex flex-col">
+<header class="bg-white border-b border-slate-200">
+<div class="max-w-4xl mx-auto px-5 py-4 flex justify-between items-center">
+<a href="dashboard.html" class="text-xl font-extrabold"><span class="text-blue-600">Tri</span>DashAI</a>
+<a href="dashboard.html" class="text-sm font-semibold text-blue-700">Back to dashboard</a>
+</div></header>
+<main class="flex-1 max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
+<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl font-extrabold mt-2">Complete your setup</h1><p class="text-slate-600 text-sm mt-2">Add the information your receptionist needs. You can return and update it at any time.</p></div>
+<div id="message" role="status" class="hidden rounded-xl p-3 text-sm"></div>
+<form id="settings-form" class="panel rounded-3xl p-6 sm:p-8 space-y-6">
+<section class="space-y-4">
+<h2 class="font-bold text-lg">Business details</h2>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">Business name<input id="businessName" class="field mt-1.5" required></label>
+<label class="text-sm font-semibold">Business phone<input id="businessPhone" class="field mt-1.5" type="tel" required></label>
+<label class="text-sm font-semibold">Business location / base ZIP<input id="businessLocation" class="field mt-1.5" placeholder="City, state and ZIP code"></label>
+<label class="text-sm font-semibold">Primary trade<select id="primaryTrade" class="field mt-1.5"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
+<label class="text-sm font-semibold">Additional services<input id="additionalServices" class="field mt-1.5" placeholder="Optional"></label>
+</div>
+<label class="block text-sm font-semibold">Service areas<input id="serviceAreas" class="field mt-1.5" placeholder="Cities, towns or ZIP codes you cover"></label>
+<label class="block text-sm font-semibold">Normal operating hours<input id="operatingHours" class="field mt-1.5" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
+</section>
+<section class="border-t border-slate-100 pt-6 space-y-4">
+<h2 class="font-bold text-lg">Call handling</h2>
+<label class="flex items-start gap-3 text-sm"><input id="emergencyCallHandling" type="checkbox" class="mt-1"><span><strong>Handle emergency calls</strong><span class="block text-slate-500 mt-0.5">Allow the receptionist to identify and route urgent enquiries according to the rules you provide.</span></span></label>
+<label class="block text-sm font-semibold">Emergency call-out fee (optional)<input id="emergencyCallOutFee" class="field mt-1.5" placeholder="Leave blank if not applicable"></label>
+</section>
+<section class="border-t border-slate-100 pt-6 space-y-4">
+<h2 class="font-bold text-lg">Receptionist style</h2>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">Communication style<select id="voiceStyle" class="field mt-1.5"><option value="calm">Calm and reassuring</option><option value="authoritative">Firm, authoritative and calm</option><option value="friendly">Warm and friendly expert</option></select></label>
+<label class="text-sm font-semibold">Voice preference<select id="voicePreference" class="field mt-1.5"><option value="female">Female</option><option value="male">Male</option><option value="no-preference">No preference</option></select></label>
+</div>
+</section>
+<div class="flex flex-col sm:flex-row gap-3 pt-2">
+<a href="dashboard.html" class="text-center px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm">Back</a>
+<button id="save-button" class="primary flex-1 rounded-xl py-3.5" type="submit">Save business setup</button>
+</div>
+</form>
+<p class="text-xs text-slate-500">Saving this page stores your business setup in your own TriDashAI account. It does not activate phone forwarding or connect external services.</p>
+</main>
+<footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">© 2026 TriDashAI. All rights reserved.</footer>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomain:"tridashai-app.firebaseapp.com",projectId:"tridashai-app",storageBucket:"tridashai-app.firebasestorage.app",messagingSenderId:"753320728065",appId:"1:753320728065:web:83745fcca31b12e08a5200",measurementId:"G-W9MYFE3B77"};
+if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
+let currentUser=null;
+const fields=['businessName','businessPhone','businessLocation','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','voiceStyle','voicePreference'];
+function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
+auth.onAuthStateChanged(async user=>{
+ if(!user){window.location.replace('login.html');return;}
+ currentUser=user;
+ try{
+  const snap=await db.collection('businesses').doc(user.uid).get();
+  if(!snap.exists){showMessage('We could not find your business profile. Please contact support so we can help recover your setup.',true);return;}
+  const data=snap.data();
+  fields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  document.getElementById('emergencyCallHandling').checked=!!data.emergencyCallHandling;
+ }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
+});
+form.addEventListener('submit',async e=>{
+ e.preventDefault();if(!currentUser)return;
+ button.disabled=true;button.textContent='Saving…';
+ const update={};
+ fields.forEach(id=>update[id]=document.getElementById(id).value.trim());
+ update.emergencyCallHandling=document.getElementById('emergencyCallHandling').checked;
+ update.setupComplete=true;
+ update.profileComplete=true;
+ update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
+ try{
+  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
+  showMessage('Your business setup has been saved.');
+ }catch(error){showMessage('We could not save your setup: '+error.message,true);}
+ button.disabled=false;button.textContent='Save business setup';
+});
+</script>
+</body></html>
