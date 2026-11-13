@@ -35,9 +35,19 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <label class="block text-sm font-semibold">Normal operating hours<input id="operatingHours" class="field mt-1.5" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
 </section>
 <section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Call handling</h2>
-<label class="flex items-start gap-3 text-sm"><input id="emergencyCallHandling" type="checkbox" class="mt-1"><span><strong>Handle emergency calls</strong><span class="block text-slate-500 mt-0.5">Allow the receptionist to identify and route urgent enquiries according to the rules you provide.</span></span></label>
+<h2 class="font-bold text-lg">Call-out and emergency contact</h2>
+<p class="text-sm text-slate-600">Enter the number the receptionist should use for emergency call-outs. Change it whenever your on-call person or shift changes.</p>
+<label class="block text-sm font-semibold">Current call-out contact number
+<input id="callOutContactNumber" type="tel" class="field mt-1.5" placeholder="+1 555 123 4567" autocomplete="tel"></label>
+<p class="text-sm font-semibold">What should Sloane do with this number?</p>
+<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="handle_and_notify" class="mt-1"><span><strong>Handle the call and pass on the details</strong><span class="block text-slate-500 mt-0.5">Sloane speaks with the customer, gathers the details and sends them to this number.</span></span></label>
+<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
 <label class="block text-sm font-semibold">Emergency call-out fee (optional)<input id="emergencyCallOutFee" class="field mt-1.5" placeholder="Leave blank if not applicable"></label>
+</section>
+<section class="border-t border-slate-100 pt-6 space-y-4">
+<h2 class="font-bold text-lg">Payment links</h2>
+<label class="flex items-start gap-3 text-sm"><input id="paymentLinksEnabled" type="checkbox" class="mt-1"><span><strong>Allow Sloane to send payment links</strong><span class="block text-slate-500 mt-0.5">When enabled and connected, Sloane can send a payment link for an agreed call-out fee or other amount approved by the business.</span></span></label>
+<div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-sm text-amber-900"><strong>Payment provider connection still required.</strong> The business will need to connect its own payment account (Stripe is our proposed first option). Payments should go directly to that business. This checkbox saves the preference only; it does not yet create or send real payment links.</div>
 </section>
 <section class="border-t border-slate-100 pt-6 space-y-4">
 <h2 class="font-bold text-lg">Receptionist style</h2>
@@ -62,7 +72,7 @@ const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomai
 if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
-const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','voiceStyle','voicePreference'];
+const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','callOutContactNumber','callOutMode','voiceStyle','voicePreference'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -80,7 +90,9 @@ auth.onAuthStateChanged(async user=>{
    document.getElementById('businessZip').value=match[0];
    document.getElementById('businessLocation').value=data.businessLocation.replace(match[0],'').replace(/[,\s]+$/,'').trim();
   }
-  document.getElementById('emergencyCallHandling').checked=!!data.emergencyCallHandling;
+  document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify';
+  document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
+  document.getElementById('paymentLinksEnabled').checked=!!data.paymentLinksEnabled;
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
 form.addEventListener('submit',async e=>{
@@ -88,7 +100,8 @@ form.addEventListener('submit',async e=>{
  button.disabled=true;button.textContent='Saving…';
  const update={};
  fields.forEach(id=>update[id]=document.getElementById(id).value.trim());
- update.emergencyCallHandling=document.getElementById('emergencyCallHandling').checked;
+ update.callOutMode=document.querySelector('input[name="callOutMode"]:checked')?.value||'give_number';
+ update.paymentLinksEnabled=document.getElementById('paymentLinksEnabled').checked;
  update.setupComplete=true;
  update.profileComplete=true;
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
