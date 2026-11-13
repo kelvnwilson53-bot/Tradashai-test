@@ -119,7 +119,7 @@
                 <!-- DROPDOWN MENU (Voice Setup & Log Out Only) -->
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-2 shadow-2xl z-50">
                     <a href="settings.html" class="block text-xs font-semibold text-slate-200 hover:text-blue-400 p-2 rounded-lg hover:bg-slate-800/60 transition">Voice Setup</a>
-                    <a href="#" onclick="alert('Logged out successfully.');" class="block text-xs font-semibold text-red-400 hover:text-red-300 p-2 rounded-lg hover:bg-slate-800/60 transition pt-2 border-t border-slate-800">Log Out</a>
+                    <a href="#" onclick="event.preventDefault(); firebase.auth().signOut().then(() => window.location.replace('login.html'));" class="block text-xs font-semibold text-red-400 hover:text-red-300 p-2 rounded-lg hover:bg-slate-800/60 transition pt-2 border-t border-slate-800">Log Out</a>
                 </div>
             </div>
 
@@ -266,7 +266,7 @@
                         </div>
                         <p id="roi-total-display" class="text-4xl sm:text-5xl font-extrabold text-blue-400 mt-3">$3,600</p>
                     </div>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-4 pt-3 border-t border-slate-800/40">12 missed calls recovered this month</p>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-4 pt-3 border-t border-slate-800/40">Live call results will appear here after phone service is connected.</p>
                 </div>
 
                 <!-- CARD 2: MONTHLY SMS & VOICE USAGE -->
@@ -274,14 +274,14 @@
                     <div>
                         <div class="flex justify-between items-center">
                             <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">SMS & Voice Meters</p>
-                            <span class="text-xs font-bold text-blue-400">Standard Plan ($59/mo)</span>
+                            <span class="text-xs font-bold text-blue-400">Standard Plan ($89/mo)</span>
                         </div>
                         
                         <div class="space-y-3.5 mt-4">
                             <div>
                                 <div class="flex justify-between text-xs sm:text-sm font-semibold text-slate-300 mb-1">
                                     <span>SMS Texts</span>
-                                    <span class="font-bold text-white">210 / 300</span>
+                                    <span class="font-bold text-white">Not connected</span>
                                 </div>
                                 <div class="w-full bg-black/30 h-3 rounded-full overflow-hidden border border-slate-800/40">
                                     <div class="bg-blue-600 h-full rounded-full" style="width: 70%;"></div>
@@ -372,7 +372,7 @@
                 <div>
                     <div class="flex items-center justify-between border-b border-slate-800/40 pb-3 mb-4">
                         <h3 class="text-base font-extrabold text-white">Subscription & Billing</h3>
-                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">● Active ($59/mo)</span>
+                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">● Trial / $89 per month after trial</span>
                     </div>
 
                     <div class="space-y-3">
@@ -494,6 +494,38 @@
         <p>&copy; 2026 TriDashAI. All rights reserved.</p>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",
+        authDomain: "tridashai-app.firebaseapp.com",
+        projectId: "tridashai-app",
+        storageBucket: "tridashai-app.firebasestorage.app",
+        messagingSenderId: "753320728065",
+        appId: "1:753320728065:web:83745fcca31b12e08a5200",
+        measurementId: "G-W9MYFE3B77"
+      };
+      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+      firebase.auth().onAuthStateChanged(async user => {
+        if (!user) {
+          window.location.replace('login.html');
+          return;
+        }
+        try {
+          const profile = await firebase.firestore().collection('businesses').doc(user.uid).get();
+          if (profile.exists) {
+            const data = profile.data();
+            const heading = document.querySelector('main h2');
+            if (heading && data.businessName) heading.textContent = data.businessName + ' Dashboard';
+          }
+        } catch (error) {
+          console.error('Could not load business profile:', error);
+        }
+      });
+    </script>
+
     <!-- INTERACTIVE SCRIPTS -->
     <script>
         // Wordless Theme Symbol Toggle Logic
@@ -590,7 +622,7 @@
 
         function updateDashboardROI() {
             const ticketSize = parseInt(jobValueInput.value) || 300;
-            const recoveredCalls = 12; 
+            const recoveredCalls = 0; 
             const totalRecovered = ticketSize * recoveredCalls;
 
             roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
