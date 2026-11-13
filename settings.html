@@ -81,6 +81,7 @@ auth.onAuthStateChanged(async user=>{
   document.getElementById('emergencyCallHandling').checked=!!data.emergencyCallHandling;
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
+form.addEventListener('input',()=>{if(button.textContent==='Saved successfully ✓'){button.textContent='Save business setup';}});
 form.addEventListener('submit',async e=>{
  e.preventDefault();if(!currentUser)return;
  button.disabled=true;button.textContent='Saving…';
