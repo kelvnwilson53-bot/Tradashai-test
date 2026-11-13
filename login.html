@@ -48,6 +48,7 @@
 
         <button id="login-button" type="submit" class="w-full py-4 btn-podium-primary rounded-xl shadow-lg text-sm">Log In to Dashboard →</button>
       </form>
+      <button id="resend-verification" type="button" class="hidden w-full text-sm text-blue-700 underline">Resend verification email</button>
 
       <div class="flex items-center my-2">
         <div class="flex-grow border-t border-slate-200"></div>
@@ -114,9 +115,8 @@
     }
 
     auth.onAuthStateChanged(user => {
-      if (user) {
-        window.location.replace('dashboard.html');
-      }
+      if (user && user.emailVerified) window.location.replace('dashboard.html');
+      else if (user && !user.emailVerified) auth.signOut();
     });
 
     document.getElementById('login-form').addEventListener('submit', async event => {
@@ -127,11 +127,19 @@
       button.textContent = 'Signing in…';
 
       try {
-        await auth.signInWithEmailAndPassword(
+        const credential=await auth.signInWithEmailAndPassword(
           document.getElementById('email').value.trim(),
           document.getElementById('password').value
         );
-
+        await credential.user.reload();
+        if(!credential.user.emailVerified){
+          await auth.signOut();
+          showMessage('Please verify your email before logging in. Open the verification link we sent you. You can request another link below.',true);
+          document.getElementById('resend-verification').classList.remove('hidden');
+          button.disabled=false;
+          button.textContent='Log In to Dashboard →';
+          return;
+        }
         window.location.replace('dashboard.html');
 
       } catch (error) {
@@ -139,6 +147,21 @@
         button.disabled = false;
         button.textContent = 'Log In to Dashboard →';
       }
+    });
+
+    document.getElementById('resend-verification').addEventListener('click', async () => {
+      const email=document.getElementById('email').value.trim();
+      const password=document.getElementById('password').value;
+      if(!email||!password){showMessage('Enter your email and password first so we can resend the verification link.');return;}
+      try{
+        const credential=await auth.signInWithEmailAndPassword(email,password);
+        await credential.user.sendEmailVerification({
+          url:'https://tridashai.com/verify-email.html',
+          handleCodeInApp:false
+        });
+        await auth.signOut();
+        showMessage('A new verification email has been sent. Please check your inbox and spam folder.',false);
+      }catch(error){showMessage(friendlyError(error));}
     });
 
     document.getElementById('google-button').addEventListener('click', async () => {
