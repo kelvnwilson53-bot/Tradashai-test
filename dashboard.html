@@ -508,21 +508,44 @@
         measurementId: "G-W9MYFE3B77"
       };
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      firebase.auth().onAuthStateChanged(async user => {
-        if (!user) {
-          window.location.replace('login.html');
-          return;
-        }
+      const dashboardAuth = firebase.auth();
+      const dashboardDb = firebase.firestore();
+      dashboardAuth.onAuthStateChanged(async user => {
+        if (!user) { window.location.replace('login.html'); return; }
         try {
-          const profile = await firebase.firestore().collection('businesses').doc(user.uid).get();
-          if (profile.exists) {
-            const data = profile.data();
-            const heading = document.querySelector('main h2');
-            if (heading && data.businessName) heading.textContent = data.businessName + ' Dashboard';
+          const profile = await dashboardDb.collection('businesses').doc(user.uid).get();
+          if (!profile.exists) {
+            const note=document.createElement('div');
+            note.className='mx-4 mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200';
+            note.innerHTML='Your account is signed in, but its business profile has not been completed. <a class="underline font-bold" href="settings.html">Complete your business setup</a>.';
+            document.querySelector('main').prepend(note);
+            return;
           }
-        } catch (error) {
-          console.error('Could not load business profile:', error);
-        }
+          const data=profile.data();
+          const heading=document.querySelector('#stage-1 h2');
+          if(heading && data.businessName) heading.textContent=data.businessName+' — Quick Setup';
+          const area=document.getElementById('service-areas');
+          const job=document.getElementById('custom-job-value');
+          if(area && data.serviceAreas) area.value=data.serviceAreas;
+          if(job && data.averageJobValue) job.value=data.averageJobValue;
+          if(data.accountStatus==='trial') {
+            const trialLabel=document.querySelector('#stage-3 .text-amber-400');
+            if(trialLabel) trialLabel.textContent='● 7-day trial';
+          }
+        } catch(error) { console.error('Could not load business profile:',error); }
+      });
+      document.getElementById('logout-button')?.addEventListener('click',()=>dashboardAuth.signOut().then(()=>window.location.replace('login.html')));
+      document.getElementById('save-service-areas-btn')?.addEventListener('click',async()=>{
+        const user=dashboardAuth.currentUser;if(!user)return;
+        try{await dashboardDb.collection('businesses').doc(user.uid).set({serviceAreas:document.getElementById('service-areas').value.trim(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});alert('Service areas saved.');}
+        catch(error){alert('Could not save service areas: '+error.message);}
+      });
+      document.getElementById('save-job-value-btn')?.addEventListener('click',async()=>{
+        const user=dashboardAuth.currentUser;if(!user)return;
+        const value=Number(document.getElementById('custom-job-value').value);
+        if(!Number.isFinite(value)||value<=0){alert('Enter a valid average job value first.');return;}
+        try{await dashboardDb.collection('businesses').doc(user.uid).set({averageJobValue:value,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});updateDashboardROI();alert('Average job value saved.');}
+        catch(error){alert('Could not save average job value: '+error.message);}
       });
     </script>
 
@@ -621,7 +644,7 @@
         const roiTicketTag = document.getElementById('roi-ticket-tag');
 
         function updateDashboardROI() {
-            const ticketSize = parseInt(jobValueInput.value) || 300;
+            const ticketSize = parseInt(jobValueInput.value) || 0;
             const recoveredCalls = 0; 
             const totalRecovered = ticketSize * recoveredCalls;
 
