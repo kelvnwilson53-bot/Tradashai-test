@@ -39,6 +39,13 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <p class="text-sm text-slate-600">Enter the number the receptionist should use for emergency call-outs. Change it whenever your on-call person or shift changes.</p>
 <label class="block text-sm font-semibold">Current call-out contact number
 <input id="callOutContactNumber" type="tel" class="field mt-1.5" placeholder="+1 555 123 4567" autocomplete="tel"></label>
+<div class="space-y-2">
+<p class="text-sm font-semibold">Receptionist voice</p>
+<div class="grid grid-cols-2 gap-3">
+<label class="cursor-pointer"><input id="voiceFemale" name="voicePreference" type="radio" value="female" class="peer sr-only"><span class="block rounded-xl border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700">Female voice</span></label>
+<label class="cursor-pointer"><input id="voiceMale" name="voicePreference" type="radio" value="male" class="peer sr-only"><span class="block rounded-xl border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700">Male voice</span></label>
+</div>
+</div>
 <p class="text-sm font-semibold">What should Sloane do with this number?</p>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="handle_and_notify" class="mt-1"><span><strong>Handle the call and pass on the details</strong><span class="block text-slate-500 mt-0.5">Sloane speaks with the customer, gathers the details and sends them to this number.</span></span></label>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
@@ -53,7 +60,7 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <h2 class="font-bold text-lg">Receptionist style</h2>
 <div class="grid sm:grid-cols-2 gap-4">
 <label class="text-sm font-semibold">Communication style<select id="voiceStyle" class="field mt-1.5"><option value="calm">Calm and reassuring</option><option value="authoritative">Firm, authoritative and calm</option><option value="friendly">Warm and friendly expert</option></select></label>
-<label class="text-sm font-semibold">Voice preference<select id="voicePreference" class="field mt-1.5"><option value="female">Female</option><option value="male">Male</option><option value="no-preference">No preference</option></select></label>
+
 </div>
 </section>
 <div class="flex flex-col sm:flex-row gap-3 pt-2">
@@ -90,6 +97,8 @@ auth.onAuthStateChanged(async user=>{
    document.getElementById('businessZip').value=match[0];
    document.getElementById('businessLocation').value=data.businessLocation.replace(match[0],'').replace(/[,\s]+$/,'').trim();
   }
+  document.getElementById('voiceFemale').checked=data.voicePreference==='female'||!data.voicePreference||data.voicePreference==='no-preference';
+  document.getElementById('voiceMale').checked=data.voicePreference==='male';
   document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify';
   document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
   document.getElementById('paymentLinksEnabled').checked=!!data.paymentLinksEnabled;
@@ -99,7 +108,8 @@ form.addEventListener('submit',async e=>{
  e.preventDefault();if(!currentUser)return;
  button.disabled=true;button.textContent='Saving…';
  const update={};
- fields.forEach(id=>update[id]=document.getElementById(id).value.trim());
+ fields.forEach(id=>{if(id!=='voicePreference')update[id]=document.getElementById(id).value.trim()});
+ update.voicePreference=document.querySelector('input[name="voicePreference"]:checked')?.value||'female';
  update.callOutMode=document.querySelector('input[name="callOutMode"]:checked')?.value||'give_number';
  update.paymentLinksEnabled=document.getElementById('paymentLinksEnabled').checked;
  update.setupComplete=true;
