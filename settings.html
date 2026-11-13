@@ -26,7 +26,8 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <div class="grid sm:grid-cols-2 gap-4">
 <label class="text-sm font-semibold">Business name<input id="businessName" class="field mt-1.5" required></label>
 <label class="text-sm font-semibold">Business phone<input id="businessPhone" class="field mt-1.5" type="tel" required></label>
-<label class="text-sm font-semibold">Business location / base ZIP<input id="businessLocation" class="field mt-1.5" placeholder="City, state and ZIP code"></label>
+<label class="text-sm font-semibold">Business location<input id="businessLocation" class="field mt-1.5" placeholder="City, state"></label>
+<label class="text-sm font-semibold">ZIP code<input id="businessZip" class="field mt-1.5" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 75201"></label>
 <label class="text-sm font-semibold">Primary trade<select id="primaryTrade" class="field mt-1.5"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
 <label class="text-sm font-semibold">Additional services<input id="additionalServices" class="field mt-1.5" placeholder="Optional"></label>
 </div>
@@ -61,7 +62,7 @@ const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomai
 if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
-const fields=['businessName','businessPhone','businessLocation','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','voiceStyle','voicePreference'];
+const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','voiceStyle','voicePreference'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -71,6 +72,12 @@ auth.onAuthStateChanged(async user=>{
   if(!snap.exists){showMessage('We could not find your business profile. Please contact support so we can help recover your setup.',true);return;}
   const data=snap.data();
   fields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  // Keep older combined location values visible when loading records created before ZIP was separated.
+  if(data.businessZip===undefined && data.businessLocation && /\b\d{5}(?:-\d{4})?\b/.test(data.businessLocation)){
+   const match=data.businessLocation.match(/\b\d{5}(?:-\d{4})?\b/);
+   document.getElementById('businessZip').value=match[0];
+   document.getElementById('businessLocation').value=data.businessLocation.replace(match[0],'').replace(/[,\s]+$/,'').trim();
+  }
   document.getElementById('emergencyCallHandling').checked=!!data.emergencyCallHandling;
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
@@ -85,9 +92,17 @@ form.addEventListener('submit',async e=>{
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
  try{
   await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Your business setup has been saved.');
- }catch(error){showMessage('We could not save your setup: '+error.message,true);}
- button.disabled=false;button.textContent='Save business setup';
+  showMessage('Saved successfully. Your business details are now stored.');
+  button.textContent='Saved successfully ✓';
+  button.classList.remove('primary');
+  button.classList.add('bg-emerald-600','text-white');
+ }catch(error){
+  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
+  button.disabled=false;
+  button.textContent='Try saving again';
+  return;
+ }
+ button.disabled=false;
 });
 </script>
 </body></html>
