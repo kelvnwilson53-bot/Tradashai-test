@@ -297,7 +297,7 @@
               <p class="text-xs text-slate-500">Available after your TriDashAI number is assigned and tested.</p>
             </article>
             <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-amber-300">Not live</span></div><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-lg">✦</span></div><div><p class="text-sm text-white">Receptionist ready for setup</p><p class="text-xs text-slate-500">Voice configuration</p></div></div><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Choose voice and settings →</a></article>
-            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Calendar</span><span class="text-xs text-amber-300">Not connected</span></div><div class="text-2xl text-slate-500">▦</div><p class="text-xs text-slate-400">Appointments will appear here after calendar connection.</p><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Configure calendar →</a></article>
+            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Business calendar</span><span class="text-xs text-blue-300">Optional tool</span></div><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300 text-xl">▦</div><div><p class="text-sm text-white">Appointments & schedule</p><p class="text-xs text-slate-500">Keep your own record of jobs</p></div></div><button id="open-calendar-modal" type="button" class="w-full rounded-xl border border-blue-500/50 px-3 py-2.5 text-sm text-blue-300 hover:bg-blue-500/10 transition">Open calendar</button><p class="text-xs text-slate-500">Use it if helpful. It is separate from Google Calendar sync.</p></article>
             <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Reviews</span><span class="text-xs text-amber-300">Not connected</span></div><div class="text-2xl text-slate-500">☆</div><p class="text-xs text-slate-400">Review requests and replies will be tracked here.</p><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Configure reviews →</a></article>
           </div>
 
@@ -358,6 +358,36 @@
         </section>
 
     </main>
+
+    <!-- BUSINESS CALENDAR: dashboard appointment diary, separate from Google Calendar sync -->
+    <div id="calendar-modal" class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center">
+      <div class="dashboard-card w-full max-w-4xl max-h-[94vh] overflow-y-auto rounded-3xl p-4 sm:p-6 space-y-5">
+        <div class="flex items-start justify-between gap-3"><div><p class="text-xs uppercase tracking-widest text-blue-400">Your schedule</p><h3 class="text-xl sm:text-2xl font-medium text-white mt-1">Business calendar</h3><p class="text-xs text-slate-400 mt-1">Add appointments and keep a record of upcoming work.</p></div><button id="close-calendar-modal" type="button" class="rounded-xl px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800" aria-label="Close calendar">✕</button></div>
+        <div class="grid lg:grid-cols-5 gap-5">
+          <section class="lg:col-span-3 rounded-2xl border border-slate-700/60 p-3 sm:p-4 space-y-3">
+            <div class="flex items-center justify-between"><button id="calendar-prev" type="button" class="rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800" aria-label="Previous month">‹</button><h4 id="calendar-month-label" class="text-base font-medium text-white">Month Year</h4><button id="calendar-next" type="button" class="rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800" aria-label="Next month">›</button></div>
+            <div class="grid grid-cols-7 gap-1 text-center text-xs text-slate-500"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            <div id="calendar-days" class="grid grid-cols-7 gap-1"></div>
+            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Has appointment <span class="ml-3 w-2 h-2 rounded-full bg-emerald-400"></span> Selected day</div>
+          </section>
+          <section class="lg:col-span-2 space-y-4">
+            <div class="rounded-2xl border border-slate-700/60 p-4 space-y-3">
+              <div><p class="text-xs text-slate-500">Selected date</p><h4 id="calendar-selected-label" class="text-base text-white font-medium">Today</h4></div>
+              <div id="calendar-appointment-list" class="space-y-2 text-sm text-slate-400">Loading appointments…</div>
+            </div>
+            <form id="calendar-appointment-form" class="rounded-2xl border border-slate-700/60 p-4 space-y-3">
+              <h4 class="text-sm font-medium text-white">Add an appointment</h4>
+              <label class="block text-xs text-slate-400">Job / appointment<input id="appointment-title" required maxlength="100" class="dashboard-input mt-1 w-full rounded-lg p-2.5" placeholder="e.g. Boiler repair"></label>
+              <div class="grid grid-cols-2 gap-2"><label class="block text-xs text-slate-400">Time<input id="appointment-time" type="time" required class="dashboard-input mt-1 w-full rounded-lg p-2.5"></label><label class="block text-xs text-slate-400">Customer<input id="appointment-customer" maxlength="80" class="dashboard-input mt-1 w-full rounded-lg p-2.5" placeholder="Optional"></label></div>
+              <label class="block text-xs text-slate-400">Notes<input id="appointment-notes" maxlength="300" class="dashboard-input mt-1 w-full rounded-lg p-2.5" placeholder="Address or job notes (optional)"></label>
+              <button type="submit" class="btn-primary-blue w-full rounded-xl py-2.5 text-sm">Save appointment</button>
+              <p id="calendar-save-message" class="text-xs text-slate-500" role="status">Appointments are saved privately to this business account.</p>
+            </form>
+          </section>
+        </div>
+        <p class="text-xs text-slate-500 border-t border-slate-700/50 pt-3">This is TriDashAI's own appointment diary. It does not yet sync with Google Calendar or automatically notify customers.</p>
+      </div>
+    </div>
 
     <!-- BOOST MODAL WITH TIERED PRICING ($7, $12, $20) & 90-DAY ROLLOVER -->
     <div id="boost-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -636,6 +666,78 @@
                 statusCodeTag.textContent = '##002# Cleared';
             }
         }
+
+        // Business calendar: appointments stored under the signed-in business in Firestore.
+        (function initBusinessCalendar(){
+          const modal=document.getElementById('calendar-modal');
+          const open=document.getElementById('open-calendar-modal');
+          const close=document.getElementById('close-calendar-modal');
+          const daysEl=document.getElementById('calendar-days');
+          const monthLabel=document.getElementById('calendar-month-label');
+          const selectedLabel=document.getElementById('calendar-selected-label');
+          const listEl=document.getElementById('calendar-appointment-list');
+          const form=document.getElementById('calendar-appointment-form');
+          const message=document.getElementById('calendar-save-message');
+          if(!modal||!open||!form)return;
+          let view=new Date(); view.setDate(1);
+          let selected=new Date();
+          let appointments=[];
+          const dateKey=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+          const safe=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+          const fmt=d=>d.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+          function render(){
+            monthLabel.textContent=view.toLocaleDateString(undefined,{month:'long',year:'numeric'});
+            selectedLabel.textContent=fmt(selected);
+            daysEl.innerHTML='';
+            const first=new Date(view.getFullYear(),view.getMonth(),1);
+            const offset=first.getDay();
+            const count=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+            for(let n=0;n<offset;n++){const blank=document.createElement('div');blank.className='h-10';daysEl.appendChild(blank);}
+            for(let day=1;day<=count;day++){
+              const d=new Date(view.getFullYear(),view.getMonth(),day),key=dateKey(d);
+              const has=appointments.some(a=>a.date===key);
+              const b=document.createElement('button');b.type='button';b.textContent=day;
+              b.className='h-10 rounded-xl text-sm transition '+(key===dateKey(selected)?'bg-emerald-500/20 text-emerald-300 border border-emerald-400/60': 'text-slate-300 hover:bg-slate-800 border border-transparent');
+              if(has){const dot=document.createElement('span');dot.className='block mx-auto mt-0.5 w-1 h-1 rounded-full bg-blue-400';b.appendChild(dot);}
+              b.setAttribute('aria-label',fmt(d));b.addEventListener('click',()=>{selected=d;render();});
+              daysEl.appendChild(b);
+            }
+            const items=appointments.filter(a=>a.date===dateKey(selected)).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+            listEl.innerHTML=items.length?items.map(a=>'<div class="rounded-xl bg-slate-900/60 border border-slate-700/50 p-3"><div class="flex justify-between gap-2"><span class="text-sm text-white">'+safe(a.title)+'</span><span class="text-xs text-blue-300">'+safe(a.time)+'</span></div>'+(a.customer?'<p class="text-xs text-slate-400 mt-1">'+safe(a.customer)+'</p>':'')+(a.notes?'<p class="text-xs text-slate-500 mt-1">'+safe(a.notes)+'</p>':'')+'</div>').join(''):'<p class="text-xs text-slate-500 py-2">Nothing scheduled for this day.</p>';
+            document.getElementById('appointment-date')?.setAttribute('value',dateKey(selected));
+          }
+          async function load(){
+            const user=dashboardAuth.currentUser;
+            if(!user){appointments=[];render();message.textContent='Sign in to save appointments.';return;}
+            try{
+              const snap=await dashboardDb.collection('businesses').doc(user.uid).collection('appointments').get();
+              appointments=snap.docs.map(doc=>({id:doc.id,...doc.data()}));
+              render();
+            }catch(err){listEl.textContent='Could not load appointments. Please try again.';console.error('Calendar load failed',err);}
+          }
+          open.addEventListener('click',async()=>{modal.classList.remove('hidden');await load();});
+          close.addEventListener('click',()=>modal.classList.add('hidden'));
+          modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.add('hidden');});
+          document.getElementById('calendar-prev').addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);render();});
+          document.getElementById('calendar-next').addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);render();});
+          form.addEventListener('submit',async e=>{
+            e.preventDefault();const user=dashboardAuth.currentUser;
+            if(!user){message.textContent='Please sign in again before saving.';return;}
+            const title=document.getElementById('appointment-title').value.trim();
+            const time=document.getElementById('appointment-time').value;
+            const customer=document.getElementById('appointment-customer').value.trim();
+            const notes=document.getElementById('appointment-notes').value.trim();
+            if(!title||!time)return;
+            const save=form.querySelector('button[type="submit"]');save.disabled=true;save.textContent='Saving…';
+            try{
+              const data={title,time,customer,notes,date:dateKey(selected),createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+              const ref=await dashboardDb.collection('businesses').doc(user.uid).collection('appointments').add(data);
+              appointments.push({id:ref.id,...data});form.reset();message.textContent='Appointment saved.';render();
+            }catch(err){message.textContent='Could not save appointment: '+err.message;}
+            finally{save.disabled=false;save.textContent='Save appointment';}
+          });
+          render();
+        })();
 
         // Boost Modal Logic
         const boostModal = document.getElementById('boost-modal');
