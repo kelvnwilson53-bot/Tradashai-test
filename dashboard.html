@@ -282,112 +282,80 @@
         </section>
 
         <!-- ACTIVATED DASHBOARD -->
-        <section id="stage-2" class="hidden space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Phone forwarding</span><span id="dashboard-forwarding-status" class="text-xs text-amber-300">Not connected</span></div><p id="dashboard-forwarding-detail" class="text-xs text-slate-400">Your forwarding connection will be checked during phone activation.</p></div>
-              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Receptionist</span><span id="dashboard-receptionist-status" class="text-xs text-amber-300">Not live</span></div><p class="text-xs text-slate-400">Your receptionist status will update when the phone service is connected and tested.</p></div>
-              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Google Calendar</span><span id="dashboard-calendar-status" class="text-xs text-amber-300">Not connected</span></div><p class="text-xs text-slate-400">Appointments and calendar activity will appear here.</p></div>
-              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Google Reviews</span><span id="dashboard-reviews-status" class="text-xs text-slate-400">Awaiting connection</span></div><p class="text-xs text-slate-400">Review requests, new reviews and replies will be tallied here.</p></div>
+        <section id="stage-2" class="hidden space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+            <div><p class="text-xs uppercase tracking-widest text-blue-400">Your business at a glance</p><h2 class="text-2xl sm:text-3xl font-semibold text-white mt-1">Overview</h2><p class="text-sm text-slate-400 mt-1">A clear view of calls, customers and business recovered through TriDashAI.</p></div>
+            <span class="text-xs text-slate-500">Illustrative dashboard preview · live data not connected</span>
+          </div>
+
+          <!-- SERVICE STATUS -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+            <article class="dashboard-card rounded-2xl p-4 space-y-3">
+              <div class="flex items-center justify-between"><span class="text-sm text-slate-300">Call forwarding</span><icon-placeholder></icon-placeholder><span class="text-xs text-amber-300">Setup needed</span></div>
+              <div class="flex items-center justify-between"><span class="text-xs text-slate-400">Your business line</span><span class="text-xs text-slate-500">Not connected</span></div>
+              <div class="flex items-center justify-between pt-2 border-t border-slate-700/50"><span class="text-xs text-slate-400">Forwarding switch</span><button type="button" disabled aria-label="Call forwarding unavailable until activation" class="relative w-11 h-6 rounded-full bg-slate-700 opacity-70 cursor-not-allowed"><span class="absolute left-1 top-1 w-4 h-4 rounded-full bg-slate-300"></span></button></div>
+              <p class="text-xs text-slate-500">Available after your TriDashAI number is assigned and tested.</p>
+            </article>
+            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-amber-300">Not live</span></div><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-lg">✦</span></div><div><p class="text-sm text-white">Receptionist ready for setup</p><p class="text-xs text-slate-500">Voice configuration</p></div></div><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Choose voice and settings →</a></article>
+            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Calendar</span><span class="text-xs text-amber-300">Not connected</span></div><div class="text-2xl text-slate-500">▦</div><p class="text-xs text-slate-400">Appointments will appear here after calendar connection.</p><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Configure calendar →</a></article>
+            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Reviews</span><span class="text-xs text-amber-300">Not connected</span></div><div class="text-2xl text-slate-500">☆</div><p class="text-xs text-slate-400">Review requests and replies will be tracked here.</p><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Configure reviews →</a></article>
+          </div>
+
+          <!-- USAGE -->
+          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"><div><h3 class="text-base font-medium text-white">Your monthly allowance</h3><p class="text-xs text-slate-400 mt-1">Included usage · resets each billing period</p></div><span class="text-xs text-slate-500">Preview figures</span></div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="space-y-2"><div class="flex justify-between items-center"><span class="text-sm text-slate-300">Voice minutes</span><span class="text-sm text-emerald-300">250 remaining</span></div><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full rounded-full bg-emerald-500" style="width:32%"></div></div><div class="flex justify-between text-xs text-slate-500"><span>Example usage: 80 used</span><span>250 total</span></div></div>
+              <div class="space-y-2"><div class="flex justify-between items-center"><span class="text-sm text-slate-300">SMS</span><span class="text-sm text-blue-300">300 remaining</span></div><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full rounded-full bg-blue-500" style="width:24%"></div></div><div class="flex justify-between text-xs text-slate-500"><span>Example usage: 72 used</span><span>300 total</span></div></div>
             </div>
-            <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-4">
-              <div class="flex items-center justify-between gap-3"><h4 class="text-base font-medium text-white">Monthly allowance</h4><span class="text-xs text-slate-400">Resets each billing period</span></div>
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div class="space-y-2"><div class="flex items-center gap-2"><span class="text-emerald-400">☎</span><span class="text-sm text-slate-300">Voice minutes</span></div><p class="text-xl font-medium text-emerald-400" id="voice-remaining">250 minutes</p><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div id="voice-usage-bar" class="h-full rounded-full bg-emerald-500" style="width:0%"></div></div><p class="text-xs text-slate-400" id="voice-used">0 minutes used</p></div>
-                <div class="space-y-2"><div class="flex items-center gap-2"><span class="text-blue-400">▣</span><span class="text-sm text-slate-300">SMS</span></div><p class="text-xl font-medium text-blue-400" id="sms-remaining">300 SMS</p><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div id="sms-usage-bar" class="h-full rounded-full bg-blue-500" style="width:0%"></div></div><p class="text-xs text-slate-400" id="sms-used">0 SMS used</p></div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-slate-700/50 pt-4"><p class="text-xs text-slate-500">Example figures show how usage will look once connected. They are not account activity.</p><button id="open-boost-modal-dashboard" type="button" class="px-4 py-2.5 rounded-xl border border-blue-500/50 text-blue-300 hover:bg-blue-500/10 text-sm transition">Explore extra bundles</button></div>
+          </section>
+
+          <!-- PERFORMANCE -->
+          <section class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2"><div><p class="text-xs uppercase tracking-widest text-blue-400">Performance</p><h3 class="text-xl font-medium text-white mt-1">Revenue impact</h3><p class="text-sm text-slate-400 mt-1">See the enquiries TriDashAI helps turn into booked work.</p></div><span class="text-xs text-slate-500">Illustrative sample data</span></div>
+            <div class="grid grid-cols-2 xl:grid-cols-4 gap-3">
+              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Calls answered</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">128</p><p class="text-xs text-emerald-400 mt-1">Example this month</p></div>
+              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">New enquiries</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">46</p><p class="text-xs text-slate-400 mt-1">Example this month</p></div>
+              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Appointments booked</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">31</p><p class="text-xs text-slate-400 mt-1">Example this month</p></div>
+              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Recovered revenue</p><p class="text-2xl sm:text-3xl font-medium text-emerald-300 mt-2">$8,450</p><p class="text-xs text-slate-400 mt-1">Illustrative estimate</p></div>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-4">
+              <div class="dashboard-card rounded-2xl p-5 lg:col-span-3 space-y-4">
+                <div class="flex items-center justify-between"><div><h4 class="text-sm font-medium text-white">Enquiries and bookings</h4><p class="text-xs text-slate-500 mt-1">Example activity over six months</p></div><span class="text-xs text-slate-500">6 months</span></div>
+                <div class="h-48 flex items-end gap-3 sm:gap-5 border-b border-slate-700/60 px-1">
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:35%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:22%"></div></div>
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:48%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:30%"></div></div>
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:58%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:40%"></div></div>
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:68%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:47%"></div></div>
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:78%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:56%"></div></div>
+                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:90%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:68%"></div></div>
+                </div>
+                <div class="flex justify-between text-xs text-slate-500"><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div>
+                <div class="flex gap-4 text-xs text-slate-400"><span><i class="inline-block w-2 h-2 rounded-sm bg-blue-500 mr-1"></i>Enquiries</span><span><i class="inline-block w-2 h-2 rounded-sm bg-emerald-500 mr-1"></i>Bookings</span></div>
               </div>
-              <div class="flex items-center justify-between border-t border-slate-700/50 pt-3"><span class="text-sm text-slate-300">Extra Bundle</span><button id="open-boost-modal-dashboard" type="button" aria-label="Buy extra bundle" class="w-9 h-9 rounded-full border border-slate-600 text-slate-200 text-xs font-medium hover:border-blue-400 hover:text-blue-300 transition">buy</button></div>
-              <p class="text-xs text-slate-500">Usage figures will populate when phone and messaging services are connected.</p>
-            </div>
-            <div class="border-b border-slate-800/40 pb-2"><h3 class="text-lg font-medium text-white">Business performance</h3><p class="text-sm text-slate-400 mt-1">Calls, bookings, jobs, revenue and reviews in one place.</p></div>
-            <div class="dashboard-card p-5 sm:p-6 rounded-2xl space-y-3">
-                <div>
-                    <h4 class="text-sm font-extrabold text-white">Analytics settings</h4>
-                    <p class="text-xs text-slate-400 mt-1">Set the average value of a recovered job. We use this figure to estimate recovered revenue.</p>
+              <div class="dashboard-card rounded-2xl p-5 lg:col-span-2 space-y-4">
+                <div><h4 class="text-sm font-medium text-white">Where enquiries go</h4><p class="text-xs text-slate-500 mt-1">Illustrative conversion breakdown</p></div>
+                <div class="space-y-3">
+                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Answered and captured</span><span class="text-slate-400">46</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-blue-500" style="width:100%"></div></div></div>
+                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Appointments booked</span><span class="text-slate-400">31</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-emerald-500" style="width:67%"></div></div></div>
+                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Jobs completed</span><span class="text-slate-400">24</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-violet-500" style="width:52%"></div></div></div>
                 </div>
-                <div class="max-w-sm">
-                    <label for="custom-job-value" class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Average recovered job value (USD)</label>
-                    <div class="flex gap-2">
-                        <input type="number" id="custom-job-value" value="300" min="1" step="25" class="dashboard-input text-xs sm:text-sm px-3.5 py-3 rounded-xl w-full">
-                        <button id="save-job-value-btn" type="button" class="px-4 py-3 btn-primary-blue text-xs sm:text-sm font-bold rounded-xl transition cursor-pointer whitespace-nowrap">Save</button>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mt-2">Default: $300. You can change this amount at any time.</p>
-                </div>
+                <p class="text-xs text-slate-500 border-t border-slate-700/50 pt-3">Sample figures only. Actual totals will come from recorded calls and job confirmations.</p>
+              </div>
             </div>
+          </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- CARD 1: MONTHLY ROI RECOVERED -->
-                <div class="dashboard-card p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Monthly Recovered Revenue</p>
-                            <span id="roi-ticket-tag" class="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">Average job value: $300</span>
-                        </div>
-                        <p id="roi-total-display" class="text-4xl sm:text-5xl font-extrabold text-blue-400 mt-3">$0</p>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-4 pt-3 border-t border-slate-800/40">Your recovered revenue will be shown here.</p>
-                </div>
-
-                <!-- Usage and review totals are presented in the summary panels above. -->
-
+          <!-- ACTIVITY SNAPSHOT -->
+          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
+            <div class="flex items-center justify-between"><div><h3 class="text-base font-medium text-white">Recent activity</h3><p class="text-xs text-slate-400 mt-1">A running record of enquiries and follow-ups</p></div><span class="text-xs text-slate-500">Preview</span></div>
+            <div class="divide-y divide-slate-700/50">
+              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">New enquiry received</p><p class="text-xs text-slate-500 mt-1">Emergency plumbing · Example ticket TD-1048</p></div><span class="text-xs text-emerald-300">Booked</span></div>
+              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">Appointment confirmed</p><p class="text-xs text-slate-500 mt-1">Roof repair · Example ticket TD-1047</p></div><span class="text-xs text-blue-300">Confirmed</span></div>
+              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">Review request sent</p><p class="text-xs text-slate-500 mt-1">Completed job · Example ticket TD-1046</p></div><span class="text-xs text-slate-400">Sent</span></div>
             </div>
+          </section>
         </section>
-
-        <!-- ACTIVITY FEED & BILLING -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- RECENT ACTIVITY FEED -->
-            <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between border-b border-slate-800/40 pb-3 mb-4">
-                        <h3 class="text-base font-extrabold text-white">Recent Recovered Lead Activity</h3>
-                        
-                    </div>
-                    
-                    <div class="rounded-2xl border border-dashed border-slate-700 bg-black/20 p-6 text-center">
-                        <p class="text-sm font-semibold text-slate-200">No recovered leads yet</p>
-                        <p class="text-xs text-slate-400 mt-2">New enquiries from your customers will appear here.</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUBSCRIPTION & BILLING PANEL -->
-            <div class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between border-b border-slate-800/40 pb-3 mb-4">
-                        <h3 class="text-base font-extrabold text-white">Subscription & Billing</h3>
-                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">● Trial / $89 per month after trial</span>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl text-xs space-y-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-slate-300">Current Tier:</span>
-                                <span class="font-bold text-white">Trial account</span>
-                            </div>
-                            <div class="flex justify-between items-center border-t border-slate-800/40 pt-2">
-                                <span class="text-slate-300">Next Renewal:</span>
-                                <span class="font-bold text-blue-400">No renewal scheduled</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl flex items-center justify-between gap-3">
-                            <div>
-                                <h4 class="text-xs font-bold text-white">Need Extra Minutes or SMS?</h4>
-                                <p class="text-[11px] text-slate-300">Add extra minutes or SMS when you need them.</p>
-                            </div>
-                            <button id="open-boost-modal-main" class="px-3.5 py-2 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md whitespace-nowrap cursor-pointer">
-                                + Buy Boost
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-            </div>
-    
-
 
     </main>
 
@@ -585,8 +553,6 @@
             banner.innerHTML='<strong>One more step:</strong> complete and save your Quick Start setup below.';
             document.querySelector('main').prepend(banner);
           }
-          const job=document.getElementById('custom-job-value');
-          if(job && data.averageJobValue) job.value=data.averageJobValue;
           if(data.accountStatus==='trial') {
             const trialLabel=document.querySelector('#stage-2 .text-amber-400');
             if(trialLabel) trialLabel.textContent='● 7-day trial';
@@ -695,60 +661,6 @@
             alert('Usage boost checkout is not connected yet. No purchase has been made.');
             boostModal.classList.add('hidden');
         }
-
-        // Analytics: average recovered job value (default $300, editable by each business)
-        const jobValueInput = document.getElementById('custom-job-value');
-        const saveJobValueBtn = document.getElementById('save-job-value-btn');
-        const roiTotalDisplay = document.getElementById('roi-total-display');
-        const roiTicketTag = document.getElementById('roi-ticket-tag');
-
-        function updateDashboardROI() {
-            const ticketSize = Math.max(1, Number(jobValueInput.value) || 300);
-            const recoveredCalls = 0;
-            const totalRecovered = ticketSize * recoveredCalls;
-            roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
-            roiTicketTag.textContent = `Average job: $${ticketSize.toLocaleString()}`;
-        }
-
-        dashboardAuth.onAuthStateChanged(async user => {
-            if (!user) return;
-            try {
-                const ref = dashboardDb.collection('businesses').doc(user.uid);
-                const snap = await ref.get();
-                const savedValue = snap.exists ? Number(snap.data().averageJobValue) : 0;
-                const value = savedValue > 0 ? savedValue : 300;
-                jobValueInput.value = value;
-                updateDashboardROI();
-                if (!(savedValue > 0)) await ref.set({ averageJobValue: 300 }, { merge: true });
-            } catch (error) {
-                jobValueInput.value = 300;
-                updateDashboardROI();
-                console.error('Could not load analytics job value:', error);
-            }
-        });
-
-        saveJobValueBtn.addEventListener('click', async () => {
-            const value = Number(jobValueInput.value);
-            if (!Number.isFinite(value) || value <= 0) {
-                alert('Please enter a job value greater than $0.');
-                return;
-            }
-            saveJobValueBtn.disabled = true;
-            try {
-                const user = dashboardAuth.currentUser;
-                if (!user) throw new Error('Please sign in again.');
-                await dashboardDb.collection('businesses').doc(user.uid).set({ averageJobValue: value }, { merge: true });
-                updateDashboardROI();
-                alert(`Average recovered job value saved as $${value.toLocaleString()}.`);
-            } catch (error) {
-                alert('Could not save the average job value. Please try again.');
-                console.error(error);
-            } finally {
-                saveJobValueBtn.disabled = false;
-            }
-        });
-
-        updateDashboardROI();
 
         // Floating Chat Toggle Logic
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
