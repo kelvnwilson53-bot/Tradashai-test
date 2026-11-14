@@ -133,98 +133,77 @@
 
         <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7"><p class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-xs sm:text-sm text-slate-400 mt-1">Account overview</p></section>
 
-        <!-- STAGE 1: QUICK START SETUP -->
+        <!-- STAGE 1: SIX-SECTION QUICK START -->
         <section id="stage-1" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/40 pb-4">
-                <div>
-                    <div class="flex items-center gap-3 flex-wrap"><h2 class="text-xl sm:text-2xl font-extrabold text-white">Quick Start</h2><span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-xl">2-minute setup</span></div>
-                </div>
-                
+          <div class="border-b border-slate-800/40 pb-4">
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Quick Start</h2>
+            <p class="text-sm text-slate-400 mt-1">Complete each section and tick the box when you are happy with the information.</p>
+          </div>
+          <form id="quick-start-form" class="space-y-5">
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="1"><span>1. Business details</span></label>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <label class="text-sm text-slate-300">Business name<input id="qs-businessName" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
+                <label class="text-sm text-slate-300">Main business phone<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
+                <label class="text-sm text-slate-300">Main trade<select id="qs-primaryTrade" class="dashboard-input mt-1 w-full rounded-xl p-3"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
+                <label class="text-sm text-slate-300">Additional services<input id="qs-additionalServices" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Other services you provide"></label>
+              </div>
+            </section>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="2"><span>2. Business location</span></label>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <label class="text-sm text-slate-300">City / town and state<input id="qs-businessLocation" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="City, state"></label>
+                <label class="text-sm text-slate-300">ZIP code<input id="qs-businessZip" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="ZIP code"></label>
+              </div>
+              <label class="block text-sm text-slate-300">Service areas<input id="qs-serviceAreas" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Towns, areas or ZIP codes you cover"></label>
+            </section>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="3"><span>3. Services provided</span></label>
+              <label class="block text-sm text-slate-300">Services and jobs you undertake<textarea id="qs-servicesProvided" rows="3" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Describe the work you carry out"></textarea></label>
+              <label class="block text-sm text-slate-300">Jobs you do not undertake<textarea id="qs-excludedJobs" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Any work you do not accept"></textarea></label>
+            </section>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="4"><span>4. Working hours</span></label>
+              <label class="block text-sm text-slate-300">Normal operating hours<input id="qs-operatingHours" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
+              <label class="block text-sm text-slate-300">Out-of-hours handling<textarea id="qs-afterHoursHandling" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="What should the receptionist do outside these hours?"></textarea></label>
+            </section>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="5"><span>5. Call handling</span></label>
+              <label class="block text-sm text-slate-300">How should your receptionist handle calls?<textarea id="qs-callHandlingInstructions" rows="3" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="What should it ask, record, or tell callers?"></textarea></label>
+            </section>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <label class="flex items-center gap-3 text-base font-bold text-white"><input type="checkbox" class="quick-check accent-blue-600" data-section="6"><span>6. Emergency handling</span></label>
+              <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
+              <p class="text-sm text-slate-300">What should your receptionist do with this number?</p>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="contact_and_update" class="mt-1"> Contact the on-call person, handle the customer and provide an update using only information confirmed by the contractor.</label>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="give_number" class="mt-1"> Give the customer this number so they can call the on-call person directly.</label>
+              <label class="block text-sm text-slate-300">Specific emergency instructions<textarea id="qs-emergencyInstructions" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Any additional emergency procedures or limits"></textarea></label>
+            </section>
+            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+              <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
+              <span id="quick-start-message" class="text-sm text-slate-400" role="status">Your information is saved to your business profile.</span>
             </div>
-
-            
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- STEP 1: CALL FORWARDING WITH FUNCTIONAL TOGGLE & STATUS PANEL -->
-                <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding</h4>
-                            
-                            <!-- FUNCTIONAL TOGGLE SWITCH -->
-                            <div class="flex items-center gap-2.5">
-                                <span id="toggle-status-label" class="text-xs font-bold text-emerald-400">AWAITING SETUP</span>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" id="forwarding-toggle" class="sr-only peer" disabled>
-                                    <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- INSTANT STATUS PANEL -->
-                        <div id="forwarding-status-panel" class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300">
-                            <div class="flex items-center gap-2">
-                                <span id="status-dot" class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
-                                <span id="status-text" class="text-xs font-bold text-emerald-400">Phone service awaiting setup</span>
-                            </div>
-                            <span id="status-code-tag" class="text-[10px] font-mono text-slate-300 bg-black/40 px-2 py-0.5 rounded">*71 Active</span>
-                        </div>
-
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                            Missed calls automatically route to your AI. Flip off to route calls normally back to your mobile device.
-                        </p>
-                        
-                        <!-- ONE-TIME SETUP CODE BOX -->
-                        <div class="bg-black/40 border border-slate-700/40 p-3 rounded-xl space-y-1 text-center">
-                            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Initial carrier activation string:</span>
-                            <code class="text-xs sm:text-sm font-mono font-extrabold text-white bg-black/60 px-2.5 py-1.5 rounded border border-slate-700/50 block select-all">
-                                Your dedicated business phone number will appear here once your phone service is activated.
-                            </code>
-                        </div>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-800/40 text-xs text-slate-300">
-                        <p class="text-[11px] text-slate-400">
-                            Deactivation clear rule: <span class="font-semibold text-slate-300">Carrier-specific instructions will be provided after phone setup.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- STEP 2: CONNECT GOOGLE CALENDAR -->
-                <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Calendar Sync</h4>
-                            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">Prevents Double-Booking</span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                            Your calendar connection will be available here once calendar integration is set up.
-                        </p>
-                    </div>
-                    <div class="space-y-2.5">
-                        <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-xs sm:text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">
-                            <span>📅</span> Calendar integration not yet connected
-                        </button>
-                        <p class="text-[11px] text-slate-400 text-center">Secure read/write access for scheduling only.</p>
-                    </div>
-                </div>
-            </div>
+          </form>
         </section>
-
-        <div class="space-y-6">
-
-        <!-- LOCAL SERVICE AREA -->
-        <section class="dashboard-card p-5 sm:p-6 rounded-2xl space-y-3">
-            <div>
-                <h3 class="text-base sm:text-lg font-extrabold text-white">Local Service Area</h3>
-                <p class="text-sm text-slate-300 mt-1">Select the towns and areas your business covers.</p>
+        <!-- STAGE 1B: PHONE SERVICE AFTER BUSINESS SETUP -->
+        <section id="phone-setup" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
+          <div><h3 class="text-base sm:text-lg font-extrabold text-white">7. Phone setup and call forwarding</h3><p class="text-sm text-slate-300 mt-1">Your dedicated TriDashAI business number and forwarding controls will be available here once phone service is activated.</p></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-emerald-400">AWAITING SETUP</span></div>
+              <div id="forwarding-status-panel" class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center gap-2"><span id="status-dot" class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span><span id="status-text" class="text-xs font-bold text-emerald-400">Phone service awaiting setup</span></div>
+              <p class="text-xs text-slate-300">Call forwarding cannot be switched on until your phone service is connected.</p>
+              <label class="text-sm text-slate-300">Dedicated TriDashAI business number<code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Displayed after activation</code></label>
+              <div class="flex items-center gap-3"><input type="checkbox" id="forwarding-toggle" disabled><label for="forwarding-toggle" class="text-sm text-slate-400">Enable call forwarding (available after activation)</label></div>
+              <p class="text-xs text-slate-400">Carrier-specific activation and deactivation instructions will be provided after phone setup.</p>
             </div>
-            <div class="max-w-xl">
-                <input type="text" id="service-areas" value="" class="dashboard-input text-xs sm:text-sm px-3.5 py-3 rounded-xl mb-2.5 w-full">
-                <button id="save-service-areas-btn" type="button" class="py-2.5 px-5 bg-slate-900/40 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-bold rounded-xl border border-slate-700/40 transition cursor-pointer">Save Areas</button>
+            <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
+              <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
+              <p class="text-sm text-slate-300">Your calendar connection will be available here once calendar integration is set up.</p>
+              <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar integration not yet connected</button>
             </div>
+          </div>
         </section>
-
         <!-- STAGE 2: LIVE PERFORMANCE & METRICS -->
         <section id="stage-2" class="space-y-6">
             <div class="border-b border-slate-800/40 pb-2">
@@ -484,6 +463,21 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
+      const quickFields=['businessName','businessPhone','primaryTrade','additionalServices','businessLocation','businessZip','serviceAreas','servicesProvided','excludedJobs','operatingHours','afterHoursHandling','callHandlingInstructions','callOutContactNumber','emergencyInstructions'];
+      const quickChecks=[...document.querySelectorAll('.quick-check')];
+      const quickInput=id=>document.getElementById('qs-'+id);
+      document.getElementById('quick-start-form').addEventListener('submit',async e=>{
+        e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
+        const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
+        const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
+        update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
+        update.quickStartChecks=quickChecks.map(x=>x.checked);
+        update.quickStartComplete=quickChecks.length===6&&quickChecks.every(x=>x.checked);
+        update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
+        try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Quick Start saved successfully.';msg.className='text-sm text-emerald-400';}
+        catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
+        finally{save.disabled=false;save.textContent='Save Quick Start';}
+      });
       dashboardAuth.onAuthStateChanged(async user => {
         if (!user) { window.location.replace('login.html'); return; }
         try {
@@ -512,19 +506,20 @@
             },{merge:true});
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
+          quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
+          if(data.callOutMode){const mode=document.querySelector('input[name="qs-callOutMode"][value="'+data.callOutMode+'"]');if(mode)mode.checked=true;}
+          if(Array.isArray(data.quickStartChecks))quickChecks.forEach((el,i)=>el.checked=!!data.quickStartChecks[i]);
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
           if(planSummary) planSummary.textContent=(data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account') + (data.accountStatus==='trial' ? ' · 7-day trial' : '');
-          if(!data.setupComplete) {
+          if(!data.quickStartComplete) {
             const banner=document.createElement('div');
             banner.className='mx-4 mt-4 rounded-xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-100';
-            banner.innerHTML='<strong>One more step:</strong> add your service areas, operating hours and call-handling preferences. <a class="underline font-bold" href="settings.html">Complete your business setup</a>.';
+            banner.innerHTML='<strong>One more step:</strong> complete the six Quick Start sections below.';
             document.querySelector('main').prepend(banner);
           }
-          const area=document.getElementById('service-areas');
           const job=document.getElementById('custom-job-value');
-          if(area && data.serviceAreas) area.value=data.serviceAreas;
           if(job && data.averageJobValue) job.value=data.averageJobValue;
           if(data.accountStatus==='trial') {
             const trialLabel=document.querySelector('#stage-2 .text-amber-400');
@@ -533,11 +528,6 @@
         } catch(error) { console.error('Could not load business profile:',error); }
       });
       document.getElementById('logout-button')?.addEventListener('click',()=>dashboardAuth.signOut().then(()=>window.location.replace('login.html')));
-      document.getElementById('save-service-areas-btn')?.addEventListener('click',async()=>{
-        const user=dashboardAuth.currentUser;if(!user)return;
-        try{await dashboardDb.collection('businesses').doc(user.uid).set({serviceAreas:document.getElementById('service-areas').value.trim(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});alert('Service areas saved.');}
-        catch(error){alert('Could not save service areas: '+error.message);}
-      });
       document.getElementById('save-job-value-btn')?.addEventListener('click',async()=>{
         const user=dashboardAuth.currentUser;if(!user)return;
         const value=Number(document.getElementById('custom-job-value').value);
