@@ -83,6 +83,9 @@
             font-weight: 700;
             transition: all 0.25s ease;
         }
+        .advanced-setup-pulse { animation: advancedSetupPulse 1.8s ease-in-out infinite; }
+        @keyframes advancedSetupPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); border-color: rgba(59,130,246,.45); } 50% { box-shadow: 0 0 0 4px rgba(59,130,246,.16); border-color: rgba(245,158,11,.85); } }
+        @media (prefers-reduced-motion: reduce) { .advanced-setup-pulse { animation: none; } }
         .btn-primary-blue:hover {
             background: linear-gradient(135deg, #1d4ed8 100%, #1e40af 100%);
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
@@ -130,7 +133,7 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
 
-        <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-3"><div><p class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-xs sm:text-sm text-slate-400 mt-1">Account overview</p></div><div class="flex flex-wrap items-center gap-2"><button id="dashboard-preview-toggle" type="button" class="rounded-xl border border-blue-500/40 bg-blue-500/10 text-blue-300 px-4 py-2 text-xs font-bold">Preview activated dashboard</button><span id="dashboard-preview-note" class="hidden text-xs text-amber-300">Preview only — phone service is not being activated.</span></div></section>
+        <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-4"><div><p class="text-xs font-medium tracking-wide text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-semibold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-sm text-slate-400 mt-1">Account overview</p></div><a id="advanced-setup-top" href="settings.html" class="hidden w-full sm:w-auto rounded-xl border border-blue-400/50 bg-blue-500/10 text-blue-200 px-4 py-3 text-sm font-medium text-center advanced-setup-pulse">Advanced Setup <span class="font-normal text-slate-300">— personalise your receptionist</span></a></section>
 
         <!-- STAGE 1: QUICK START -->
         <section id="stage-1" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
@@ -272,8 +275,24 @@
           </div>
         </section>
 
-        <!-- STAGE 2: LIVE PERFORMANCE & METRICS -->
-        <section id="stage-2" class="space-y-6">
+        <!-- ACTIVATED DASHBOARD -->
+        <section id="stage-2" class="hidden space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Phone forwarding</span><span id="dashboard-forwarding-status" class="text-xs text-amber-300">Not connected</span></div><p id="dashboard-forwarding-detail" class="text-xs text-slate-400">Your forwarding connection will be checked during phone activation.</p></div>
+              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Receptionist</span><span id="dashboard-receptionist-status" class="text-xs text-amber-300">Not live</span></div><p class="text-xs text-slate-400">Your receptionist status will update when the phone service is connected and tested.</p></div>
+              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Google Calendar</span><span id="dashboard-calendar-status" class="text-xs text-amber-300">Not connected</span></div><p class="text-xs text-slate-400">Appointments and calendar activity will appear here.</p></div>
+              <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-300">Google Reviews</span><span id="dashboard-reviews-status" class="text-xs text-slate-400">Awaiting connection</span></div><p class="text-xs text-slate-400">Review requests, new reviews and replies will be tallied here.</p></div>
+            </div>
+            <div class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-4">
+              <div class="flex items-center justify-between gap-3"><h4 class="text-base font-medium text-white">Monthly allowance</h4><span class="text-xs text-slate-400">Resets each billing period</span></div>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div class="space-y-2"><div class="flex items-center gap-2"><span class="text-emerald-400">☎</span><span class="text-sm text-slate-300">Voice minutes</span></div><p class="text-xl font-medium text-emerald-400" id="voice-remaining">250 minutes</p><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div id="voice-usage-bar" class="h-full rounded-full bg-emerald-500" style="width:0%"></div></div><p class="text-xs text-slate-400" id="voice-used">0 minutes used</p></div>
+                <div class="space-y-2"><div class="flex items-center gap-2"><span class="text-blue-400">▣</span><span class="text-sm text-slate-300">SMS</span></div><p class="text-xl font-medium text-blue-400" id="sms-remaining">300 SMS</p><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div id="sms-usage-bar" class="h-full rounded-full bg-blue-500" style="width:0%"></div></div><p class="text-xs text-slate-400" id="sms-used">0 SMS used</p></div>
+              </div>
+              <div class="flex items-center justify-between border-t border-slate-700/50 pt-3"><span class="text-sm text-slate-300">Extra Bundle</span><button id="open-boost-modal-dashboard" type="button" aria-label="Buy extra bundle" class="w-9 h-9 rounded-full border border-slate-600 text-slate-200 text-xs font-medium hover:border-blue-400 hover:text-blue-300 transition">buy</button></div>
+              <p class="text-xs text-slate-500">Usage figures will populate when phone and messaging services are connected.</p>
+            </div>
+            <div class="border-b border-slate-800/40 pb-2"><h3 class="text-lg font-medium text-white">Business performance</h3><p class="text-sm text-slate-400 mt-1">Calls, bookings, jobs, revenue and reviews in one place.</p></div>
             <div class="border-b border-slate-800/40 pb-2">
                 <span class="inline-block bg-slate-800/40 border border-slate-700/40 text-slate-300 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-1">
                     ● Stage 2
@@ -432,13 +451,13 @@
                 <button id="close-boost-modal" class="text-slate-400 hover:text-white text-sm font-bold px-2 py-1 cursor-pointer">✕</button>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                These are proposed top-up packs, not active purchases. Each pack adds the listed voice minutes and SMS segments. Unused pack credits expire 90 days after purchase. Checkout is not connected yet, so selecting a pack will not charge you.
+                These are proposed top-up packs, not active purchases. Each pack adds the listed voice minutes and SMS allowance. Unused pack credits expire 90 days after purchase. Checkout is not connected yet, so selecting a pack will not charge you.
             </p>
 
             <!-- TIERED OPTIONS -->
             <div class="space-y-3">
                 <!-- TIER 1: $7 -->
-                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('50 SMS segments + 50 voice minutes', '$7')">
+                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('50 SMS + 50 voice minutes', '$7')">
                     <div>
                         <h4 class="text-xs sm:text-sm font-bold text-white">Starter Boost</h4>
                         <p class="text-[11px] text-slate-300">50 SMS segments + 50 voice minutes • 90-day rollover</p>
@@ -447,7 +466,7 @@
                 </div>
 
                 <!-- TIER 2: $12 (POPULAR) -->
-                <div class="bg-blue-600/10 border border-blue-500/40 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer relative" onclick="selectBoostTier('100 SMS segments + 100 voice minutes', '$12')">
+                <div class="bg-blue-600/10 border border-blue-500/40 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer relative" onclick="selectBoostTier('100 SMS + 100 voice minutes', '$12')">
                     <span class="absolute -top-2.5 right-4 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Most Popular</span>
                     <div>
                         <h4 class="text-xs sm:text-sm font-bold text-white">Pro Boost</h4>
@@ -457,7 +476,7 @@
                 </div>
 
                 <!-- TIER 3: $20 (200 SMS + 200 VOICE) -->
-                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('200 SMS segments + 200 voice minutes', '$20')">
+                <div class="bg-black/30 border border-slate-700/50 hover:border-blue-500/50 p-4 rounded-2xl flex items-center justify-between transition cursor-pointer" onclick="selectBoostTier('200 SMS + 200 voice minutes', '$20')">
                     <div>
                         <h4 class="text-xs sm:text-sm font-bold text-white">Heavy-Duty Boost</h4>
                         <p class="text-[11px] text-slate-300">200 SMS segments + 200 voice minutes • 90-day rollover</p>
@@ -549,35 +568,28 @@
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
-        try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Quick Start saved successfully.';msg.className='text-sm text-emerald-400';}
+        try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Your business setup has been saved.';msg.className='text-sm text-emerald-400';showBusinessDashboard();updateAdvancedSetupReminder(update);}
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
         finally{save.disabled=false;save.textContent='Save Quick Start';}
       });
-      // Preview the post-activation dashboard without changing real phone-service status.
-      (function () {
-        const previewButton = document.getElementById('dashboard-preview-toggle');
-        const previewNote = document.getElementById('dashboard-preview-note');
-        const setupSection = document.getElementById('stage-1');
-        const advancedSection = document.getElementById('advanced-setup');
-        const activitySection = document.getElementById('activity-reviews');
-        const performanceSection = document.getElementById('stage-2');
-        if (!previewButton || !setupSection || !performanceSection) return;
-        let previewActive = false;
-        function renderPreview() {
-          setupSection.classList.toggle('hidden', previewActive);
-          advancedSection?.classList.toggle('hidden', previewActive);
-          activitySection?.classList.toggle('hidden', previewActive);
-          performanceSection.classList.toggle('hidden', !previewActive);
-          previewButton.textContent = previewActive ? 'Return to setup dashboard' : 'Preview activated dashboard';
-          previewNote?.classList.toggle('hidden', !previewActive);
-        }
-        previewButton.addEventListener('click', () => {
-          previewActive = !previewActive;
-          renderPreview();
-        });
-        // Keep setup visible by default; preview is deliberately temporary.
-        renderPreview();
-      })();
+      // The main dashboard appears after the customer saves their business setup.
+      function showBusinessDashboard() {
+        document.getElementById('stage-1')?.classList.add('hidden');
+        document.getElementById('advanced-setup')?.classList.add('hidden');
+        document.getElementById('activity-reviews')?.classList.add('hidden');
+        document.getElementById('stage-2')?.classList.remove('hidden');
+        document.getElementById('advanced-setup-top')?.classList.remove('hidden');
+      }
+      function updateAdvancedSetupReminder(data) {
+        const button = document.getElementById('advanced-setup-top');
+        if (!button) return;
+        const required = ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','standard_day_callout_price','evening_callout_price'];
+        const complete = required.every(key => String(data[key] ?? '').trim().length > 0);
+        button.classList.toggle('advanced-setup-pulse', !complete);
+        button.classList.toggle('border-emerald-500/40', complete);
+        button.classList.toggle('bg-emerald-500/10', complete);
+        button.innerHTML = complete ? 'Advanced Setup <span class="font-normal text-slate-300">— edit receptionist settings</span>' : 'Complete Advanced Setup <span class="font-normal text-slate-300">— finish personalising your receptionist</span>';
+      }
 
       dashboardAuth.onAuthStateChanged(async user => {
         if (!user) { window.location.replace('login.html'); return; }
@@ -607,6 +619,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
+          if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
@@ -722,6 +735,7 @@
         const cancelBoostBtn = document.getElementById('cancel-boost');
 
         if(openBoostBtn) openBoostBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        document.getElementById('open-boost-modal-dashboard')?.addEventListener('click', () => boostModal.classList.remove('hidden'));
         if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
         if(closeBoostBtn) closeBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
         if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
