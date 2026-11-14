@@ -92,99 +92,25 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 </div>
 </div>
 <div class="rounded-2xl border border-slate-200 p-4 space-y-4">
-<div><h3 class="font-semibold">Call-out charges and pricing</h3><p class="text-xs text-slate-500">Set the actual prices your receptionist is allowed to quote. Every charge is optional. Choose Yes to enter the price and any conditions; choose No if you do not offer it.</p></div>
-<div class="rounded-xl bg-blue-50 p-3 text-xs text-blue-900">All prices are in US dollars (USD). The receptionist must only quote prices you enter here. If a price is blank or a job is not listed, it must explain that the contractor will confirm the price.</div>
+<div><h3 class="font-semibold">Call-out charges and pricing</h3><p class="text-xs text-slate-500">Enter the charges your receptionist may quote. Leave a price blank if it needs to be confirmed.</p></div>
+<div class="rounded-xl bg-blue-50 p-3 text-xs text-blue-900">All prices are in US dollars ($). Your receptionist will only quote prices entered here. If a price is blank or a job is not listed, your receptionist will explain that the contractor will confirm the price.</div>
 <div class="space-y-4">
-
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Standard daytime call-out</p><p class="text-xs text-slate-500 mt-0.5">Your normal weekday working-hours attendance fee</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="standard_day_callout" value="yes"> Yes</label><label><input type="radio" name="standard_day_callout" value="no"> No</label></div>
-<div id="standard_day_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="standard_day_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 75"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="standard_day_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Monday–Friday, 8am–5pm. Does this include the first inspection?"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Evening call-out</p><p class="text-xs text-slate-500 mt-0.5">For visits after normal daytime hours</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="evening_callout" value="yes"> Yes</label><label><input type="radio" name="evening_callout" value="no"> No</label></div>
-<div id="evening_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="evening_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 125"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="evening_callout_details" class="field mt-1.5" rows="2" placeholder="Enter the evening time window and any conditions"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Overnight emergency call-out</p><p class="text-xs text-slate-500 mt-0.5">For emergency attendance overnight</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="overnight_callout" value="yes"> Yes</label><label><input type="radio" name="overnight_callout" value="no"> No</label></div>
-<div id="overnight_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="overnight_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 195"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="overnight_callout_details" class="field mt-1.5" rows="2" placeholder="Enter the overnight hours and what qualifies as an emergency"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Weekend call-out</p><p class="text-xs text-slate-500 mt-0.5">Saturday and Sunday attendance fee</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="weekend_callout" value="yes"> Yes</label><label><input type="radio" name="weekend_callout" value="no"> No</label></div>
-<div id="weekend_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="weekend_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 150"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="weekend_callout_details" class="field mt-1.5" rows="2" placeholder="Specify whether Saturday and Sunday have different prices"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Public holiday call-out</p><p class="text-xs text-slate-500 mt-0.5">Attendance fee on public holidays</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="holiday_callout" value="yes"> Yes</label><label><input type="radio" name="holiday_callout" value="no"> No</label></div>
-<div id="holiday_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="holiday_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 225"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="holiday_callout_details" class="field mt-1.5" rows="2" placeholder="List any holidays or conditions that are treated differently"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">Urgent same-day call-out</p><p class="text-xs text-slate-500 mt-0.5">Priority attendance requested for the same day</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="urgent_same_day_callout" value="yes"> Yes</label><label><input type="radio" name="urgent_same_day_callout" value="no"> No</label></div>
-<div id="urgent_same_day_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="urgent_same_day_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 110"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="urgent_same_day_callout_details" class="field mt-1.5" rows="2" placeholder="Specify availability, cut-off times and conditions"></textarea></label>
-</div></div>
-<div class="border-t border-slate-100 pt-4">
-<div><p class="text-sm font-semibold">24-hour emergency service call-out</p><p class="text-xs text-slate-500 mt-0.5">Emergency attendance fee when your 24-hour service is operating</p></div>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="emergency_24hr_callout" value="yes"> Yes</label><label><input type="radio" name="emergency_24hr_callout" value="no"> No</label></div>
-<div id="emergency_24hr_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
-<label class="block text-sm font-semibold">Call-out price (USD)<input id="emergency_24hr_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 195"></label>
-<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="emergency_24hr_callout_details" class="field mt-1.5" rows="2" placeholder="Confirm the hours covered, response area and any limits"></textarea></label>
-</div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Standard daytime call-out</p><p class="text-xs text-slate-500 mt-0.5">Enter the normal daytime call-out price and the hours it covers.</p><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="standard_day_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Hours covered<textarea id="standard_day_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Monday to Friday, 8am to 5pm"></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Evening call-out</p><p class="text-xs text-slate-500 mt-0.5">For visits after normal daytime hours</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="evening_callout" value="yes"> Yes</label><label><input type="radio" name="evening_callout" value="no"> No</label></div><div id="evening_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="evening_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Time window / conditions<textarea id="evening_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Monday to Friday, 5pm to 10pm"></textarea></label></div></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Overnight emergency call-out</p><p class="text-xs text-slate-500 mt-0.5">For emergency attendance overnight</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="overnight_callout" value="yes"> Yes</label><label><input type="radio" name="overnight_callout" value="no"> No</label></div><div id="overnight_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="overnight_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Overnight hours and what qualifies as an emergency<textarea id="overnight_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. 10pm to 8am; burst pipes or total loss of heating"></textarea></label></div></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Weekend call-out</p><p class="text-xs text-slate-500 mt-0.5">Saturday and Sunday attendance fee</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="weekend_callout" value="yes"> Yes</label><label><input type="radio" name="weekend_callout" value="no"> No</label></div><div id="weekend_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="weekend_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Time window / conditions<textarea id="weekend_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Saturday and Sunday, same price both days"></textarea></label></div></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Public holiday call-out</p><p class="text-xs text-slate-500 mt-0.5">Attendance fee on public holidays</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="holiday_callout" value="yes"> Yes</label><label><input type="radio" name="holiday_callout" value="no"> No</label></div><div id="holiday_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="holiday_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Time window / conditions<textarea id="holiday_callout_details" class="field mt-1.5" rows="2" placeholder="List any public holidays with different charges"></textarea></label></div></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">Urgent same-day call-out</p><p class="text-xs text-slate-500 mt-0.5">Priority attendance requested for the same day</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="urgent_same_day_callout" value="yes"> Yes</label><label><input type="radio" name="urgent_same_day_callout" value="no"> No</label></div><div id="urgent_same_day_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="urgent_same_day_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Time window / conditions<textarea id="urgent_same_day_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Requests received before 2pm"></textarea></label></div></div></div>
+<div class="border-t border-slate-100 pt-4"><p class="text-sm font-semibold">24-hour emergency service call-out</p><p class="text-xs text-slate-500 mt-0.5">Only if you provide a 24-hour emergency service</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="emergency_24hr_callout" value="yes"> Yes</label><label><input type="radio" name="emergency_24hr_callout" value="no"> No</label></div><div id="emergency_24hr_callout_panel" class="hidden"><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="block text-sm font-semibold">Call-out price (USD)<span class="flex items-center mt-1.5"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-600">$</span><input id="emergency_24hr_callout_price" class="field rounded-l-none" type="number" min="0" step="0.01" placeholder=""></span></label><label class="block text-sm font-semibold">Time window / conditions<textarea id="emergency_24hr_callout_details" class="field mt-1.5" rows="2" placeholder="Enter the hours covered and what qualifies"></textarea></label></div></div></div>
 </div>
 <div class="border-t border-slate-100 pt-4 space-y-4">
-
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Is the call-out fee deducted from the repair bill?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="callout_credit" value="yes"> Yes</label><label><input type="radio" name="callout_credit" value="no"> No</label></div>
-<div id="callout_credit_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="callout_credit_details" class="field mt-1.5" rows="2" placeholder="Explain when the fee is credited, if applicable."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Do you have a minimum labour charge?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="minimum_labour" value="yes"> Yes</label><label><input type="radio" name="minimum_labour" value="no"> No</label></div>
-<div id="minimum_labour_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="minimum_labour_details" class="field mt-1.5" rows="2" placeholder="Enter the minimum charge, hours covered and when it applies."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Do you charge an hourly labour rate?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="hourly_rate" value="yes"> Yes</label><label><input type="radio" name="hourly_rate" value="no"> No</label></div>
-<div id="hourly_rate_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="hourly_rate_details" class="field mt-1.5" rows="2" placeholder="Enter the hourly rate, whether it differs by trade or time, and any minimum hours."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Do you offer fixed-price jobs?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="fixed_prices" value="yes"> Yes</label><label><input type="radio" name="fixed_prices" value="no"> No</label></div>
-<div id="fixed_prices_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="fixed_prices_details" class="field mt-1.5" rows="2" placeholder="List each job and its fixed price. The receptionist may quote only listed jobs."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Do you charge a diagnostic or inspection fee?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="diagnostic_fee" value="yes"> Yes</label><label><input type="radio" name="diagnostic_fee" value="no"> No</label></div>
-<div id="diagnostic_fee_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="diagnostic_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the price and what the inspection includes."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">Do you charge for estimates or quotations?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="estimate_fee" value="yes"> Yes</label><label><input type="radio" name="estimate_fee" value="no"> No</label></div>
-<div id="estimate_fee_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="estimate_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the price and when the fee applies; say if it is credited to accepted work."></textarea></label></div>
-</div>
-<div class="border-t border-slate-100 pt-3">
-<p class="text-sm font-semibold">How are parts and materials charged?</p>
-<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="materials_policy" value="yes"> Yes</label><label><input type="radio" name="materials_policy" value="no"> No</label></div>
-<div id="materials_policy_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="materials_policy_details" class="field mt-1.5" rows="2" placeholder="Explain whether materials are included, itemised separately or subject to approval."></textarea></label></div>
-</div>
-</div>
-</div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Is the call-out fee deducted from the repair bill?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="callout_credit" value="yes"> Yes</label><label><input type="radio" name="callout_credit" value="no"> No</label></div><div id="callout_credit_panel" class="hidden mt-3"><label class="block text-sm">Conditions<textarea id="callout_credit_details" class="field mt-1.5" rows="2" placeholder="When is the call-out fee deducted?"></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge an hourly labour rate?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="hourly_rate" value="yes"> Yes</label><label><input type="radio" name="hourly_rate" value="no"> No</label></div><div id="hourly_rate_panel" class="hidden mt-3"><label class="block text-sm">Hourly rate and conditions<textarea id="hourly_rate_details" class="field mt-1.5" rows="2" placeholder="Enter the hourly rate and any minimum hours."></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you offer fixed-price jobs?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="fixed_prices" value="yes"> Yes</label><label><input type="radio" name="fixed_prices" value="no"> No</label></div><div id="fixed_prices_panel" class="hidden mt-3"><label class="block text-sm">Jobs and prices<textarea id="fixed_prices_details" class="field mt-1.5" rows="2" placeholder="List each job and its fixed price."></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge a diagnostic or inspection fee?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="diagnostic_fee" value="yes"> Yes</label><label><input type="radio" name="diagnostic_fee" value="no"> No</label></div><div id="diagnostic_fee_panel" class="hidden mt-3"><label class="block text-sm">Fee and what it includes<textarea id="diagnostic_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the fee and what the inspection includes."></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge for estimates or quotations?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="estimate_fee" value="yes"> Yes</label><label><input type="radio" name="estimate_fee" value="no"> No</label></div><div id="estimate_fee_panel" class="hidden mt-3"><label class="block text-sm">Fee and conditions<textarea id="estimate_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the fee and when it applies."></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">How are parts and materials charged?</p><div id="materials_policy_panel" class="mt-3"><label class="block text-sm">Materials policy<textarea id="materials_policy_details" class="field mt-1.5" rows="2" placeholder="e.g. Materials are charged separately and agreed with the customer before work begins."></textarea></label></div></div>
+</div></div>
 <div class="rounded-2xl border border-slate-200 p-4 space-y-3">
 <div><h3 class="font-semibold">How customers can pay</h3><p class="text-xs text-slate-500">Tell your receptionist which payment options your business accepts.</p></div>
 <p class="text-sm font-semibold">Do you want payment links sent to customers?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="payment_link_choice" value="yes"> Yes</label><label><input type="radio" name="payment_link_choice" value="no"> No</label></div>
@@ -206,8 +132,8 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 </div>
 </div>
 <p class="text-sm font-semibold">What should Sloane do with this number?</p>
-<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="handle_and_notify" class="mt-1"><span><strong>Handle the call and pass on the details</strong><span class="block text-slate-500 mt-0.5">Sloane speaks with the customer, gathers the details and sends them to this number.</span></span></label>
-<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
+<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="contact_and_update" class="mt-1"><span><strong>Contact the on-call person</strong><span class="block text-slate-500 mt-0.5">Your receptionist handles the customer, contacts this number about the emergency, then texts the customer with the update provided by the contractor.</span></span></label>
+<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Your receptionist gives the customer this number so they can call the on-call person directly.</span></span></label>
 
 </section>
 
@@ -229,7 +155,7 @@ if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
 const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','callOutContactNumber'];
-const chargeChoices=['standard_day_callout','evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','minimum_labour','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee','materials_policy'];
+const chargeChoices=['evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee'];
 const optionalChoices=['extra_services',...chargeChoices,'payment_link_choice','cash_only'];
 function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
 optionalChoices.forEach(name=>document.querySelectorAll('input[name="'+name+'"]').forEach(input=>input.addEventListener('change',()=>setChoice(name,input.value))));
@@ -261,7 +187,7 @@ auth.onAuthStateChanged(async user=>{
   }
   document.getElementById('voiceFemale').checked=data.voicePreference==='female'||!data.voicePreference||data.voicePreference==='no-preference';
   document.getElementById('voiceMale').checked=data.voicePreference==='male';
-  document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify';
+  document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify'||data.callOutMode==='contact_and_update';
   document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
   optionalChoices.forEach(name=>loadChoice(data,name));
   optionalTextFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
@@ -289,12 +215,54 @@ form.addEventListener('submit',async e=>{
  'Service area: '+(update.serviceAreas||'Not supplied'),
  'Operating hours: '+(update.operatingHours||'Not supplied'),
  'Services offered: '+(update.serviceDetails||update.additionalServices||'Not yet specified; ask the business before confirming an unlisted service.'),
+ 'Standard daytime call-out: '+(update.standard_day_callout_price?'
  'Jobs excluded: '+(update.excludedJobs||'Not specified; do not assume a service is offered.'),
  'PRICING AUTHORITY: Quote only prices explicitly recorded below. Never estimate, invent, combine or alter a price. If the applicable price is missing or unclear, explain that the contractor must confirm it.',
  ...chargeChoices.map(key=>key+': '+(update[key]==='yes'?((update[key+'_price']||update[key+'_details']||'Enabled, but price/details not completed')+'; conditions: '+(update[key+'_details']||'None supplied')):'Not offered or not confirmed')),
  'Hourly labour: '+(update.hourly_rate==='yes'?(update.hourly_rate_details||'Enabled; details missing'):'Not offered/not confirmed'),
  'Fixed-price work: '+(update.fixed_prices==='yes'?(update.fixed_prices_details||'Enabled; list missing'):'Not offered/not confirmed'),
- 'Minimum labour: '+(update.minimum_labour==='yes'?(update.minimum_labour_details||'Enabled; details missing'):'Not specified'),
+ 'Diagnostic/inspection fee: '+(update.diagnostic_fee==='yes'?(update.diagnostic_fee_details||'Enabled; details missing'):'Not specified'),
+ 'Estimate fee: '+(update.estimate_fee==='yes'?(update.estimate_fee_details||'Enabled; details missing'):'Not specified'),
+ 'Call-out credit: '+(update.callout_credit==='yes'?(update.callout_credit_details||'Yes; conditions missing'):'No/not confirmed'),
+ 'Materials: '+(update.materials_policy_details||'Not specified; do not promise inclusion'),
+ 'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
+ 'TRADE JOB TYPES: '+(update[({plumber:'plumbingJobTypes',roofer:'roofingJobTypes',hvac:'hvacJobTypes',electrician:'electricalJobTypes',builder:'buildingJobTypes',multi:'multiJobTypes'})[document.getElementById('primaryTrade').value]]||'Not supplied'),
+ 'TRADE TRIAGE QUESTIONS: '+(update[({plumber:'plumbingTriage',roofer:'roofingTriage',hvac:'hvacTriage',electrician:'electricalTriage',builder:'buildingTriage',multi:'multiTriage'})[document.getElementById('primaryTrade').value]]||'Ask concise questions to understand the problem, location, urgency and access before dispatch.'),
+ 'TRADE LIMITS: '+(update[({plumber:'plumbingLimits',roofer:'roofingLimits',hvac:'hvacLimits',electrician:'electricalLimits',builder:'buildingLimits',multi:'multiLimits'})[document.getElementById('primaryTrade').value]]||'Not supplied'),
+ 'SAFETY TRIGGERS: '+(update.safetyTriggers||'Use conservative safety handling. If there is immediate danger, stop routine booking, advise the caller to move away from danger and contact local emergency services where appropriate. Do not provide hazardous repair instructions.'),
+ 'EMERGENCY CONTACT ACTION: '+(update.callOutMode==='contact_and_update'?'Contact the on-call person using the saved number. The receptionist handles the customer and sends the customer an SMS update using the response or arrival information confirmed by the contractor. Never invent an arrival time.':'Give the customer the saved on-call number and ask them to contact that person directly.'),
+ 'ESCALATION: '+(update.escalationRules||'Escalate urgent or uncertain cases to the contractor using the configured call-out contact.'),
+ 'NEVER PROMISE: '+(update.neverPromise||'Never diagnose beyond the information provided, promise unconfirmed availability or arrival times, or quote unlisted prices.'),
+ 'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
+ 'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the listed services, say the contractor will confirm and escalate. Do not guess.'
+ ];
+ update.receptionistInstructions=instructionLines.join('\n');
+
+ update.paymentLinksEnabled=update.payment_link_choice==='yes';
+ update.setupComplete=true;
+ update.profileComplete=true;
+ update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
+ try{
+  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
+  showMessage('Saved successfully. Your business details are now stored.');
+  button.textContent='Saved successfully ✓';
+  button.classList.remove('primary');
+  button.classList.add('bg-emerald-600','text-white');
+ }catch(error){
+  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
+  button.disabled=false;
+  button.textContent='Try saving again';
+  return;
+ }
+ button.disabled=false;
+});
+</script>
+</body></html>+update.standard_day_callout_price:'No price entered')+'; hours: '+(update.standard_day_callout_details||'Not specified'),
+ 'Jobs excluded: '+(update.excludedJobs||'Not specified; do not assume a service is offered.'),
+ 'PRICING AUTHORITY: Quote only prices explicitly recorded below. Never estimate, invent, combine or alter a price. If the applicable price is missing or unclear, explain that the contractor must confirm it.',
+ ...chargeChoices.map(key=>key+': '+(update[key]==='yes'?((update[key+'_price']||update[key+'_details']||'Enabled, but price/details not completed')+'; conditions: '+(update[key+'_details']||'None supplied')):'Not offered or not confirmed')),
+ 'Hourly labour: '+(update.hourly_rate==='yes'?(update.hourly_rate_details||'Enabled; details missing'):'Not offered/not confirmed'),
+ 'Fixed-price work: '+(update.fixed_prices==='yes'?(update.fixed_prices_details||'Enabled; list missing'):'Not offered/not confirmed'),
  'Diagnostic/inspection fee: '+(update.diagnostic_fee==='yes'?(update.diagnostic_fee_details||'Enabled; details missing'):'Not specified'),
  'Estimate fee: '+(update.estimate_fee==='yes'?(update.estimate_fee_details||'Enabled; details missing'):'Not specified'),
  'Call-out credit: '+(update.callout_credit==='yes'?(update.callout_credit_details||'Yes; conditions missing'):'No/not confirmed'),
