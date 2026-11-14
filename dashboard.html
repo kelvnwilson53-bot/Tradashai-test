@@ -175,11 +175,22 @@
                 <label class="block text-sm text-slate-300">Normal-hours call-out charge (USD)<input id="qs-standard_day_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 95"></label>
                 <label class="block text-sm text-slate-300">Out-of-hours call-out charge (USD)<input id="qs-evening_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 145"></label>
               </div>
-              <p class="text-xs text-slate-400">Your receptionist quotes the correct charge for the time of the call and confirms the customer agrees before proceeding.</p>
+              <p class="text-xs text-slate-400">Your receptionist quotes the applicable charge and confirms the customer agrees before proceeding. Leave additional charges blank if they do not apply.</p>
               <div class="border-t border-slate-700/50 pt-3 space-y-3">
-                <h4 class="text-sm font-semibold text-white">Emergency call-outs</h4>
-                <label class="block text-sm text-slate-300">On-call notification number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-                <p class="text-xs text-slate-400">Your on-call number is used for private alerts to the tradesperson when an emergency enquiry needs attention. Customers continue to call the business number they already know.</p>
+                <h4 class="text-sm font-semibold text-white">Additional call-out charges (optional)</h4>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <label class="block text-sm text-slate-300">Weekend call-out charge (USD)<input id="qs-weekend_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
+                  <label class="block text-sm text-slate-300">Public holiday call-out charge (USD)<input id="qs-holiday_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <label class="block text-sm text-slate-300">Other charge description<input id="qs-other_callout_label" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Optional"></label>
+                  <label class="block text-sm text-slate-300">Other call-out charge (USD)<input id="qs-other_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Optional"></label>
+                </div>
+              </div>
+              <div class="border-t border-slate-700/50 pt-3 space-y-2">
+                <h4 class="text-sm font-semibold text-white">Emergency contact number (optional)</h4>
+                <label class="block text-sm text-slate-300">Customer emergency contact number<input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Enter a separate emergency number"></label>
+                <p class="text-xs text-slate-400">If you have a separate number for emergency call-outs, enter it here. Your receptionist will give this number to customers who need to contact your emergency service. Leave blank if you do not have one.</p>
               </div>
             </section>
         <!-- PHONE CONNECTION, PART OF QUICK START -->
@@ -511,7 +522,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','standard_day_callout_price','evening_callout_price','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','weekend_callout_price','holiday_callout_price','other_callout_label','other_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
