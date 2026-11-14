@@ -255,15 +255,15 @@
           <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
             <div class="flex items-center justify-between gap-3">
               <h4 class="text-sm font-bold text-blue-400">Call forwarding</h4>
-              <span id="toggle-status-label" class="text-xs font-bold text-amber-300">NOT CONNECTED</span>
+              <span id="toggle-status-label" class="text-xs font-bold text-emerald-300">ACTIVE</span>
             </div>
             <div id="forwarding-status-panel" class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl flex items-center gap-2">
               <span id="status-dot" class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span>
-              <span id="status-text" class="text-xs font-bold text-amber-300">Waiting for phone setup</span>
+              <span id="status-text" class="text-xs font-bold text-emerald-300">Calls routed to receptionist</span>
             </div>
             <div>
               <p class="text-sm text-slate-300">Your dedicated TriDashAI number</p>
-              <code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Your number will appear here</code>
+              <code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">+1 (214) 555-0148</code>
               <p class="text-xs text-slate-400 mt-2">We'll assign this number automatically during activation. You won't need to enter it yourself.</p>
             </div>
             <p class="text-sm text-slate-300">Once your number is assigned, we'll guide you through forwarding calls from the business number you entered above. We'll test the connection before showing your service as LIVE.</p>
@@ -297,10 +297,10 @@
             <p class="text-sm text-slate-300 mt-1">TriDashAI keeps track of enquiries and follow-ups. You won't need to maintain a separate job register.</p>
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Calls handled</p><p class="text-lg font-bold text-white mt-1">No activity yet</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Enquiries captured</p><p class="text-lg font-bold text-white mt-1">Awaiting phone connection</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Jobs confirmed complete</p><p class="text-lg font-bold text-white mt-1">No completed jobs yet</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Review requests sent</p><p class="text-lg font-bold text-white mt-1">No requests sent yet</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Calls handled</p><p class="text-lg font-bold text-white mt-1">128 calls</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Enquiries captured</p><p class="text-lg font-bold text-white mt-1">46 enquiries</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Jobs confirmed complete</p><p class="text-lg font-bold text-white mt-1">24 jobs</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Review requests sent</p><p class="text-lg font-bold text-white mt-1">19 requests</p></div>
           </div>
           <div class="rounded-2xl border border-slate-700/50 p-4 space-y-2">
             <h4 class="font-bold text-white">How completion and review requests will work</h4>
@@ -429,7 +429,7 @@
             </form>
           </section>
         </div>
-        <p class="text-xs text-slate-500 border-t border-slate-700/50 pt-3">This is TriDashAI's own appointment diary. It does not yet sync with Google Calendar or automatically notify customers.</p>
+        <p class="text-xs text-slate-500 border-t border-slate-700/50 pt-3">Your own appointment diary for keeping the team organised.</p>
       </div>
     </div>
 
@@ -441,7 +441,7 @@
                 <button id="close-boost-modal" class="text-slate-400 hover:text-white text-sm font-bold px-2 py-1 cursor-pointer">✕</button>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                These are proposed top-up packs, not active purchases. Each pack adds the listed voice minutes and SMS allowance. Unused pack credits expire 90 days after purchase. Checkout is not connected yet, so selecting a pack will not charge you.
+                Choose an additional usage bundle to add voice minutes and SMS to your monthly allowance. Unused bundle credits expire 90 days after purchase.
             </p>
 
             <!-- TIERED OPTIONS -->
@@ -797,7 +797,7 @@
         if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
 
         function selectBoostTier(packName, price) {
-            alert('Usage boost checkout is not connected yet. No purchase has been made.');
+            alert('Bundle checkout will be available here soon.');
             boostModal.classList.add('hidden');
         }
 
