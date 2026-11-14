@@ -162,16 +162,10 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <p class="text-sm font-semibold">What should Sloane do with this number?</p>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="handle_and_notify" class="mt-1"><span><strong>Handle the call and pass on the details</strong><span class="block text-slate-500 mt-0.5">Sloane speaks with the customer, gathers the details and sends them to this number.</span></span></label>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
-<label class="block text-sm font-semibold">Emergency call-out fee (optional)<input id="emergencyCallOutFee" class="field mt-1.5" placeholder="Leave blank if not applicable"></label>
+
 </section>
 
-<section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Receptionist style</h2>
-<div class="grid sm:grid-cols-2 gap-4">
-<label class="text-sm font-semibold">Communication style<select id="voiceStyle" class="field mt-1.5"><option value="calm">Calm and reassuring</option><option value="authoritative">Firm, authoritative and calm</option><option value="friendly">Warm and friendly expert</option></select></label>
 
-</div>
-</section>
 <div class="flex flex-col sm:flex-row gap-3 pt-2">
 <a href="dashboard.html" class="text-center px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm">Back</a>
 <button id="save-button" class="primary flex-1 rounded-xl py-3.5" type="submit">Save business setup</button>
@@ -188,7 +182,7 @@ const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomai
 if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
-const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','callOutContactNumber','voiceStyle'];
+const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','callOutContactNumber'];
 const chargeChoices=['standard_day_callout','evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','minimum_labour','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee','materials_policy'];
 const optionalChoices=['extra_services',...chargeChoices,'payment_link_choice','cash_only'];
 function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
