@@ -34,6 +34,165 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <label class="block text-sm font-semibold">Service areas<input id="serviceAreas" class="field mt-1.5" placeholder="Cities, towns or ZIP codes you cover"></label>
 <label class="block text-sm font-semibold">Normal operating hours<input id="operatingHours" class="field mt-1.5" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
 </section>
+<section class="border-t border-slate-100 pt-6 space-y-5">
+<h2 class="font-bold text-lg">Personalise your AI receptionist</h2>
+<p class="text-sm text-slate-600">Add a little more information to help your receptionist represent your business and look after your customers. You can complete these now or come back later.</p>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
+<div><h3 class="font-semibold">Your services and specialist work</h3><p class="text-xs text-slate-500">Tell customers what you do — and which jobs you don't take.</p></div>
+<div class="flex gap-5 text-sm"><label><input type="radio" name="extra_services" value="yes"> Yes</label><label><input type="radio" name="extra_services" value="no"> No</label></div>
+<div id="extra_services_panel" class="hidden space-y-3">
+<label class="block text-sm font-semibold">Services and specialist work<textarea id="serviceDetails" class="field mt-1.5" rows="3" placeholder="e.g. leak detection, bathroom installations, water heater repairs"></textarea></label>
+<label class="block text-sm font-semibold">Jobs you do not undertake<textarea id="excludedJobs" class="field mt-1.5" rows="2" placeholder="List any work you do not accept"></textarea></label>
+</div></div>
+
+
+<div class="rounded-2xl border border-slate-200 p-4 space-y-4">
+<div><h3 class="font-semibold">Trade-specific call handling</h3><p class="text-xs text-slate-500">These details help the receptionist ask the right questions before arranging a visit. The questions shown depend on the primary trade selected above.</p></div>
+<div id="trade_plumber" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">Plumbing</h4>
+<label class="block text-sm font-semibold">Which plumbing problems do you handle most often?<textarea id="plumbingJobTypes" class="field mt-1.5" rows="2" placeholder="e.g. burst pipes, leaks, blocked drains, water heaters, toilets, faucets"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before dispatching a plumber?<textarea id="plumbingTriage" class="field mt-1.5" rows="3" placeholder="e.g. Where is the leak? Can the water supply be safely shut off? Is water near electrical equipment? Is sewage backing up?"></textarea></label>
+<label class="block text-sm font-semibold">Any plumbing work requiring a specialist or excluded from service?<textarea id="plumbingLimits" class="field mt-1.5" rows="2" placeholder="e.g. gas lines only if appropriately licensed; no septic systems"></textarea></label>
+</div>
+<div id="trade_roofer" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">Roofing</h4>
+<label class="block text-sm font-semibold">Which roofing jobs do you handle?<textarea id="roofingJobTypes" class="field mt-1.5" rows="2" placeholder="e.g. roof leaks, storm damage, shingle replacement, inspections, full replacement"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before dispatching a roofer?<textarea id="roofingTriage" class="field mt-1.5" rows="3" placeholder="e.g. Is water entering the property now? Which rooms are affected? Was there recent storm or wind damage? Can the customer send photos from a safe location?"></textarea></label>
+<label class="block text-sm font-semibold">Any roofing limits or access restrictions?<textarea id="roofingLimits" class="field mt-1.5" rows="2" placeholder="e.g. roof types not serviced, height limits, no unsafe roof access"></textarea></label>
+</div>
+<div id="trade_hvac" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">HVAC</h4>
+<label class="block text-sm font-semibold">Which heating and cooling systems do you service?<textarea id="hvacJobTypes" class="field mt-1.5" rows="2" placeholder="e.g. central AC, heat pumps, furnaces, mini-splits, maintenance"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before dispatching an HVAC technician?<textarea id="hvacTriage" class="field mt-1.5" rows="3" placeholder="e.g. Is it heating or cooling? Is the system running? Any unusual smell, noise, water leak or error code? What is the make/model if known?"></textarea></label>
+<label class="block text-sm font-semibold">Any systems, refrigerants or work you do not handle?<textarea id="hvacLimits" class="field mt-1.5" rows="2" placeholder="List equipment or work outside your qualifications or service offering"></textarea></label>
+</div>
+<div id="trade_electrician" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">Electrical</h4>
+<label class="block text-sm font-semibold">Which electrical jobs do you handle?<textarea id="electricalJobTypes" class="field mt-1.5" rows="2" placeholder="e.g. power faults, breaker trips, outlets, lighting, panel work"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before dispatching an electrician?<textarea id="electricalTriage" class="field mt-1.5" rows="3" placeholder="e.g. Is there a total or partial power loss? Any sparks, smoke, burning smell, hot outlets or exposed wires?"></textarea></label>
+<label class="block text-sm font-semibold">Any electrical work you do not undertake?<textarea id="electricalLimits" class="field mt-1.5" rows="2" placeholder="List excluded work or work requiring a specialist"></textarea></label>
+</div>
+<div id="trade_builder" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">General building</h4>
+<label class="block text-sm font-semibold">Which building and repair jobs do you handle?<textarea id="buildingJobTypes" class="field mt-1.5" rows="2" placeholder="e.g. carpentry, repairs, renovations, extensions, doors and windows"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before arranging a visit?<textarea id="buildingTriage" class="field mt-1.5" rows="3" placeholder="e.g. What needs repairing or building? Approximate size? Is there structural damage or an immediate safety concern?"></textarea></label>
+<label class="block text-sm font-semibold">Any building work or project sizes you do not take?<textarea id="buildingLimits" class="field mt-1.5" rows="2" placeholder="List excluded jobs, project limits or specialist work"></textarea></label>
+</div>
+<div id="trade_multi" class="trade-panel space-y-3 hidden">
+<h4 class="text-sm font-bold text-blue-700">Other / multi-trade</h4>
+<label class="block text-sm font-semibold">Describe your trades and services<textarea id="multiJobTypes" class="field mt-1.5" rows="3" placeholder="List the work your business undertakes"></textarea></label>
+<label class="block text-sm font-semibold">What should the receptionist ask before arranging a visit?<textarea id="multiTriage" class="field mt-1.5" rows="3" placeholder="List the key questions needed to understand and route a customer's job"></textarea></label>
+<label class="block text-sm font-semibold">Any excluded work or specialist restrictions<textarea id="multiLimits" class="field mt-1.5" rows="2" placeholder="List work you do not undertake"></textarea></label>
+</div>
+<div class="border-t border-slate-100 pt-3 space-y-3">
+<h4 class="text-sm font-semibold">Safety and escalation rules — all trades</h4>
+<label class="block text-sm font-semibold">What situations must be treated as an immediate safety emergency?<textarea id="safetyTriggers" class="field mt-1.5" rows="3" placeholder="Describe danger signs that require the receptionist to stop normal booking questions and follow your emergency procedure"></textarea></label>
+<label class="block text-sm font-semibold">Who should be contacted for urgent escalation, and how?<textarea id="escalationRules" class="field mt-1.5" rows="2" placeholder="e.g. Call the on-call number for active emergencies; text job details for non-urgent matters"></textarea></label>
+<label class="block text-sm font-semibold">What must the receptionist never promise or advise?<textarea id="neverPromise" class="field mt-1.5" rows="2" placeholder="e.g. Never promise an arrival time until confirmed; never diagnose or instruct customers to carry out dangerous repairs"></textarea></label>
+</div>
+</div>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-4">
+<div><h3 class="font-semibold">Call-out charges and pricing</h3><p class="text-xs text-slate-500">Set the actual prices your receptionist is allowed to quote. Every charge is optional. Choose Yes to enter the price and any conditions; choose No if you do not offer it.</p></div>
+<div class="rounded-xl bg-blue-50 p-3 text-xs text-blue-900">All prices are in US dollars (USD). The receptionist must only quote prices you enter here. If a price is blank or a job is not listed, it must explain that the contractor will confirm the price.</div>
+<div class="space-y-4">
+
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Standard daytime call-out</p><p class="text-xs text-slate-500 mt-0.5">Your normal weekday working-hours attendance fee</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="standard_day_callout" value="yes"> Yes</label><label><input type="radio" name="standard_day_callout" value="no"> No</label></div>
+<div id="standard_day_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="standard_day_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 75"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="standard_day_callout_details" class="field mt-1.5" rows="2" placeholder="e.g. Monday–Friday, 8am–5pm. Does this include the first inspection?"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Evening call-out</p><p class="text-xs text-slate-500 mt-0.5">For visits after normal daytime hours</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="evening_callout" value="yes"> Yes</label><label><input type="radio" name="evening_callout" value="no"> No</label></div>
+<div id="evening_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="evening_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 125"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="evening_callout_details" class="field mt-1.5" rows="2" placeholder="Enter the evening time window and any conditions"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Overnight emergency call-out</p><p class="text-xs text-slate-500 mt-0.5">For emergency attendance overnight</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="overnight_callout" value="yes"> Yes</label><label><input type="radio" name="overnight_callout" value="no"> No</label></div>
+<div id="overnight_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="overnight_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 195"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="overnight_callout_details" class="field mt-1.5" rows="2" placeholder="Enter the overnight hours and what qualifies as an emergency"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Weekend call-out</p><p class="text-xs text-slate-500 mt-0.5">Saturday and Sunday attendance fee</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="weekend_callout" value="yes"> Yes</label><label><input type="radio" name="weekend_callout" value="no"> No</label></div>
+<div id="weekend_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="weekend_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 150"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="weekend_callout_details" class="field mt-1.5" rows="2" placeholder="Specify whether Saturday and Sunday have different prices"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Public holiday call-out</p><p class="text-xs text-slate-500 mt-0.5">Attendance fee on public holidays</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="holiday_callout" value="yes"> Yes</label><label><input type="radio" name="holiday_callout" value="no"> No</label></div>
+<div id="holiday_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="holiday_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 225"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="holiday_callout_details" class="field mt-1.5" rows="2" placeholder="List any holidays or conditions that are treated differently"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">Urgent same-day call-out</p><p class="text-xs text-slate-500 mt-0.5">Priority attendance requested for the same day</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="urgent_same_day_callout" value="yes"> Yes</label><label><input type="radio" name="urgent_same_day_callout" value="no"> No</label></div>
+<div id="urgent_same_day_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="urgent_same_day_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 110"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="urgent_same_day_callout_details" class="field mt-1.5" rows="2" placeholder="Specify availability, cut-off times and conditions"></textarea></label>
+</div></div>
+<div class="border-t border-slate-100 pt-4">
+<div><p class="text-sm font-semibold">24-hour emergency service call-out</p><p class="text-xs text-slate-500 mt-0.5">Emergency attendance fee when your 24-hour service is operating</p></div>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="emergency_24hr_callout" value="yes"> Yes</label><label><input type="radio" name="emergency_24hr_callout" value="no"> No</label></div>
+<div id="emergency_24hr_callout_panel" class="hidden mt-3 grid sm:grid-cols-2 gap-3">
+<label class="block text-sm font-semibold">Call-out price (USD)<input id="emergency_24hr_callout_price" class="field mt-1.5" type="number" min="0" step="0.01" placeholder="e.g. 195"></label>
+<label class="block text-sm font-semibold">Conditions / hours covered<textarea id="emergency_24hr_callout_details" class="field mt-1.5" rows="2" placeholder="Confirm the hours covered, response area and any limits"></textarea></label>
+</div></div>
+</div>
+<div class="border-t border-slate-100 pt-4 space-y-4">
+
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Is the call-out fee deducted from the repair bill?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="callout_credit" value="yes"> Yes</label><label><input type="radio" name="callout_credit" value="no"> No</label></div>
+<div id="callout_credit_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="callout_credit_details" class="field mt-1.5" rows="2" placeholder="Explain when the fee is credited, if applicable."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Do you have a minimum labour charge?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="minimum_labour" value="yes"> Yes</label><label><input type="radio" name="minimum_labour" value="no"> No</label></div>
+<div id="minimum_labour_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="minimum_labour_details" class="field mt-1.5" rows="2" placeholder="Enter the minimum charge, hours covered and when it applies."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Do you charge an hourly labour rate?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="hourly_rate" value="yes"> Yes</label><label><input type="radio" name="hourly_rate" value="no"> No</label></div>
+<div id="hourly_rate_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="hourly_rate_details" class="field mt-1.5" rows="2" placeholder="Enter the hourly rate, whether it differs by trade or time, and any minimum hours."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Do you offer fixed-price jobs?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="fixed_prices" value="yes"> Yes</label><label><input type="radio" name="fixed_prices" value="no"> No</label></div>
+<div id="fixed_prices_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="fixed_prices_details" class="field mt-1.5" rows="2" placeholder="List each job and its fixed price. The receptionist may quote only listed jobs."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Do you charge a diagnostic or inspection fee?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="diagnostic_fee" value="yes"> Yes</label><label><input type="radio" name="diagnostic_fee" value="no"> No</label></div>
+<div id="diagnostic_fee_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="diagnostic_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the price and what the inspection includes."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">Do you charge for estimates or quotations?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="estimate_fee" value="yes"> Yes</label><label><input type="radio" name="estimate_fee" value="no"> No</label></div>
+<div id="estimate_fee_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="estimate_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the price and when the fee applies; say if it is credited to accepted work."></textarea></label></div>
+</div>
+<div class="border-t border-slate-100 pt-3">
+<p class="text-sm font-semibold">How are parts and materials charged?</p>
+<div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="materials_policy" value="yes"> Yes</label><label><input type="radio" name="materials_policy" value="no"> No</label></div>
+<div id="materials_policy_panel" class="hidden mt-3"><label class="block text-sm">Price / details<textarea id="materials_policy_details" class="field mt-1.5" rows="2" placeholder="Explain whether materials are included, itemised separately or subject to approval."></textarea></label></div>
+</div>
+</div>
+</div>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
+<div><h3 class="font-semibold">How customers can pay</h3><p class="text-xs text-slate-500">Tell your receptionist which payment options your business accepts.</p></div>
+<p class="text-sm font-semibold">Do you want payment links sent to customers?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="payment_link_choice" value="yes"> Yes</label><label><input type="radio" name="payment_link_choice" value="no"> No</label></div>
+<div id="payment_link_choice_panel" class="hidden space-y-2"><label class="block text-sm font-semibold">When should a payment link be sent?<textarea id="paymentLinkDetails" class="field mt-1.5" rows="2" placeholder="e.g. Send the call-out fee before travelling"></textarea></label><p class="text-xs text-amber-800 bg-amber-50 rounded-lg p-3">A payment provider connection is still required before real payment links can be sent.</p></div>
+<p class="text-sm font-semibold border-t border-slate-100 pt-3">Are you cash only?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="cash_only" value="yes"> Yes</label><label><input type="radio" name="cash_only" value="no"> No</label></div>
+<div id="cash_only_panel" class="hidden"><label class="block text-sm">Other accepted payment methods<textarea id="otherPaymentMethods" class="field mt-1.5" rows="2" placeholder="e.g. card, bank transfer, cheque"></textarea></label></div>
+</div>
+</section>
 <section class="border-t border-slate-100 pt-6 space-y-4">
 <h2 class="font-bold text-lg">Call-out and emergency contact</h2>
 <p class="text-sm text-slate-600">Enter the number the receptionist should use for emergency call-outs. Change it whenever your on-call person or shift changes.</p>
@@ -49,20 +208,10 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <p class="text-sm font-semibold">What should Sloane do with this number?</p>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="handle_and_notify" class="mt-1"><span><strong>Handle the call and pass on the details</strong><span class="block text-slate-500 mt-0.5">Sloane speaks with the customer, gathers the details and sends them to this number.</span></span></label>
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
-<label class="block text-sm font-semibold">Emergency call-out fee (optional)<input id="emergencyCallOutFee" class="field mt-1.5" placeholder="Leave blank if not applicable"></label>
-</section>
-<section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Payment links</h2>
-<label class="flex items-start gap-3 text-sm"><input id="paymentLinksEnabled" type="checkbox" class="mt-1"><span><strong>Allow Sloane to send payment links</strong><span class="block text-slate-500 mt-0.5">When enabled and connected, Sloane can send a payment link for an agreed call-out fee or other amount approved by the business.</span></span></label>
-<div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-sm text-amber-900"><strong>Payment provider connection still required.</strong> The business will need to connect its own payment account (Stripe is our proposed first option). Payments should go directly to that business. This checkbox saves the preference only; it does not yet create or send real payment links.</div>
-</section>
-<section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Receptionist style</h2>
-<div class="grid sm:grid-cols-2 gap-4">
-<label class="text-sm font-semibold">Communication style<select id="voiceStyle" class="field mt-1.5"><option value="calm">Calm and reassuring</option><option value="authoritative">Firm, authoritative and calm</option><option value="friendly">Warm and friendly expert</option></select></label>
 
-</div>
 </section>
+
+
 <div class="flex flex-col sm:flex-row gap-3 pt-2">
 <a href="dashboard.html" class="text-center px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm">Back</a>
 <button id="save-button" class="primary flex-1 rounded-xl py-3.5" type="submit">Save business setup</button>
@@ -79,7 +228,20 @@ const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomai
 if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
-const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','callOutContactNumber','voiceStyle','voicePreference'];
+const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','callOutContactNumber'];
+const chargeChoices=['standard_day_callout','evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','minimum_labour','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee','materials_policy'];
+const optionalChoices=['extra_services',...chargeChoices,'payment_link_choice','cash_only'];
+function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
+optionalChoices.forEach(name=>document.querySelectorAll('input[name="'+name+'"]').forEach(input=>input.addEventListener('change',()=>setChoice(name,input.value))));
+function updateTradePanel(){const trade=document.getElementById('primaryTrade').value;document.querySelectorAll('.trade-panel').forEach(panel=>panel.classList.toggle('hidden',panel.id!=='trade_'+trade));}
+document.getElementById('primaryTrade').addEventListener('change',updateTradePanel);
+updateTradePanel();
+function loadChoice(data,name){const value=data[name];if(value==='yes'||value==='no'){const input=document.querySelector('input[name="'+name+'"][value="'+value+'"]');if(input)input.checked=true;setChoice(name,value);}}
+const tradeInstructionFields=['plumbingJobTypes','plumbingTriage','plumbingLimits','roofingJobTypes','roofingTriage','roofingLimits','hvacJobTypes','hvacTriage','hvacLimits','electricalJobTypes','electricalTriage','electricalLimits','buildingJobTypes','buildingTriage','buildingLimits','multiJobTypes','multiTriage','multiLimits','safetyTriggers','escalationRules','neverPromise'];
+const chargePriceFields=['standard_day_callout_price','evening_callout_price','overnight_callout_price','weekend_callout_price','holiday_callout_price','urgent_same_day_callout_price','emergency_24hr_callout_price'];
+const chargeDetailFields=['standard_day_callout_details','evening_callout_details','overnight_callout_details','weekend_callout_details','holiday_callout_details','urgent_same_day_callout_details','emergency_24hr_callout_details','callout_credit_details','minimum_labour_details','hourly_rate_details','fixed_prices_details','diagnostic_fee_details','estimate_fee_details','materials_policy_details'];
+const optionalTextFields=['serviceDetails','excludedJobs','paymentLinkDetails','otherPaymentMethods',...chargeDetailFields,...tradeInstructionFields];
+const optionalPriceFields=chargePriceFields;
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -101,7 +263,10 @@ auth.onAuthStateChanged(async user=>{
   document.getElementById('voiceMale').checked=data.voicePreference==='male';
   document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify';
   document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
-  document.getElementById('paymentLinksEnabled').checked=!!data.paymentLinksEnabled;
+  optionalChoices.forEach(name=>loadChoice(data,name));
+  optionalTextFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  optionalPriceFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  document.getElementById('paymentLinksEnabled')?.remove();
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
 form.addEventListener('submit',async e=>{
@@ -111,7 +276,42 @@ form.addEventListener('submit',async e=>{
  fields.forEach(id=>{if(id!=='voicePreference')update[id]=document.getElementById(id).value.trim()});
  update.voicePreference=document.querySelector('input[name="voicePreference"]:checked')?.value||'female';
  update.callOutMode=document.querySelector('input[name="callOutMode"]:checked')?.value||'give_number';
- update.paymentLinksEnabled=document.getElementById('paymentLinksEnabled').checked;
+ optionalChoices.forEach(name=>{update[name]=document.querySelector('input[name="'+name+'"]:checked')?.value||'';});
+ optionalTextFields.forEach(id=>{update[id]=document.getElementById(id).value.trim();});
+ optionalPriceFields.forEach(id=>{update[id]=document.getElementById(id).value;});
+ 
+ const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[document.getElementById('primaryTrade').value]||'trade services';
+ const instructionLines=[
+ 'TRIDASHAI RECEPTIONIST OPERATING INSTRUCTIONS',
+ 'Business: '+(update.businessName||'Business name not supplied'),
+ 'Trade: '+tradeLabel,
+ 'Phone: '+(update.businessPhone||'Not supplied'),
+ 'Service area: '+(update.serviceAreas||'Not supplied'),
+ 'Operating hours: '+(update.operatingHours||'Not supplied'),
+ 'Services offered: '+(update.serviceDetails||update.additionalServices||'Not yet specified; ask the business before confirming an unlisted service.'),
+ 'Jobs excluded: '+(update.excludedJobs||'Not specified; do not assume a service is offered.'),
+ 'PRICING AUTHORITY: Quote only prices explicitly recorded below. Never estimate, invent, combine or alter a price. If the applicable price is missing or unclear, explain that the contractor must confirm it.',
+ ...chargeChoices.map(key=>key+': '+(update[key]==='yes'?((update[key+'_price']||update[key+'_details']||'Enabled, but price/details not completed')+'; conditions: '+(update[key+'_details']||'None supplied')):'Not offered or not confirmed')),
+ 'Hourly labour: '+(update.hourly_rate==='yes'?(update.hourly_rate_details||'Enabled; details missing'):'Not offered/not confirmed'),
+ 'Fixed-price work: '+(update.fixed_prices==='yes'?(update.fixed_prices_details||'Enabled; list missing'):'Not offered/not confirmed'),
+ 'Minimum labour: '+(update.minimum_labour==='yes'?(update.minimum_labour_details||'Enabled; details missing'):'Not specified'),
+ 'Diagnostic/inspection fee: '+(update.diagnostic_fee==='yes'?(update.diagnostic_fee_details||'Enabled; details missing'):'Not specified'),
+ 'Estimate fee: '+(update.estimate_fee==='yes'?(update.estimate_fee_details||'Enabled; details missing'):'Not specified'),
+ 'Call-out credit: '+(update.callout_credit==='yes'?(update.callout_credit_details||'Yes; conditions missing'):'No/not confirmed'),
+ 'Materials: '+(update.materials_policy_details||'Not specified; do not promise inclusion'),
+ 'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
+ 'TRADE JOB TYPES: '+(update[({plumber:'plumbingJobTypes',roofer:'roofingJobTypes',hvac:'hvacJobTypes',electrician:'electricalJobTypes',builder:'buildingJobTypes',multi:'multiJobTypes'})[document.getElementById('primaryTrade').value]]||'Not supplied'),
+ 'TRADE TRIAGE QUESTIONS: '+(update[({plumber:'plumbingTriage',roofer:'roofingTriage',hvac:'hvacTriage',electrician:'electricalTriage',builder:'buildingTriage',multi:'multiTriage'})[document.getElementById('primaryTrade').value]]||'Ask concise questions to understand the problem, location, urgency and access before dispatch.'),
+ 'TRADE LIMITS: '+(update[({plumber:'plumbingLimits',roofer:'roofingLimits',hvac:'hvacLimits',electrician:'electricalLimits',builder:'buildingLimits',multi:'multiLimits'})[document.getElementById('primaryTrade').value]]||'Not supplied'),
+ 'SAFETY TRIGGERS: '+(update.safetyTriggers||'Use conservative safety handling. If there is immediate danger, stop routine booking, advise the caller to move away from danger and contact local emergency services where appropriate. Do not provide hazardous repair instructions.'),
+ 'ESCALATION: '+(update.escalationRules||'Escalate urgent or uncertain cases to the contractor using the configured call-out contact.'),
+ 'NEVER PROMISE: '+(update.neverPromise||'Never diagnose beyond the information provided, promise unconfirmed availability or arrival times, or quote unlisted prices.'),
+ 'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
+ 'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the listed services, say the contractor will confirm and escalate. Do not guess.'
+ ];
+ update.receptionistInstructions=instructionLines.join('\n');
+
+ update.paymentLinksEnabled=update.payment_link_choice==='yes';
  update.setupComplete=true;
  update.profileComplete=true;
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
