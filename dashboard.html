@@ -108,7 +108,7 @@
                 </button>
             </div>
 
-            <a href="settings.html" class="mr-3 inline-flex items-center rounded-lg border border-blue-500/40 bg-blue-500/10 px-3 py-2 text-xs sm:text-sm font-bold text-blue-300 hover:bg-blue-500/20 transition whitespace-nowrap">Personalise receptionist</a>
+            <a href="settings.html" class="mr-3 inline-flex items-center rounded-lg border border-blue-500/40 bg-blue-500/10 px-3 py-2 text-xs sm:text-sm font-bold text-blue-300 hover:bg-blue-500/20 transition whitespace-nowrap">Advanced Setup</a>
 
             <!-- RIGHT SIDE: HAMBURGER MENU BUTTON -->
             <div class="relative">
@@ -202,6 +202,45 @@
             </div>
           </div>
         </section>
+        <!-- ADVANCED BUSINESS SETUP -->
+        <section id="advanced-setup" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Business configuration</p><h3 class="text-lg font-extrabold text-white mt-1">Advanced Setup</h3><p class="text-sm text-slate-300 mt-1">Fine-tune the services you offer, call-out charges, pricing rules, payment options and the instructions your receptionist follows.</p></div>
+            <a href="settings.html" class="btn-primary-blue rounded-xl px-5 py-3 text-sm text-center whitespace-nowrap">Open Advanced Setup</a>
+          </div>
+          <p class="text-xs text-slate-400">Quick Start collects the essentials. Advanced Setup lets you tailor the receptionist to the way your business operates.</p>
+        </section>
+
+        <!-- JOBS & CUSTOMERS -->
+        <section id="jobs-customers" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 border-b border-slate-800/40 pb-4">
+            <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Business activity</p><h3 class="text-xl font-extrabold text-white mt-1">Jobs &amp; Customers</h3><p class="text-sm text-slate-300 mt-1">Keep a central record of work, appointments, completion and payment — including jobs that did not come through TriDashAI.</p></div>
+            <span id="jobs-count" class="text-xs text-slate-400">Your job register</span>
+          </div>
+          <form id="add-job-form" class="grid sm:grid-cols-2 gap-3">
+            <label class="text-sm text-slate-300">Customer name<input id="job-customer-name" required class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Customer's name"></label>
+            <label class="text-sm text-slate-300">Customer phone<input id="job-customer-phone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Phone number"></label>
+            <label class="text-sm text-slate-300 sm:col-span-2">Job description<input id="job-description" required class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Repair leaking kitchen pipe"></label>
+            <label class="text-sm text-slate-300 sm:col-span-2">Service address<input id="job-address" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Where the work is being carried out"></label>
+            <label class="text-sm text-slate-300">Appointment date<input id="job-date" type="date" class="dashboard-input mt-1 w-full rounded-xl p-3"></label>
+            <label class="text-sm text-slate-300">Estimated job value (USD)<input id="job-value" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Optional"></label>
+            <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-3"><button type="submit" id="add-job-button" class="btn-primary-blue rounded-xl px-5 py-3 text-sm">Add job to register</button><span id="job-form-message" class="text-xs text-slate-400" role="status">You can add jobs manually now. Receptionist-created jobs will require a secure server connection.</span></div>
+          </form>
+          <div class="border-t border-slate-800/40 pt-4">
+            <div class="flex items-center justify-between gap-3 mb-3"><h4 class="text-sm font-bold text-white">Job register</h4><span class="text-xs text-slate-400">Most recent first</span></div>
+            <div id="jobs-list" class="space-y-3"><div class="rounded-xl border border-dashed border-slate-700 p-5 text-center text-sm text-slate-400">Loading your job records…</div></div>
+          </div>
+        </section>
+
+        <!-- REPUTATION & GOOGLE REVIEWS -->
+        <section id="reputation-reviews" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
+          <div class="border-b border-slate-800/40 pb-4"><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Customer reputation</p><h3 class="text-xl font-extrabold text-white mt-1">Reputation &amp; Google Reviews</h3><p class="text-sm text-slate-300 mt-1">Review requests follow completed jobs. New Google reviews can be monitored and responses managed after your profile is connected.</p></div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2"><h4 class="font-bold text-white">Review requests</h4><p class="text-sm text-slate-300">When a job is marked complete, TriDashAI can send the customer your Google review link. Payment status will be recorded separately.</p><p class="text-xs text-amber-300">Google profile and messaging connection required. Sending is not active yet.</p></div>
+            <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2"><h4 class="font-bold text-white">Google review responses</h4><p class="text-sm text-slate-300">New reviews, suggested replies, approval and response history will appear here after Google Business Profile integration.</p><p class="text-xs text-amber-300">Google connection required. No reviews are being monitored yet.</p></div>
+          </div>
+        </section>
+
         <!-- STAGE 2: LIVE PERFORMANCE & METRICS -->
         <section id="stage-2" class="space-y-6">
             <div class="border-b border-slate-800/40 pb-2">
@@ -463,8 +502,9 @@
       const dashboardDb = firebase.firestore();
       const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
-      document.getElementById('qs-isMultiTrade').addEventListener('change',e=>{
-        document.getElementById('qs-additional-trades-wrap').classList.toggle('hidden',!e.target.checked);
+      const multiTradeToggle=document.getElementById('qs-isMultiTrade');
+      if(multiTradeToggle) multiTradeToggle.addEventListener('change',e=>{
+        document.getElementById('qs-additional-trades-wrap')?.classList.toggle('hidden',!e.target.checked);
       });
       document.getElementById('quick-start-form').addEventListener('submit',async e=>{
         e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
@@ -496,6 +536,9 @@
             return;
           }
           let data=profile.data();
+          activeBusinessId=user.uid;
+          if(jobsUnsubscribe) jobsUnsubscribe();
+          jobsUnsubscribe=dashboardDb.collection('businesses').doc(user.uid).collection('jobs').orderBy('createdAt','desc').onSnapshot(renderJobs,err=>{document.getElementById('jobs-list').textContent='Could not load job records: '+err.message;});
           if (data.accountStatus === 'pending_verification' && user.emailVerified) {
             await dashboardDb.collection('businesses').doc(user.uid).set({
               accountStatus:'setup',
@@ -528,6 +571,256 @@
           }
         } catch(error) { console.error('Could not load business profile:',error); }
       });
+
+      // Manual job register. Receptionist-originated jobs will be added later through a trusted server integration.
+      let activeBusinessId=null;
+      let jobsUnsubscribe=null;
+      function renderJobs(snapshot){
+        const list=document.getElementById('jobs-list');
+        const count=document.getElementById('jobs-count');
+        if(!list)return;
+        const docs=snapshot.docs;
+        count.textContent=docs.length+' job'+(docs.length===1?'':'s')+' recorded';
+        list.replaceChildren();
+        if(!docs.length){const empty=document.createElement('div');empty.className='rounded-xl border border-dashed border-slate-700 p-5 text-center text-sm text-slate-400';empty.textContent='No jobs recorded yet. Add the first job above.';list.appendChild(empty);return;}
+        docs.forEach(doc=>{
+          const job=doc.data();
+          const card=document.createElement('article');card.className='rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-3';
+          const top=document.createElement('div');top.className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2';
+          const title=document.createElement('div');
+          const name=document.createElement('h5');name.className='font-bold text-white';name.textContent=job.customerName||'Customer';
+          const desc=document.createElement('p');desc.className='text-sm text-slate-300 mt-1';desc.textContent=job.description||'No job description';
+          title.append(name,desc);
+          const status=document.createElement('span');status.className='text-xs font-semibold rounded-full px-3 py-1 bg-blue-500/10 text-blue-300 self-start';status.textContent=job.status||'Booked';
+          top.append(title,status);card.appendChild(top);
+          const details=document.createElement('div');details.className='grid sm:grid-cols-2 gap-2 text-xs text-slate-400';
+          const info=[job.phone?'Phone: '+job.phone:'',job.address?'Address: '+job.address:'',job.appointmentDate?'Appointment: '+job.appointmentDate:'',job.estimatedValue!==null&&job.estimatedValue!==undefined&&job.estimatedValue!==''?'Estimated value: 
+      document.getElementById('save-job-value-btn')?.addEventListener('click',async()=>{
+        const user=dashboardAuth.currentUser;if(!user)return;
+        const value=Number(document.getElementById('custom-job-value').value);
+        if(!Number.isFinite(value)||value<=0){alert('Enter a valid average job value first.');return;}
+        try{await dashboardDb.collection('businesses').doc(user.uid).set({averageJobValue:value,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});updateDashboardROI();alert('Average job value saved.');}
+        catch(error){alert('Could not save average job value: '+error.message);}
+      });
+    </script>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Dark by default; remember the user's choice on this device.
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const savedTheme = localStorage.getItem('tridashai-theme') || 'dark';
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+        document.body.classList.toggle('light-theme', savedTheme === 'light');
+        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        themeToggleBtn.addEventListener('click', () => {
+            const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+            document.body.classList.toggle('dark-theme', nextTheme === 'dark');
+            document.body.classList.toggle('light-theme', nextTheme === 'light');
+            themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('tridashai-theme', nextTheme);
+        });
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                themeIcon.textContent = '🌙';
+            } else {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                themeIcon.textContent = '☀️';
+            }
+        });
+
+        // Hamburger Menu Toggle Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Functional Call Forwarding Toggle & Status Panel Logic
+        function handleForwardingToggle(checkbox) {
+            const statusLabel = document.getElementById('toggle-status-label');
+            const statusPanel = document.getElementById('forwarding-status-panel');
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+            const statusCodeTag = document.getElementById('status-code-tag');
+
+            if (checkbox.checked) {
+                // ON State
+                statusLabel.textContent = 'ON';
+                statusLabel.className = 'text-xs font-bold text-emerald-400';
+                
+                statusPanel.className = 'bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300';
+                statusDot.className = 'w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse';
+                statusText.className = 'text-xs font-bold text-emerald-400';
+                statusText.textContent = 'Routing to TriDashAI Assistant';
+                statusCodeTag.textContent = '*71 Active';
+            } else {
+                // OFF State
+                statusLabel.textContent = 'OFF';
+                statusLabel.className = 'text-xs font-bold text-slate-400';
+                
+                statusPanel.className = 'bg-slate-800/40 border border-slate-700/40 p-3 rounded-xl flex items-center justify-between mb-3 transition-all duration-300';
+                statusDot.className = 'w-2.5 h-2.5 bg-slate-500 rounded-full';
+                statusText.className = 'text-xs font-bold text-slate-400';
+                statusText.textContent = 'Call Forwarding Disabled (Ringing Mobile)';
+                statusCodeTag.textContent = '##002# Cleared';
+            }
+        }
+
+        // Boost Modal Logic
+        const boostModal = document.getElementById('boost-modal');
+        const openBoostBtn = document.getElementById('open-boost-modal');
+        const openBoostMainBtn = document.getElementById('open-boost-modal-main');
+        const closeBoostBtn = document.getElementById('close-boost-modal');
+        const cancelBoostBtn = document.getElementById('cancel-boost');
+
+        if(openBoostBtn) openBoostBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        if(openBoostMainBtn) openBoostMainBtn.addEventListener('click', () => boostModal.classList.remove('hidden'));
+        if(closeBoostBtn) closeBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
+        if(cancelBoostBtn) cancelBoostBtn.addEventListener('click', () => boostModal.classList.add('hidden'));
+
+        function selectBoostTier(packName, price) {
+            alert('Usage boost checkout is not connected yet. No purchase has been made.');
+            boostModal.classList.add('hidden');
+        }
+
+        // Analytics: average recovered job value (default $300, editable by each business)
+        const jobValueInput = document.getElementById('custom-job-value');
+        const saveJobValueBtn = document.getElementById('save-job-value-btn');
+        const roiTotalDisplay = document.getElementById('roi-total-display');
+        const roiTicketTag = document.getElementById('roi-ticket-tag');
+
+        function updateDashboardROI() {
+            const ticketSize = Math.max(1, Number(jobValueInput.value) || 300);
+            const recoveredCalls = 0;
+            const totalRecovered = ticketSize * recoveredCalls;
+            roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
+            roiTicketTag.textContent = `Average job: $${ticketSize.toLocaleString()}`;
+        }
+
+        dashboardAuth.onAuthStateChanged(async user => {
+            if (!user) return;
+            try {
+                const ref = dashboardDb.collection('businesses').doc(user.uid);
+                const snap = await ref.get();
+                const savedValue = snap.exists ? Number(snap.data().averageJobValue) : 0;
+                const value = savedValue > 0 ? savedValue : 300;
+                jobValueInput.value = value;
+                updateDashboardROI();
+                if (!(savedValue > 0)) await ref.set({ averageJobValue: 300 }, { merge: true });
+            } catch (error) {
+                jobValueInput.value = 300;
+                updateDashboardROI();
+                console.error('Could not load analytics job value:', error);
+            }
+        });
+
+        saveJobValueBtn.addEventListener('click', async () => {
+            const value = Number(jobValueInput.value);
+            if (!Number.isFinite(value) || value <= 0) {
+                alert('Please enter a job value greater than $0.');
+                return;
+            }
+            saveJobValueBtn.disabled = true;
+            try {
+                const user = dashboardAuth.currentUser;
+                if (!user) throw new Error('Please sign in again.');
+                await dashboardDb.collection('businesses').doc(user.uid).set({ averageJobValue: value }, { merge: true });
+                updateDashboardROI();
+                alert(`Average recovered job value saved as $${value.toLocaleString()}.`);
+            } catch (error) {
+                alert('Could not save the average job value. Please try again.');
+                console.error(error);
+            } finally {
+                saveJobValueBtn.disabled = false;
+            }
+        });
+
+        updateDashboardROI();
+
+        // Floating Chat Toggle Logic
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatBox = document.getElementById('chat-box');
+        const chatIconOpen = document.getElementById('chat-icon-open');
+        const chatIconClose = document.getElementById('chat-icon-close');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        chatToggleBtn.addEventListener('click', () => {
+            chatBox.classList.toggle('hidden');
+            chatIconOpen.classList.toggle('hidden');
+            chatIconClose.classList.toggle('hidden');
+        });
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = chatInput.value.trim();
+            if(!query) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-blue-600 text-white p-3.5 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs sm:text-sm font-medium';
+            userMsg.textContent = query;
+            chatMessages.appendChild(userMsg);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'bg-slate-900/80 text-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-800/40 text-xs sm:text-sm';
+                aiMsg.textContent = "Thanks for reaching out! Let me know if you need any assistance with your setup.";
+                chatMessages.appendChild(aiMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+        });
+    </script>
+
+</body>
+</html>
++Number(job.estimatedValue).toFixed(2):''].filter(Boolean);
+          info.forEach(t=>{const el=document.createElement('p');el.textContent=t;details.appendChild(el);});card.appendChild(details);
+          const payment=document.createElement('p');payment.className='text-xs text-slate-300';payment.textContent='Payment: '+(job.paymentStatus||'Not recorded');card.appendChild(payment);
+          const actions=document.createElement('div');actions.className='flex flex-wrap gap-2 pt-1';
+          const addAction=(label,field,value)=>{const b=document.createElement('button');b.type='button';b.className='rounded-lg border border-slate-600 px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-800';b.textContent=label;b.addEventListener('click',async()=>{b.disabled=true;try{await dashboardDb.collection('businesses').doc(activeBusinessId).collection('jobs').doc(doc.id).update({[field]:value,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});}catch(err){alert('Could not update this job: '+err.message);}finally{b.disabled=false;}});actions.appendChild(b);};
+          if(job.status!=='Completed')addAction('Mark job complete','status','Completed');
+          if(job.paymentStatus!=='Received')addAction('Record payment received','paymentStatus','Received');
+          if(job.status==='Completed'&&job.paymentStatus==='Received'){const done=document.createElement('span');done.className='text-xs text-emerald-400';done.textContent='Job and payment recorded';actions.appendChild(done);}
+          card.appendChild(actions);list.appendChild(card);
+        });
+      }
+      document.getElementById('add-job-form')?.addEventListener('submit',async e=>{
+        e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
+        const btn=document.getElementById('add-job-button'),msg=document.getElementById('job-form-message');btn.disabled=true;btn.textContent='Saving…';
+        const value=document.getElementById('job-value').value;
+        try{
+          await dashboardDb.collection('businesses').doc(user.uid).collection('jobs').add({
+            customerName:document.getElementById('job-customer-name').value.trim(),
+            phone:document.getElementById('job-customer-phone').value.trim(),
+            description:document.getElementById('job-description').value.trim(),
+            address:document.getElementById('job-address').value.trim(),
+            appointmentDate:document.getElementById('job-date').value,
+            estimatedValue:value===''?null:Number(value),
+            status:'Booked',paymentStatus:'Not recorded',source:'manual',
+            createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+          });
+          e.target.reset();msg.textContent='Job saved to your register.';msg.className='text-xs text-emerald-400';
+        }catch(err){msg.textContent='Could not save this job: '+err.message;msg.className='text-xs text-red-400';}
+        finally{btn.disabled=false;btn.textContent='Add job to register';}
+      });
+
       document.getElementById('logout-button')?.addEventListener('click',()=>dashboardAuth.signOut().then(()=>window.location.replace('login.html')));
       document.getElementById('save-job-value-btn')?.addEventListener('click',async()=>{
         const user=dashboardAuth.currentUser;if(!user)return;
