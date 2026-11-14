@@ -134,6 +134,13 @@
         .advanced-setup-pulse { animation: advancedSetupPulse 2.8s ease-in-out infinite; }
         @keyframes advancedSetupPulse { 0%,100% { background-color: rgba(40,154,208,.08); } 50% { background-color: rgba(107,83,194,.20); } }
         @media (prefers-reduced-motion: reduce) { .advanced-setup-pulse { animation: none; } }
+
+        /* Readability pass: stronger contrast and more comfortable small text */
+        body.dark-theme .text-slate-400 { color: #b8cbe2 !important; }
+        body.dark-theme .text-slate-500 { color: #a9bfd9 !important; }
+        body.dark-theme .text-slate-300 { color: #d5e2f2 !important; }
+        body.dark-theme .text-xs { font-size: 0.8125rem; line-height: 1.5; }
+        body.dark-theme .text-\\[10px\\] { font-size: 0.75rem !important; line-height: 1.4; }
     </style>
 </head>
 <body class="dark-theme font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative transition-colors duration-300">
