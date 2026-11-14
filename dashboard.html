@@ -158,9 +158,11 @@
               <label class="block text-sm text-slate-300">Service areas<input id="qs-serviceAreas" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Towns, areas or ZIP codes you cover"></label>
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">3. Trade coverage</h3>
-              <label class="flex items-center gap-2 text-sm text-slate-300"><input id="qs-isMultiTrade" type="checkbox" class="accent-blue-600"> We provide more than one trade or service</label>
-              <div id="qs-additional-trades-wrap" class="hidden"><label class="block text-sm text-slate-300">What other trades or services do you provide?<input id="qs-additionalServices" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. plumbing, heating and electrical"></label></div>
+              <h3 class="text-base font-bold text-white">3. Calendar booking</h3>
+              <p class="text-sm text-slate-300">Would you like Sloane to book appointments directly into your business calendar?</p>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-calendarBooking" value="yes" class="mt-1"> Yes, I'd like Sloane to book appointments for me.</label>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-calendarBooking" value="no" class="mt-1"> No, I'll arrange appointments myself.</label>
+              <p class="text-xs text-slate-400">Google Calendar connection can be completed in the Calendar Sync section below.</p>
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">4. Working hours</h3>
@@ -467,7 +469,7 @@
         e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
         const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
         const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
-        update.isMultiTrade=document.getElementById('qs-isMultiTrade').checked;
+        update.calendarBooking=document.querySelector('input[name="qs-calendarBooking"]:checked')?.value||'';
         update.callOutMode=document.getElementById('qs-giveEmergencyNumber').checked?'give_number':'contact_and_update';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
@@ -502,8 +504,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
-          const multiTrade=document.getElementById('qs-isMultiTrade');
-          if(multiTrade){multiTrade.checked=!!data.isMultiTrade;document.getElementById('qs-additional-trades-wrap').classList.toggle('hidden',!multiTrade.checked);}
+          if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const emergencyNumber=document.getElementById('qs-giveEmergencyNumber');
           if(emergencyNumber)emergencyNumber.checked=data.callOutMode==='give_number';
           const businessHeading=document.getElementById('business-name-heading');
