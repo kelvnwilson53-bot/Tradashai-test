@@ -498,10 +498,8 @@
           let data=profile.data();
           if (data.accountStatus === 'pending_verification' && user.emailVerified) {
             await dashboardDb.collection('businesses').doc(user.uid).set({
-              accountStatus:'trial',
+              accountStatus:'setup',
               emailVerified:true,
-              trialStartedAt:firebase.firestore.FieldValue.serverTimestamp(),
-              trialActivatedAt:firebase.firestore.FieldValue.serverTimestamp(),
               updatedAt:firebase.firestore.FieldValue.serverTimestamp()
             },{merge:true});
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
@@ -512,7 +510,7 @@
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
-          if(planSummary) planSummary.textContent=(data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account') + (data.accountStatus==='trial' ? ' · 7-day trial' : '');
+          if(planSummary) planSummary.textContent=(data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account') + (data.accountStatus==='trial' ? ' · 7-day trial' : data.quickStartComplete ? ' · Ready for phone activation' : ' · Setup required');
           if(!data.quickStartComplete) {
             const banner=document.createElement('div');
             banner.className='mx-4 mt-4 rounded-xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-100';
@@ -521,6 +519,8 @@
           }
           const job=document.getElementById('custom-job-value');
           if(job && data.averageJobValue) job.value=data.averageJobValue;
+          const setupStatus=document.getElementById('business-plan-summary');
+          if(setupStatus && data.accountStatus==='trial') setupStatus.textContent += ' · LIVE';
           if(data.accountStatus==='trial') {
             const trialLabel=document.querySelector('#stage-2 .text-amber-400');
             if(trialLabel) trialLabel.textContent='● 7-day trial';
