@@ -551,7 +551,7 @@
           let data=profile.data();
           window.dashboardVoicePreference=data.voicePreference||'female';
           displayVoicePreference(window.dashboardVoicePreference);
-          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Preference saved to your business profile.';
+          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Saved preference only; live voice switching is not connected.';
           activeBusinessId=user.uid;
           if (data.accountStatus === 'pending_verification' && user.emailVerified) {
             await dashboardDb.collection('businesses').doc(user.uid).set({
