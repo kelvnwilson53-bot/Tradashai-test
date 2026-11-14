@@ -519,7 +519,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           const businessHeading=document.getElementById('business-name-heading');
-          if(businessHeading && data.businessName) businessHeading.textContent=data.businessName;
+          if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
           if(planSummary) planSummary.textContent=(data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account') + (data.accountStatus==='trial' ? ' · 7-day trial' : '');
           if(!data.setupComplete) {
