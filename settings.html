@@ -21,19 +21,7 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl font-extrabold mt-2">Complete your setup</h1><p class="text-slate-600 text-sm mt-2">Add the information your receptionist needs. You can return and update it at any time.</p></div>
 <div id="message" role="status" class="hidden rounded-xl p-3 text-sm"></div>
 <form id="settings-form" class="panel rounded-3xl p-6 sm:p-8 space-y-6">
-<section class="space-y-4">
-<h2 class="font-bold text-lg">Business details</h2>
-<div class="grid sm:grid-cols-2 gap-4">
-<label class="text-sm font-semibold">Business name<input id="businessName" class="field mt-1.5" required></label>
-<label class="text-sm font-semibold">Business phone<input id="businessPhone" class="field mt-1.5" type="tel" required></label>
-<label class="text-sm font-semibold">Business location<input id="businessLocation" class="field mt-1.5" placeholder="City, state"></label>
-<label class="text-sm font-semibold">ZIP code<input id="businessZip" class="field mt-1.5" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 75201"></label>
-<label class="text-sm font-semibold">Primary trade<select id="primaryTrade" class="field mt-1.5"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
-<label class="text-sm font-semibold">Additional services<input id="additionalServices" class="field mt-1.5" placeholder="Optional"></label>
-</div>
-<label class="block text-sm font-semibold">Service areas<input id="serviceAreas" class="field mt-1.5" placeholder="Cities, towns or ZIP codes you cover"></label>
-<label class="block text-sm font-semibold">Normal operating hours<input id="operatingHours" class="field mt-1.5" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
-</section>
+
 
 <div class="rounded-2xl border border-slate-200 p-4 space-y-4">
 <div><h3 class="font-semibold">Call-out charges and pricing</h3><p class="text-xs text-slate-500">Enter the charges your receptionist may quote. Leave a price blank if it needs to be confirmed.</p></div>
@@ -63,23 +51,13 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <div id="cash_only_panel" class="hidden"><label class="block text-sm">Other accepted payment methods<textarea id="otherPaymentMethods" class="field mt-1.5" rows="2" placeholder="e.g. card, bank transfer, cheque"></textarea></label></div>
 </div>
 </section>
-<section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Call-out and emergency contact</h2>
-<p class="text-sm text-slate-600">Enter the number the receptionist should use for emergency call-outs. Change it whenever your on-call person or shift changes.</p>
-<label class="block text-sm font-semibold">Current call-out contact number
-<input id="callOutContactNumber" type="tel" class="field mt-1.5" placeholder="+1 555 123 4567" autocomplete="tel"></label>
-<p class="text-sm font-semibold">What should your receptionist do with this number?</p>
-<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeHandle" name="callOutMode" type="radio" value="contact_and_update" class="mt-1"><span><strong>Contact the on-call person</strong><span class="block text-slate-500 mt-0.5">Your receptionist handles the customer, contacts this number about the emergency, then texts the customer with the update provided by the contractor.</span></span></label>
-<label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Your receptionist gives the customer this number so they can call the on-call person directly.</span></span></label>
-
-<div class="space-y-2">
+<section class="border-t border-slate-100 pt-6 space-y-4"><div class="space-y-2">
 <p class="text-sm font-semibold">Receptionist voice</p>
 <div class="grid grid-cols-2 gap-3">
 <label class="cursor-pointer"><input id="voiceFemale" name="voicePreference" type="radio" value="female" class="peer sr-only"><span class="block rounded-xl border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700">Female voice</span></label>
 <label class="cursor-pointer"><input id="voiceMale" name="voicePreference" type="radio" value="male" class="peer sr-only"><span class="block rounded-xl border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700">Male voice</span></label>
 </div>
-</div>
-</section>
+</div></section>
 
 
 <section class="border-t border-slate-100 pt-6 space-y-4">
@@ -106,7 +84,8 @@ const firebaseConfig={apiKey:"AIzaSyBTGwDZYtUjJX0FQJtVJr5CIeqiskYhI6k",authDomai
 if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
-const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','callOutContactNumber'];
+const fields=[];
+let savedProfile={};
 const chargeChoices=['evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee'];
 const optionalChoices=['other_receptionist_info',...chargeChoices,'payment_link_choice','cash_only'];
 function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
@@ -127,7 +106,7 @@ auth.onAuthStateChanged(async user=>{
  try{
   const snap=await db.collection('businesses').doc(user.uid).get();
   if(!snap.exists){showMessage('We could not find your business profile. Please contact support so we can help recover your setup.',true);return;}
-  const data=snap.data();
+  const data=snap.data(); savedProfile=data;
   fields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
   // Keep older combined location values visible when loading records created before ZIP was separated.
   if(data.businessZip===undefined && data.businessLocation && /\b\d{5}(?:-\d{4})?\b/.test(data.businessLocation)){
@@ -156,14 +135,14 @@ form.addEventListener('submit',async e=>{
  optionalTextFields.forEach(id=>{update[id]=document.getElementById(id).value.trim();});
  optionalPriceFields.forEach(id=>{update[id]=document.getElementById(id).value;});
  
- const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[document.getElementById('primaryTrade').value]||'trade services';
+ const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[savedProfile.primaryTrade]||'trade services';
  const instructionLines=[
  'TRIDASHAI RECEPTIONIST OPERATING INSTRUCTIONS',
- 'Business: '+(update.businessName||'Business name not supplied'),
+ 'Business: '+(savedProfile.businessName||'Business name not supplied'),
  'Trade: '+tradeLabel,
- 'Phone: '+(update.businessPhone||'Not supplied'),
- 'Service area: '+(update.serviceAreas||'Not supplied'),
- 'Operating hours: '+(update.operatingHours||'Not supplied'),
+ 'Phone: '+(savedProfile.businessPhone||'Not supplied'),
+ 'Business location: '+([savedProfile.businessLocation,savedProfile.businessZip].filter(Boolean).join(', ')||'Not supplied'),\n 'Service area: '+(savedProfile.serviceAreas||'Not supplied'),
+ 'Services provided: '+(savedProfile.servicesProvided||savedProfile.additionalServices||'Not supplied'),\n 'Jobs excluded: '+(savedProfile.excludedJobs||'Not specified'),\n 'Operating hours: '+(savedProfile.operatingHours||'Not supplied'),\n 'Out-of-hours handling: '+(savedProfile.afterHoursHandling||'Not specified'),\n 'Call handling instructions: '+(savedProfile.callHandlingInstructions||'Not specified'),
  'Additional information from contractor: '+(update.receptionistAdditionalInfo||'None supplied.'),
  'Standard daytime call-out: '+(update.standard_day_callout_price?'$'+update.standard_day_callout_price:'No price entered')+'; hours: '+(update.standard_day_callout_details||'Not specified'),
  'PRICING AUTHORITY: Quote only prices explicitly recorded below. If a price is blank or a job is not listed, explain that the contractor will confirm the price. Never guess.',
@@ -176,8 +155,8 @@ form.addEventListener('submit',async e=>{
  'Materials: '+(update.materials_policy_details||'Not specified; do not promise inclusion'),
  'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
  'SAFETY: If there is immediate danger, stop routine booking, advise the caller to move away from danger and contact local emergency services where appropriate. Do not provide hazardous repair instructions.',
- 'EMERGENCY CONTACT ACTION: '+(update.callOutMode==='contact_and_update'?'Contact the on-call person using the saved number. Handle the customer and send an SMS update using only response or arrival information confirmed by the contractor. Never invent an arrival time.':'Give the customer the saved on-call number so they can contact that person directly.'),
- 'ESCALATION: Escalate urgent or uncertain cases to the contractor using the configured call-out contact.',
+ 'EMERGENCY CONTACT NUMBER: '+(savedProfile.callOutContactNumber||'Not supplied'),\n 'EMERGENCY INSTRUCTIONS: '+(savedProfile.emergencyInstructions||'Use conservative safety handling.'),\n 'EMERGENCY CONTACT ACTION: '+(savedProfile.callOutMode==='contact_and_update'?'Contact the on-call person using the saved number. Handle the customer and send an SMS update using only response or arrival information confirmed by the contractor. Never invent an arrival time.':'Give the customer the saved on-call number so they can contact that person directly.'),
+ 'ESCALATION: Escalate urgent or uncertain cases to the contractor using the configured call-out contact.'+ (savedProfile.callOutContactNumber?' '+savedProfile.callOutContactNumber:''),
  'NEVER PROMISE: Never diagnose beyond the information provided, promise unconfirmed availability or arrival times, or quote unlisted prices.',
  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the listed services, say the contractor will confirm and escalate. Do not guess.'
