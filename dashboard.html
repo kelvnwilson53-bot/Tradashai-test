@@ -135,28 +135,19 @@
         <section id="stage-1" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/40 pb-4">
                 <div>
-                    <span class="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-1">
-                        ● Stage 1
-                    </span>
-                    <h2 class="text-xl sm:text-2xl font-extrabold text-white">Getting started</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-0.5">Your phone and calendar connections will appear here when ready.</p>
+                    <div class="flex items-center gap-3 flex-wrap"><h2 class="text-xl sm:text-2xl font-extrabold text-white">Quick Start</h2><span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-xl">2-minute setup</span></div>
                 </div>
-                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-xl self-start sm:self-auto">
-                    2 Min Setup
-                </span>
+                
             </div>
 
-            <div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs sm:text-sm text-slate-200 leading-relaxed">
-                <strong class="text-blue-300">Get more from your 7-day trial.</strong>
-                Take a few minutes to tailor your AI receptionist and dispatcher to the way your business works. Explore features such as emergency call-outs and payment links, now or whenever you have a moment.
-            </div>
+            
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- STEP 1: CALL FORWARDING WITH FUNCTIONAL TOGGLE & STATUS PANEL -->
                 <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-4 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding Control</h4>
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Call Forwarding</h4>
                             
                             <!-- FUNCTIONAL TOGGLE SWITCH -->
                             <div class="flex items-center gap-2.5">
@@ -218,17 +209,11 @@
             </div>
         </section>
 
-        <details id="more-dashboard-details" class="dashboard-card rounded-2xl overflow-hidden"><summary class="cursor-pointer list-none px-5 py-5 sm:px-7 flex items-center justify-between gap-4"><span><strong class="block text-base text-white">More dashboard tools</strong><span class="text-xs text-slate-400">Business settings, usage, reviews and billing</span></span><span class="text-blue-400 text-sm font-bold">View details ↓</span></summary><div class="px-5 pb-6 sm:px-7 space-y-6">
+        <details id="more-dashboard-details" class="dashboard-card rounded-2xl overflow-hidden"><summary class="cursor-pointer list-none px-5 py-4 sm:px-6 flex items-center gap-3"><span class="min-w-0"><strong class="text-base text-white">More dashboard tools</strong><span class="block text-xs text-slate-400 mt-1">Business settings, usage, reviews and billing</span></span><span class="ml-auto shrink-0 text-blue-400 text-sm font-bold">View details ↓</span></summary><div class="px-5 pb-6 sm:px-7 space-y-6">
 
         <!-- STAGE 2: BUSINESS SETTINGS -->
         <section id="stage-2" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
-            <div class="border-b border-slate-800/40 pb-4">
-                <span class="inline-block bg-slate-800/40 border border-slate-700/40 text-slate-300 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-1">
-                    ● Stage 2
-                </span>
-                <h3 class="text-base sm:text-lg font-extrabold text-white">Business Settings</h3>
-                <p class="text-xs sm:text-sm text-slate-300">Configure your local coverage area and average job ticket value for accurate ROI tracking.</p>
-            </div>
+            <div class="border-b border-slate-800/40 pb-4"><h3 class="text-base sm:text-lg font-extrabold text-white">Business Settings</h3><p class="text-xs sm:text-sm text-slate-300">Manage your service area and receptionist setup.</p></div><div class="dashboard-card p-5 rounded-2xl space-y-2"><h4 class="font-bold text-white">Personalise your receptionist</h4><p class="text-xs text-slate-400">Add your services, call-out charges, payment preferences and emergency contact instructions.</p><a href="settings.html" class="inline-flex rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-4 py-2.5">Business setup</a></div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- SERVICE AREA CONFIGURATION -->
@@ -394,13 +379,7 @@
             </div>
         </details>
     
-        <!-- OPTIONAL BUSINESS PERSONALISATION -->
-        <section id="personalisation" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-3">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Optional setup</span>
-            <h2 class="text-xl font-extrabold text-white">Personalise your AI receptionist</h2>
-            <p class="text-sm text-slate-300">Add a little more information about your services, charges and payment preferences so your receptionist can represent your business more accurately. You can do this now or come back whenever convenient.</p>
-            <a href="settings.html" class="inline-flex items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-3">Personalise your receptionist</a>
-        </section>
+
 
     </main>
 
@@ -576,9 +555,20 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Wordless Theme Symbol Toggle Logic
+        // Dark by default; remember the user's choice on this device.
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const themeIcon = document.getElementById('theme-icon');
+        const savedTheme = localStorage.getItem('tridashai-theme') || 'dark';
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+        document.body.classList.toggle('light-theme', savedTheme === 'light');
+        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        themeToggleBtn.addEventListener('click', () => {
+            const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+            document.body.classList.toggle('dark-theme', nextTheme === 'dark');
+            document.body.classList.toggle('light-theme', nextTheme === 'light');
+            themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('tridashai-theme', nextTheme);
+        });
 
         themeToggleBtn.addEventListener('click', () => {
             if (document.body.classList.contains('dark-theme')) {
