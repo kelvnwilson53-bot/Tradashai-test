@@ -172,11 +172,12 @@
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">5. Emergency handling</h3>
+              <p class="text-sm font-semibold text-white">How should your receptionist handle emergency calls?</p>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="handle_call" class="mt-1 accent-blue-600"> <span><strong class="text-white">Receptionist handles the emergency call</strong><br>She explains your call-out charge, confirms the customer agrees, then alerts your on-call contact to contact the customer.</span></label>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="hotline" class="mt-1 accent-blue-600"> <span><strong class="text-white">Give the customer our emergency hotline number</strong><br>The receptionist gives the customer your separate emergency number to call directly.</span></label>
               <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-              <p class="text-sm font-semibold text-white">When an emergency call comes in:</p>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="handle_call" class="mt-1 accent-blue-600"> <span><strong class="text-white">My receptionist handles the call-out.</strong><br>She explains my call-out fee, gets the customer's agreement, sends a payment link if required, then alerts my person on duty to contact the customer.</span></label>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="give_number" class="mt-1 accent-blue-600"> <span><strong class="text-white">Give the customer my emergency number.</strong><br>She collects the essential details and gives the customer this number to arrange the call-out directly.</span></label>
-              <label class="block text-sm text-slate-300">Additional emergency instructions <span class="font-normal text-slate-400">(optional)</span><textarea id="qs-emergencyInstructions" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Any special safety instructions or limits"></textarea></label>
+              <p id="qs-emergency-fee-note" class="text-xs text-slate-400">For receptionist-handled calls, enter your call-out charges in Advanced Setup. Your receptionist will confirm the applicable charge and the customer's agreement before notifying your on-call contact.</p>
+              <p class="text-xs text-slate-400">When phone service goes live, make a simulated emergency call to test the full process before relying on it.</p>
             </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
@@ -550,7 +551,7 @@
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
-          const savedEmergencyMode=data.callOutMode==='give_number'?'give_number':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
+          const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
