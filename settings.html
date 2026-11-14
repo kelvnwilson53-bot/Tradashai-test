@@ -45,7 +45,7 @@ a{transition:color .2s ease}
 <div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you offer fixed-price jobs?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="fixed_prices" value="yes"> Yes</label><label><input type="radio" name="fixed_prices" value="no"> No</label></div><div id="fixed_prices_panel" class="hidden mt-3"><label class="block text-sm">Jobs and prices<textarea id="fixed_prices_details" class="field mt-1.5" rows="2" placeholder="List each job and its fixed price."></textarea></label></div></div>
 <div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge a diagnostic or inspection fee?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="diagnostic_fee" value="yes"> Yes</label><label><input type="radio" name="diagnostic_fee" value="no"> No</label></div><div id="diagnostic_fee_panel" class="hidden mt-3"><label class="block text-sm">Fee and what it includes<textarea id="diagnostic_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the fee and what the inspection includes."></textarea></label></div></div>
 <div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge for estimates or quotations?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="estimate_fee" value="yes"> Yes</label><label><input type="radio" name="estimate_fee" value="no"> No</label></div><div id="estimate_fee_panel" class="hidden mt-3"><label class="block text-sm">Fee and conditions<textarea id="estimate_fee_details" class="field mt-1.5" rows="2" placeholder="Enter the fee and when it applies."></textarea></label></div></div>
-<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">How are parts and materials charged?</p><div id="materials_policy_panel" class="mt-3"><label class="block text-sm">Materials policy<textarea id="materials_policy_details" class="field mt-1.5" rows="2" placeholder="e.g. Materials are charged separately and agreed with the customer before work begins."></textarea></label></div></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Does your call-out price include parts and labour?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="callout_includes_parts_labour" value="yes"> Yes</label><label><input type="radio" name="callout_includes_parts_labour" value="no"> No</label></div><p class="text-xs text-slate-600 mt-2">This refers only to the call-out charge. The plumber or tradesperson will assess the job and agree the repair price with the customer on site.</p></div>
 </div></div>
 <div class="rounded-2xl border border-slate-200 p-4 space-y-3">
 <div><h3 class="font-semibold">How customers can pay</h3><p class="text-xs text-slate-500">Tell your receptionist which payment options your business accepts.</p></div>
@@ -91,14 +91,14 @@ let currentUser=null;
 const fields=[];
 let savedProfile={};
 const chargeChoices=['evening_callout','overnight_callout','weekend_callout','holiday_callout','urgent_same_day_callout','emergency_24hr_callout','callout_credit','hourly_rate','fixed_prices','diagnostic_fee','estimate_fee'];
-const optionalChoices=['other_receptionist_info',...chargeChoices,'payment_link_choice','cash_only'];
+const optionalChoices=['other_receptionist_info',...chargeChoices,'payment_link_choice','cash_only','callout_includes_parts_labour'];
 function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
 optionalChoices.forEach(name=>document.querySelectorAll('input[name="'+name+'"]').forEach(input=>input.addEventListener('change',()=>setChoice(name,input.value))));
 
 function loadChoice(data,name){const value=data[name];if(value==='yes'||value==='no'){const input=document.querySelector('input[name="'+name+'"][value="'+value+'"]');if(input)input.checked=true;setChoice(name,value);}}
 const tradeInstructionFields=[];
 const chargePriceFields=['standard_day_callout_price','evening_callout_price','overnight_callout_price','weekend_callout_price','holiday_callout_price','urgent_same_day_callout_price','emergency_24hr_callout_price'];
-const chargeDetailFields=['standard_day_callout_details','evening_callout_details','overnight_callout_details','weekend_callout_details','holiday_callout_details','urgent_same_day_callout_details','emergency_24hr_callout_details','callout_credit_details','hourly_rate_details','fixed_prices_details','diagnostic_fee_details','estimate_fee_details','materials_policy_details'];
+const chargeDetailFields=['standard_day_callout_details','evening_callout_details','overnight_callout_details','weekend_callout_details','holiday_callout_details','urgent_same_day_callout_details','emergency_24hr_callout_details','callout_credit_details','hourly_rate_details','fixed_prices_details','diagnostic_fee_details','estimate_fee_details'];
 const optionalTextFields=['receptionistAdditionalInfo','paymentLinkDetails','otherPaymentMethods',...chargeDetailFields];
 const optionalPriceFields=chargePriceFields;
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
@@ -165,7 +165,7 @@ form.addEventListener('submit',async e=>{
  'Diagnostic/inspection fee: '+(update.diagnostic_fee==='yes'?(update.diagnostic_fee_details||'Enabled; details missing'):'Not specified'),
  'Estimate fee: '+(update.estimate_fee==='yes'?(update.estimate_fee_details||'Enabled; details missing'):'Not specified'),
  'Call-out credit: '+(update.callout_credit==='yes'?(update.callout_credit_details||'Yes; conditions missing'):'No/not confirmed'),
- 'Materials: '+(update.materials_policy_details||'Not specified; do not promise inclusion'),
+ 'CALL-OUT PRICE INCLUDES PARTS AND LABOUR: '+(update.callout_includes_parts_labour||'Not specified; do not assume either way')+'. This answer applies only to the call-out charge. Do not quote a full repair price; the contractor must assess the job and agree the work price with the customer.',
  'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
  'SAFETY: If there is immediate danger, stop routine booking, advise the caller to move away from danger and contact local emergency services where appropriate. Do not provide hazardous repair instructions.',
  'EMERGENCY CONTACT NUMBER: '+(savedProfile.callOutContactNumber||'Not supplied'),
@@ -206,7 +206,7 @@ form.addEventListener('submit',async e=>{
  'Diagnostic/inspection fee: '+(update.diagnostic_fee==='yes'?(update.diagnostic_fee_details||'Enabled; details missing'):'Not specified'),
  'Estimate fee: '+(update.estimate_fee==='yes'?(update.estimate_fee_details||'Enabled; details missing'):'Not specified'),
  'Call-out credit: '+(update.callout_credit==='yes'?(update.callout_credit_details||'Yes; conditions missing'):'No/not confirmed'),
- 'Materials: '+(update.materials_policy_details||'Not specified; do not promise inclusion'),
+ 'CALL-OUT PRICE INCLUDES PARTS AND LABOUR: '+(update.callout_includes_parts_labour||'Not specified; do not assume either way')+'. This answer applies only to the call-out charge. Do not quote a full repair price; the contractor must assess the job and agree the work price with the customer.',
  'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
  'TRADE JOB TYPES: '+(update[({plumber:'plumbingJobTypes',roofer:'roofingJobTypes',hvac:'hvacJobTypes',electrician:'electricalJobTypes',builder:'buildingJobTypes',multi:'multiJobTypes'})[document.getElementById('primaryTrade').value]]||'Not supplied'),
  'TRADE TRIAGE QUESTIONS: '+(update[({plumber:'plumbingTriage',roofer:'roofingTriage',hvac:'hvacTriage',electrician:'electricalTriage',builder:'buildingTriage',multi:'multiTriage'})[document.getElementById('primaryTrade').value]]||'Ask concise questions to understand the problem, location, urgency and access before dispatch.'),
