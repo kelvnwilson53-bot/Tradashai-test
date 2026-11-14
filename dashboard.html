@@ -180,8 +180,7 @@
               <div class="border-t border-slate-700/50 pt-3 space-y-3">
                 <h4 class="text-sm font-semibold text-white">Emergency call-outs</h4>
                 <label class="block text-sm text-slate-300">On-call notification number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-                <label class="block text-sm text-slate-300">Dedicated emergency hotline (optional)<input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Separate customer hotline, if you have one"></label>
-                <p class="text-xs text-slate-400">The on-call number receives an alert. If you have a separate emergency hotline, your receptionist can give that number to callers.</p>
+                <p class="text-xs text-slate-400">Your on-call number is used for private alerts to the tradesperson when an emergency enquiry needs attention. Customers continue to call the business number they already know.</p>
               </div>
             </section>
         <!-- PHONE CONNECTION, PART OF QUICK START -->
@@ -513,7 +512,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','standard_day_callout_price','evening_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
