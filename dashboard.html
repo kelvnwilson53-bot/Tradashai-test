@@ -195,21 +195,30 @@
             </section>
         <!-- PHONE CONNECTION, PART OF QUICK START -->
         <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-4">
-          <div><h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone connection and call forwarding</h3><p class="text-sm text-slate-300 mt-1">This is the next step after you save your business details. We will connect your TriDashAI number first, then set up and test call forwarding.</p></div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
-              <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-amber-300">NOT CONNECTED</span></div>
-              <div id="forwarding-status-panel" class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl flex items-center gap-2"><span id="status-dot" class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span><span id="status-text" class="text-xs font-bold text-amber-300">Phone service not connected yet</span></div>
-              <p class="text-xs text-slate-300">Your existing business number is the number customers already call. Calls will be forwarded to your dedicated TriDashAI number once it has been connected.</p>
-              <label class="text-sm text-slate-300">Dedicated TriDashAI business number<code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Displayed after activation</code></label>
-              <div class="flex items-center gap-3"><input type="checkbox" id="forwarding-toggle" disabled><label for="forwarding-toggle" class="text-sm text-slate-400">Call forwarding (we will activate this with you later)</label></div>
-              <p class="text-xs text-slate-400">Nothing needs to be switched on here yet. We will give you the exact instructions when your number is ready.</p>
+          <div>
+            <h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone connection</h3>
+            <p class="text-sm text-slate-300 mt-1">We'll provide your dedicated TriDashAI number and help you forward calls from your existing business number.</p>
+          </div>
+          <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between gap-3">
+              <h4 class="text-sm font-bold text-blue-400">Call forwarding</h4>
+              <span id="toggle-status-label" class="text-xs font-bold text-amber-300">NOT CONNECTED</span>
             </div>
-            <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
-              <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
-              <p class="text-sm text-slate-300">Connect your business calendar to let your receptionist arrange appointments.</p>
-              <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar connection</button>
+            <div id="forwarding-status-panel" class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl flex items-center gap-2">
+              <span id="status-dot" class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span>
+              <span id="status-text" class="text-xs font-bold text-amber-300">Waiting for phone setup</span>
             </div>
+            <div>
+              <p class="text-sm text-slate-300">Your dedicated TriDashAI number</p>
+              <code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Your number will appear here</code>
+              <p class="text-xs text-slate-400 mt-2">We'll assign this number automatically during activation. You won't need to enter it yourself.</p>
+            </div>
+            <p class="text-sm text-slate-300">Once your number is assigned, we'll guide you through forwarding calls from the business number you entered above. We'll test the connection before showing your service as LIVE.</p>
+          </div>
+          <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-2">
+            <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
+            <p class="text-sm text-slate-300">Connect your business calendar if you'd like your receptionist to arrange appointments.</p>
+            <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar connection</button>
           </div>
         </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
