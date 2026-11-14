@@ -203,7 +203,7 @@
               <h3 class="text-base font-bold text-white">1. Business details</h3>
               <div class="grid sm:grid-cols-2 gap-3">
                 <label class="text-sm text-slate-300">Business name<input id="qs-businessName" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
-                <label class="text-sm text-slate-300">Existing business phone number<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required><span class="block text-xs text-slate-400 mt-1">This is the number customers currently call. Call forwarding will later redirect calls from this number to your dedicated TriDashAI number.</span></label>
+                <label class="text-sm text-slate-300">Your existing business number (the number customers call)<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required><span class="block text-xs text-slate-400 mt-1">Enter the number your customers already use to contact your business.</span></label>
                 <label class="text-sm text-slate-300">Main trade<select id="qs-primaryTrade" class="dashboard-input mt-1 w-full rounded-xl p-3"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
                  
               </div>
@@ -332,10 +332,11 @@
           <!-- SERVICE STATUS -->
           <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
             <article class="dashboard-card rounded-2xl p-4 space-y-3 sm:col-span-2 xl:col-span-1">
-              <div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-200">Call Routing</span><span id="routing-card-status" class="text-xs text-amber-300">Setup required</span></div>
-              <div class="space-y-1"><label for="routing-business-number" class="text-xs text-slate-300">Forward calls from this business number</label><input id="routing-business-number" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3 text-sm" placeholder="Enter your business phone number" autocomplete="tel"><p class="text-xs text-slate-500">This is the number your customers already call.</p></div>
-              <form id="call-routing-form" class="space-y-2"><button id="save-call-routing" type="submit" class="btn-primary-blue rounded-xl px-4 py-2.5 text-sm">Save number</button><p id="call-routing-message" class="text-xs text-slate-400" role="status">Saving your number updates your profile. It does not activate phone forwarding.</p></form>
-              <div class="flex items-center justify-between pt-2 border-t border-slate-700/50"><div><p class="text-xs text-slate-300">Call forwarding</p><p class="text-xs text-slate-500">Available after activation and testing</p></div><button type="button" role="switch" aria-checked="false" aria-label="Call forwarding" disabled class="relative inline-flex h-6 w-11 cursor-not-allowed rounded-full bg-slate-700 opacity-60"><span class="absolute left-1 top-1 h-4 w-4 rounded-full bg-slate-300 shadow"></span></button></div>
+              <div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-200">Your contact number</span><span class="text-xs text-amber-300">Setup required</span></div>
+              <p class="text-xs text-slate-400">Where should we send your new-enquiry alerts and important updates? Enter the best number for your receptionist to contact you.</p>
+              <div class="space-y-1"><label for="routing-business-number" class="text-xs text-slate-300">Your mobile or preferred contact number</label><input id="routing-business-number" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3 text-sm" placeholder="Enter the number we should contact" autocomplete="tel"></div>
+              <form id="call-routing-form" class="space-y-2"><button id="save-call-routing" type="submit" class="btn-primary-blue rounded-xl px-4 py-2.5 text-sm">Save contact number</button><p id="call-routing-message" class="text-xs text-slate-400" role="status">This saves your contact number. It does not change your existing business phone or activate call forwarding.</p></form>
+              <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3"><p class="text-xs text-slate-400">Your dedicated TriDashAI number</p><p id="dedicated-number-dashboard" class="mt-1 text-sm text-slate-200">We'll add this number when your account is activated. You don't need to enter or change it.</p></div>
             </article>
             <article class="dashboard-card rounded-2xl p-4 space-y-3">
               <div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-emerald-300">On duty</span></div>
@@ -347,7 +348,7 @@
               <p id="voice-preference-message" class="text-[11px] text-slate-500" role="status">Choose your preferred voice.</p>
             </article>
             
-            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Reviews</span><span class="text-xs text-emerald-300">Synced</span></div><div class="text-2xl text-slate-500">☆</div><p class="text-xs text-slate-400">18 reviews monitored · 16 replies sent</p><a href="settings.html" class="inline-flex text-xs text-blue-400 hover:text-blue-300">Configure reviews →</a></article>
+            <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Reviews</span><span class="text-xs text-amber-300">Setup required</span></div><div class="flex items-center gap-1 text-xl text-amber-400" aria-label="Five stars">★★★★★</div><p class="text-xs text-slate-400">Connect your Google Business Profile to manage review requests and replies. Review settings will be available here when setup is ready.</p></article>
           </div>
 
           
@@ -542,20 +543,19 @@
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
         finally{save.disabled=false;save.textContent='Save Quick Start';}
       });
-      // Call Routing settings: save the contractor's existing business number to their profile.
+      // Save the preferred contact number separately from the public business number.
       const routingForm=document.getElementById('call-routing-form');
       const routingInput=document.getElementById('routing-business-number');
       const routingMessage=document.getElementById('call-routing-message');
       routingForm?.addEventListener('submit',async event=>{
         event.preventDefault();const user=dashboardAuth.currentUser;if(!user||!routingInput)return;
-        const number=routingInput.value.trim();if(!number){routingMessage.textContent='Enter your existing business phone number first.';routingMessage.className='text-xs text-amber-300';return;}
+        const number=routingInput.value.trim();if(!number){routingMessage.textContent='Enter the number you want us to contact.';routingMessage.className='text-xs text-amber-300';return;}
         const save=document.getElementById('save-call-routing');save.disabled=true;save.textContent='Saving…';
         try{
-          await dashboardDb.collection('businesses').doc(user.uid).set({businessPhone:number,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
-          const quickPhone=quickInput('businessPhone');if(quickPhone)quickPhone.value=number;
-          routingMessage.textContent='Business number saved. Phone forwarding still needs activation and testing.';routingMessage.className='text-xs text-emerald-300';
+          await dashboardDb.collection('businesses').doc(user.uid).set({notificationPhone:number,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+          routingMessage.textContent='Your contact number has been saved.';routingMessage.className='text-xs text-emerald-300';
         }catch(error){routingMessage.textContent='Could not save the number: '+error.message;routingMessage.className='text-xs text-red-300';}
-        finally{save.disabled=false;save.textContent='Save number';}
+        finally{save.disabled=false;save.textContent='Save contact number';}
       });
 
       // Compact voice preference controls on the dashboard.
@@ -634,7 +634,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
-        if(routingInput&&data.businessPhone)routingInput.value=data.businessPhone;
+        if(routingInput&&data.notificationPhone)routingInput.value=data.notificationPhone;
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
