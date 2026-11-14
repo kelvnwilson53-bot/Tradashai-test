@@ -90,6 +90,50 @@
             background: linear-gradient(135deg, #1d4ed8 100%, #1e40af 100%);
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
+
+        /* CINEMATIC TRI DASH THEME — midnight, electric cyan, violet and teal */
+        body.dark-theme {
+            background:
+              radial-gradient(ellipse at 12% 8%, rgba(25, 92, 150, .28), transparent 34%),
+              radial-gradient(ellipse at 88% 18%, rgba(102, 55, 156, .22), transparent 32%),
+              radial-gradient(ellipse at 52% 100%, rgba(12, 126, 125, .13), transparent 38%),
+              #070b18;
+            color: #d8e4f5;
+        }
+        body.dark-theme .dashboard-card {
+            background: linear-gradient(145deg, rgba(18, 29, 52, .88), rgba(10, 17, 34, .91));
+            border: 1px solid rgba(105, 154, 211, .20);
+            box-shadow: 0 16px 44px rgba(0,0,0,.28), inset 0 1px 0 rgba(190,220,255,.035);
+            backdrop-filter: blur(16px);
+        }
+        body.dark-theme .dashboard-card:hover { border-color: rgba(69, 193, 222, .38); }
+        body.dark-theme header {
+            background: rgba(7, 11, 24, .88);
+            border-color: rgba(100, 149, 205, .18);
+            backdrop-filter: blur(18px);
+        }
+        body.dark-theme .dashboard-input {
+            background: rgba(5, 12, 27, .82);
+            border: 1px solid rgba(113, 157, 205, .30);
+            color: #f0f7ff;
+        }
+        .btn-primary-blue {
+            background: linear-gradient(115deg, #168fc4 0%, #5364dc 52%, #8157c8 100%);
+            color: #fff; font-weight: 600; letter-spacing: .01em;
+            box-shadow: 0 7px 22px rgba(44, 111, 201, .20);
+        }
+        .btn-primary-blue:hover {
+            background: linear-gradient(115deg, #20acd6 0%, #6378ed 52%, #9668dc 100%);
+            box-shadow: 0 9px 26px rgba(55, 143, 218, .30);
+        }
+        body.dark-theme .text-blue-400 { color: #65c9f0 !important; }
+        body.dark-theme .text-emerald-400, body.dark-theme .text-emerald-300 { color: #55dfc0 !important; }
+        body.dark-theme .text-violet-400 { color: #b9a0ff !important; }
+        body.dark-theme .bg-blue-500\/10 { background-color: rgba(40, 154, 208, .13) !important; }
+        body.dark-theme .border-blue-500\/30 { border-color: rgba(83, 174, 228, .32) !important; }
+        .advanced-setup-pulse { animation: advancedSetupPulse 2.8s ease-in-out infinite; }
+        @keyframes advancedSetupPulse { 0%,100% { background-color: rgba(40,154,208,.08); } 50% { background-color: rgba(107,83,194,.20); } }
+        @media (prefers-reduced-motion: reduce) { .advanced-setup-pulse { animation: none; } }
     </style>
 </head>
 <body class="dark-theme font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative transition-colors duration-300">
@@ -100,7 +144,7 @@
             
             <!-- BRAND LOGO -->
             <a href="index.html" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight flex items-center gap-1.5 cursor-pointer">
-                <span class="text-blue-500">Tri</span>DashAI
+                <span class="text-cyan-400">Tri</span><span class="text-white">DashAI</span>
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
