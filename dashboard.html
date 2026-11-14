@@ -207,8 +207,8 @@
             </div>
             <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
               <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
-              <p class="text-sm text-slate-300">Your calendar connection will be available here once calendar integration is set up.</p>
-              <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar integration not yet connected</button>
+              <p class="text-sm text-slate-300">Connect your business calendar to let your receptionist arrange appointments.</p>
+              <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar connection</button>
             </div>
           </div>
         </section>
@@ -235,10 +235,10 @@
             <p class="text-sm text-slate-300 mt-1">TriDashAI keeps track of enquiries and follow-ups. You won't need to maintain a separate job register.</p>
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Calls handled</p><p class="text-lg font-bold text-white mt-1">Awaiting phone connection</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Calls handled</p><p class="text-lg font-bold text-white mt-1">No activity yet</p></div>
             <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Enquiries captured</p><p class="text-lg font-bold text-white mt-1">Awaiting phone connection</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Jobs confirmed complete</p><p class="text-lg font-bold text-white mt-1">Awaiting activity data</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Review requests sent</p><p class="text-lg font-bold text-white mt-1">Awaiting Google connection</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Jobs confirmed complete</p><p class="text-lg font-bold text-white mt-1">No completed jobs yet</p></div>
+            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Review requests sent</p><p class="text-lg font-bold text-white mt-1">No requests sent yet</p></div>
           </div>
           <div class="rounded-2xl border border-slate-700/50 p-4 space-y-2">
             <h4 class="font-bold text-white">How completion and review requests will work</h4>
@@ -253,12 +253,12 @@
             <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2">
               <h4 class="font-bold text-white">Google review requests</h4>
               <p class="text-sm text-slate-300">Once you confirm a job is complete, TriDashAI will send the customer your Google review link. You won't have to chase them yourself.</p>
-              <p class="text-xs text-amber-300">Completion confirmation, messaging and Google connection still need to be integrated.</p>
+              
             </div>
             <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2">
               <h4 class="font-bold text-white">Google review replies</h4>
               <p class="text-sm text-slate-300">TriDashAI will monitor new Google reviews and prepare polite replies for your business.</p>
-              <p class="text-xs text-amber-300">Google Business Profile connection is not active yet.</p>
+              
             </div>
           </div>
         </section>
@@ -298,7 +298,7 @@
                         </div>
                         <p id="roi-total-display" class="text-4xl sm:text-5xl font-extrabold text-blue-400 mt-3">$0</p>
                     </div>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-4 pt-3 border-t border-slate-800/40">Live call results will appear here after phone service is connected.</p>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-4 pt-3 border-t border-slate-800/40">Your recovered revenue will be shown here.</p>
                 </div>
 
                 <!-- CARD 2: MONTHLY SMS & VOICE USAGE -->
@@ -313,7 +313,7 @@
                             <div>
                                 <div class="flex justify-between text-xs sm:text-sm font-semibold text-slate-300 mb-1">
                                     <span>SMS Segments (300/month)</span>
-                                    <span class="font-bold text-white">Not connected</span>
+                                    <span class="font-bold text-white">—</span>
                                 </div>
                                 <div class="w-full bg-black/30 h-3 rounded-full overflow-hidden border border-slate-800/40">
                                     <div class="bg-blue-600 h-full rounded-full" style="width: 0%;"></div>
@@ -334,7 +334,7 @@
 
                     <!-- BOOST BUTTON -->
                     <div class="pt-4 mt-4 border-t border-slate-800/40 flex items-center justify-between">
-                        <span class="text-[11px] text-slate-400">Live usage tracking not connected</span>
+                        <span class="text-[11px] text-slate-400">Monthly usage</span>
                         <button id="open-boost-modal" class="px-3.5 py-2 bg-slate-900/40 hover:bg-slate-800 text-slate-200 text-xs font-bold rounded-xl border border-slate-700/40 transition shadow-sm cursor-pointer">
                             + Buy Boost
                         </button>
@@ -345,12 +345,12 @@
                 <div class="dashboard-card p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
                     <div>
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Google Review Auto-Reply</p>
-                        <p class="text-xl sm:text-2xl font-extrabold text-amber-300 mt-2">Not connected yet</p>
+                        <p class="text-xl sm:text-2xl font-extrabold text-white mt-2">Google Business Profile</p>
                         <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">Connect your Google Business Profile to enable review monitoring and responses.</p>
                     </div>
                     <div class="pt-4 border-t border-slate-800/40 flex items-center justify-between text-xs sm:text-sm font-semibold">
-                        <span class="text-amber-300">● Awaiting connection</span>
-                        <span class="text-slate-400">No review data yet</span>
+                        <span class="text-slate-300">Review tools</span>
+                        <span class="text-slate-400">Your reviews will appear here</span>
                     </div>
                 </div>
 
@@ -364,12 +364,12 @@
                 <div>
                     <div class="flex items-center justify-between border-b border-slate-800/40 pb-3 mb-4">
                         <h3 class="text-base font-extrabold text-white">Recent Recovered Lead Activity</h3>
-                        <span class="text-xs text-amber-300">Waiting for phone connection</span>
+                        
                     </div>
                     
                     <div class="rounded-2xl border border-dashed border-slate-700 bg-black/20 p-6 text-center">
                         <p class="text-sm font-semibold text-slate-200">No recovered leads yet</p>
-                        <p class="text-xs text-slate-400 mt-2">Once your phone service is connected and calls are processed, real lead activity will appear here.</p>
+                        <p class="text-xs text-slate-400 mt-2">New enquiries from your customers will appear here.</p>
                     </div>
                     </div>
                 </div>
@@ -398,7 +398,7 @@
                         <div class="bg-black/30 border border-slate-800/40 p-4 rounded-2xl flex items-center justify-between gap-3">
                             <div>
                                 <h4 class="text-xs font-bold text-white">Need Extra Minutes or SMS?</h4>
-                                <p class="text-[11px] text-slate-300">Boost purchases will be available once billing is connected.</p>
+                                <p class="text-[11px] text-slate-300">Add extra minutes or SMS when you need them.</p>
                             </div>
                             <button id="open-boost-modal-main" class="px-3.5 py-2 btn-primary-blue text-xs font-bold rounded-xl transition shadow-md whitespace-nowrap cursor-pointer">
                                 + Buy Boost
