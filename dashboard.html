@@ -198,8 +198,8 @@
           <div><h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone connection and call forwarding</h3><p class="text-sm text-slate-300 mt-1">This is the next step after you save your business details. We will connect your TriDashAI number first, then set up and test call forwarding.</p></div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
-              <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-emerald-400">AWAITING SETUP</span></div>
-              <div id="forwarding-status-panel" class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center gap-2"><span id="status-dot" class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span><span id="status-text" class="text-xs font-bold text-emerald-400">Phone service awaiting setup</span></div>
+              <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-amber-300">NOT CONNECTED</span></div>
+              <div id="forwarding-status-panel" class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl flex items-center gap-2"><span id="status-dot" class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span><span id="status-text" class="text-xs font-bold text-amber-300">Phone service not connected yet</span></div>
               <p class="text-xs text-slate-300">Your existing business number is the number customers already call. Calls will be forwarded to your dedicated TriDashAI number once it has been connected.</p>
               <label class="text-sm text-slate-300">Dedicated TriDashAI business number<code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Displayed after activation</code></label>
               <div class="flex items-center gap-3"><input type="checkbox" id="forwarding-toggle" disabled><label for="forwarding-toggle" class="text-sm text-slate-400">Call forwarding (we will activate this with you later)</label></div>
@@ -588,8 +588,6 @@
           }
           const job=document.getElementById('custom-job-value');
           if(job && data.averageJobValue) job.value=data.averageJobValue;
-          const setupStatus=document.getElementById('business-plan-summary');
-          if(setupStatus && data.accountStatus==='trial') setupStatus.textContent += ' · LIVE';
           if(data.accountStatus==='trial') {
             const trialLabel=document.querySelector('#stage-2 .text-amber-400');
             if(trialLabel) trialLabel.textContent='● 7-day trial';
