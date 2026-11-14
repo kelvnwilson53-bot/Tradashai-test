@@ -662,24 +662,56 @@
             });
         });
 
-        // Dynamic ROI Calculator Logic
+        // Analytics: average recovered job value (default $300, editable by each business)
         const jobValueInput = document.getElementById('custom-job-value');
         const saveJobValueBtn = document.getElementById('save-job-value-btn');
         const roiTotalDisplay = document.getElementById('roi-total-display');
         const roiTicketTag = document.getElementById('roi-ticket-tag');
 
         function updateDashboardROI() {
-            const ticketSize = Number(jobValueInput.value) || 300;
-            const recoveredCalls = 0; 
+            const ticketSize = Math.max(1, Number(jobValueInput.value) || 300);
+            const recoveredCalls = 0;
             const totalRecovered = ticketSize * recoveredCalls;
-
             roiTotalDisplay.textContent = `$${totalRecovered.toLocaleString()}`;
-            roiTicketTag.textContent = `Average job: ${ticketSize.toLocaleString()}`;
+            roiTicketTag.textContent = `Average job: $${ticketSize.toLocaleString()}`;
         }
 
-        saveJobValueBtn.addEventListener('click', () => {
-            updateDashboardROI();
-            alert(`Average recovered job value saved as ${Number(jobValueInput.value).toLocaleString()}.`);
+        dashboardAuth.onAuthStateChanged(async user => {
+            if (!user) return;
+            try {
+                const ref = dashboardDb.collection('businesses').doc(user.uid);
+                const snap = await ref.get();
+                const savedValue = snap.exists ? Number(snap.data().averageJobValue) : 0;
+                const value = savedValue > 0 ? savedValue : 300;
+                jobValueInput.value = value;
+                updateDashboardROI();
+                if (!(savedValue > 0)) await ref.set({ averageJobValue: 300 }, { merge: true });
+            } catch (error) {
+                jobValueInput.value = 300;
+                updateDashboardROI();
+                console.error('Could not load analytics job value:', error);
+            }
+        });
+
+        saveJobValueBtn.addEventListener('click', async () => {
+            const value = Number(jobValueInput.value);
+            if (!Number.isFinite(value) || value <= 0) {
+                alert('Please enter a job value greater than $0.');
+                return;
+            }
+            saveJobValueBtn.disabled = true;
+            try {
+                const user = dashboardAuth.currentUser;
+                if (!user) throw new Error('Please sign in again.');
+                await dashboardDb.collection('businesses').doc(user.uid).set({ averageJobValue: value }, { merge: true });
+                updateDashboardROI();
+                alert(`Average recovered job value saved as $${value.toLocaleString()}.`);
+            } catch (error) {
+                alert('Could not save the average job value. Please try again.');
+                console.error(error);
+            } finally {
+                saveJobValueBtn.disabled = false;
+            }
         });
 
         updateDashboardROI();
