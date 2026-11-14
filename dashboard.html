@@ -261,9 +261,7 @@
           </div>
           <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
             <div class="flex items-center justify-between gap-3"><h4 class="text-sm font-semibold text-blue-300">Call Routing</h4><span class="text-xs text-amber-300">Activation required</span></div>
-            <p class="text-sm text-slate-300">Choose the existing business number you want calls forwarded from. Your dedicated TriDashAI number will be assigned during phone activation.</p>
-            <label class="block text-sm text-slate-300">Existing business number<input id="qs-businessPhone-routing" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 (214) 555-0100" autocomplete="tel"></label>
-            <p class="text-xs text-slate-400">This is the number customers currently call. You can change it later in Call Routing settings.</p>
+            <p class="text-sm text-slate-300">Calls will be forwarded from the existing business number you entered earlier in Quick Start. You can change that number later in Call Routing settings.</p>
             <div class="rounded-xl border border-slate-700/50 bg-black/30 p-3"><p class="text-xs text-slate-400">Dedicated TriDashAI number</p><p id="dedicated-business-number" class="mt-1 text-sm text-slate-200">Assigned during activation</p></div>
             <p class="text-xs text-slate-400">Call forwarding will only be switchable after your TriDashAI number has been assigned and the connection has been tested.</p>
           </div>
@@ -545,7 +543,6 @@
       const routingPanel=document.getElementById('call-routing-settings');
       const routingForm=document.getElementById('call-routing-form');
       const routingInput=document.getElementById('routing-business-number');
-      const routingQuickInput=document.getElementById('qs-businessPhone-routing');
       const routingCardNumber=document.getElementById('routing-card-business-number');
       const routingMessage=document.getElementById('call-routing-message');
       function openCallRoutingSettings(){if(routingPanel){routingPanel.classList.remove('hidden');routingPanel.scrollIntoView({behavior:'smooth',block:'start'});}}
@@ -614,7 +611,6 @@
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
         if(routingInput&&data.businessPhone)routingInput.value=data.businessPhone;
-        if(routingQuickInput&&data.businessPhone)routingQuickInput.value=data.businessPhone;
         if(routingCardNumber)routingCardNumber.textContent=data.businessPhone||'Add your business number';
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
