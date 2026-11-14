@@ -114,7 +114,7 @@ optionalChoices.forEach(name=>document.querySelectorAll('input[name="'+name+'"]'
 function loadChoice(data,name){const value=data[name];if(value==='yes'||value==='no'){const input=document.querySelector('input[name="'+name+'"][value="'+value+'"]');if(input)input.checked=true;setChoice(name,value);}}
 const tradeInstructionFields=[];
 const chargePriceFields=['standard_day_callout_price','evening_callout_price','overnight_callout_price','weekend_callout_price','holiday_callout_price','urgent_same_day_callout_price','emergency_24hr_callout_price'];
-const chargeDetailFields=['standard_day_callout_details','evening_callout_details','overnight_callout_details','weekend_callout_details','holiday_callout_details','urgent_same_day_callout_details','emergency_24hr_callout_details','callout_credit_details','minimum_labour_details','hourly_rate_details','fixed_prices_details','diagnostic_fee_details','estimate_fee_details','materials_policy_details'];
+const chargeDetailFields=['standard_day_callout_details','evening_callout_details','overnight_callout_details','weekend_callout_details','holiday_callout_details','urgent_same_day_callout_details','emergency_24hr_callout_details','callout_credit_details','hourly_rate_details','fixed_prices_details','diagnostic_fee_details','estimate_fee_details','materials_policy_details'];
 const optionalTextFields=['receptionistAdditionalInfo','paymentLinkDetails','otherPaymentMethods',...chargeDetailFields];
 const optionalPriceFields=chargePriceFields;
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
