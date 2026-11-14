@@ -171,33 +171,30 @@
                
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">5. Emergency call-outs</h3>
+              <h3 class="text-base font-bold text-white">5. Call-out charges</h3>
               <div class="grid sm:grid-cols-2 gap-3">
-                <label class="block text-sm text-slate-300">Call-out charge (USD)<input id="qs-standard_day_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 95"></label>
+                <label class="block text-sm text-slate-300">Normal-hours call-out charge (USD)<input id="qs-standard_day_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 95"></label>
                 <label class="block text-sm text-slate-300">Out-of-hours call-out charge (USD)<input id="qs-evening_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 145"></label>
               </div>
-              <label class="block text-sm text-slate-300">On-call notification number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-              <label class="block text-sm text-slate-300">Dedicated emergency hotline number <span class="text-slate-400">(optional)</span><input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Enter a separate hotline number, if you have one"></label>
-              <p class="text-xs text-slate-400">Your receptionist quotes the applicable call-out charge, confirms the customer agrees, then sends a notification to your on-call number. If you enter a dedicated emergency hotline, she can give that number to callers instead.</p>
-              <p class="text-xs text-slate-400">When phone service goes live, make a simulated emergency call to test the process before relying on it.</p>
+              <p class="text-xs text-slate-400">Your receptionist quotes the correct charge for the time of the call and confirms the customer agrees before proceeding.</p>
+              <div class="border-t border-slate-700/50 pt-3 space-y-3">
+                <h4 class="text-sm font-semibold text-white">Emergency call-outs</h4>
+                <label class="block text-sm text-slate-300">On-call notification number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
+                <label class="block text-sm text-slate-300">Dedicated emergency hotline (optional)<input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Separate customer hotline, if you have one"></label>
+                <p class="text-xs text-slate-400">The on-call number receives an alert. If you have a separate emergency hotline, your receptionist can give that number to callers.</p>
+              </div>
             </section>
-            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-              <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
-              <span id="quick-start-message" class="text-sm text-slate-400" role="status">Your information is saved to your business profile.</span>
-            </div>
-          </form>
-        </section>
-        <!-- STAGE 1B: PHONE SERVICE AFTER BUSINESS SETUP -->
-        <section id="phone-setup" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
-          <div><h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone setup and call forwarding</h3><p class="text-sm text-slate-300 mt-1">Your dedicated TriDashAI business number and forwarding controls will be available here once phone service is activated.</p></div>
+        <!-- PHONE CONNECTION, PART OF QUICK START -->
+        <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-4">
+          <div><h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone connection and call forwarding</h3><p class="text-sm text-slate-300 mt-1">This is the next step after you save your business details. We will connect your TriDashAI number first, then set up and test call forwarding.</p></div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-emerald-400">AWAITING SETUP</span></div>
               <div id="forwarding-status-panel" class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl flex items-center gap-2"><span id="status-dot" class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span><span id="status-text" class="text-xs font-bold text-emerald-400">Phone service awaiting setup</span></div>
-              <p class="text-xs text-slate-300">Call forwarding cannot be switched on until your phone service is connected.</p>
+              <p class="text-xs text-slate-300">Your existing business number is the number customers already call. Calls will be forwarded to your dedicated TriDashAI number once it has been connected.</p>
               <label class="text-sm text-slate-300">Dedicated TriDashAI business number<code id="dedicated-business-number" class="block mt-2 rounded-xl bg-black/40 p-3 text-white">Displayed after activation</code></label>
-              <div class="flex items-center gap-3"><input type="checkbox" id="forwarding-toggle" disabled><label for="forwarding-toggle" class="text-sm text-slate-400">Enable call forwarding (available after activation)</label></div>
-              <p class="text-xs text-slate-400">Carrier-specific activation and deactivation instructions will be provided after phone setup.</p>
+              <div class="flex items-center gap-3"><input type="checkbox" id="forwarding-toggle" disabled><label for="forwarding-toggle" class="text-sm text-slate-400">Call forwarding (we will activate this with you later)</label></div>
+              <p class="text-xs text-slate-400">Nothing needs to be switched on here yet. We will give you the exact instructions when your number is ready.</p>
             </div>
             <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
               <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
@@ -205,6 +202,12 @@
               <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Calendar integration not yet connected</button>
             </div>
           </div>
+        </section>
+            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+              <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
+              <span id="quick-start-message" class="text-sm text-slate-400" role="status">Your information is saved to your business profile.</span>
+            </div>
+          </form>
         </section>
         <!-- ADVANCED BUSINESS SETUP -->
         <section id="advanced-setup" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-3">
