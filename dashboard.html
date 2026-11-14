@@ -173,9 +173,10 @@
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">5. Emergency handling</h3>
               <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input id="qs-giveEmergencyNumber" type="checkbox" class="mt-1 accent-blue-600"> Give the customer the emergency number.</label>
-              <p class="text-sm text-slate-400">Your receptionist can handle the emergency call, take the details and pass the information on to the person on duty.</p>
-              <label class="block text-sm text-slate-300">Specific emergency instructions<textarea id="qs-emergencyInstructions" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Any additional emergency procedures or limits"></textarea></label>
+              <p class="text-sm font-semibold text-white">When an emergency call comes in:</p>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="handle_call" class="mt-1 accent-blue-600"> <span><strong class="text-white">My receptionist handles the call-out.</strong><br>She explains my call-out fee, gets the customer's agreement, sends a payment link if required, then alerts my person on duty to contact the customer.</span></label>
+              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="give_number" class="mt-1 accent-blue-600"> <span><strong class="text-white">Give the customer my emergency number.</strong><br>She collects the essential details and gives the customer this number to arrange the call-out directly.</span></label>
+              <label class="block text-sm text-slate-300">Additional emergency instructions <span class="font-normal text-slate-400">(optional)</span><textarea id="qs-emergencyInstructions" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Any special safety instructions or limits"></textarea></label>
             </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
@@ -511,7 +512,7 @@
         const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
         const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
         update.calendarBooking=document.querySelector('input[name="qs-calendarBooking"]:checked')?.value||'';
-        update.callOutMode=document.getElementById('qs-giveEmergencyNumber').checked?'give_number':'contact_and_update';
+        update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
         try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Quick Start saved successfully.';msg.className='text-sm text-emerald-400';}
@@ -549,8 +550,7 @@
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
-          const emergencyNumber=document.getElementById('qs-giveEmergencyNumber');
-          if(emergencyNumber)emergencyNumber.checked=data.callOutMode==='give_number';
+          if(data.callOutMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+data.callOutMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
