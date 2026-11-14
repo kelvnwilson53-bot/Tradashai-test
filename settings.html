@@ -111,13 +111,17 @@ auth.onAuthStateChanged(async user=>{
   // Keep older combined location values visible when loading records created before ZIP was separated.
   if(data.businessZip===undefined && data.businessLocation && /\b\d{5}(?:-\d{4})?\b/.test(data.businessLocation)){
    const match=data.businessLocation.match(/\b\d{5}(?:-\d{4})?\b/);
-   document.getElementById('businessZip').value=match[0];
-   document.getElementById('businessLocation').value=data.businessLocation.replace(match[0],'').replace(/[,\s]+$/,'').trim();
+   const zipField=document.getElementById('businessZip');
+   const locationField=document.getElementById('businessLocation');
+   if(zipField)zipField.value=match[0];
+   if(locationField)locationField.value=data.businessLocation.replace(match[0],'').replace(/[,\s]+$/,'').trim();
   }
   document.getElementById('voiceFemale').checked=data.voicePreference==='female'||!data.voicePreference||data.voicePreference==='no-preference';
   document.getElementById('voiceMale').checked=data.voicePreference==='male';
-  document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify'||data.callOutMode==='contact_and_update';
-  document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
+  const handleMode=document.getElementById('callOutModeHandle');
+  const referMode=document.getElementById('callOutModeRefer');
+  if(handleMode)handleMode.checked=data.callOutMode==='handle_and_notify'||data.callOutMode==='contact_and_update';
+  if(referMode)referMode.checked=data.callOutMode==='give_number';
   optionalChoices.forEach(name=>loadChoice(data,name));
   optionalTextFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
   optionalPriceFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
