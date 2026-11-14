@@ -5,16 +5,20 @@
 <title>Advanced Setup | TriDashAI</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e2e8f0;box-shadow:0 18px 45px rgba(15,23,42,.06)}
-.field{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 14px;background:#fff;color:#0f172a}
-.field:focus{outline:2px solid #2563eb;outline-offset:1px}
-.primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700}
+:root{color-scheme:dark}
+body{background:radial-gradient(ellipse at 12% 5%,rgba(25,92,150,.28),transparent 35%),radial-gradient(ellipse at 88% 18%,rgba(102,55,156,.22),transparent 34%),#070b18;color:#d8e4f5}
+.panel{background:linear-gradient(145deg,rgba(18,29,52,.94),rgba(10,17,34,.96));border:1px solid rgba(105,154,211,.22);box-shadow:0 18px 48px rgba(0,0,0,.28)}
+.field{width:100%;border:1px solid rgba(113,157,205,.30);border-radius:12px;padding:12px 14px;background:rgba(5,12,27,.82);color:#f0f7ff}
+.field:focus{outline:2px solid #35b9df;outline-offset:1px}
+.primary{background:linear-gradient(115deg,#168fc4,#5364dc 52%,#8157c8);color:#fff;font-weight:600}
+header{background:rgba(7,11,24,.9)!important;border-color:rgba(100,149,205,.18)!important;backdrop-filter:blur(18px)}
+a{transition:color .2s ease}
 </style>
 </head>
 <body class="min-h-screen flex flex-col">
 <header class="bg-white border-b border-slate-200">
 <div class="max-w-4xl mx-auto px-5 py-4 flex justify-between items-center">
-<a href="dashboard.html" class="text-xl font-extrabold"><span class="text-blue-600">Tri</span>DashAI</a>
+<a href="dashboard.html" class="text-xl font-extrabold"><span class="text-cyan-400">Tri</span><span class="text-white">DashAI</span></a>
 <a href="dashboard.html" class="text-sm font-semibold text-blue-700">Back to dashboard</a>
 </div></header>
 <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
