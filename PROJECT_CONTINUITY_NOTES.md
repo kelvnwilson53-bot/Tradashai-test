@@ -32,3 +32,8 @@ Resume the dashboard work. Ask which specific dashboard change the user wants ta
 
 ## Separate business-planning note
 The trial-acquisition forecast must model actual free-trial uptake from the initial 200 contacted prospects. Do not assume all 200 activate a trial. Track delivered emails, replies, expressions of interest, trial registrations/activations, usage, and paid conversions. Trial expenditure should be based on actual trial activations and actual usage; the previously discussed $6.30 per fully used trial is provisional, not a verified final cost.
+
+
+## GitHub write-access check
+- On 14 November 2026, an update to this existing file was successfully committed on the separate test branch `dashboard-write-access-check-2026-11-14`.
+- This confirms the connected GitHub tool can update existing files without changing the `main` branch.
