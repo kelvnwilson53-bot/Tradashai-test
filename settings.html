@@ -309,7 +309,7 @@ form.addEventListener('submit',async e=>{
  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the listed services, say the contractor will confirm and escalate. Do not guess.'
  ];
- update.receptionistInstructions=instructionLines.join('\\n');
+ update.receptionistInstructions=instructionLines.join('\n');
 
  update.paymentLinksEnabled=update.payment_link_choice==='yes';
  update.setupComplete=true;
