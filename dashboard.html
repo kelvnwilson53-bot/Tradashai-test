@@ -268,7 +268,7 @@
           <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-2">
             <h4 class="text-sm font-bold text-blue-400">Calendar Sync</h4>
             <p class="text-sm text-slate-300">Your receptionist should only confirm appointments once your Google Calendar is connected and availability can be checked.</p>
-            <button type="button" disabled class="w-full py-3 bg-slate-700 text-slate-300 text-sm font-bold rounded-xl opacity-70 cursor-not-allowed">Google Calendar sync setup</button>
+            <p class="rounded-xl border border-amber-500/20 bg-amber-500/5 px-3 py-3 text-sm text-amber-200" role="status">Calendar connection is not available yet. Until it is connected and availability checks are working, your receptionist must not confirm appointments.</p>
           </div>
         </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
@@ -286,46 +286,17 @@
           <p class="text-xs text-slate-400">Quick Start collects the essentials. Advanced Setup lets you tailor the receptionist to the way your business operates.</p>
         </section>
 
-        <!-- AUTOMATED ACTIVITY & GOOGLE REVIEWS -->
-        <section id="activity-reviews" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-5">
-          <div class="border-b border-slate-800/40 pb-4">
-            <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Your business activity</p>
-            <h3 class="text-xl font-extrabold text-white mt-1">Activity &amp; Google Reviews</h3>
-            <p class="text-sm text-slate-300 mt-1">TriDashAI keeps track of enquiries and follow-ups. You won't need to maintain a separate job register.</p>
-          </div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Calls handled</p><p class="text-lg font-bold text-white mt-1">128 calls</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Enquiries captured</p><p class="text-lg font-bold text-white mt-1">46 enquiries</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Jobs confirmed complete</p><p class="text-lg font-bold text-white mt-1">24 jobs</p></div>
-            <div class="rounded-xl border border-slate-700/50 bg-black/20 p-4"><p class="text-xs text-slate-400">Review requests sent</p><p class="text-lg font-bold text-white mt-1">19 requests</p></div>
-          </div>
-          <div class="rounded-2xl border border-slate-700/50 p-4 space-y-2">
-            <h4 class="font-bold text-white">How completion and review requests will work</h4>
-            <ol class="list-decimal pl-5 space-y-2 text-sm text-slate-300">
-              <li>Your receptionist records the enquiry and passes the details to you.</li>
-              <li>After you have done the work, you confirm that it is complete. You can do this from the dashboard or by a simple text message.</li>
-              <li>Only after your confirmation will TriDashAI send the customer your Google review link.</li>
-            </ol>
-            <p class="text-xs text-slate-400">A call or enquiry is never treated as a completed job automatically. No review request is sent without your confirmation.</p>
-          </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2">
-              <h4 class="font-bold text-white">Google review requests</h4>
-              <p class="text-sm text-slate-300">Once you confirm a job is complete, TriDashAI will send the customer your Google review link. You won't have to chase them yourself.</p>
-              
-            </div>
-            <div class="rounded-2xl border border-slate-700/50 bg-black/20 p-4 space-y-2">
-              <h4 class="font-bold text-white">Google review replies</h4>
-              <p class="text-sm text-slate-300">TriDashAI will monitor new Google reviews and prepare polite replies for your business.</p>
-              
-            </div>
-          </div>
+        <!-- ACTIVITY STATUS -->
+        <section id="activity-reviews" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-3">
+          <div><p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Service status</p><h3 class="text-lg font-semibold text-white mt-1">Activity and Google Reviews</h3></div>
+          <p class="text-sm text-slate-300">Call handling, job activity and review reporting will appear here once the relevant services are connected and live data is being recorded.</p>
+          <p class="text-xs text-slate-400">No sample figures are displayed.</p>
         </section>
 
         <!-- ACTIVATED DASHBOARD -->
         <section id="stage-2" class="hidden space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
-            <div><p class="text-xs uppercase tracking-widest text-blue-400">Your business at a glance</p><h2 class="text-2xl sm:text-3xl font-semibold text-white mt-1">Overview</h2><p class="text-sm text-slate-400 mt-1">A clear view of calls, customers and business recovered through TriDashAI.</p></div>
+            <div><p class="text-xs uppercase tracking-widest text-blue-400">Your business at a glance</p><h2 class="text-2xl sm:text-3xl font-semibold text-white mt-1">Overview</h2><p class="text-sm text-slate-400 mt-1">Your service status, configuration and recorded activity.</p></div>
             <span class="text-xs text-slate-500">Business snapshot</span>
           </div>
 
@@ -339,13 +310,13 @@
               <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3"><p class="text-xs text-slate-400">Your dedicated TriDashAI number</p><p id="dedicated-number-dashboard" class="mt-1 text-sm text-slate-200">We'll add this number when your account is activated. You don't need to enter or change it.</p></div>
             </article>
             <article class="dashboard-card rounded-2xl p-4 space-y-3">
-              <div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-emerald-300">On duty</span></div>
+              <div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-amber-300">Not activated</span></div>
               <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-lg">✦</span></div><div><p class="text-sm text-white">Your Receptionist</p><p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p></div></div>
               <div class="flex items-center gap-4 pt-1" role="group" aria-label="Receptionist voice preference">
-                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="male" class="h-3.5 w-3.5 accent-blue-500"> <span class="text-blue-300">Male</span></label>
-                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="female" class="h-3.5 w-3.5 accent-emerald-500"> <span class="text-emerald-300">Female</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="male" class="h-3.5 w-3.5 accent-cyan-500"> <span class="text-slate-300">Male</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="female" class="h-3.5 w-3.5 accent-cyan-500"> <span class="text-slate-300">Female</span></label>
               </div>
-              <p id="voice-preference-message" class="text-[11px] text-slate-500" role="status">Choose your preferred voice.</p>
+              <p id="voice-preference-message" class="text-[11px] text-slate-500" role="status">Your choice is saved as a preference. It will not change the live receptionist voice until voice selection is connected.</p>
             </article>
             
             <article class="dashboard-card rounded-2xl p-4 space-y-3"><div class="flex items-center justify-between"><span class="text-sm text-slate-300">Google Reviews</span><span class="text-xs text-amber-300">Setup required</span></div><div class="flex items-center gap-1 text-xl text-amber-400" aria-label="Five stars">★★★★★</div><p class="text-xs text-slate-400">Connect your Google Business Profile to manage review requests and replies. Review settings will be available here when setup is ready.</p></article>
@@ -354,58 +325,15 @@
           
 
           <!-- USAGE -->
-          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"><div><h3 class="text-base font-medium text-white">Your monthly allowance</h3><p class="text-xs text-slate-400 mt-1">Included usage · resets each billing period</p></div><span class="text-xs text-cyan-300">Monthly usage</span></div>
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div class="space-y-2"><div class="flex justify-between items-center"><span class="text-sm text-slate-300">Voice minutes</span><span class="text-sm text-emerald-300">250 remaining</span></div><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full rounded-full bg-emerald-500" style="width:32%"></div></div><div class="flex justify-between text-xs text-slate-500"><span>80 used</span><span>250 total</span></div></div>
-              <div class="space-y-2"><div class="flex justify-between items-center"><span class="text-sm text-slate-300">SMS</span><span class="text-sm text-blue-300">300 remaining</span></div><div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full rounded-full bg-blue-500" style="width:24%"></div></div><div class="flex justify-between text-xs text-slate-500"><span>72 used</span><span>300 total</span></div></div>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-slate-700/50 pt-4"><p class="text-xs text-slate-500">Usage overview</p><button id="open-boost-modal-dashboard" type="button" class="px-4 py-2.5 rounded-xl border border-blue-500/50 text-blue-300 hover:bg-blue-500/10 text-sm transition">Explore extra bundles</button></div>
+          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
+            <div><h3 class="text-base font-semibold text-white">Usage and allowance</h3><p class="text-xs text-slate-400 mt-1">Live usage figures will appear when metering is connected.</p></div>
+            <p class="text-sm text-slate-300">Usage reporting is not yet available. Your current balance and remaining minutes or SMS will be shown here once billing and usage records are connected.</p>
           </section>
 
-          <!-- PERFORMANCE -->
-          <section class="space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2"><div><p class="text-xs uppercase tracking-widest text-blue-400">Performance</p><h3 class="text-xl font-medium text-white mt-1">Revenue impact</h3><p class="text-sm text-slate-400 mt-1">See the enquiries TriDashAI helps turn into booked work.</p></div><span class="text-xs text-cyan-300">This month</span></div>
-            <div class="grid grid-cols-2 xl:grid-cols-4 gap-3">
-              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Calls answered</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">128</p><p class="text-xs text-emerald-400 mt-1">Compared with last month</p></div>
-              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">New enquiries</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">46</p><p class="text-xs text-slate-400 mt-1">Example this month</p></div>
-              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Appointments booked</p><p class="text-2xl sm:text-3xl font-medium text-white mt-2">31</p><p class="text-xs text-slate-400 mt-1">Example this month</p></div>
-              <div class="dashboard-card rounded-2xl p-4"><p class="text-xs text-slate-400">Recovered revenue</p><p class="text-2xl sm:text-3xl font-medium text-emerald-300 mt-2">$8,450</p><p class="text-xs text-slate-400 mt-1">Estimated from completed jobs</p></div>
-            </div>
-            <div class="grid lg:grid-cols-5 gap-4">
-              <div class="dashboard-card rounded-2xl p-5 lg:col-span-3 space-y-4">
-                <div class="flex items-center justify-between"><div><h4 class="text-sm font-medium text-white">Enquiries and bookings</h4><p class="text-xs text-slate-500 mt-1">Example activity over six months</p></div><span class="text-xs text-slate-500">6 months</span></div>
-                <div class="h-48 flex items-end gap-3 sm:gap-5 border-b border-slate-700/60 px-1">
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:35%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:22%"></div></div>
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:48%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:30%"></div></div>
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:58%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:40%"></div></div>
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:68%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:47%"></div></div>
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:78%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:56%"></div></div>
-                  <div class="flex-1 flex items-end justify-center gap-1 h-full"><div class="w-3 sm:w-5 rounded-t bg-blue-500/80" style="height:90%"></div><div class="w-3 sm:w-5 rounded-t bg-emerald-500/80" style="height:68%"></div></div>
-                </div>
-                <div class="flex justify-between text-xs text-slate-500"><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div>
-                <div class="flex gap-4 text-xs text-slate-400"><span><i class="inline-block w-2 h-2 rounded-sm bg-blue-500 mr-1"></i>Enquiries</span><span><i class="inline-block w-2 h-2 rounded-sm bg-emerald-500 mr-1"></i>Bookings</span></div>
-              </div>
-              <div class="dashboard-card rounded-2xl p-5 lg:col-span-2 space-y-4">
-                <div><h4 class="text-sm font-medium text-white">Where enquiries go</h4><p class="text-xs text-slate-500 mt-1">Illustrative conversion breakdown</p></div>
-                <div class="space-y-3">
-                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Answered and captured</span><span class="text-slate-400">46</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-blue-500" style="width:100%"></div></div></div>
-                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Appointments booked</span><span class="text-slate-400">31</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-emerald-500" style="width:67%"></div></div></div>
-                  <div><div class="flex justify-between text-xs mb-1"><span class="text-slate-300">Jobs completed</span><span class="text-slate-400">24</span></div><div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-violet-500" style="width:52%"></div></div></div>
-                </div>
-                <p class="text-xs text-slate-500 border-t border-slate-700/50 pt-3">Sample figures only. Actual totals will come from recorded calls and job confirmations.</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- ACTIVITY SNAPSHOT -->
-          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
-            <div class="flex items-center justify-between"><div><h3 class="text-base font-medium text-white">Recent activity</h3><p class="text-xs text-slate-400 mt-1">A running record of enquiries and follow-ups</p></div><span class="text-xs text-slate-500">Preview</span></div>
-            <div class="divide-y divide-slate-700/50">
-              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">New enquiry received</p><p class="text-xs text-slate-500 mt-1">Emergency plumbing · Example ticket TD-1048</p></div><span class="text-xs text-emerald-300">Booked</span></div>
-              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">Appointment confirmed</p><p class="text-xs text-slate-500 mt-1">Roof repair · Example ticket TD-1047</p></div><span class="text-xs text-blue-300">Confirmed</span></div>
-              <div class="py-3 flex items-center justify-between gap-3"><div><p class="text-sm text-slate-200">Review request sent</p><p class="text-xs text-slate-500 mt-1">Completed job · Example ticket TD-1046</p></div><span class="text-xs text-slate-400">Sent</span></div>
-            </div>
+          <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
+            <div><p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Reporting</p><h3 class="text-lg font-semibold text-white mt-1">Business activity</h3></div>
+            <p class="text-sm text-slate-300">Call totals, enquiries, appointments, completed jobs, review requests and revenue will be reported here when live service records are connected.</p>
+            <p class="text-xs text-slate-400">There is no live activity data to display yet. This section will not show illustrative or invented figures.</p>
           </section>
         </section>
 
@@ -468,16 +396,16 @@
         </div>
         <div class="p-5 sm:p-6 space-y-3">
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I change the number calls are forwarded from?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Open Call Routing on your dashboard and edit your existing business number. Save your change. This updates the number in your business profile; it does not change your phone provider's forwarding settings. Follow the activation instructions and test the connection before relying on it.</p>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I change my business phone number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Update your business number in the Call Routing section of your dashboard and save the change. This updates the number stored in your TriDashAI profile. It does not change call forwarding with your phone provider; that must be updated separately and tested.</p>
           </details>
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">What's the difference between my business number and my TriDashAI number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your business number is the number customers already know and call. Your dedicated TriDashAI number is the number that receives calls forwarded from it and connects callers to your receptionist. The TriDashAI number is assigned during activation.</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your business number is the number your customers already call. Your TriDashAI number is the separate number that receives calls forwarded from your business number and routes them to the receptionist. It is assigned during activation.</p>
           </details>
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Can I switch call forwarding on and off?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Call forwarding controls will be available after your number and phone-provider routing have been configured and tested. The exact activation and cancellation method depends on your phone provider. Do not assume the dashboard switch has changed your phone routing until the change is confirmed.</p>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I turn call forwarding on or off?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Call forwarding is managed through your phone provider. The activation and cancellation steps depend on that provider. Check that the change has taken effect by testing a call before relying on it.</p>
           </details>
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Does the receptionist book appointments automatically?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
@@ -574,7 +502,7 @@
         try{
           await dashboardDb.collection('businesses').doc(user.uid).set({voicePreference:selected,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
           displayVoicePreference(selected);
-          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Preference saved to your business profile.';
+          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Preference saved. Live voice switching is not connected yet.';
         }catch(error){
           displayVoicePreference(window.dashboardVoicePreference||'female');
           if(voicePreferenceMessage)voicePreferenceMessage.textContent='Could not save: '+error.message;
@@ -674,18 +602,6 @@
             document.body.classList.toggle('light-theme', nextTheme === 'light');
             themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
             localStorage.setItem('tridashai-theme', nextTheme);
-        });
-
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.body.classList.contains('dark-theme')) {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                themeIcon.textContent = '🌙';
-            } else {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-                themeIcon.textContent = '☀️';
-            }
         });
 
         // Hamburger Menu Toggle Logic
