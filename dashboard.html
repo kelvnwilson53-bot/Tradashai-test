@@ -171,13 +171,15 @@
                
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">5. Emergency handling</h3>
-              <p class="text-sm font-semibold text-white">How should your receptionist handle emergency calls?</p>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="handle_call" class="mt-1 accent-blue-600"> <span><strong class="text-white">Receptionist handles the emergency call</strong><br>She explains your call-out charge, confirms the customer agrees, then alerts your on-call contact to contact the customer.</span></label>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="hotline" class="mt-1 accent-blue-600"> <span><strong class="text-white">Give the customer our emergency hotline number</strong><br>The receptionist gives the customer your separate emergency number to call directly.</span></label>
-              <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-              <p id="qs-emergency-fee-note" class="hidden text-xs text-slate-400">Enter your call-out charges in Advanced Setup. Your receptionist will confirm the applicable charge and the customer's agreement before notifying your on-call contact.</p>
-              <p class="text-xs text-slate-400">When phone service goes live, make a simulated emergency call to test the full process before relying on it.</p>
+              <h3 class="text-base font-bold text-white">5. Emergency call-outs</h3>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <label class="block text-sm text-slate-300">Call-out charge (USD)<input id="qs-standard-day-callout-price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 95"></label>
+                <label class="block text-sm text-slate-300">Out-of-hours call-out charge (USD)<input id="qs-evening-callout-price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 145"></label>
+              </div>
+              <label class="block text-sm text-slate-300">On-call notification number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
+              <label class="block text-sm text-slate-300">Dedicated emergency hotline number <span class="text-slate-400">(optional)</span><input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Enter a separate hotline number, if you have one"></label>
+              <p class="text-xs text-slate-400">Your receptionist quotes the applicable call-out charge, confirms the customer agrees, then sends a notification to your on-call number. If you enter a dedicated emergency hotline, she can give that number to callers instead.</p>
+              <p class="text-xs text-slate-400">When phone service goes live, make a simulated emergency call to test the process before relying on it.</p>
             </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Start</button>
@@ -502,7 +504,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
