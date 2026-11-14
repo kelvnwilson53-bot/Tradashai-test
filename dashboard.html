@@ -557,6 +557,7 @@
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
+          document.getElementById('qs-emergency-fee-note')?.classList.toggle('hidden',savedEmergencyMode!=='handle_call');
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
