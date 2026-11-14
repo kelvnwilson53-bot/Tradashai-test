@@ -630,13 +630,6 @@
             boostModal.classList.add('hidden');
         }
 
-        // Force mobile focus on touch inputs
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('touchstart', function() {
-                this.focus();
-            });
-        });
-
         // Analytics: average recovered job value (default $300, editable by each business)
         const jobValueInput = document.getElementById('custom-job-value');
         const saveJobValueBtn = document.getElementById('save-job-value-btn');
