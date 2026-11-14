@@ -130,7 +130,7 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
 
-        <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7"><p class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-xs sm:text-sm text-slate-400 mt-1">Account overview</p></section>
+        <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-3"><div><p class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-xs sm:text-sm text-slate-400 mt-1">Account overview</p></div><div class="flex flex-wrap items-center gap-2"><button id="dashboard-preview-toggle" type="button" class="rounded-xl border border-blue-500/40 bg-blue-500/10 text-blue-300 px-4 py-2 text-xs font-bold">Preview activated dashboard</button><span id="dashboard-preview-note" class="hidden text-xs text-amber-300">Preview only — phone service is not being activated.</span></div></section>
 
         <!-- STAGE 1: QUICK START -->
         <section id="stage-1" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
@@ -553,6 +553,32 @@
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
         finally{save.disabled=false;save.textContent='Save Quick Start';}
       });
+      // Preview the post-activation dashboard without changing real phone-service status.
+      (function () {
+        const previewButton = document.getElementById('dashboard-preview-toggle');
+        const previewNote = document.getElementById('dashboard-preview-note');
+        const setupSection = document.getElementById('stage-1');
+        const advancedSection = document.getElementById('advanced-setup');
+        const activitySection = document.getElementById('activity-reviews');
+        const performanceSection = document.getElementById('stage-2');
+        if (!previewButton || !setupSection || !performanceSection) return;
+        let previewActive = false;
+        function renderPreview() {
+          setupSection.classList.toggle('hidden', previewActive);
+          advancedSection?.classList.toggle('hidden', previewActive);
+          activitySection?.classList.toggle('hidden', previewActive);
+          performanceSection.classList.toggle('hidden', !previewActive);
+          previewButton.textContent = previewActive ? 'Return to setup dashboard' : 'Preview activated dashboard';
+          previewNote?.classList.toggle('hidden', !previewActive);
+        }
+        previewButton.addEventListener('click', () => {
+          previewActive = !previewActive;
+          renderPreview();
+        });
+        // Keep setup visible by default; preview is deliberately temporary.
+        renderPreview();
+      })();
+
       dashboardAuth.onAuthStateChanged(async user => {
         if (!user) { window.location.replace('login.html'); return; }
         try {
