@@ -176,7 +176,7 @@
               <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="handle_call" class="mt-1 accent-blue-600"> <span><strong class="text-white">Receptionist handles the emergency call</strong><br>She explains your call-out charge, confirms the customer agrees, then alerts your on-call contact to contact the customer.</span></label>
               <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-callOutMode" value="hotline" class="mt-1 accent-blue-600"> <span><strong class="text-white">Give the customer our emergency hotline number</strong><br>The receptionist gives the customer your separate emergency number to call directly.</span></label>
               <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
-              <p id="qs-emergency-fee-note" class="text-xs text-slate-400">For receptionist-handled calls, enter your call-out charges in Advanced Setup. Your receptionist will confirm the applicable charge and the customer's agreement before notifying your on-call contact.</p>
+              <p id="qs-emergency-fee-note" class="hidden text-xs text-slate-400">Enter your call-out charges in Advanced Setup. Your receptionist will confirm the applicable charge and the customer's agreement before notifying your on-call contact.</p>
               <p class="text-xs text-slate-400">When phone service goes live, make a simulated emergency call to test the full process before relying on it.</p>
             </section>
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
@@ -504,6 +504,10 @@
       const dashboardDb = firebase.firestore();
       const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
+      const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
+      document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
+        emergencyFeeNote?.classList.toggle('hidden',choice.value!=='handle_call'||!choice.checked);
+      }));
       const multiTradeToggle=document.getElementById('qs-isMultiTrade');
       if(multiTradeToggle) multiTradeToggle.addEventListener('change',e=>{
         document.getElementById('qs-additional-trades-wrap')?.classList.toggle('hidden',!e.target.checked);
