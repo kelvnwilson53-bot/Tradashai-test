@@ -133,7 +133,7 @@
 
         <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7"><p class="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-xs sm:text-sm text-slate-400 mt-1">Account overview</p></section>
 
-        <!-- STAGE 1: SIX-SECTION QUICK START -->
+        <!-- STAGE 1: QUICK START -->
         <section id="stage-1" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
           <div class="border-b border-slate-800/40 pb-4">
             <h2 class="text-xl sm:text-2xl font-extrabold text-white">Quick Start</h2>
@@ -144,7 +144,7 @@
               <h3 class="text-base font-bold text-white">1. Business details</h3>
               <div class="grid sm:grid-cols-2 gap-3">
                 <label class="text-sm text-slate-300">Business name<input id="qs-businessName" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
-                <label class="text-sm text-slate-300">Main business phone<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
+                <label class="text-sm text-slate-300">Existing business phone number<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required><span class="block text-xs text-slate-400 mt-1">This is the number customers currently call. Call forwarding will later redirect calls from this number to your dedicated TriDashAI number.</span></label>
                 <label class="text-sm text-slate-300">Main trade<select id="qs-primaryTrade" class="dashboard-input mt-1 w-full rounded-xl p-3"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
                  
               </div>
@@ -165,14 +165,10 @@
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">4. Working hours</h3>
               <label class="block text-sm text-slate-300">Normal operating hours<input id="qs-operatingHours" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
-              <label class="block text-sm text-slate-300">Out-of-hours handling<textarea id="qs-afterHoursHandling" rows="2" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="What should the receptionist do outside these hours?"></textarea></label>
+               
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">5. Call handling</h3>
-              <label class="block text-sm text-slate-300">How should your receptionist handle calls?<textarea id="qs-callHandlingInstructions" rows="3" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="What should it ask, record, or tell callers?"></textarea></label>
-            </section>
-            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">6. Emergency handling</h3>
+              <h3 class="text-base font-bold text-white">5. Emergency handling</h3>
               <label class="block text-sm text-slate-300">Emergency / on-call contact number<input id="qs-callOutContactNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="+1 555 123 4567"></label>
               <label class="flex items-start gap-2 text-sm text-slate-300"><input id="qs-giveEmergencyNumber" type="checkbox" class="mt-1 accent-blue-600"> Give the customer the emergency number.</label>
               <p class="text-sm text-slate-400">Your receptionist can handle the emergency call, take the details and pass the information on to the person on duty.</p>
@@ -186,7 +182,7 @@
         </section>
         <!-- STAGE 1B: PHONE SERVICE AFTER BUSINESS SETUP -->
         <section id="phone-setup" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-4">
-          <div><h3 class="text-base sm:text-lg font-extrabold text-white">7. Phone setup and call forwarding</h3><p class="text-sm text-slate-300 mt-1">Your dedicated TriDashAI business number and forwarding controls will be available here once phone service is activated.</p></div>
+          <div><h3 class="text-base sm:text-lg font-extrabold text-white">6. Phone setup and call forwarding</h3><p class="text-sm text-slate-300 mt-1">Your dedicated TriDashAI business number and forwarding controls will be available here once phone service is activated.</p></div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black/30 border border-slate-700/40 p-5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between"><h4 class="text-sm font-bold text-blue-400">Call Forwarding</h4><span id="toggle-status-label" class="text-xs font-bold text-emerald-400">AWAITING SETUP</span></div>
@@ -462,7 +458,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','afterHoursHandling','callHandlingInstructions','callOutContactNumber','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','callOutContactNumber','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       document.getElementById('qs-isMultiTrade').addEventListener('change',e=>{
         document.getElementById('qs-additional-trades-wrap').classList.toggle('hidden',!e.target.checked);
