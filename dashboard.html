@@ -291,7 +291,7 @@
           <!-- SERVICE STATUS -->
           <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
             <article class="dashboard-card rounded-2xl p-4 space-y-3">
-              <div class="flex items-center justify-between"><span class="text-sm text-slate-300">Call forwarding</span><icon-placeholder></icon-placeholder><span class="text-xs text-amber-300">Setup needed</span></div>
+              <div class="flex items-center justify-between"><span class="text-sm text-slate-300">Call forwarding</span><span class="text-xs text-amber-300">Setup needed</span></div>
               <div class="flex items-center justify-between"><span class="text-xs text-slate-400">Your business line</span><span class="text-xs text-slate-500">Not connected</span></div>
               <div class="flex items-center justify-between pt-2 border-t border-slate-700/50"><span class="text-xs text-slate-400">Forwarding switch</span><button type="button" disabled aria-label="Call forwarding unavailable until activation" class="relative w-11 h-6 rounded-full bg-slate-700 opacity-70 cursor-not-allowed"><span class="absolute left-1 top-1 w-4 h-4 rounded-full bg-slate-300"></span></button></div>
               <p class="text-xs text-slate-500">Available after your TriDashAI number is assigned and tested.</p>
@@ -560,13 +560,6 @@
         } catch(error) { console.error('Could not load business profile:',error); }
       });
 
-      document.getElementById('save-job-value-btn')?.addEventListener('click',async()=>{
-        const user=dashboardAuth.currentUser;if(!user)return;
-        const value=Number(document.getElementById('custom-job-value').value);
-        if(!Number.isFinite(value)||value<=0){alert('Enter a valid average job value first.');return;}
-        try{await dashboardDb.collection('businesses').doc(user.uid).set({averageJobValue:value,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});updateDashboardROI();alert('Average job value saved.');}
-        catch(error){alert('Could not save average job value: '+error.message);}
-      });
     </script>
 
     <!-- INTERACTIVE SCRIPTS -->
