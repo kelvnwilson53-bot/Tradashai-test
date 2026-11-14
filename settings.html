@@ -34,6 +34,28 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <label class="block text-sm font-semibold">Service areas<input id="serviceAreas" class="field mt-1.5" placeholder="Cities, towns or ZIP codes you cover"></label>
 <label class="block text-sm font-semibold">Normal operating hours<input id="operatingHours" class="field mt-1.5" placeholder="e.g. Monday–Friday, 8am–5pm"></label>
 </section>
+<section class="border-t border-slate-100 pt-6 space-y-5">
+<h2 class="font-bold text-lg">Personalise your AI receptionist</h2>
+<p class="text-sm text-slate-600">Add a little more information to help your receptionist represent your business and look after your customers. You can complete these now or come back later.</p>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
+<div><h3 class="font-semibold">Your services and specialist work</h3><p class="text-xs text-slate-500">Tell customers what you do — and which jobs you don't take.</p></div>
+<div class="flex gap-5 text-sm"><label><input type="radio" name="extra_services" value="yes"> Yes</label><label><input type="radio" name="extra_services" value="no"> No</label></div>
+<div id="extra_services_panel" class="hidden space-y-3">
+<label class="block text-sm font-semibold">Services and specialist work<textarea id="serviceDetails" class="field mt-1.5" rows="3" placeholder="e.g. leak detection, bathroom installations, water heater repairs"></textarea></label>
+<label class="block text-sm font-semibold">Jobs you do not undertake<textarea id="excludedJobs" class="field mt-1.5" rows="2" placeholder="List any work you do not accept"></textarea></label>
+</div></div>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
+<div><h3 class="font-semibold">How you charge customers</h3><p class="text-xs text-slate-500">Choose the ways you price your work. Each Yes opens a place to add the amount or details.</p></div>
+<div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge a call-out fee?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="callout_fee" value="yes"> Yes</label><label><input type="radio" name="callout_fee" value="no"> No</label></div><div id="callout_fee_panel" class="hidden mt-3"><label class="block text-sm">Details<textarea id="callOutFeeDetails" class="field mt-1.5" rows="2" placeholder="e.g. $75 call-out fee, deducted from the job if accepted"></textarea></label></div></div><div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you charge by the hour?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="hourly_rate" value="yes"> Yes</label><label><input type="radio" name="hourly_rate" value="no"> No</label></div><div id="hourly_rate_panel" class="hidden mt-3"><label class="block text-sm">Details<textarea id="hourlyRateDetails" class="field mt-1.5" rows="2" placeholder="e.g. $95 per hour, one-hour minimum"></textarea></label></div></div><div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you offer fixed prices for certain jobs?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="fixed_prices" value="yes"> Yes</label><label><input type="radio" name="fixed_prices" value="no"> No</label></div><div id="fixed_prices_panel" class="hidden mt-3"><label class="block text-sm">Details<textarea id="fixedPriceDetails" class="field mt-1.5" rows="2" placeholder="List common jobs and their fixed prices"></textarea></label></div></div><div class="border-t border-slate-100 pt-3"><p class="text-sm font-semibold">Do you offer free estimates?</p><div class="flex gap-5 text-sm mt-2"><label><input type="radio" name="free_estimates" value="yes"> Yes</label><label><input type="radio" name="free_estimates" value="no"> No</label></div><div id="free_estimates_panel" class="hidden mt-3"><label class="block text-sm">Details<textarea id="estimateDetails" class="field mt-1.5" rows="2" placeholder="Add any conditions or details"></textarea></label></div></div>
+</div>
+<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
+<div><h3 class="font-semibold">How customers can pay</h3><p class="text-xs text-slate-500">Tell your receptionist which payment options your business accepts.</p></div>
+<p class="text-sm font-semibold">Do you want payment links sent to customers?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="payment_link_choice" value="yes"> Yes</label><label><input type="radio" name="payment_link_choice" value="no"> No</label></div>
+<div id="payment_link_choice_panel" class="hidden space-y-2"><label class="block text-sm font-semibold">When should a payment link be sent?<textarea id="paymentLinkDetails" class="field mt-1.5" rows="2" placeholder="e.g. Send the call-out fee before travelling"></textarea></label><p class="text-xs text-amber-800 bg-amber-50 rounded-lg p-3">A payment provider connection is still required before real payment links can be sent.</p></div>
+<p class="text-sm font-semibold border-t border-slate-100 pt-3">Are you cash only?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="cash_only" value="yes"> Yes</label><label><input type="radio" name="cash_only" value="no"> No</label></div>
+<div id="cash_only_panel" class="hidden"><label class="block text-sm">Other accepted payment methods<textarea id="otherPaymentMethods" class="field mt-1.5" rows="2" placeholder="e.g. card, bank transfer, cheque"></textarea></label></div>
+</div>
+</section>
 <section class="border-t border-slate-100 pt-6 space-y-4">
 <h2 class="font-bold text-lg">Call-out and emergency contact</h2>
 <p class="text-sm text-slate-600">Enter the number the receptionist should use for emergency call-outs. Change it whenever your on-call person or shift changes.</p>
@@ -51,11 +73,7 @@ body{background:#f8fafc;color:#0f172a}.panel{background:#fff;border:1px solid #e
 <label class="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm"><input id="callOutModeRefer" name="callOutMode" type="radio" value="give_number" class="mt-1"><span><strong>Give the number to the customer</strong><span class="block text-slate-500 mt-0.5">Sloane tells the customer to call this number directly.</span></span></label>
 <label class="block text-sm font-semibold">Emergency call-out fee (optional)<input id="emergencyCallOutFee" class="field mt-1.5" placeholder="Leave blank if not applicable"></label>
 </section>
-<section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Payment links</h2>
-<label class="flex items-start gap-3 text-sm"><input id="paymentLinksEnabled" type="checkbox" class="mt-1"><span><strong>Allow Sloane to send payment links</strong><span class="block text-slate-500 mt-0.5">When enabled and connected, Sloane can send a payment link for an agreed call-out fee or other amount approved by the business.</span></span></label>
-<div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-sm text-amber-900"><strong>Payment provider connection still required.</strong> The business will need to connect its own payment account (Stripe is our proposed first option). Payments should go directly to that business. This checkbox saves the preference only; it does not yet create or send real payment links.</div>
-</section>
+
 <section class="border-t border-slate-100 pt-6 space-y-4">
 <h2 class="font-bold text-lg">Receptionist style</h2>
 <div class="grid sm:grid-cols-2 gap-4">
@@ -80,6 +98,11 @@ if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
 const fields=['businessName','businessPhone','businessLocation','businessZip','primaryTrade','additionalServices','serviceAreas','operatingHours','emergencyCallOutFee','callOutContactNumber','voiceStyle'];
+const optionalChoices=['extra_services','callout_fee','hourly_rate','fixed_prices','free_estimates','payment_link_choice','cash_only'];
+function setChoice(name,value){const panel=document.getElementById(name+'_panel');if(panel)panel.classList.toggle('hidden',value!=='yes');}
+optionalChoices.forEach(name=>document.querySelectorAll('input[name="'+name+'"]').forEach(input=>input.addEventListener('change',()=>setChoice(name,input.value))));
+function loadChoice(data,name){const value=data[name];if(value==='yes'||value==='no'){const input=document.querySelector('input[name="'+name+'"][value="'+value+'"]');if(input)input.checked=true;setChoice(name,value);}}
+const optionalTextFields=['serviceDetails','excludedJobs','callOutFeeDetails','hourlyRateDetails','fixedPriceDetails','estimateDetails','paymentLinkDetails','otherPaymentMethods'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-50 text-red-700 border border-red-200':'bg-emerald-50 text-emerald-700 border border-emerald-200');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -101,7 +124,9 @@ auth.onAuthStateChanged(async user=>{
   document.getElementById('voiceMale').checked=data.voicePreference==='male';
   document.getElementById('callOutModeHandle').checked=data.callOutMode==='handle_and_notify';
   document.getElementById('callOutModeRefer').checked=data.callOutMode==='give_number';
-  document.getElementById('paymentLinksEnabled').checked=!!data.paymentLinksEnabled;
+  optionalChoices.forEach(name=>loadChoice(data,name));
+  optionalTextFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  document.getElementById('paymentLinksEnabled')?.remove();
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
 form.addEventListener('submit',async e=>{
@@ -111,7 +136,9 @@ form.addEventListener('submit',async e=>{
  fields.forEach(id=>{if(id!=='voicePreference')update[id]=document.getElementById(id).value.trim()});
  update.voicePreference=document.querySelector('input[name="voicePreference"]:checked')?.value||'female';
  update.callOutMode=document.querySelector('input[name="callOutMode"]:checked')?.value||'give_number';
- update.paymentLinksEnabled=document.getElementById('paymentLinksEnabled').checked;
+ optionalChoices.forEach(name=>{update[name]=document.querySelector('input[name="'+name+'"]:checked')?.value||'';});
+ optionalTextFields.forEach(id=>{update[id]=document.getElementById(id).value.trim();});
+ update.paymentLinksEnabled=update.payment_link_choice==='yes';
  update.setupComplete=true;
  update.profileComplete=true;
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
