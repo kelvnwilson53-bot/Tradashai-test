@@ -140,71 +140,6 @@
             transform: translateY(-2px);
         }
 
-        /* Premium motion: restrained reveal, depth and light */
-        .motion-ready .scroll-reveal {
-            opacity: 0;
-            transform: translateY(34px) scale(0.985);
-            transition: opacity 850ms cubic-bezier(.2,.75,.25,1), transform 850ms cubic-bezier(.2,.75,.25,1);
-        }
-        .motion-ready .scroll-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        .podium-card-3d, .podium-dark-card {
-            transform-origin: center;
-            will-change: transform;
-        }
-        .podium-card-3d:hover, .podium-dark-card:hover {
-            transform: translateY(-8px) scale(1.015);
-        }
-        .blend-image-container img {
-            transition: transform 900ms cubic-bezier(.2,.75,.25,1), filter 900ms ease;
-        }
-        .blend-image-container:hover img {
-            transform: scale(1.075);
-            filter: saturate(1.12) contrast(1.04);
-        }
-        .emergency-feature {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-            background: radial-gradient(circle at 85% 15%, rgba(59,130,246,.32), transparent 34%), linear-gradient(125deg,#07152e 0%,#102b55 55%,#0b1c38 100%);
-        }
-        .emergency-feature::before {
-            content: "";
-            position: absolute;
-            inset: -60% -20%;
-            background: conic-gradient(from 0deg, transparent 0 65%, rgba(96,165,250,.17) 75%, transparent 86%);
-            animation: emergencySweep 14s linear infinite;
-            z-index: -1;
-        }
-        @keyframes emergencySweep { to { transform: rotate(360deg); } }
-        .emergency-step {
-            background: rgba(255,255,255,.075);
-            border: 1px solid rgba(191,219,254,.22);
-            backdrop-filter: blur(12px);
-            transition: transform .35s ease, background .35s ease, border-color .35s ease;
-        }
-        .emergency-step:hover {
-            transform: translateY(-6px);
-            background: rgba(255,255,255,.13);
-            border-color: rgba(147,197,253,.7);
-        }
-        .story-play { transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
-        .story-play:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.16); }
-        .story-play[aria-pressed="true"] { background: #0f172a; color: #fff; }
-        .emergency-feature .story-play[aria-pressed="true"] { background: #7dd3fc; color: #082f49; }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-            .motion-ready .scroll-reveal { opacity: 1; transform: none; }
-        }
-
         /* Moving Slides Animation */
         @keyframes slideScroll {
             0% { transform: translateX(0); }
@@ -248,28 +183,20 @@
 
             <!-- RIGHT SIDE: HAMBURGER MENU -->
             <div class="relative">
-                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex min-h-11 items-center gap-2.5 text-sm font-semibold text-slate-700 hover:text-[#2563eb] px-3.5 py-2.5 rounded-xl bg-white border border-transparent shadow-none transition focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
-                    <svg class="w-5 h-5 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="menu-btn" aria-label="Toggle Navigation" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-[#2563eb] px-2 py-2 rounded-lg bg-transparent border-0 shadow-none transition focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+                    <svg class="w-4 h-4 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     <span>Menu</span>
                 </button>
 
                 <!-- Right-Aligned Dropdown Menu -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-64 max-h-[75vh] overflow-y-auto rounded-2xl bg-white border border-slate-200 py-3.5 px-4 space-y-1 shadow-xl z-50">
-                    <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-[#2563eb]">Explore TriDashAI</p>
-                    <a href="#top" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Home</a>
-                    <a href="#how-it-works" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">How It Works & Trades</a>
-                    <a href="#who-we-serve" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Who We Serve</a>
-                    <a href="#emergency-service" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">24-Hour Emergency Service</a>
-                    <a href="#dispatcher" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Meet Your Dispatcher</a>
-                    <a href="#roi-calculator" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">ROI Calculator</a>
-                    <a href="#pricing" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Pricing</a>
-                    <a href="#faqs" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">FAQs</a>
-                    <div class="border-t border-slate-200 my-2"></div>
-                    <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-[#2563eb]">Your account</p>
-                    <a href="login.html" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Log In</a>
-                    <a href="kelvsignup.html" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Start Free Trial</a>
+                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2.5 shadow-xl backdrop-blur-md z-50">
+                    <a href="#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
+                    <a href="#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
+                    <a href="#pricing" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Pricing</a>
+                    <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
+                    <a href="kelvsignup.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Start Free Trial</a>
                 </div>
             </div>
 
@@ -278,97 +205,37 @@
 
     <!-- HERO SECTION -->
     <main class="flex-1 relative z-10">
-        <section id="home" class="max-w-5xl mx-auto px-4 pt-10 pb-8 sm:pt-14 sm:pb-10 text-center">
-            <!-- HERO HEADLINE: THE COMMERCIAL HOOK -->
-            <h1 class="mx-auto max-w-4xl text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.08] mb-7 text-slate-900 [text-wrap:balance]">
-                Stop funding your competitor's truck.
+        <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+            <!-- HERO BRAND & TAGLINE -->
+            <p class="text-sm sm:text-base font-bold text-slate-700 mb-4 tracking-wide">
+                <span class="text-[#2563eb]">Tri</span>DashAI — Your 3-in-1 Virtual Phone Operator (with a human voice)
+            </p>
+
+            <!-- MOVING BADGE -->
+            <div class="inline-block podium-badge animated-badge text-sm sm:text-base font-extrabold py-2.5 rounded-full mb-6 shadow-sm whitespace-nowrap">
+                <span class="text-slate-900">Stop <span style="color: royalblue; font-weight: bold;">FUNDING</span> your competitor's <span style="color: blue; font-weight: bold;">TRUCK</span>!</span>
+            </div>
+            
+            <!-- HERO HEADING -->
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-slate-900">
+                <span class="block">No more missed calls.</span>
+                <span class="block">A captured call is <span style="color: blue; font-weight: bold;">$300</span> in your pocket, not the guy down the road</span>
             </h1>
-
-            <!-- HERO IMAGE: COMPETITOR AND HIS WORK TRUCK -->
-            <div class="mx-auto max-w-4xl mb-7 overflow-hidden rounded-2xl">
-                <img src="1792284328037.jpg" alt="Independent trade business owner at work" class="block w-full h-auto object-cover" fetchpriority="high" />
-            </div>
-
-            <!-- FINANCIAL CONSEQUENCE -->
-            <h2 class="mx-auto max-w-3xl text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-tight text-slate-900 mb-6 [text-wrap:balance]">
-                A captured call is <span class="text-[#2563eb]">$300</span> in your pocket, not the guy down the road.
-            </h2>
-
-            <!-- PRODUCT POSITIONING -->
-            <div class="mx-auto max-w-2xl">
-                <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight text-[#2563eb] [text-wrap:balance]">
-                    Meet your 3-in-1 phone operator.
-                </h3>
-                <p class="mt-2 text-base sm:text-lg font-semibold leading-snug text-slate-700 [text-wrap:balance]">
-                    Ready to answer when you can't.
-                </p>
-            </div>
+            
+            <!-- HERO SUBHEADING -->
+            <p class="text-slate-700 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                Missing just a single call is costing you $300 in lost income—amounting to $44,000 per year on average. That's a huge loss for you and a massive win for your competitor while you're under a sink or up on a roof.
+            </p>
         </section>
 
-        <!-- DEDICATED 24-HOUR EMERGENCY SERVICE FEATURE -->
-        <section id="emergency-service" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10 scroll-mt-24">
-            <div class="emergency-feature rounded-[2rem] p-7 sm:p-10 lg:p-12 shadow-2xl">
-                <div class="relative z-10">
-                    <div class="flex flex-wrap items-center gap-3 mb-5">
-                        <span class="inline-flex items-center gap-2 rounded-full bg-blue-400/15 border border-blue-200/30 px-4 py-2 text-xs font-extrabold uppercase tracking-widest text-blue-100">
-                            <span class="h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_12px_#7dd3fc]"></span>
-                            Dedicated 24-hour emergency service
-                        </span>
-                        <span class="text-xs font-semibold text-blue-100/70">For businesses that offer round-the-clock call-outs</span>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                        <div>
-                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white">When the call comes at <span class="text-sky-300">2:30 am,</span> your business can still answer.</h2>
-                            <p class="mt-5 text-base sm:text-lg leading-relaxed text-blue-50/85">For dedicated emergency plumbers, roofers, HVAC specialists and electricians, TriDashAI can handle the first conversation, establish what the customer needs and follow the response arrangements you've configured.</p>
-                            <p class="mt-4 text-sm leading-relaxed text-blue-100/70">The receptionist can handle both everyday enquiries and emergency call-outs, provided the business has configured the relevant services, prices, availability and escalation arrangements.</p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">☎️</div>
-                                <h3 class="font-bold text-white">Answer immediately</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Respond to the customer at any hour, rather than sending them straight to voicemail.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">📍</div>
-                                <h3 class="font-bold text-white">Understand the situation</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Establish the issue, location and essential details needed for the next step.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">🛡️</div>
-                                <h3 class="font-bold text-white">Follow configured guidance</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Provide appropriate initial safety guidance and explain configured call-out terms.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">🔔</div>
-                                <h3 class="font-bold text-white">Escalate as arranged</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Notify or escalate to the contractor in line with their agreed availability and procedures.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 rounded-2xl border border-blue-200/25 bg-white/10 p-5 sm:p-6">
-                        <p class="text-xs font-extrabold uppercase tracking-widest text-sky-200">After-hours call · 2:30 am</p>
-                        <h3 class="mt-1 text-xl font-extrabold text-white">A burst pipe. A worried customer. Someone answers.</h3>
-                        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-blue-100/85">Hear how the first conversation can be handled, with safety guidance and escalation following the arrangements the business has configured.</p>
-                        <button type="button" class="story-play mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-extrabold text-blue-950 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300" data-story="emergency" aria-pressed="false">▶ Listen to the emergency story</button>
-                        <details class="mt-3 text-sm text-blue-100"><summary class="cursor-pointer font-semibold">Read the emergency story</summary><p class="mt-2 max-w-3xl leading-relaxed">It is half past two in the morning. A homeowner has discovered water spreading across the kitchen floor. The call is answered. The receptionist calmly establishes the location and what has happened, gives only the safety guidance configured for that business, explains the relevant call-out arrangements and escalates the enquiry according to the contractor’s agreed procedure. The business decides whether it can attend and what happens next.</p></details>
-                    </div>
-                    <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/15 pt-6">
-                        <p class="text-sm text-blue-100/75 max-w-2xl">Your business sets the rules. TriDashAI handles the customer conversation and follows the arrangements you put in place.</p>
-                        <a href="#pricing" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-extrabold text-blue-950 shadow-lg transition hover:-translate-y-1 hover:shadow-xl">Explore the service <span class="ml-2">→</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ROI CALCULATOR (AFTER THE EMERGENCY FEATURE) -->
+        <!-- ROI CALCULATOR (IMMEDIATELY AFTER HERO) -->
         <section id="roi-calculator" class="max-w-5xl mx-auto px-4 py-8 relative z-10">
             <div class="text-center mb-10">
                 <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">
                     Interactive ROI Calculator
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">See What Missed Calls Are <span class="text-[#2563eb]">Costing You</span></h2>
-                <p class="text-slate-600 text-sm sm:text-base">Estimate what missed calls could be costing your business, using your average job value.</p>
+                <p class="text-slate-600 text-sm sm:text-base">Calculate your exact monthly revenue loss based on an average $300 per service call.</p>
             </div>
 
             <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -405,8 +272,8 @@
             <!-- IMMEDIATE ACTION BUTTON WITH NO CREDIT CARD REQUIRED -->
             <div class="text-center mt-10">
                 <div class="podium-card-3d p-8 sm:p-10 rounded-3xl space-y-4 bg-blue-50/40 border-blue-200">
-                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Stop losing the calls that should be yours.</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto">See how much revenue you could recover before deciding whether TriDashAI is right for your business.</p>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Put $44,000 Back in Your Pocket Right Now.</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto">No contracts. No complicated setup. See the revenue hit your books before you pay a dime.</p>
                     <div class="pt-2 flex flex-col items-center gap-1.5">
                         <a href="kelvsignup.html" class="inline-block px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center hover:scale-105">
                             Start Your 7-Day Free Trial →
@@ -502,136 +369,8 @@
             </div>
         </section>
 
-        <!-- THREE CUSTOMER SCENARIOS: ADDED WITHOUT REMOVING EXISTING PAGE CONTENT -->
-        <section id="who-we-serve" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 scroll-mt-24">
-            <div class="rounded-[2rem] border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-slate-50 p-6 sm:p-10 shadow-xl">
-                <div class="text-center mb-9">
-                    <span class="inline-flex items-center gap-2 rounded-full bg-blue-100 border border-blue-200 px-4 py-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-blue-800">
-                        <span>Built around real trade businesses</span>
-                    </span>
-                    <h2 class="mt-4 text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Does your working day look a bit like <span class="text-[#2563eb]">one of these?</span></h2>
-                    <p class="mt-3 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-slate-600">Different-sized businesses. The same problem: customers call while you're busy doing the work.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <article class="rounded-2xl bg-white border border-blue-200 shadow-md overflow-hidden">
-                        <div class="h-48 sm:h-52 overflow-hidden bg-slate-100">
-                            <img src="1793498924399.jpg" alt="Plumber working beneath a kitchen sink" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-700">The one-man band</p>
-                            <h3 class="mt-1 text-xl font-extrabold text-slate-900">Harry</h3>
-                            <p class="mt-3 text-sm leading-relaxed text-slate-700">Harry is a one-man plumber. He's in his van, fitting a kitchen sink or fixing a leak. His hands are dirty and he can't keep stopping to answer the phone. Every missed call could be a customer ringing the next plumber.</p>
-                        </div>
-                    </article>
-
-                    <article class="rounded-2xl bg-white border border-blue-200 shadow-md overflow-hidden">
-                        <div class="h-48 sm:h-52 overflow-hidden bg-slate-100">
-                            <img src="1792284328037.jpg" alt="Small trade business owner working on a building site" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-700">The small plumbing team</p>
-                            <h3 class="mt-1 text-xl font-extrabold text-slate-900">Fred</h3>
-                            <p class="mt-3 text-sm leading-relaxed text-slate-700">Fred runs a small team of plumbers working across different jobs. He's juggling customers, jobs and schedules. Calls come in while he's driving, quoting or managing the team. He needs the phone answered and enquiries handled.</p>
-                        </div>
-                    </article>
-
-                    <article class="rounded-2xl bg-white border border-blue-200 shadow-md overflow-hidden">
-                        <div class="h-48 sm:h-52 overflow-hidden bg-slate-100">
-                            <img src="1793498988502.jpg" alt="Trade professional coordinating field service work" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Several plumbers, more calls</p>
-                            <h3 class="mt-1 text-xl font-extrabold text-slate-900">The larger operation</h3>
-                            <p class="mt-3 text-sm leading-relaxed text-slate-700">Several plumbers are out on the road and the business has a steady stream of enquiries. With multiple jobs happening at once, the business needs calls answered, enquiries organised and appointments coordinated.</p>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- USER-INITIATED SCENARIO NARRATION -->
-                <div class="mt-8 rounded-2xl border border-blue-200 bg-white/90 p-5 sm:p-6 shadow-inner">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                        <div><p class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Hear the working day</p><h3 class="mt-1 text-lg sm:text-xl font-extrabold text-slate-900">Three businesses. Three different pressures.</h3><p class="mt-1 text-sm text-slate-600">Choose a story to hear how an unanswered call can become a handled enquiry.</p></div>
-                        <span class="text-xs text-slate-500">Audio starts only when you press play</span>
-                    </div>
-                    <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">Harry · Solo plumber</p><p class="mt-1 text-xs text-slate-600">One pair of hands. A phone that never stops.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="harry" aria-pressed="false">▶ Listen to Harry</button></div>
-                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">Fred · Growing team</p><p class="mt-1 text-xs text-slate-600">Keeping customers and crews moving.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="fred" aria-pressed="false">▶ Listen to Fred</button></div>
-                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">The larger operation</p><p class="mt-1 text-xs text-slate-600">More technicians. More enquiries. More to coordinate.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="team" aria-pressed="false">▶ Listen to the story</button></div>
-                    </div>
-                    <div id="story-status" class="mt-4 min-h-6 text-sm font-semibold text-blue-800" role="status" aria-live="polite">Select a story to begin.</div>
-                    <p class="mt-1 text-xs leading-relaxed text-slate-500">Narration uses the voice available in your browser or device. The written story remains available below for anyone who prefers to read.</p>
-                    <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs leading-relaxed text-slate-600">
-                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read Harry’s story</summary><p class="mt-2">Harry is under a kitchen sink, both hands occupied, when a new customer calls. He cannot safely stop the job to answer. TriDashAI can answer the enquiry, establish what the customer needs and capture the details for Harry to follow up.</p></details>
-                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read Fred’s story</summary><p class="mt-2">Fred is coordinating a small team across several jobs. One call comes in while he is driving; another arrives while he is talking to a customer. TriDashAI can handle the first conversation, gather the job details and help keep enquiries organised.</p></details>
-                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read the larger operation’s story</summary><p class="mt-2">Several technicians are on the road and new enquiries keep arriving. TriDashAI can answer consistently, collect the information the office needs and support appointment coordination where the relevant calendar connection is configured.</p></details>
-                    </div>
-                </div>
-
-                <div class="mt-7 rounded-2xl bg-slate-900 text-white p-5 sm:p-6 text-center">
-                    <p class="text-lg sm:text-xl font-extrabold">Whichever one sounds familiar, TriDashAI helps keep your business answering.</p>
-                    <p class="mt-2 text-sm text-slate-300">Missed-call response, customer follow-up and Google review support — in one service.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- DEDICATED 24-HOUR EMERGENCY SERVICE FEATURE -->
-        <section id="emergency-service" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10 scroll-mt-24">
-            <div class="emergency-feature rounded-[2rem] p-7 sm:p-10 lg:p-12 shadow-2xl">
-                <div class="relative z-10">
-                    <div class="flex flex-wrap items-center gap-3 mb-5">
-                        <span class="inline-flex items-center gap-2 rounded-full bg-blue-400/15 border border-blue-200/30 px-4 py-2 text-xs font-extrabold uppercase tracking-widest text-blue-100">
-                            <span class="h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_12px_#7dd3fc]"></span>
-                            Dedicated 24-hour emergency service
-                        </span>
-                        <span class="text-xs font-semibold text-blue-100/70">For businesses that offer round-the-clock call-outs</span>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                        <div>
-                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white">When the call comes at <span class="text-sky-300">2:30 am,</span> your business can still answer.</h2>
-                            <p class="mt-5 text-base sm:text-lg leading-relaxed text-blue-50/85">For dedicated emergency plumbers, roofers, HVAC specialists and electricians, TriDashAI can handle the first conversation, establish what the customer needs and follow the response arrangements you've configured.</p>
-                            <p class="mt-4 text-sm leading-relaxed text-blue-100/70">The receptionist can handle both everyday enquiries and emergency call-outs, provided the business has configured the relevant services, prices, availability and escalation arrangements.</p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">☎️</div>
-                                <h3 class="font-bold text-white">Answer immediately</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Respond to the customer at any hour, rather than sending them straight to voicemail.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">📍</div>
-                                <h3 class="font-bold text-white">Understand the situation</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Establish the issue, location and essential details needed for the next step.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">🛡️</div>
-                                <h3 class="font-bold text-white">Follow configured guidance</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Provide appropriate initial safety guidance and explain configured call-out terms.</p>
-                            </div>
-                            <div class="emergency-step rounded-2xl p-5">
-                                <div class="text-2xl mb-3">🔔</div>
-                                <h3 class="font-bold text-white">Escalate as arranged</h3>
-                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Notify or escalate to the contractor in line with their agreed availability and procedures.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 rounded-2xl border border-blue-200/25 bg-white/10 p-5 sm:p-6">
-                        <p class="text-xs font-extrabold uppercase tracking-widest text-sky-200">After-hours call · 2:30 am</p>
-                        <h3 class="mt-1 text-xl font-extrabold text-white">A burst pipe. A worried customer. Someone answers.</h3>
-                        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-blue-100/85">Hear how the first conversation can be handled, with safety guidance and escalation following the arrangements the business has configured.</p>
-                        <button type="button" class="story-play mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-extrabold text-blue-950 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300" data-story="emergency" aria-pressed="false">▶ Listen to the emergency story</button>
-                        <details class="mt-3 text-sm text-blue-100"><summary class="cursor-pointer font-semibold">Read the emergency story</summary><p class="mt-2 max-w-3xl leading-relaxed">It is half past two in the morning. A homeowner has discovered water spreading across the kitchen floor. The call is answered. The receptionist calmly establishes the location and what has happened, gives only the safety guidance configured for that business, explains the relevant call-out arrangements and escalates the enquiry according to the contractor’s agreed procedure. The business decides whether it can attend and what happens next.</p></details>
-                    </div>
-                    <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/15 pt-6">
-                        <p class="text-sm text-blue-100/75 max-w-2xl">Your business sets the rules. TriDashAI handles the customer conversation and follows the arrangements you put in place.</p>
-                        <a href="#pricing" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-extrabold text-blue-950 shadow-lg transition hover:-translate-y-1 hover:shadow-xl">Explore the service <span class="ml-2">→</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- MEET YOUR 24/7 DISPATCHER -->
-        <section id="dispatcher" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
             <div class="text-center mb-10">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Meet Your New <span class="text-[#2563eb]">24/7 Dispatcher</span></h2>
                 <p class="text-slate-600 text-sm sm:text-base">Instant text-back and live voice response the second you miss a call.</p>
@@ -785,41 +524,6 @@
             </div>
         </section>
 
-        <!-- LANDING PAGE FAQs -->
-        <section id="faqs" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10 scroll-mt-24">
-            <div class="text-center mb-8">
-                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">Quick answers</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
-                <p class="text-slate-600 text-sm mt-2">A few things contractors commonly want to know about TriDashAI.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">What does TriDashAI do?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">TriDashAI is designed to help trades businesses respond to missed calls, follow up with customers by text, and manage Google review requests and replies.</p>
-                </details>
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Who is it designed for?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">It is aimed at independent trades businesses, including plumbers, roofers and other local service contractors.</p>
-                </details>
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">How much does it cost?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The plan shown on this page is $89 per month. It includes the allowances and features listed in the pricing section.</p>
-                </details>
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Is a credit card required to start the trial?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The current offer shown on this page is a 7-day free trial with no credit card required.</p>
-                </details>
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Can I use my existing business phone number?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The setup is designed to work with your existing business number using call forwarding. The forwarding arrangement needs to be configured with your phone provider.</p>
-                </details>
-                <details class="podium-card-3d rounded-2xl p-4">
-                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Can I cancel my subscription?</summary>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The pricing section states there are no long-term contracts and that you can cancel anytime.</p>
-                </details>
-            </div>
-        </section>
-
         <!-- BOTTOM CTA SECTION -->
         <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
             <div class="podium-card-3d p-8 sm:p-12 rounded-3xl space-y-6">
@@ -857,29 +561,6 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Subtle scroll reveals: elements animate in as they enter the viewport.
-        document.documentElement.classList.add('motion-ready');
-        const revealTargets = document.querySelectorAll('main > section, main section .podium-card-3d, main section .podium-dark-card, main section .emergency-step');
-        revealTargets.forEach((element, index) => {
-            element.classList.add('scroll-reveal');
-            if (element.classList.contains('podium-card-3d') || element.classList.contains('emergency-step')) {
-                element.style.transitionDelay = (index % 3) * 90 + 'ms';
-            }
-        });
-        if ('IntersectionObserver' in window) {
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
-            revealTargets.forEach(element => revealObserver.observe(element));
-        } else {
-            revealTargets.forEach(element => element.classList.add('is-visible'));
-        }
-
         // Menu Toggle Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -900,61 +581,6 @@
                 mobileMenu.classList.add('hidden');
             });
         });
-
-        // Scenario narration. Playback is user-initiated and uses the browser/device voice.
-        const scenarioNarration = {
-            harry: "Meet Harry. He is a one-man plumbing business. Right now, he is under a kitchen sink, both hands busy, concentrating on the repair. His phone rings. He cannot just drop everything and answer. The customer may move on and call another plumber. With TriDashAI, the call can be answered, the customer’s problem and location can be established, and the enquiry details can be captured for Harry to follow up. Harry can keep working, while the customer knows their call has been heard.",
-            fred: "Fred runs a growing plumbing team. One crew is finishing a job, another is on the road, and Fred is trying to keep the schedule on track. A customer calls while he is driving. Another enquiry arrives while he is speaking to a client. It is not that Fred does not want the work. He simply cannot be in three places at once. TriDashAI can answer the first conversation, gather the job details and help keep enquiries organised. Fred stays focused on running the business, rather than chasing every ringing phone.",
-            team: "Now imagine a larger operation, with several technicians working across the area. Calls arrive throughout the day. Different jobs have different requirements, and every enquiry needs to reach the right person. TriDashAI can provide a consistent first response, collect the information the office needs and support appointment coordination when the business calendar is connected and configured. The result is a clearer picture of incoming work and fewer enquiries left unanswered.",
-            emergency: "It is two thirty in the morning. A homeowner wakes to the sound of running water. There is a burst pipe and water is spreading across the kitchen floor. They call the emergency plumbing company. The call is answered. The receptionist stays calm, establishes the address and what has happened, and follows the safety guidance configured by the business. The customer is told what the next step is under the company's call-out arrangements. The enquiry is escalated according to the contractor's agreed procedure. TriDashAI does not decide whether a technician is available. The business sets those rules, and the receptionist follows them."
-        };
-        const storyButtons = Array.from(document.querySelectorAll('.story-play'));
-        const storyStatus = document.getElementById('story-status');
-        let activeStoryButton = null;
-        let speechAvailable = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
-        function resetStoryButtons() {
-            storyButtons.forEach(button => { button.setAttribute('aria-pressed', 'false'); button.textContent = button.dataset.originalLabel || button.textContent.replace(/^⏸\\s*/, '▶ '); });
-            activeStoryButton = null;
-        }
-        storyButtons.forEach(button => {
-            button.dataset.originalLabel = button.textContent;
-            button.addEventListener('click', () => {
-                if (!speechAvailable) {
-                    storyStatus.textContent = 'Audio narration is not supported by this browser. Please use the written story below.';
-                    return;
-                }
-                const key = button.dataset.story;
-                if (activeStoryButton === button && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-                    window.speechSynthesis.pause();
-                    button.textContent = '▶ Resume narration';
-                    storyStatus.textContent = 'Narration paused.';
-                    return;
-                }
-                if (activeStoryButton === button && window.speechSynthesis.paused) {
-                    window.speechSynthesis.resume();
-                    button.textContent = 'Ⅱ Pause narration';
-                    storyStatus.textContent = 'Narration playing.';
-                    return;
-                }
-                window.speechSynthesis.cancel();
-                resetStoryButtons();
-                activeStoryButton = button;
-                button.setAttribute('aria-pressed', 'true');
-                button.textContent = 'Ⅱ Pause narration';
-                storyStatus.textContent = 'Narration playing. You can pause or choose another story.';
-                const utterance = new SpeechSynthesisUtterance(scenarioNarration[key]);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.94;
-                utterance.pitch = 1;
-                const voices = window.speechSynthesis.getVoices();
-                const preferredVoice = voices.find(voice => /^en-US/i.test(voice.lang) && /female|samantha|ava|jenny|aria|zira/i.test(voice.name)) || voices.find(voice => /^en-US/i.test(voice.lang));
-                if (preferredVoice) utterance.voice = preferredVoice;
-                utterance.onend = () => { if (activeStoryButton === button) { resetStoryButtons(); storyStatus.textContent = 'Story finished. Choose another scenario to listen again.'; } };
-                utterance.onerror = () => { if (activeStoryButton === button) { resetStoryButtons(); storyStatus.textContent = 'Audio could not be played here. Please use the written story below.'; } };
-                window.speechSynthesis.speak(utterance);
-            });
-        });
-        window.addEventListener('beforeunload', () => { if (speechAvailable) window.speechSynthesis.cancel(); });
 
         // ROI Calculator Logic (Monthly Lost Revenue: Job Value * Missed Calls per week * 4 weeks)
         const jobValueInput = document.getElementById('job-value');
