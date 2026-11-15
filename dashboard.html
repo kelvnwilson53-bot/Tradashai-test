@@ -231,7 +231,7 @@
                   <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Business setup</p>
                   <a href="#stage-1" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Quick Start details</a>
                   <a href="#phone-setup" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Phone connection</a>
-                  <a href="#advanced-setup" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Advanced Setup</a>
+                  <a href="settings.html" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Advanced Setup</a>
                   <div class="border-t border-slate-700/70 my-2"></div>
                   <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Support</p>
                   <a href="#faq-panel" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Help & FAQs</a>
@@ -602,7 +602,6 @@
       function showBusinessDashboard() {
         document.getElementById('stage-1')?.classList.add('hidden');
         document.getElementById('advanced-setup')?.classList.add('hidden');
-        document.getElementById('activity-reviews')?.classList.add('hidden');
         document.getElementById('stage-2')?.classList.remove('hidden');
         document.getElementById('advanced-setup-bar')?.classList.remove('hidden');
       }
@@ -693,14 +692,35 @@
             localStorage.setItem('tridashai-theme', nextTheme);
         });
 
-        // Close the menu after choosing a dashboard section; native anchors handle scrolling.
-        document.querySelectorAll('.dashboard-nav-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // Hamburger Menu Toggle Logic
+        // Dashboard navigation: reveal the correct view before scrolling to it.
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        document.querySelectorAll('.dashboard-nav-link').forEach(link => {
+            link.addEventListener('click', event => {
+                const target = link.getAttribute('href');
+                if (target === '#stage-1' || target === '#phone-setup') {
+                    event.preventDefault();
+                    document.getElementById('stage-2')?.classList.add('hidden');
+                    document.getElementById('stage-1')?.classList.remove('hidden');
+                    document.getElementById('advanced-setup')?.classList.add('hidden');
+                    document.getElementById('activity-reviews')?.classList.add('hidden');
+                    requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'}));
+                } else if (target === '#stage-2' || target === '#roi-performance' || target === '#usage-allowance') {
+                    event.preventDefault();
+                    document.getElementById('stage-1')?.classList.add('hidden');
+                    document.getElementById('stage-2')?.classList.remove('hidden');
+                    document.getElementById('activity-reviews')?.classList.add('hidden');
+                    requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'}));
+                } else if (target === '#activity-reviews') {
+                    event.preventDefault();
+                    document.getElementById('stage-1')?.classList.add('hidden');
+                    document.getElementById('stage-2')?.classList.add('hidden');
+                    document.getElementById('activity-reviews')?.classList.remove('hidden');
+                    requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'}));
+                }
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
         hamburgerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
