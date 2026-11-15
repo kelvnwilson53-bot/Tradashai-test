@@ -191,10 +191,16 @@
                 </button>
 
                 <!-- Right-Aligned Dropdown Menu -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 py-3.5 px-4 space-y-1 shadow-xl backdrop-blur-md z-50">
-                    <a href="#how-it-works" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">How It Works</a>
+                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-64 max-h-[75vh] overflow-y-auto rounded-2xl bg-white border border-slate-200 py-3.5 px-4 space-y-1 shadow-xl z-50">
+                    <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-[#2563eb]">Explore TriDashAI</p>
+                    <a href="#top" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Home</a>
+                    <a href="#how-it-works" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">How It Works & Trades</a>
+                    <a href="#dispatcher" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Meet Your Dispatcher</a>
                     <a href="#roi-calculator" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">ROI Calculator</a>
                     <a href="#pricing" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Pricing</a>
+                    <a href="#faqs" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">FAQs</a>
+                    <div class="border-t border-slate-200 my-2"></div>
+                    <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-[#2563eb]">Your account</p>
                     <a href="login.html" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Log In</a>
                     <a href="kelvsignup.html" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Start Free Trial</a>
                 </div>
@@ -205,7 +211,7 @@
 
     <!-- HERO SECTION -->
     <main class="flex-1 relative z-10">
-        <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+        <section id="home" class="max-w-4xl mx-auto px-4 py-12 text-center">
             <!-- HERO BRAND & TAGLINE -->
             <div class="mb-6 space-y-1.5 text-center">
                 <p class="text-sm sm:text-base font-bold text-slate-700 tracking-wide leading-snug">
@@ -373,7 +379,7 @@
         </section>
 
         <!-- MEET YOUR 24/7 DISPATCHER -->
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        <section id="dispatcher" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
             <div class="text-center mb-10">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Meet Your New <span class="text-[#2563eb]">24/7 Dispatcher</span></h2>
                 <p class="text-slate-600 text-sm sm:text-base">Instant text-back and live voice response the second you miss a call.</p>
@@ -524,6 +530,41 @@
                         <span class="text-xs text-slate-500 font-medium">(No credit card required)</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- LANDING PAGE FAQs -->
+        <section id="faqs" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10 scroll-mt-24">
+            <div class="text-center mb-8">
+                <span class="inline-block podium-badge text-xs font-bold px-3 py-1.5 rounded-full mb-3">Quick answers</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+                <p class="text-slate-600 text-sm mt-2">A few things contractors commonly want to know about TriDashAI.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">What does TriDashAI do?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">TriDashAI is designed to help trades businesses respond to missed calls, follow up with customers by text, and manage Google review requests and replies.</p>
+                </details>
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Who is it designed for?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">It is aimed at independent trades businesses, including plumbers, roofers and other local service contractors.</p>
+                </details>
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">How much does it cost?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The plan shown on this page is $89 per month. It includes the allowances and features listed in the pricing section.</p>
+                </details>
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Is a credit card required to start the trial?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The current offer shown on this page is a 7-day free trial with no credit card required.</p>
+                </details>
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Can I use my existing business phone number?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The setup is designed to work with your existing business number using call forwarding. The forwarding arrangement needs to be configured with your phone provider.</p>
+                </details>
+                <details class="podium-card-3d rounded-2xl p-4">
+                    <summary class="cursor-pointer text-sm font-bold text-slate-900">Can I cancel my subscription?</summary>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">The pricing section states there are no long-term contracts and that you can cancel anytime.</p>
+                </details>
             </div>
         </section>
 
