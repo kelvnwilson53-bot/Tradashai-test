@@ -324,30 +324,48 @@
           
 
           <!-- ROI / RECOVERED REVENUE INDICATOR -->
-          <section id="roi-performance" class="dashboard-card rounded-2xl p-3 sm:p-4 space-y-3">
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Your ROI at a glance</p>
-                <h3 class="text-base sm:text-lg font-bold text-white mt-1">Turning missed calls into booked work</h3>
-                <p class="text-xs text-slate-400 mt-1">See the calls your receptionist saves and the revenue those bookings bring into your business.</p>
+          <section id="roi-performance" class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-4">
+            <div class="text-center">
+              <span class="inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-300">Your TriDashAI results</span>
+              <h3 class="mt-2 text-lg sm:text-xl font-bold text-white">Turn missed calls into booked work</h3>
+              <p class="mt-1 text-xs sm:text-sm text-slate-400">See the business you are saving and the revenue you are bringing back in.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-stretch">
+              <div class="sm:col-span-7 rounded-xl border border-slate-700/60 bg-black/20 p-3 sm:p-4 space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <p class="text-xs font-semibold text-slate-300">Your recovered business this month</p>
+                  <span class="text-[11px] text-amber-300">Live tracking not connected</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <p class="text-[11px] text-slate-400">Missed calls recovered</p>
+                    <p id="roi-calls-recovered" class="mt-1 text-2xl sm:text-3xl font-bold text-blue-300">—</p>
+                  </div>
+                  <div>
+                    <p class="text-[11px] text-slate-400">Bookings secured</p>
+                    <p id="roi-bookings-secured" class="mt-1 text-2xl sm:text-3xl font-bold text-blue-300">—</p>
+                  </div>
+                </div>
+                <div class="border-t border-slate-700/60 pt-3">
+                  <p class="text-[11px] text-slate-400">Estimated value of recovered work</p>
+                  <p id="roi-revenue-recovered" class="mt-1 text-2xl sm:text-3xl font-bold text-emerald-300">—</p>
+                </div>
               </div>
-              <span class="shrink-0 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[11px] font-semibold text-amber-200">Awaiting live data</span>
+
+              <div class="sm:col-span-5 rounded-xl border border-blue-400/30 bg-blue-500/10 p-3 sm:p-4 flex flex-col justify-between gap-3">
+                <div>
+                  <p class="text-xs font-semibold text-blue-200">Your monthly TriDashAI subscription</p>
+                  <p class="mt-1 text-3xl font-extrabold text-white">$89 <span class="text-xs font-normal text-slate-300">/ month</span></p>
+                </div>
+                <div class="border-t border-blue-300/20 pt-3">
+                  <p class="text-[11px] text-slate-300">Your return on investment</p>
+                  <p id="roi-return" class="mt-1 text-xl sm:text-2xl font-bold text-emerald-300">Awaiting live results</p>
+                  <p class="mt-1 text-[11px] leading-relaxed text-slate-400">Once calls and confirmed bookings are connected, this will compare recovered job value with your subscription.</p>
+                </div>
+              </div>
             </div>
-            <div class="grid grid-cols-3 gap-2">
-              <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2.5">
-                <p class="text-[11px] leading-snug text-slate-400">Missed calls recovered</p>
-                <p class="mt-1 text-xl sm:text-2xl font-bold text-blue-300">—</p>
-              </article>
-              <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2.5">
-                <p class="text-[11px] leading-snug text-slate-400">Bookings secured</p>
-                <p class="mt-1 text-xl sm:text-2xl font-bold text-blue-300">—</p>
-              </article>
-              <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2.5">
-                <p class="text-[11px] leading-snug text-slate-400">Revenue recovered</p>
-                <p class="mt-1 text-xl sm:text-2xl font-bold text-emerald-300">—</p>
-              </article>
-            </div>
-            <p class="text-xs text-slate-400">Your recovered revenue is money that could otherwise have gone to a competitor. Figures will populate from real call and booking records once those service connections are live.</p>
+            <p class="text-[11px] leading-relaxed text-slate-400">Recovered calls, confirmed bookings and estimated job value will be counted separately. Revenue shown here will be an estimate of booked work, not a claim of payments received.</p>
           </section>
 
           <!-- USAGE & BOOST PACK PREVIEW -->
