@@ -33,16 +33,11 @@ body{font-size:16px;line-height:1.6}
 <a href="dashboard.html" class="text-sm font-semibold text-blue-700">Back to dashboard</a>
 </div></header>
 <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
-<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-tight">Complete Advanced Setup</h1><p class="setup-intro mt-3">Quick Start collected your essential business details. Use this page to configure pricing, call-out rules, payment preferences and additional instructions for your receptionist.</p></div>
+<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-tight">Complete Advanced Setup</h1><p class="setup-intro mt-3">Quick Start collected your essential business details. Use this page to personalise your receptionist, set payment preferences and add useful information about your business.</p></div>
 <div id="message" role="status" class="hidden rounded-xl p-3 text-sm"></div>
 <form id="settings-form" class="panel rounded-3xl p-6 sm:p-8 space-y-6">
 
 
-<div class="rounded-2xl border border-slate-200 p-4 space-y-3">
-<div><h3 class="font-semibold">How the receptionist handles prices</h3>
-<p class="text-sm text-slate-300 mt-2">You do not need to enter a price list here. The receptionist will not quote or estimate job prices. It will collect the customer's details and ask the contractor to contact them with a price.</p></div>
-<div class="rounded-xl bg-slate-900 border border-slate-700 p-3 text-sm text-slate-100">Suggested response: “I'll get the contractor to contact you to discuss the job and provide a price.”</div>
-</div>
 <div class="rounded-2xl border border-slate-200 p-4 space-y-3">
 <div><h3 class="font-semibold">How customers can pay</h3><p class="text-xs text-slate-500">Tell your receptionist which payment options your business accepts.</p></div>
 <p class="text-sm font-semibold">Do you want payment links sent to customers?</p><div class="flex gap-5 text-sm"><label><input type="radio" name="payment_link_choice" value="yes"> Yes</label><label><input type="radio" name="payment_link_choice" value="no"> No</label></div>
@@ -61,11 +56,11 @@ body{font-size:16px;line-height:1.6}
 
 
 <section class="border-t border-slate-100 pt-6 space-y-4">
-<h2 class="font-bold text-lg">Additional information and set prices (optional)</h2>
-<p class="text-sm text-slate-600">You can add anything else you'd like your receptionist to know about your business. If you offer set prices for particular jobs or services, enter your price list here so your receptionist can quote those prices accurately when customers ask. Include any conditions or what's included in each price. The receptionist will only quote prices you provide here; all other jobs can be assessed and priced by you on site.</p>
+<h2 class="font-bold text-lg">Additional business information (optional)</h2>
+<p class="text-sm text-slate-600">Add any useful details about your business, the services you provide, access arrangements or anything else that will help your receptionist handle enquiries. The receptionist will not quote or estimate job prices; it will collect the details and refer pricing to you.</p>
 <div class="flex gap-5 text-sm"><label><input type="radio" name="other_receptionist_info" value="yes"> Yes, I'll add information</label><label><input type="radio" name="other_receptionist_info" value="no"> No</label></div>
 <div id="other_receptionist_info_panel" class="hidden">
-<label class="block text-sm font-semibold">Business information, set-price jobs and price list<textarea id="receptionistAdditionalInfo" class="field mt-1.5" rows="5" placeholder="Example: Replace a standard tap — $120 including labour and parts. Drain unblocking — from $95, subject to inspection. Add any conditions or exclusions."></textarea></label>
+<label class="block text-sm font-semibold">Additional business information<textarea id="receptionistAdditionalInfo" class="field mt-1.5" rows="5" placeholder="e.g. Access instructions, service limitations or useful information for customers."></textarea></label>
 </div>
 </section>
 <div class="flex flex-col sm:flex-row gap-3 pt-2">
