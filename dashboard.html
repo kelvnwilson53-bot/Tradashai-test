@@ -173,8 +173,7 @@
 
                 <!-- ACCOUNT & HELP MENU -->
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-2 shadow-2xl z-50">
-                    <button id="open-faq-menu" type="button" class="w-full text-left block text-sm text-slate-200 hover:text-white p-2.5 rounded-lg hover:bg-slate-800/60 transition">Help & FAQs <span class="float-right text-cyan-300">＋</span></button>
-                    <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800">Log out</button>
+                              <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800">Log out</button>
                 </div>
             </div>
 
@@ -381,50 +380,11 @@
 
     </main>
 
-    <!-- HELP & FAQS -->
-    <section id="faq-panel" class="hidden fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
-      <div class="dashboard-card max-w-2xl mx-auto my-4 sm:my-10 rounded-3xl border border-slate-700/70 overflow-hidden">
-        <div class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-700/60">
-          <div><p class="text-xs uppercase tracking-widest text-cyan-300">TriDashAI support</p><h2 class="text-xl sm:text-2xl font-medium text-white mt-1">Help & FAQs</h2><p class="text-sm text-slate-400 mt-1">Simple answers to common questions about using TriDashAI.</p></div>
-          <button id="close-faq-panel" type="button" aria-label="Close FAQs" class="w-9 h-9 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800">✕</button>
-        </div>
-        <div class="p-5 sm:p-6 space-y-3">
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I change my business phone number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Update your business number in the Call Routing section of your dashboard and save the change. This updates the number stored in your TriDashAI profile. It does not change call forwarding with your phone provider; that must be updated separately and tested.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">What's the difference between my business number and my TriDashAI number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your business number is the number your customers already call. Your TriDashAI number is the separate number that receives calls forwarded from your business number and routes them to the receptionist. It is assigned during activation.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I turn call forwarding on or off?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Call forwarding is managed through your phone provider. The activation and cancellation steps depend on that provider. Check that the change has taken effect by testing a call before relying on it.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Does the receptionist book appointments automatically?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Appointment confirmation depends on Google Calendar being connected and availability being checked. Until that connection is active, the receptionist should not promise that an appointment has been booked.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Can the receptionist give customers a job price?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your receptionist can explain the call-out charges you enter in your business settings. Your receptionist will only quote a fixed job price when you have supplied that price and its conditions. You can assess and price all other work yourself.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How are SMS and voice usage counted?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">Voice usage is measured in minutes. SMS usage is counted by message segments, including both incoming and outgoing segments. Longer messages can use more than one segment.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">What happens if I need more usage?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">If extra usage bundles are available on your plan, you can review them using the Extra Bundles area in your dashboard. Check the bundle allowance and expiry details before purchasing.</p>
-          </details>
-          <div class="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4"><p class="text-sm text-slate-200">Still need help?</p><p class="text-xs text-slate-400 mt-1">Contact TriDashAI support if your question isn't covered here. These FAQs are written help and do not send a chat message.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800/40 bg-black/40 py-6 text-center text-xs text-slate-400">
-        <p>&copy; 2026 TriDashAI. All rights reserved.</p>
+    <!-- SUPPORT FOOTER -->
+    <footer class="border-t border-slate-800/50 bg-black/30 py-7 text-center">
+      <p class="text-sm font-semibold text-slate-200">Need help?</p>
+      <p class="mt-1 text-sm text-slate-400">Contact <a href="mailto:support@try-i.com" class="font-semibold text-blue-300 underline underline-offset-4 hover:text-blue-200">Try-I.com Support</a>.</p>
+      <p class="mt-4 text-xs text-slate-500">&copy; 2026 TriDashAI. All rights reserved.</p>
     </footer>
 
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
@@ -614,15 +574,6 @@
         });
 
         // No simulated forwarding switch: carrier routing is enabled only after verified phone activation.
-
-        // Help & FAQs panel
-        const faqPanel=document.getElementById('faq-panel');
-        document.getElementById('open-faq-menu')?.addEventListener('click',()=>{
-          mobileMenu.classList.add('hidden');
-          faqPanel?.classList.remove('hidden');
-        });
-        document.getElementById('close-faq-panel')?.addEventListener('click',()=>faqPanel?.classList.add('hidden'));
-        faqPanel?.addEventListener('click',event=>{if(event.target===faqPanel)faqPanel.classList.add('hidden');});
 
     </script>
 
