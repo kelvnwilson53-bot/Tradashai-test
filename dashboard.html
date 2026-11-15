@@ -22,36 +22,28 @@
         body.dark-theme .dashboard-card:hover {
             border-color: rgba(37, 99, 235, 0.45);
         }
-        /* Consistent, high-contrast entry fields throughout the dashboard and setup forms. */
+        /* Entry fields stay dark until selected, then turn white for easy editing. */
         .dashboard-input {
-            background: #ffffff !important;
-            color: #111827 !important;
-            border: 1px solid #cbd5e1 !important;
-            caret-color: #111827;
+            background: #020617 !important;
+            color: #f8fafc !important;
+            border: 1px solid #475569 !important;
+            caret-color: #f8fafc;
+            transition: background-color .15s ease, color .15s ease, border-color .15s ease;
         }
         .dashboard-input::placeholder {
-            color: #64748b !important;
+            color: #94a3b8 !important;
             opacity: 1;
         }
         .dashboard-input:focus {
-            outline: 2px solid #38bdf8;
-            outline-offset: 2px;
-        }
-
-        /* Keep phone-number entry clear and readable on the dark dashboard. */
-        #routing-business-number {
             background: #ffffff !important;
             color: #111827 !important;
-            border: 1px solid #cbd5e1 !important;
+            border-color: #38bdf8 !important;
             caret-color: #111827;
-        }
-        #routing-business-number::placeholder {
-            color: #64748b !important;
-            opacity: 1;
-        }
-        #routing-business-number:focus {
             outline: 2px solid #38bdf8;
             outline-offset: 2px;
+        }
+        .dashboard-input:focus::placeholder {
+            color: #64748b !important;
         }
 
         body.dark-theme .dashboard-input {
