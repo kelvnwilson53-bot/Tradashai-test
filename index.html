@@ -140,6 +140,66 @@
             transform: translateY(-2px);
         }
 
+        /* Premium motion: restrained reveal, depth and light */
+        .motion-ready .scroll-reveal {
+            opacity: 0;
+            transform: translateY(34px) scale(0.985);
+            transition: opacity 850ms cubic-bezier(.2,.75,.25,1), transform 850ms cubic-bezier(.2,.75,.25,1);
+        }
+        .motion-ready .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .podium-card-3d, .podium-dark-card {
+            transform-origin: center;
+            will-change: transform;
+        }
+        .podium-card-3d:hover, .podium-dark-card:hover {
+            transform: translateY(-8px) scale(1.015);
+        }
+        .blend-image-container img {
+            transition: transform 900ms cubic-bezier(.2,.75,.25,1), filter 900ms ease;
+        }
+        .blend-image-container:hover img {
+            transform: scale(1.075);
+            filter: saturate(1.12) contrast(1.04);
+        }
+        .emergency-feature {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background: radial-gradient(circle at 85% 15%, rgba(59,130,246,.32), transparent 34%), linear-gradient(125deg,#07152e 0%,#102b55 55%,#0b1c38 100%);
+        }
+        .emergency-feature::before {
+            content: "";
+            position: absolute;
+            inset: -60% -20%;
+            background: conic-gradient(from 0deg, transparent 0 65%, rgba(96,165,250,.17) 75%, transparent 86%);
+            animation: emergencySweep 14s linear infinite;
+            z-index: -1;
+        }
+        @keyframes emergencySweep { to { transform: rotate(360deg); } }
+        .emergency-step {
+            background: rgba(255,255,255,.075);
+            border: 1px solid rgba(191,219,254,.22);
+            backdrop-filter: blur(12px);
+            transition: transform .35s ease, background .35s ease, border-color .35s ease;
+        }
+        .emergency-step:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,.13);
+            border-color: rgba(147,197,253,.7);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .motion-ready .scroll-reveal { opacity: 1; transform: none; }
+        }
+
         /* Moving Slides Animation */
         @keyframes slideScroll {
             0% { transform: translateX(0); }
@@ -196,6 +256,7 @@
                     <a href="#top" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Home</a>
                     <a href="#how-it-works" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">How It Works & Trades</a>
                     <a href="#who-we-serve" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Who We Serve</a>
+                    <a href="#emergency-service" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">24-Hour Emergency Service</a>
                     <a href="#dispatcher" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Meet Your Dispatcher</a>
                     <a href="#roi-calculator" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">ROI Calculator</a>
                     <a href="#pricing" class="menu-link block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 hover:bg-blue-50 hover:text-[#2563eb] transition">Pricing</a>
@@ -432,6 +493,54 @@
             </div>
         </section>
 
+        <!-- DEDICATED 24-HOUR EMERGENCY SERVICE FEATURE -->
+        <section id="emergency-service" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10 scroll-mt-24">
+            <div class="emergency-feature rounded-[2rem] p-7 sm:p-10 lg:p-12 shadow-2xl">
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-3 mb-5">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-blue-400/15 border border-blue-200/30 px-4 py-2 text-xs font-extrabold uppercase tracking-widest text-blue-100">
+                            <span class="h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_12px_#7dd3fc]"></span>
+                            Dedicated 24-hour emergency service
+                        </span>
+                        <span class="text-xs font-semibold text-blue-100/70">For businesses that offer round-the-clock call-outs</span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white">When the call comes at <span class="text-sky-300">2:30 am,</span> your business can still answer.</h2>
+                            <p class="mt-5 text-base sm:text-lg leading-relaxed text-blue-50/85">For dedicated emergency plumbers, roofers, HVAC specialists and electricians, TriDashAI can handle the first conversation, establish what the customer needs and follow the response arrangements you've configured.</p>
+                            <p class="mt-4 text-sm leading-relaxed text-blue-100/70">The receptionist can handle both everyday enquiries and emergency call-outs, provided the business has configured the relevant services, prices, availability and escalation arrangements.</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="emergency-step rounded-2xl p-5">
+                                <div class="text-2xl mb-3">☎️</div>
+                                <h3 class="font-bold text-white">Answer immediately</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Respond to the customer at any hour, rather than sending them straight to voicemail.</p>
+                            </div>
+                            <div class="emergency-step rounded-2xl p-5">
+                                <div class="text-2xl mb-3">📍</div>
+                                <h3 class="font-bold text-white">Understand the situation</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Establish the issue, location and essential details needed for the next step.</p>
+                            </div>
+                            <div class="emergency-step rounded-2xl p-5">
+                                <div class="text-2xl mb-3">🛡️</div>
+                                <h3 class="font-bold text-white">Follow configured guidance</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Provide appropriate initial safety guidance and explain configured call-out terms.</p>
+                            </div>
+                            <div class="emergency-step rounded-2xl p-5">
+                                <div class="text-2xl mb-3">🔔</div>
+                                <h3 class="font-bold text-white">Escalate as arranged</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Notify or escalate to the contractor in line with their agreed availability and procedures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/15 pt-6">
+                        <p class="text-sm text-blue-100/75 max-w-2xl">Your business sets the rules. TriDashAI handles the customer conversation and follows the arrangements you put in place.</p>
+                        <a href="#pricing" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-extrabold text-blue-950 shadow-lg transition hover:-translate-y-1 hover:shadow-xl">Explore the service <span class="ml-2">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- MEET YOUR 24/7 DISPATCHER -->
         <section id="dispatcher" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
             <div class="text-center mb-10">
@@ -659,6 +768,29 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // Subtle scroll reveals: elements animate in as they enter the viewport.
+        document.documentElement.classList.add('motion-ready');
+        const revealTargets = document.querySelectorAll('main > section, main section .podium-card-3d, main section .podium-dark-card, main section .emergency-step');
+        revealTargets.forEach((element, index) => {
+            element.classList.add('scroll-reveal');
+            if (element.classList.contains('podium-card-3d') || element.classList.contains('emergency-step')) {
+                element.style.transitionDelay = (index % 3) * 90 + 'ms';
+            }
+        });
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+            revealTargets.forEach(element => revealObserver.observe(element));
+        } else {
+            revealTargets.forEach(element => element.classList.add('is-visible'));
+        }
+
         // Menu Toggle Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
