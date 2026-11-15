@@ -221,9 +221,21 @@
                 </button>
 
                 <!-- ACCOUNT & HELP MENU -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-2 shadow-2xl z-50">
-                              <button id="open-faq-menu" type="button" class="w-full text-left block text-sm font-semibold text-slate-200 hover:text-cyan-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition">Help & FAQs</button>
-                              <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800">Log out</button>
+                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-64 max-h-[75vh] overflow-y-auto rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-1 shadow-2xl z-50">
+                  <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Dashboard</p>
+                  <a href="#stage-2" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Overview</a>
+                  <a href="#roi-performance" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">ROI Indicator</a>
+                  <a href="#usage-allowance" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Voice & SMS usage</a>
+                  <a href="#activity-reviews" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Activity & Google Reviews</a>
+                  <div class="border-t border-slate-700/70 my-2"></div>
+                  <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Business setup</p>
+                  <a href="#stage-1" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Quick Start details</a>
+                  <a href="#phone-setup" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Phone connection</a>
+                  <a href="#advanced-setup" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Advanced Setup</a>
+                  <div class="border-t border-slate-700/70 my-2"></div>
+                  <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Support</p>
+                  <a href="#faq-panel" class="dashboard-nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 hover:text-cyan-300 hover:bg-slate-800/60">Help & FAQs</a>
+                  <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800 mt-2">Log out</button>
                 </div>
             </div>
 
@@ -474,13 +486,13 @@
     </main>
 
     <!-- HELP & FAQS -->
-    <section id="faq-panel" class="hidden fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
-      <div class="dashboard-card max-w-2xl mx-auto my-4 sm:my-10 rounded-3xl border border-slate-700/70 overflow-hidden">
-        <div class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-700/60">
+    <section id="faq-panel" class="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 scroll-mt-24">
+      <div class="dashboard-card max-w-5xl mx-auto rounded-2xl border border-slate-700/70 overflow-hidden">
+        <div class="flex items-start justify-between gap-4 p-4 sm:p-5 border-b border-slate-700/60">
           <div><p class="text-xs uppercase tracking-widest text-cyan-300">TriDashAI support</p><h2 class="text-xl sm:text-2xl font-medium text-white mt-1">Help & FAQs</h2><p class="text-sm text-slate-400 mt-1">Simple answers to common questions about using TriDashAI.</p></div>
-          <button id="close-faq-panel" type="button" aria-label="Close FAQs" class="w-9 h-9 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800">✕</button>
+          
         </div>
-        <div class="p-5 sm:p-6 space-y-3">
+        <div class="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-3">
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I change my business phone number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
             <p class="mt-3 text-sm leading-relaxed text-slate-300">Update your business number in the Call Routing section of your dashboard and save the change. This updates the number stored in your TriDashAI profile. It does not change call forwarding with your phone provider; that must be updated separately and tested.</p>
@@ -692,15 +704,9 @@
             localStorage.setItem('tridashai-theme', nextTheme);
         });
 
-        // Help & FAQs panel
-        const faqPanel = document.getElementById('faq-panel');
-        document.getElementById('open-faq-menu')?.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            faqPanel?.classList.remove('hidden');
-        });
-        document.getElementById('close-faq-panel')?.addEventListener('click', () => faqPanel?.classList.add('hidden'));
-        faqPanel?.addEventListener('click', event => {
-            if (event.target === faqPanel) faqPanel.classList.add('hidden');
+        // Close the menu after choosing a dashboard section; native anchors handle scrolling.
+        document.querySelectorAll('.dashboard-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
         // Hamburger Menu Toggle Logic
