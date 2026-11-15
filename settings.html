@@ -13,6 +13,14 @@ body{background:radial-gradient(ellipse at 12% 5%,rgba(25,92,150,.28),transparen
 .primary{background:linear-gradient(115deg,#168fc4,#5364dc 52%,#8157c8);color:#fff;font-weight:600}
 header{background:rgba(7,11,24,.9)!important;border-color:rgba(100,149,205,.18)!important;backdrop-filter:blur(18px)}
 a{transition:color .2s ease}
+/* Readability improvements for phones and smaller screens */
+body{font-size:16px;line-height:1.6}
+.text-xs{font-size:.875rem!important;line-height:1.55!important}
+.text-sm{font-size:1rem!important;line-height:1.6!important}
+.text-slate-500,.text-slate-600{color:#cbd5e1!important}
+.setup-intro{max-width:48rem;color:#d5e1f0;font-size:1rem;line-height:1.75}
+@media(max-width:640px){main{padding-top:1.75rem!important;padding-bottom:2rem!important}.setup-intro{font-size:1rem;line-height:1.75}}
+
 </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -22,7 +30,7 @@ a{transition:color .2s ease}
 <a href="dashboard.html" class="text-sm font-semibold text-blue-700">Back to dashboard</a>
 </div></header>
 <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
-<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl font-extrabold mt-2">Advanced Setup</h1><p class="text-slate-600 text-sm mt-2">Quick Start collected your essential business details. Use this page to configure pricing, call-out rules, payment preferences and additional instructions for your receptionist.</p></div>
+<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-tight">Complete Advanced Setup</h1><p class="setup-intro mt-3">Quick Start collected your essential business details. Use this page to configure pricing, call-out rules, payment preferences and additional instructions for your receptionist.</p></div>
 <div id="message" role="status" class="hidden rounded-xl p-3 text-sm"></div>
 <form id="settings-form" class="panel rounded-3xl p-6 sm:p-8 space-y-6">
 
