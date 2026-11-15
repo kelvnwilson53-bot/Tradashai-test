@@ -123,8 +123,8 @@ auth.onAuthStateChanged(async user=>{
   if(handleMode)handleMode.checked=data.callOutMode==='handle_and_notify'||data.callOutMode==='contact_and_update';
   if(referMode)referMode.checked=data.callOutMode==='give_number';
   optionalChoices.forEach(name=>loadChoice(data,name));
-  optionalTextFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
-  optionalPriceFields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]});
+  optionalTextFields.forEach(id=>{const el=document.getElementById(id);if(el&&data[id]!==undefined)el.value=data[id]});
+  optionalPriceFields.forEach(id=>{const el=document.getElementById(id);if(el&&data[id]!==undefined)el.value=data[id]});
   document.getElementById('paymentLinksEnabled')?.remove();
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
@@ -136,8 +136,8 @@ form.addEventListener('submit',async e=>{
  update.voicePreference=document.querySelector('input[name="voicePreference"]:checked')?.value||'female';
  update.callOutMode=document.querySelector('input[name="callOutMode"]:checked')?.value||'give_number';
  optionalChoices.forEach(name=>{update[name]=document.querySelector('input[name="'+name+'"]:checked')?.value||'';});
- optionalTextFields.forEach(id=>{update[id]=document.getElementById(id).value.trim();});
- optionalPriceFields.forEach(id=>{update[id]=document.getElementById(id).value;});
+ optionalTextFields.forEach(id=>{const el=document.getElementById(id);update[id]=el?el.value.trim():'';});
+ optionalPriceFields.forEach(id=>{const el=document.getElementById(id);update[id]=el?el.value:'';});
  
  const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[savedProfile.primaryTrade]||'trade services';
  const instructionLines=[
