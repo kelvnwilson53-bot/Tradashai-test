@@ -158,6 +158,13 @@ auth.onAuthStateChanged(async user=>{
   if(handleMode)handleMode.checked=data.callOutMode==='handle_and_notify'||data.callOutMode==='contact_and_update';
   if(referMode)referMode.checked=data.callOutMode==='give_number';
   optionalChoices.forEach(name=>loadChoice(data,name));
+   // Quick Start stores the initial fee amounts. If no Advanced Setup yes/no choice
+   // exists yet, a supplied amount means that charge is enabled.
+   ['evening_callout','weekend_callout','holiday_callout'].forEach(name=>{
+    if(data[name]===undefined && data[name+'_price']!==undefined && data[name+'_price']!==''){
+     loadChoice({...data,[name]:'yes'},name);
+    }
+   });
   optionalTextFields.forEach(id=>{const el=document.getElementById(id);if(el&&data[id]!==undefined)el.value=data[id]});
   optionalPriceFields.forEach(id=>{const el=document.getElementById(id);if(el&&data[id]!==undefined)el.value=data[id]});
   document.getElementById('paymentLinksEnabled')?.remove();
@@ -188,8 +195,9 @@ form.addEventListener('submit',async e=>{
  'Out-of-hours handling: '+(savedProfile.afterHoursHandling||'Not specified'),
  'Call handling instructions: '+(savedProfile.callHandlingInstructions||'Not specified'),
  'Additional information from contractor: '+(update.receptionistAdditionalInfo||'None supplied.'),
- 'CALL-OUT PRICING: Do not quote any call-out amount. The contractor will discuss the job and provide a price directly to the customer.',
- 'PRICING AUTHORITY: NEVER quote, estimate, calculate or suggest a job price or call-out fee, even if an amount is present in older saved settings. Explain: “I’ll get the contractor to contact you to discuss the job and provide a price.” Collect the customer’s details and pass the enquiry to the contractor.',
+ 'CALL-OUT PRICING: You MAY quote only the exact call-out fees listed below when a fee and its conditions are configured. Explain what the fee covers using the contractor’s details. If the fee or what it includes is missing or unclear, do not guess; say the contractor will confirm.',
+ 'REPAIR PRICING AUTHORITY: Do NOT quote, estimate, calculate or suggest the price of repair work, labour beyond a clearly configured call-out inclusion, or materials. The contractor must assess the job and agree the repair price with the customer.',
+ 'CALL-OUT FEE INCLUSIONS: Do not assume a call-out fee includes attendance only, an hour of labour, multiple hours, parts or materials. State only what the contractor has explicitly specified in the call-out details.',
  ...chargeChoices.map(key=>key+': '+(update[key]==='yes'?((update[key+'_price']?'$'+update[key+'_price']+'; ':'')+(update[key+'_details']||'No further details supplied')):'Not offered or not confirmed')),
  'Hourly labour: '+(update.hourly_rate==='yes'?(update.hourly_rate_details||'Enabled; details missing'):'Not offered/not confirmed'),
  'Fixed-price work: '+(update.fixed_prices==='yes'?(update.fixed_prices_details||'Enabled; list missing'):'Not offered/not confirmed'),
@@ -199,10 +207,10 @@ form.addEventListener('submit',async e=>{
  'CALL-OUT PRICE INCLUDES PARTS AND LABOUR: '+(update.callout_includes_parts_labour||'Not specified; do not assume either way')+'. This answer applies only to the call-out charge. Do not quote a full repair price; the contractor must assess the job and agree the work price with the customer.',
  'PAYMENTS: payment link preference '+(update.payment_link_choice||'not answered')+'. Instructions: '+(update.paymentLinkDetails||'Not supplied')+'. Cash only: '+(update.cash_only||'not answered')+'. Other methods: '+(update.otherPaymentMethods||'Not supplied'),
  'SAFETY: If there is immediate danger, stop routine booking, advise the caller to move away from danger and contact local emergency services where appropriate. Do not provide hazardous repair instructions.',
- 'EMERGENCY CONTACT NUMBER: '+(savedProfile.callOutContactNumber||'Not supplied'),
+ 'EMERGENCY CONTACT NUMBER: '+(savedProfile.emergencyHotlineNumber||'Not supplied'),
  'EMERGENCY INSTRUCTIONS: '+(savedProfile.emergencyInstructions||'Use conservative safety handling.'),
- 'EMERGENCY CONTACT ACTION: '+(savedProfile.callOutMode==='contact_and_update'?'Contact the on-call person using the saved number. Handle the customer and send an SMS update using only response or arrival information confirmed by the contractor. Never invent an arrival time.':'Give the customer the saved on-call number so they can contact that person directly.'),
- 'ESCALATION: Escalate urgent or uncertain cases to the contractor using the configured call-out contact.'+ (savedProfile.callOutContactNumber?' '+savedProfile.callOutContactNumber:''),
+ 'EMERGENCY CONTACT ACTION: '+(savedProfile.emergencyHotlineNumber?'Give the customer the saved emergency contact number when appropriate. Do not claim to have contacted that number.':'No separate emergency contact number is configured; collect the details and escalate to the contractor.'),
+ 'ESCALATION: Escalate urgent or uncertain cases to the contractor using the configured call-out contact.'+ (savedProfile.emergencyHotlineNumber?' '+savedProfile.emergencyHotlineNumber:''),
  'NEVER PROMISE: Never diagnose beyond the information provided, promise unconfirmed availability or arrival times, or quote unlisted prices.',
  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the listed services, say the contractor will confirm and escalate. Do not guess.'
