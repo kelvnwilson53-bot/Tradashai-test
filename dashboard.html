@@ -190,6 +190,63 @@
           #stage-1.dashboard-card, #advanced-setup.dashboard-card, #activity-reviews.dashboard-card { padding: 1rem; }
           #stage-1 form > section, #phone-setup { padding: .875rem; }
         }
+
+        /* Dashboard visual spacing and tonal refinement — styling only */
+        body.dark-theme {
+            background: #111b2a;
+            color: #d9e2ee;
+        }
+        body.dark-theme .dashboard-card {
+            background: #1b293b;
+            border: 1px solid #34465d;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+            backdrop-filter: none;
+        }
+        body.dark-theme .dashboard-card:hover {
+            border-color: #49627f;
+        }
+        body.dark-theme header {
+            background: #172334;
+            border-color: #34465d;
+            backdrop-filter: none;
+        }
+        body.dark-theme .dashboard-input {
+            background: #111d2d;
+            border-color: #50627a;
+        }
+        body.dark-theme main > * + * {
+            margin-top: 1.75rem !important;
+        }
+        body.dark-theme .dashboard-card {
+            padding: 1.5rem;
+            border-radius: 1.125rem;
+        }
+        body.dark-theme #stage-1 form > section,
+        body.dark-theme #phone-setup,
+        body.dark-theme #stage-2 article,
+        body.dark-theme #stage-2 > section,
+        body.dark-theme #activity-reviews article {
+            background-color: #223248;
+            border-color: #40536c;
+            border-radius: .9rem;
+        }
+        body.dark-theme #stage-1 form > section + section {
+            margin-top: .5rem;
+        }
+        body.dark-theme #roi-performance,
+        body.dark-theme #usage-allowance {
+            background-color: #223248;
+            border: 1px solid #40536c;
+            border-radius: .9rem;
+        }
+        body.dark-theme .dashboard-card .border-slate-800\/40,
+        body.dark-theme .dashboard-card .border-slate-800\/50 {
+            border-color: #40536c !important;
+        }
+        @media (max-width: 640px) {
+            body.dark-theme main > * + * { margin-top: 1.25rem !important; }
+            body.dark-theme .dashboard-card { padding: 1.125rem; }
+        }
     </style>
 </head>
 <body class="dark-theme font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative transition-colors duration-300">
