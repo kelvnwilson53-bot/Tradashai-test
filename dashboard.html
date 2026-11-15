@@ -141,6 +141,31 @@
         body.dark-theme .text-slate-300 { color: #d5e2f2 !important; }
         body.dark-theme .text-xs { font-size: 0.8125rem; line-height: 1.5; }
         body.dark-theme .text-\\[10px\\] { font-size: 0.75rem !important; line-height: 1.4; }
+        /* Professional dashboard sizing and layout */
+        body.dark-theme .text-xs { font-size: .75rem; line-height: 1.45; }
+        body.dark-theme .text-sm { font-size: .875rem; line-height: 1.5; }
+        body.dark-theme .text-base { font-size: 1rem; line-height: 1.5; }
+        body.dark-theme .text-lg { font-size: 1.125rem; line-height: 1.45; }
+        body.dark-theme .text-xl { font-size: 1.25rem; line-height: 1.35; }
+        body.dark-theme .text-2xl { font-size: 1.5rem; line-height: 1.3; }
+        body.dark-theme .text-3xl { font-size: 1.75rem; line-height: 1.25; }
+        #stage-1.dashboard-card, #advanced-setup.dashboard-card, #activity-reviews.dashboard-card { padding: 1.25rem; border-radius: 1rem; }
+        #stage-1 form { gap: 1rem; }
+        #stage-1 form > section, #phone-setup { padding: 1rem; border-radius: .875rem; }
+        #stage-2 { gap: 1rem; }
+        .dashboard-card { border-radius: 1rem; }
+        .dashboard-input { min-height: 42px; padding: .625rem .75rem; border-radius: .625rem; font-size: .9rem; }
+        .btn-primary-blue, #mobile-menu button, #mobile-menu a { min-height: 38px; padding: .55rem .9rem; border-radius: .6rem; font-size: .875rem; }
+        #hamburger-btn, #theme-toggle-btn { width: 38px; height: 38px; }
+        #roi-performance { padding: 1rem; }
+        #stage-2 > .grid article, #stage-2 > section { min-width: 0; }
+        #faq-panel details summary { font-size: .9rem; }
+        #faq-panel details p { font-size: .875rem; }
+        @media (max-width: 640px) {
+          main { padding-top: 1rem !important; padding-bottom: 1.5rem !important; }
+          #stage-1.dashboard-card, #advanced-setup.dashboard-card, #activity-reviews.dashboard-card { padding: 1rem; }
+          #stage-1 form > section, #phone-setup { padding: .875rem; }
+        }
     </style>
 </head>
 <body class="dark-theme font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen justify-between relative transition-colors duration-300">
@@ -173,6 +198,7 @@
 
                 <!-- ACCOUNT & HELP MENU -->
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-2 shadow-2xl z-50">
+                              <button id="open-faq-menu" type="button" class="w-full text-left block text-sm font-semibold text-slate-200 hover:text-cyan-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition">Help & FAQs</button>
                               <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800">Log out</button>
                 </div>
             </div>
@@ -425,6 +451,47 @@
 
     </main>
 
+    <!-- HELP & FAQS -->
+    <section id="faq-panel" class="hidden fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
+      <div class="dashboard-card max-w-2xl mx-auto my-4 sm:my-10 rounded-3xl border border-slate-700/70 overflow-hidden">
+        <div class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-700/60">
+          <div><p class="text-xs uppercase tracking-widest text-cyan-300">TriDashAI support</p><h2 class="text-xl sm:text-2xl font-medium text-white mt-1">Help & FAQs</h2><p class="text-sm text-slate-400 mt-1">Simple answers to common questions about using TriDashAI.</p></div>
+          <button id="close-faq-panel" type="button" aria-label="Close FAQs" class="w-9 h-9 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800">✕</button>
+        </div>
+        <div class="p-5 sm:p-6 space-y-3">
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I change my business phone number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Update your business number in the Call Routing section of your dashboard and save the change. This updates the number stored in your TriDashAI profile. It does not change call forwarding with your phone provider; that must be updated separately and tested.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">What's the difference between my business number and my TriDashAI number?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your business number is the number your customers already call. Your TriDashAI number is the separate number that receives calls forwarded from your business number and routes them to the receptionist. It is assigned during activation.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How do I turn call forwarding on or off?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Call forwarding is managed through your phone provider. The activation and cancellation steps depend on that provider. Check that the change has taken effect by testing a call before relying on it.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Does the receptionist book appointments automatically?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Appointment confirmation depends on Google Calendar being connected and availability being checked. Until that connection is active, the receptionist should not promise that an appointment has been booked.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">Can the receptionist give customers a job price?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Your receptionist can explain the call-out charges you enter in your business settings. Your receptionist will only quote a fixed job price when you have supplied that price and its conditions. You can assess and price all other work yourself.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">How are SMS and voice usage counted?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Voice usage is measured in minutes. SMS usage is counted by message segments, including both incoming and outgoing segments. Longer messages can use more than one segment.</p>
+          </details>
+          <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-slate-100">What happens if I need more usage?<span class="text-xl text-cyan-300 transition-transform group-open:rotate-45">＋</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">If extra usage bundles are available on your plan, you can review them using the Extra Bundles area in your dashboard. Check the bundle allowance and expiry details before purchasing.</p>
+          </details>
+          <div class="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4"><p class="text-sm text-slate-200">Still need help?</p><p class="text-xs text-slate-400 mt-1">Contact TriDashAI support if your question isn't covered here. These FAQs are written help and do not send a chat message.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- SUPPORT FOOTER -->
     <footer id="support-footer" class="border-t border-slate-800/50 bg-black/30 py-4 text-center">
       <p class="text-xs font-semibold text-slate-200">Need help?</p>
@@ -601,6 +668,17 @@
             document.body.classList.toggle('light-theme', nextTheme === 'light');
             themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
             localStorage.setItem('tridashai-theme', nextTheme);
+        });
+
+        // Help & FAQs panel
+        const faqPanel = document.getElementById('faq-panel');
+        document.getElementById('open-faq-menu')?.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            faqPanel?.classList.remove('hidden');
+        });
+        document.getElementById('close-faq-panel')?.addEventListener('click', () => faqPanel?.classList.add('hidden'));
+        faqPanel?.addEventListener('click', event => {
+            if (event.target === faqPanel) faqPanel.classList.add('hidden');
         });
 
         // Hamburger Menu Toggle Logic
