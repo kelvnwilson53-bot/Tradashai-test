@@ -190,6 +190,11 @@
             background: rgba(255,255,255,.13);
             border-color: rgba(147,197,253,.7);
         }
+        .story-play { transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+        .story-play:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.16); }
+        .story-play[aria-pressed="true"] { background: #0f172a; color: #fff; }
+        .emergency-feature .story-play[aria-pressed="true"] { background: #7dd3fc; color: #082f49; }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 scroll-behavior: auto !important;
@@ -486,6 +491,26 @@
                     </article>
                 </div>
 
+                <!-- USER-INITIATED SCENARIO NARRATION -->
+                <div class="mt-8 rounded-2xl border border-blue-200 bg-white/90 p-5 sm:p-6 shadow-inner">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div><p class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Hear the working day</p><h3 class="mt-1 text-lg sm:text-xl font-extrabold text-slate-900">Three businesses. Three different pressures.</h3><p class="mt-1 text-sm text-slate-600">Choose a story to hear how an unanswered call can become a handled enquiry.</p></div>
+                        <span class="text-xs text-slate-500">Audio starts only when you press play</span>
+                    </div>
+                    <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">Harry · Solo plumber</p><p class="mt-1 text-xs text-slate-600">One pair of hands. A phone that never stops.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="harry" aria-pressed="false">▶ Listen to Harry</button></div>
+                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">Fred · Growing team</p><p class="mt-1 text-xs text-slate-600">Keeping customers and crews moving.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="fred" aria-pressed="false">▶ Listen to Fred</button></div>
+                        <div class="rounded-xl bg-blue-50 p-4"><p class="font-bold text-slate-900">The larger operation</p><p class="mt-1 text-xs text-slate-600">More technicians. More enquiries. More to coordinate.</p><button type="button" class="story-play mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" data-story="team" aria-pressed="false">▶ Listen to the story</button></div>
+                    </div>
+                    <div id="story-status" class="mt-4 min-h-6 text-sm font-semibold text-blue-800" role="status" aria-live="polite">Select a story to begin.</div>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-500">Narration uses the voice available in your browser or device. The written story remains available below for anyone who prefers to read.</p>
+                    <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs leading-relaxed text-slate-600">
+                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read Harry’s story</summary><p class="mt-2">Harry is under a kitchen sink, both hands occupied, when a new customer calls. He cannot safely stop the job to answer. TriDashAI can answer the enquiry, establish what the customer needs and capture the details for Harry to follow up.</p></details>
+                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read Fred’s story</summary><p class="mt-2">Fred is coordinating a small team across several jobs. One call comes in while he is driving; another arrives while he is talking to a customer. TriDashAI can handle the first conversation, gather the job details and help keep enquiries organised.</p></details>
+                        <details class="rounded-lg border border-slate-200 p-3"><summary class="cursor-pointer font-bold text-slate-800">Read the larger operation’s story</summary><p class="mt-2">Several technicians are on the road and new enquiries keep arriving. TriDashAI can answer consistently, collect the information the office needs and support appointment coordination where the relevant calendar connection is configured.</p></details>
+                    </div>
+                </div>
+
                 <div class="mt-7 rounded-2xl bg-slate-900 text-white p-5 sm:p-6 text-center">
                     <p class="text-lg sm:text-xl font-extrabold">Whichever one sounds familiar, TriDashAI helps keep your business answering.</p>
                     <p class="mt-2 text-sm text-slate-300">Missed-call response, customer follow-up and Google review support — in one service.</p>
@@ -532,6 +557,13 @@
                                 <p class="mt-2 text-sm leading-relaxed text-blue-100/75">Notify or escalate to the contractor in line with their agreed availability and procedures.</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-8 rounded-2xl border border-blue-200/25 bg-white/10 p-5 sm:p-6">
+                        <p class="text-xs font-extrabold uppercase tracking-widest text-sky-200">After-hours call · 2:30 am</p>
+                        <h3 class="mt-1 text-xl font-extrabold text-white">A burst pipe. A worried customer. Someone answers.</h3>
+                        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-blue-100/85">Hear how the first conversation can be handled, with safety guidance and escalation following the arrangements the business has configured.</p>
+                        <button type="button" class="story-play mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-extrabold text-blue-950 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300" data-story="emergency" aria-pressed="false">▶ Listen to the emergency story</button>
+                        <details class="mt-3 text-sm text-blue-100"><summary class="cursor-pointer font-semibold">Read the emergency story</summary><p class="mt-2 max-w-3xl leading-relaxed">It is half past two in the morning. A homeowner has discovered water spreading across the kitchen floor. The call is answered. The receptionist calmly establishes the location and what has happened, gives only the safety guidance configured for that business, explains the relevant call-out arrangements and escalates the enquiry according to the contractor’s agreed procedure. The business decides whether it can attend and what happens next.</p></details>
                     </div>
                     <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/15 pt-6">
                         <p class="text-sm text-blue-100/75 max-w-2xl">Your business sets the rules. TriDashAI handles the customer conversation and follows the arrangements you put in place.</p>
@@ -811,6 +843,61 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Scenario narration. Playback is user-initiated and uses the browser/device voice.
+        const scenarioNarration = {
+            harry: "Meet Harry. He is a one-man plumbing business. Right now, he is under a kitchen sink, both hands busy, concentrating on the repair. His phone rings. He cannot just drop everything and answer. The customer may move on and call another plumber. With TriDashAI, the call can be answered, the customer’s problem and location can be established, and the enquiry details can be captured for Harry to follow up. Harry can keep working, while the customer knows their call has been heard.",
+            fred: "Fred runs a growing plumbing team. One crew is finishing a job, another is on the road, and Fred is trying to keep the schedule on track. A customer calls while he is driving. Another enquiry arrives while he is speaking to a client. It is not that Fred does not want the work. He simply cannot be in three places at once. TriDashAI can answer the first conversation, gather the job details and help keep enquiries organised. Fred stays focused on running the business, rather than chasing every ringing phone.",
+            team: "Now imagine a larger operation, with several technicians working across the area. Calls arrive throughout the day. Different jobs have different requirements, and every enquiry needs to reach the right person. TriDashAI can provide a consistent first response, collect the information the office needs and support appointment coordination when the business calendar is connected and configured. The result is a clearer picture of incoming work and fewer enquiries left unanswered.",
+            emergency: "It is two thirty in the morning. A homeowner wakes to the sound of running water. There is a burst pipe and water is spreading across the kitchen floor. They call the emergency plumbing company. The call is answered. The receptionist stays calm, establishes the address and what has happened, and follows the safety guidance configured by the business. The customer is told what the next step is under the company's call-out arrangements. The enquiry is escalated according to the contractor's agreed procedure. TriDashAI does not decide whether a technician is available. The business sets those rules, and the receptionist follows them."
+        };
+        const storyButtons = Array.from(document.querySelectorAll('.story-play'));
+        const storyStatus = document.getElementById('story-status');
+        let activeStoryButton = null;
+        let speechAvailable = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
+        function resetStoryButtons() {
+            storyButtons.forEach(button => { button.setAttribute('aria-pressed', 'false'); button.textContent = button.dataset.originalLabel || button.textContent.replace(/^⏸\\s*/, '▶ '); });
+            activeStoryButton = null;
+        }
+        storyButtons.forEach(button => {
+            button.dataset.originalLabel = button.textContent;
+            button.addEventListener('click', () => {
+                if (!speechAvailable) {
+                    storyStatus.textContent = 'Audio narration is not supported by this browser. Please use the written story below.';
+                    return;
+                }
+                const key = button.dataset.story;
+                if (activeStoryButton === button && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                    window.speechSynthesis.pause();
+                    button.textContent = '▶ Resume narration';
+                    storyStatus.textContent = 'Narration paused.';
+                    return;
+                }
+                if (activeStoryButton === button && window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                    button.textContent = 'Ⅱ Pause narration';
+                    storyStatus.textContent = 'Narration playing.';
+                    return;
+                }
+                window.speechSynthesis.cancel();
+                resetStoryButtons();
+                activeStoryButton = button;
+                button.setAttribute('aria-pressed', 'true');
+                button.textContent = 'Ⅱ Pause narration';
+                storyStatus.textContent = 'Narration playing. You can pause or choose another story.';
+                const utterance = new SpeechSynthesisUtterance(scenarioNarration[key]);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.94;
+                utterance.pitch = 1;
+                const voices = window.speechSynthesis.getVoices();
+                const preferredVoice = voices.find(voice => /^en-US/i.test(voice.lang) && /female|samantha|ava|jenny|aria|zira/i.test(voice.name)) || voices.find(voice => /^en-US/i.test(voice.lang));
+                if (preferredVoice) utterance.voice = preferredVoice;
+                utterance.onend = () => { if (activeStoryButton === button) { resetStoryButtons(); storyStatus.textContent = 'Story finished. Choose another scenario to listen again.'; } };
+                utterance.onerror = () => { if (activeStoryButton === button) { resetStoryButtons(); storyStatus.textContent = 'Audio could not be played here. Please use the written story below.'; } };
+                window.speechSynthesis.speak(utterance);
+            });
+        });
+        window.addEventListener('beforeunload', () => { if (speechAvailable) window.speechSynthesis.cancel(); });
 
         // ROI Calculator Logic (Monthly Lost Revenue: Job Value * Missed Calls per week * 4 weeks)
         const jobValueInput = document.getElementById('job-value');
