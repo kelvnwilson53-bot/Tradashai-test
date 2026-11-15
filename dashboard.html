@@ -360,10 +360,6 @@
                   <label class="block text-sm text-slate-300">Weekend call-out charge (USD)<input id="qs-weekend_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
                   <label class="block text-sm text-slate-300">Public holiday call-out charge (USD)<input id="qs-holiday_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-3">
-                  <label class="block text-sm text-slate-300">Other charge description<input id="qs-other_callout_label" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Optional"></label>
-                  <label class="block text-sm text-slate-300">Other call-out charge (USD)<input id="qs-other_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Optional"></label>
-                </div>
               </div>
               <div class="border-t border-slate-700/50 pt-3 space-y-2">
                 <h4 class="text-sm font-semibold text-white">Emergency contact number (optional)</h4>
@@ -595,7 +591,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','weekend_callout_price','holiday_callout_price','other_callout_label','other_callout_price','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','weekend_callout_price','holiday_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
