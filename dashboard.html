@@ -373,90 +373,88 @@
 
           
 
-          <!-- ROI / RECOVERED REVENUE INDICATOR -->
-          <section id="roi-performance" class="dashboard-card rounded-2xl p-4 sm:p-5 space-y-4">
+          <!-- ROI INDICATOR -->
+          <section id="roi-performance" class="dashboard-card rounded-2xl p-3 sm:p-4 space-y-3">
             <div class="text-center">
-              <span class="inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-300">Your TriDashAI results</span>
-              <h3 class="mt-2 text-lg sm:text-xl font-bold text-white">Turn missed calls into booked work</h3>
-              <p class="mt-1 text-xs sm:text-sm text-slate-400">See the business you are saving and the revenue you are bringing back in.</p>
+              <span class="inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-300">ROI Indicator</span>
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-stretch">
-              <div class="sm:col-span-7 rounded-xl border border-slate-700/60 bg-black/20 p-3 sm:p-4 space-y-3">
+              <div class="sm:col-span-7 rounded-xl border border-slate-700/60 bg-black/20 p-3 space-y-2">
                 <div class="flex items-center justify-between gap-2">
-                  <p class="text-xs font-semibold text-slate-300">Your recovered business this month</p>
-                  <span class="text-[11px] text-amber-300">Live tracking not connected</span>
+                  <p class="text-xs font-semibold text-slate-300">Business recovered this month</p>
+                  <span class="text-[10px] text-amber-300">Live tracking not connected</span>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                   <div>
                     <p class="text-[11px] text-slate-400">Missed calls recovered</p>
-                    <p id="roi-calls-recovered" class="mt-1 text-2xl sm:text-3xl font-bold text-blue-300">—</p>
+                    <p id="roi-calls-recovered" class="mt-1 text-xl font-bold text-blue-300">—</p>
                   </div>
                   <div>
                     <p class="text-[11px] text-slate-400">Bookings secured</p>
-                    <p id="roi-bookings-secured" class="mt-1 text-2xl sm:text-3xl font-bold text-blue-300">—</p>
+                    <p id="roi-bookings-secured" class="mt-1 text-xl font-bold text-blue-300">—</p>
                   </div>
                 </div>
-                <div class="border-t border-slate-700/60 pt-3">
+                <div class="border-t border-slate-700/60 pt-2">
                   <p class="text-[11px] text-slate-400">Estimated value of recovered work</p>
-                  <p id="roi-revenue-recovered" class="mt-1 text-2xl sm:text-3xl font-bold text-emerald-300">—</p>
+                  <p id="roi-revenue-recovered" class="mt-1 text-xl font-bold text-emerald-300">—</p>
                 </div>
               </div>
-
-              <div class="sm:col-span-5 rounded-xl border border-blue-400/30 bg-blue-500/10 p-3 sm:p-4 flex flex-col justify-between gap-3">
+              <div class="sm:col-span-5 rounded-xl border border-blue-400/30 bg-blue-500/10 p-3 flex flex-col justify-center gap-2">
                 <div>
-                  <p class="text-xs font-semibold text-blue-200">Your monthly TriDashAI subscription</p>
-                  <p class="mt-1 text-3xl font-extrabold text-white">$89 <span class="text-xs font-normal text-slate-300">/ month</span></p>
+                  <p class="text-xs font-semibold text-blue-200">Monthly subscription</p>
+                  <p class="mt-1 text-2xl font-extrabold text-white">$89 <span class="text-xs font-normal text-slate-300">/ month</span></p>
                 </div>
-                <div class="border-t border-blue-300/20 pt-3">
-                  <p class="text-[11px] text-slate-300">Your return on investment</p>
-                  <p id="roi-return" class="mt-1 text-xl sm:text-2xl font-bold text-emerald-300">Awaiting live results</p>
-                  <p class="mt-1 text-[11px] leading-relaxed text-slate-400">Once calls and confirmed bookings are connected, this will compare recovered job value with your subscription.</p>
+                <div class="border-t border-blue-300/20 pt-2">
+                  <p class="text-[11px] text-slate-300">Return on investment</p>
+                  <p id="roi-return" class="mt-1 text-lg font-bold text-emerald-300">Awaiting live results</p>
                 </div>
               </div>
             </div>
-            <p class="text-[11px] leading-relaxed text-slate-400">Recovered calls, confirmed bookings and estimated job value will be counted separately. Revenue shown here will be an estimate of booked work, not a claim of payments received.</p>
+            <p class="text-[10px] leading-relaxed text-slate-400">Figures will show estimated booked work, not payments received. Live call and booking tracking is not connected yet.</p>
           </section>
 
-          <!-- USAGE & BOOST PACK PREVIEW -->
-          <section class="dashboard-card rounded-2xl p-3 sm:p-4 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-              <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Your monthly allowance</p><h3 class="text-base sm:text-lg font-bold text-white mt-1">Minutes & texts remaining</h3><p class="text-sm text-slate-400 mt-1">A clear view of the allowance included in your plan.</p></div>
-              <span class="self-start rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1.5 text-xs font-semibold text-amber-200">Design preview · Not live</span>
+          <!-- COMPACT MONTHLY ALLOWANCE AND BOOST PREVIEW -->
+          <section class="dashboard-card rounded-2xl p-3 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <div>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-blue-400">Monthly allowance</p>
+                <h3 class="text-sm font-bold text-white mt-0.5">Minutes & texts</h3>
+              </div>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-1 text-[10px] font-semibold text-amber-200">Preview · Not live</span>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <article class="rounded-xl border border-slate-700/60 bg-black/20 p-4 space-y-3">
-                <div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-slate-200">Voice minutes left</span><span class="text-xs text-slate-400">Monthly plan</span></div>
-                <div class="flex items-end gap-2"><strong class="text-2xl font-semibold text-blue-300">214</strong><span class="text-sm text-slate-400 pb-1">of 250 minutes</span></div>
-                <div class="h-2 rounded-full bg-slate-700 overflow-hidden"><div class="h-full rounded-full bg-blue-400" style="width:85.6%"></div></div>
-                <p class="text-sm text-slate-300">36 minutes used this billing month</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2.5 space-y-1.5">
+                <div class="flex items-center justify-between gap-2"><span class="text-xs font-semibold text-slate-200">Voice minutes left</span><span class="text-[10px] text-slate-400">Monthly</span></div>
+                <div class="flex items-end gap-1.5"><strong class="text-xl font-semibold text-blue-300">214</strong><span class="text-xs text-slate-400 pb-0.5">of 250 minutes</span></div>
+                <div class="h-1.5 rounded-full bg-slate-700 overflow-hidden"><div class="h-full rounded-full bg-blue-400" style="width:85.6%"></div></div>
+                <p class="text-xs text-slate-300">36 minutes used</p>
               </article>
-              <article class="rounded-2xl border border-slate-700/60 bg-black/20 p-4 sm:p-5 space-y-3">
-                <div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-slate-200">SMS texts left</span><span class="text-xs text-slate-400">Monthly plan</span></div>
-                <div class="flex items-end gap-2"><strong class="text-2xl font-semibold text-blue-300">276</strong><span class="text-sm text-slate-400 pb-1">of 300 segments</span></div>
-                <div class="h-2.5 rounded-full bg-slate-700 overflow-hidden"><div class="h-full rounded-full bg-blue-400" style="width:92%"></div></div>
-                <p class="text-sm text-slate-300">24 segments used · incoming and outgoing count</p>
+              <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2.5 space-y-1.5">
+                <div class="flex items-center justify-between gap-2"><span class="text-xs font-semibold text-slate-200">SMS segments left</span><span class="text-[10px] text-slate-400">Monthly</span></div>
+                <div class="flex items-end gap-1.5"><strong class="text-xl font-semibold text-blue-300">276</strong><span class="text-xs text-slate-400 pb-0.5">of 300 segments</span></div>
+                <div class="h-1.5 rounded-full bg-slate-700 overflow-hidden"><div class="h-full rounded-full bg-blue-400" style="width:92%"></div></div>
+                <p class="text-xs text-slate-300">24 used · incoming and outgoing</p>
               </article>
             </div>
-            <p class="text-sm leading-relaxed text-slate-300">Illustrative figures for layout only. Monthly allowances reset each billing cycle and do not roll over. Longer texts may use more than one SMS segment.</p>
-            <div class="border-t border-slate-700/60 pt-3 space-y-3">
-              <div><h4 class="text-base font-bold text-white">Need a little extra?</h4><p class="text-sm text-slate-400 mt-1">Add a one-time boost if you use your monthly allowance.</p></div>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <article class="rounded-xl border border-slate-700/60 bg-black/20 p-3 space-y-1.5">
-                  <p class="text-xs font-semibold text-slate-300">Starter Boost</p><p class="text-xl font-bold text-white">$7</p><p class="text-sm text-slate-300">+50 voice minutes</p><p class="text-sm text-slate-300">+50 SMS segments</p><p class="text-xs text-slate-400">Valid for 90 days</p><button type="button" disabled class="w-full rounded-lg border border-slate-600 px-3 py-2 text-xs font-semibold text-slate-400 opacity-70 cursor-not-allowed">Purchase unavailable</button>
+            <p class="text-[10px] leading-relaxed text-slate-400">Illustrative figures only. Monthly allowances reset each billing cycle and do not roll over. Longer texts may use multiple SMS segments.</p>
+            <details class="border-t border-slate-700/60 pt-2">
+              <summary class="cursor-pointer text-xs font-semibold text-slate-200">Need a little extra? View boost options</summary>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-2">
+                <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2 space-y-1">
+                  <p class="text-[11px] font-semibold text-slate-300">Starter Boost</p><p class="text-lg font-bold text-white">$7</p><p class="text-xs text-slate-300">+50 voice minutes · +50 SMS</p><p class="text-[10px] text-slate-400">Valid 90 days</p><button type="button" disabled class="w-full rounded-lg border border-slate-600 px-2 py-1.5 text-[10px] font-semibold text-slate-400 opacity-70 cursor-not-allowed">Unavailable</button>
                 </article>
-                <article class="rounded-xl border border-blue-400/60 bg-blue-500/10 p-3 space-y-1.5 relative">
-                  <span class="inline-block rounded-full bg-blue-400/15 px-2 py-1 text-[11px] font-bold text-blue-200">Most popular</span><p class="text-xs font-semibold text-slate-200">Pro Boost</p><p class="text-xl font-bold text-white">$12</p><p class="text-sm text-slate-200">+100 voice minutes</p><p class="text-sm text-slate-200">+100 SMS segments</p><p class="text-xs text-slate-400">Valid for 90 days</p><button type="button" disabled class="w-full rounded-lg bg-blue-500/30 px-3 py-2 text-xs font-semibold text-blue-100 opacity-70 cursor-not-allowed">Purchase unavailable</button>
+                <article class="rounded-lg border border-blue-400/60 bg-blue-500/10 p-2 space-y-1">
+                  <p class="text-[11px] font-semibold text-slate-200">Pro Boost</p><p class="text-lg font-bold text-white">$12</p><p class="text-xs text-slate-200">+100 voice minutes · +100 SMS</p><p class="text-[10px] text-slate-400">Valid 90 days</p><button type="button" disabled class="w-full rounded-lg bg-blue-500/30 px-2 py-1.5 text-[10px] font-semibold text-blue-100 opacity-70 cursor-not-allowed">Unavailable</button>
                 </article>
-                <article class="rounded-2xl border border-slate-700/60 bg-black/20 p-4 space-y-2">
-                  <p class="text-xs font-semibold text-slate-300">Heavy-Duty Boost</p><p class="text-xl font-bold text-white">$20</p><p class="text-sm text-slate-300">+200 voice minutes</p><p class="text-sm text-slate-300">+200 SMS segments</p><p class="text-xs text-slate-400">Valid for 90 days</p><button type="button" disabled class="w-full rounded-xl border border-slate-600 px-3 py-2.5 text-sm font-semibold text-slate-400 opacity-70 cursor-not-allowed">Purchase unavailable</button>
+                <article class="rounded-lg border border-slate-700/60 bg-black/20 p-2 space-y-1">
+                  <p class="text-[11px] font-semibold text-slate-300">Heavy-Duty Boost</p><p class="text-lg font-bold text-white">$20</p><p class="text-xs text-slate-300">+200 voice minutes · +200 SMS</p><p class="text-[10px] text-slate-400">Valid 90 days</p><button type="button" disabled class="w-full rounded-lg border border-slate-600 px-2 py-1.5 text-[10px] font-semibold text-slate-400 opacity-70 cursor-not-allowed">Unavailable</button>
                 </article>
               </div>
-              <p class="text-xs text-slate-400">Boost balances carry over for 90 days. Bundle checkout is not connected yet.</p>
-            </div>
+              <p class="text-[10px] text-slate-400 mt-2">Boost balances carry over for 90 days. Checkout is not connected yet.</p>
+            </details>
           </section>
 
-          <!-- CONNECTION STATUS PREVIEW -->
+                    <!-- CONNECTION STATUS PREVIEW -->
           <section class="dashboard-card rounded-xl p-3 sm:p-4 space-y-3">
             <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Service connections</p><h3 class="text-base font-semibold text-white mt-1">Get TriDashAI ready to go live</h3><p class="text-sm text-slate-400 mt-1">Connection indicators are shown here for the dashboard design preview.</p></div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
