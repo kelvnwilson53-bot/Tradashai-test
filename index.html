@@ -17,6 +17,10 @@
             color: #1e293b;
         }
 
+        /* Keep paragraph wrapping natural and avoid stranded short last lines. */
+        p { text-wrap: pretty; }
+        .copy-left { text-align: left; text-wrap: pretty; }
+
         /* Soft Ambient Glow Orbs */
         .ambient-glow-1 {
             position: absolute;
@@ -231,7 +235,7 @@
                 <!-- Gentle fade only along the bottom; keep the photo's natural colours -->
                 <div class="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-slate-950/65 to-transparent pointer-events-none"></div>
                 <div class="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-6 sm:px-8 sm:pb-6 text-center">
-                    <p class="text-sm sm:text-lg font-bold tracking-wide text-white drop-shadow-lg">
+                    <p class="copy-left text-sm sm:text-lg font-bold tracking-wide text-white drop-shadow-lg">
                         <span class="text-blue-300">Tri</span>DashAI — Your 3-in-1 Virtual Phone Operator
                     </p>
                 </div>
@@ -252,7 +256,7 @@
                     Interactive ROI Calculator
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">See What Missed Calls Are <span class="text-[#2563eb]">Costing You</span></h2>
-                <p class="text-slate-600 text-sm sm:text-base">Calculate your exact monthly revenue loss based on an average $300 per service call.</p>
+                <p class="copy-left text-slate-600 text-sm sm:text-base">Calculate your exact monthly revenue loss based on an average $300 per service call.</p>
             </div>
 
             <div class="podium-card-3d p-8 sm:p-10 rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -292,7 +296,7 @@
         <section id="receptionist" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
             <div class="text-center mb-8">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Meet <span class="text-[#2563eb]">Sarah</span>, Your 24/7 AI Receptionist &amp; Dispatcher</h2>
-                <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">A friendly, professional first point of contact for your customers — answering calls and helping capture the jobs you cannot get to while you are on the tools.</p>
+                <p class="copy-left text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">A friendly, professional first point of contact for your customers — answering calls and helping capture the jobs you cannot get to while you are on the tools.</p>
             </div>
 
             <!-- Sarah's receptionist portrait -->
@@ -305,13 +309,13 @@
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-5">
                     <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">See Sarah Handle an Emergency Call</h3>
-                    <p class="mt-2 text-sm sm:text-base text-slate-600">A burst pipe. A worried customer. Sarah takes the call and gathers the details while the tradesperson is busy.</p>
+                    <p class="copy-left mt-2 text-sm sm:text-base text-slate-600">A burst pipe. A worried customer. Sarah takes the call and gathers the details while the tradesperson is busy.</p>
                 </div>
                 <video id="sarah-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline webkit-playsinline preload="auto" muted autoplay aria-label="Sarah handling an emergency burst-pipe call demonstration">
                     <source src="sarah-ai-dispatcher-burst-pipe-call-rev22-1920x1080-30fps-watermarked.mp4" type="video/mp4">
                     Your browser does not support the video element.
                 </video>
-                <p class="mt-3 text-center text-xs text-slate-500">The demonstration starts automatically when it comes into view. It starts muted because browsers block automatic playback with sound; tap the speaker control to hear Sarah.</p>
+                <p class="copy-left mt-3 text-xs text-slate-500">The demonstration starts automatically when it comes into view. It starts muted because browsers block automatic playback with sound; tap the speaker control to hear Sarah.</p>
             </div>
 
             <!-- INTERACTIVE SARAH TRY-OUT SCENARIOS -->
@@ -321,7 +325,7 @@
                     <div>
                         <p class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-cyan-300">Your business. Your customers. Your test.</p>
                         <h3 class="mt-2 text-2xl sm:text-3xl font-extrabold leading-tight">Don't Just Take Our Word for It — <span class="text-cyan-300">Test Sarah Yourself!</span></h3>
-                        <p class="mt-2 text-sm sm:text-base leading-relaxed text-slate-200">Choose a situation to see a sample customer question. If it sounds like a call your business receives, sign up for the 7-day free trial and try it with Sarah yourself.</p>
+                        <p class="copy-left mt-2 text-sm sm:text-base leading-relaxed text-slate-200">Choose a situation to see a sample customer question. If it sounds like a call your business receives, sign up for the 7-day free trial and try it with Sarah yourself.</p>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
@@ -352,7 +356,7 @@
                     <p id="sarah-example-confirm" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking Sarah:</strong> “Before sending someone out, can you text me the call-out fee and terms so I can review them and confirm?”</p>
                     <p id="sarah-example-booking" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking Sarah:</strong> “Can someone come out tomorrow afternoon to look at my leaking tap? What details do you need from me?”</p>
                 </div>
-                <p class="mt-5 text-left text-sm font-semibold text-cyan-100">These sample questions are just a starting point. After signing up, try Sarah with your own questions and experiment with different situations to tailor her to your own business requirements.</p>
+                <p class="copy-left mt-5 text-sm font-semibold text-cyan-100">These sample questions are just a starting point. After signing up, try Sarah with your own questions and experiment with different situations to tailor her to your own business requirements.</p>
             </div>
 
             <!-- FREE TRIAL CTA DIRECTLY BELOW SARAH'S EMERGENCY CALL -->
@@ -445,7 +449,7 @@
                     Built for DFW Trades
                 </span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Built for the Guy on the Roof and Under the Sink.</h2>
-                <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">While you’re knee-deep in a repair or hanging off a ladder, your phone is still ringing. Don't let it hit voicemail and hand cash to your rival.</p>
+                <p class="copy-left text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">While you’re knee-deep in a repair or hanging off a ladder, your phone is still ringing. Don't let it hit voicemail and hand cash to your rival.</p>
             </div>
         </section>
 
@@ -467,12 +471,12 @@
                 <div>
                     <span class="text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Roofing Specialists</span>
                     <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-3">Up on a Roof? <span class="text-[#2563eb]">Your Dispatcher Answers Live.</span></h3>
-                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
+                    <p class="copy-left text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
                         When you're up on a pitched roof, answering calls is impossible. The system answers live, triages storm damage leaks, and text-confirms job bookings.
                     </p>
                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-slate-700">"Answered live, quoted our standard $150 emergency roof tarp fee, and texted the client our secure deposit link."</p>
+                        <p class="copy-left text-slate-700">"Answered live, quoted our standard $150 emergency roof tarp fee, and texted the client our secure deposit link."</p>
                     </div>
                 </div>
             </div>
@@ -487,7 +491,7 @@
                     </p>
                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-slate-700">"Picked up a 3AM leak call live, verified water shut-off instructions, and secured the emergency callout fee upfront via SMS link."</p>
+                        <p class="copy-left text-slate-700">"Picked up a 3AM leak call live, verified water shut-off instructions, and secured the emergency callout fee upfront via SMS link."</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
@@ -514,7 +518,7 @@
                     </p>
                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-slate-700">"Answered live while on site, gathered extension specs, and texted the client a booking link for next Tuesday."</p>
+                        <p class="copy-left text-slate-700">"Answered live while on site, gathered extension specs, and texted the client a booking link for next Tuesday."</p>
                     </div>
                 </div>
             </div>
@@ -529,7 +533,7 @@
                     </p>
                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
                         <span class="font-semibold text-[#2563eb] block mb-1">💬 Voice & SMS Workflow:</span>
-                        <p class="text-slate-700">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
+                        <p class="copy-left text-slate-700">"Real-time voice answering + instant payment links = zero lost time and zero unpaid callouts."</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
@@ -545,7 +549,7 @@
         <section id="pricing" class="max-w-4xl mx-auto px-4 py-20 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Simple, Transparent Pricing</h2>
-                <p class="text-slate-600 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
+                <p class="copy-left text-slate-600 text-sm sm:text-base">One powerful plan. No long-term contracts, cancel anytime.</p>
             </div>
 
             <div class="max-w-md mx-auto">
@@ -553,7 +557,7 @@
                     <div>
                         <div class="mb-4">
                             <h3 class="text-2xl font-bold text-slate-900"><span class="text-[#2563eb]">Tri</span>DashAI Professional</h3>
-                            <p class="text-slate-600 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
+                            <p class="copy-left text-slate-600 text-xs mt-1">Complete 24/7 voice reception, emergency callouts & payment engine</p>
                         </div>
                         <div class="mb-6 pb-6 border-b border-slate-200">
                             <span class="text-5xl font-extrabold text-slate-900">$89</span>
