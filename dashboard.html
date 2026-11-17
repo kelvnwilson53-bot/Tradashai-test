@@ -330,7 +330,7 @@
 
         <div id="advanced-setup-bar" class="hidden w-full mb-5">
           <a id="advanced-setup-top" href="settings.html" class="w-full flex items-center justify-between gap-3 rounded-xl border border-blue-400/40 bg-blue-500/10 px-4 py-3 text-sm text-blue-100 advanced-setup-pulse">
-            <span class="min-w-0 flex-1"><span id="advanced-setup-title" class="block font-medium">Complete Advanced Setup</span><span id="advanced-setup-subtitle" class="block mt-1 text-xs font-normal text-slate-400">Finish personalising your receptionist</span></span>
+            <span class="min-w-0 flex-1"><span id="advanced-setup-title" class="block font-medium">Advanced Setup</span><span id="advanced-setup-subtitle" class="block mt-1 text-xs font-normal text-slate-400">Finish personalising your receptionist</span></span>
             <span aria-hidden="true" class="shrink-0 text-blue-300 text-xl">›</span>
           </a>
         </div>
@@ -679,7 +679,7 @@
         button.classList.toggle('bg-emerald-500/10', complete);
         const title = document.getElementById('advanced-setup-title');
         const subtitle = document.getElementById('advanced-setup-subtitle');
-        if (title) title.textContent = complete ? 'Advanced Setup' : 'Complete Advanced Setup';
+        if (title) title.textContent = 'Advanced Setup';
         if (subtitle) subtitle.textContent = complete ? 'Edit your receptionist settings' : 'Finish personalising your receptionist';
       }
 
@@ -723,16 +723,12 @@
           const businessHeading=document.getElementById('business-name-heading');
           if(businessHeading && data.businessName) businessHeading.textContent=data.businessName.toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase());
           const planSummary=document.getElementById('business-plan-summary');
-          if(planSummary) planSummary.textContent=(data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account') + (data.accountStatus==='trial' ? ' · 7-day trial' : data.quickStartComplete ? ' · Ready for phone activation' : ' · Setup required');
+          if(planSummary) planSummary.textContent=data.primaryTrade ? data.primaryTrade.charAt(0).toUpperCase()+data.primaryTrade.slice(1)+' business' : 'Business account';
           if(!data.quickStartComplete) {
             const banner=document.createElement('div');
             banner.className='mx-4 mt-4 rounded-xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-100';
             banner.innerHTML='<strong>One more step:</strong> complete and save your Quick Start setup below.';
             document.querySelector('main').prepend(banner);
-          }
-          if(data.accountStatus==='trial') {
-            const trialLabel=document.querySelector('#stage-2 .text-amber-400');
-            if(trialLabel) trialLabel.textContent='● 7-day trial';
           }
         } catch(error) { console.error('Could not load business profile:',error); }
       });
