@@ -307,11 +307,11 @@
                     <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">See Sarah Handle an Emergency Call</h3>
                     <p class="mt-2 text-sm sm:text-base text-slate-600">A burst pipe. A worried customer. Sarah takes the call and gathers the details while the tradesperson is busy.</p>
                 </div>
-                <video id="sarah-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline preload="metadata" muted aria-label="Sarah handling an emergency burst-pipe call demonstration">
+                <video id="sarah-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline webkit-playsinline preload="auto" muted autoplay aria-label="Sarah handling an emergency burst-pipe call demonstration">
                     <source src="sarah-ai-dispatcher-burst-pipe-call-rev22-1920x1080-30fps-watermarked.mp4" type="video/mp4">
                     Your browser does not support the video element.
                 </video>
-                <p class="mt-3 text-center text-xs text-slate-500">On a computer, move your pointer over the video to preview it. On a phone, tap play.</p>
+                <p class="mt-3 text-center text-xs text-slate-500">The demonstration starts automatically when it comes into view. It starts muted because browsers block automatic playback with sound; tap the speaker control to hear Sarah.</p>
             </div>
 
             <!-- FREE TRIAL CTA DIRECTLY BELOW SARAH'S EMERGENCY CALL -->
@@ -561,20 +561,29 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Desktop hover preview; touch devices use the native play controls.
+        // Automatically play Sarah's demo when it scrolls into view, then pause when it leaves.
+        // Autoplay is muted because browsers generally block automatic playback with sound.
         (() => {
             const demo = document.getElementById('sarah-emergency-demo');
-            if (!demo) return;
-            const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-            if (isTouch) return;
-            demo.addEventListener('pointerenter', () => {
-                demo.muted = true;
-                const playAttempt = demo.play();
-                if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
-            });
-            demo.addEventListener('pointerleave', () => {
-                demo.pause();
-            });
+            if (!demo || !('IntersectionObserver' in window)) return;
+
+            demo.muted = true;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                        const playAttempt = demo.play();
+                        if (playAttempt && typeof playAttempt.catch === 'function') {
+                            playAttempt.catch(() => {
+                                // Native video controls remain available if autoplay is blocked.
+                            });
+                        }
+                    } else {
+                        demo.pause();
+                    }
+                });
+            }, { threshold: [0, 0.5] });
+
+            observer.observe(demo);
         })();
     </script>
     <script>
