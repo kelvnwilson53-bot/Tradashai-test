@@ -190,13 +190,21 @@
                     <span>Menu</span>
                 </button>
 
-                <!-- Right-Aligned Dropdown Menu -->
-                <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 py-3 px-4 space-y-2.5 shadow-xl backdrop-blur-md z-50">
-                    <a href="#how-it-works" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">How It Works</a>
-                    <a href="#roi-calculator" class="menu-link block text-xs font-semibold text-slate-700 hover:text-[#2563eb] transition">ROI Calculator</a>
-                    <a href="#pricing" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Pricing</a>
-                    <a href="login.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition pt-2 border-t border-slate-100">Log In</a>
-                    <a href="kelvsignup.html" class="menu-link block text-xs font-semibold text-[#2563eb] transition">Start Free Trial</a>
+                <!-- FULL-SCREEN NAVIGATION PANEL -->
+                <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white pt-28 px-7 sm:px-12 overflow-y-auto">
+                    <nav aria-label="Main navigation" class="mx-auto flex w-full max-w-3xl flex-col gap-0">
+                        <!-- WEBSITE SECTIONS -->
+                        <a href="#roi-calculator" class="menu-link border-b border-slate-200 py-5 text-xl sm:text-2xl font-semibold text-black hover:text-black">ROI Calculator</a>
+                        <a href="#receptionist" class="menu-link border-b border-slate-200 py-5 text-xl sm:text-2xl font-semibold text-black hover:text-black">Meet Your 24/7 Receptionist &amp; Dispatcher</a>
+                        <a href="#how-it-works" class="menu-link border-b border-slate-200 py-5 text-xl sm:text-2xl font-semibold text-black hover:text-black">How TriDashAI Works</a>
+                        <a href="#pricing" class="menu-link border-b border-slate-200 py-5 text-xl sm:text-2xl font-semibold text-black hover:text-black">Pricing</a>
+
+                        <!-- CUSTOMER ACCOUNT ACTIONS -->
+                        <div class="mt-7 border-t border-slate-200 pt-6 flex flex-col gap-4">
+                            <a href="login.html" class="menu-link text-lg font-semibold text-black hover:text-black">Log In</a>
+                            <a href="kelvsignup.html" class="menu-link inline-flex w-full sm:w-auto sm:self-start items-center justify-center rounded-xl bg-[#2563eb] px-7 py-4 text-lg font-bold text-white shadow-md hover:bg-blue-700 transition">Start Your 7-Day Free Trial</a>
+                        </div>
+                    </nav>
                 </div>
             </div>
 
@@ -205,27 +213,36 @@
 
     <!-- HERO SECTION -->
     <main class="flex-1 relative z-10">
-        <section class="max-w-4xl mx-auto px-4 py-12 text-center">
-            <!-- HERO BRAND & TAGLINE -->
-            <p class="text-sm sm:text-base font-bold text-slate-700 mb-4 tracking-wide">
-                <span class="text-[#2563eb]">Tri</span>DashAI — Your 3-in-1 Virtual Phone Operator (with a human voice)
-            </p>
-
-            <!-- MOVING BADGE -->
-            <div class="inline-block podium-badge animated-badge text-sm sm:text-base font-extrabold py-2.5 rounded-full mb-6 shadow-sm whitespace-nowrap">
-                <span class="text-slate-900">Stop <span style="color: royalblue; font-weight: bold;">FUNDING</span> your competitor's <span style="color: blue; font-weight: bold;">TRUCK</span>!</span>
+        <section class="w-full bg-white">
+            <!-- MAIN CAMPAIGN HEADLINE -->
+            <div class="w-full bg-slate-900 px-4 py-4 sm:py-5 text-center">
+                <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-tight text-white">
+                    Stop <span class="text-blue-300">FUNDING</span> your competitor's <span class="text-blue-300">TRUCK</span>!
+                </h1>
             </div>
-            
-            <!-- HERO HEADING -->
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] mb-6 text-slate-900">
-                <span class="block">No more missed calls.</span>
-                <span class="block">A captured call is <span style="color: blue; font-weight: bold;">$300</span> in your pocket, not the guy down the road</span>
-            </h1>
-            
-            <!-- HERO SUBHEADING -->
-            <p class="text-slate-700 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
-                Missing just a single call is costing you $300 in lost income—amounting to $44,000 per year on average. That's a huge loss for you and a massive win for your competitor while you're under a sink or up on a roof.
-            </p>
+
+            <!-- FULL-BLEED ORIGINAL PHOTOGRAPH: BRAND LINE SITS UNDER HIS ARM -->
+            <div class="relative w-full overflow-hidden bg-slate-950">
+                <img
+                    src="file_00000000f700821197172a4540a2ae66.png"
+                    alt="A smiling plumbing contractor giving a thumbs-up beside his fully equipped work truck"
+                    class="block w-full h-auto"
+                >
+                <!-- Gentle fade only along the bottom; keep the photo's natural colours -->
+                <div class="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-slate-950/65 to-transparent pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-6 sm:px-8 sm:pb-6 text-center">
+                    <p class="text-sm sm:text-lg font-bold tracking-wide text-white drop-shadow-lg">
+                        <span class="text-blue-300">Tri</span>DashAI — Your 3-in-1 Virtual Phone Operator
+                    </p>
+                </div>
+            </div>
+
+            <!-- $300 MESSAGE CLOSE TO PHOTO; NON-BREAKING FINAL PHRASE PREVENTS A STRANDED "ROAD" -->
+            <div class="bg-white border-t-4 border-blue-600 px-5 py-3 sm:px-8 sm:py-5 text-center">
+                <h2 class="max-w-[23ch] mx-auto text-2xl sm:max-w-3xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-[1.12] text-slate-900">
+                    A captured call is <span style="color: #2563eb; font-weight: bold;">$300</span> in your pocket, not the guy <span class="whitespace-nowrap">down&nbsp;the&nbsp;road.</span>
+                </h2>
+            </div>
         </section>
 
         <!-- ROI CALCULATOR (IMMEDIATELY AFTER HERO) -->
@@ -281,6 +298,33 @@
                         <span class="text-xs text-slate-500 font-medium">(No credit card required)</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- MEET SARAH: 24/7 AI RECEPTIONIST & DISPATCHER -->
+        <section id="receptionist" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Meet <span class="text-[#2563eb]">Sarah</span>, Your 24/7 AI Receptionist &amp; Dispatcher</h2>
+                <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">A friendly, professional first point of contact for your customers — answering calls and helping capture the jobs you cannot get to while you are on the tools.</p>
+            </div>
+
+            <!-- Sarah's receptionist portrait -->
+            <div class="max-w-3xl mx-auto mb-10">
+                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100">
+                    <img src="file_000000002e9c8211b6fb5b9a4a14dcae.png" alt="Sarah, TriDashAI's friendly AI receptionist, wearing a headset in a trades business office" class="w-full h-auto object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-5">
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">See Sarah Handle an Emergency Call</h3>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600">A burst pipe. A worried customer. Sarah takes the call and gathers the details while the tradesperson is busy.</p>
+                </div>
+                <video id="sarah-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline preload="metadata" muted aria-label="Sarah handling an emergency burst-pipe call demonstration">
+                    <source src="sarah-ai-dispatcher-burst-pipe-call-rev22-1920x1080-30fps-watermarked.mp4" type="video/mp4">
+                    Your browser does not support the video element.
+                </video>
+                <p class="mt-3 text-center text-xs text-slate-500">On a computer, move your pointer over the video to preview it. On a phone, tap play.</p>
             </div>
         </section>
 
@@ -369,32 +413,6 @@
             </div>
         </section>
 
-        <!-- MEET YOUR 24/7 DISPATCHER -->
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">Meet Your New <span class="text-[#2563eb]">24/7 Dispatcher</span></h2>
-                <p class="text-slate-600 text-sm sm:text-base">Instant text-back and live voice response the second you miss a call.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
-                    <div class="text-2xl">⚡</div>
-                    <h3 class="text-lg font-bold text-slate-900">Instant Text-Back</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed">Fires off the microsecond a call is missed—before they even have time to hang up and dial your competitor.</p>
-                </div>
-                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
-                    <div class="text-2xl">🎯</div>
-                    <h3 class="text-lg font-bold text-slate-900">Smart Qualification</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed">Asks what’s broken, checks your emergency rates, and qualifies the job automatically.</p>
-                </div>
-                <div class="podium-card-3d p-6 rounded-3xl space-y-3">
-                    <div class="text-2xl">📅</div>
-                    <h3 class="text-lg font-bold text-slate-900">Automated Calendar Booking</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed">Locks the job straight onto your schedule without you ever touching your phone while on the tools.</p>
-                </div>
-            </div>
-        </section>
-
         <!-- TRADE PROFESSIONS & BENEFITS -->
         <section id="how-it-works" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
             <div class="text-center mb-10">
@@ -406,7 +424,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
                 <div class="blend-image-container h-64 sm:h-72">
                     <img 
-                        src="1792284293487.jpg" 
+                        src="https://raw.githubusercontent.com/kelvnwilson53-bot/Tradashai-test/main/1792284293487.jpg" 
                         alt="Roofing Specialist at Work"
                     />
                 </div>
@@ -438,7 +456,7 @@
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
                     <img 
-                        src="1793498924399.jpg" 
+                        src="https://raw.githubusercontent.com/kelvnwilson53-bot/Tradashai-test/main/1793498924399.jpg" 
                         alt="Plumber Working Under Sink"
                     />
                 </div>
@@ -448,7 +466,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center podium-card-3d p-6 sm:p-8 rounded-3xl mb-8">
                 <div class="blend-image-container h-64 sm:h-72">
                     <img 
-                        src="1792284328037.jpg" 
+                        src="https://raw.githubusercontent.com/kelvnwilson53-bot/Tradashai-test/main/1792284328037.jpg" 
                         alt="General Contractor on Site"
                     />
                 </div>
@@ -480,7 +498,7 @@
                 </div>
                 <div class="order-1 md:order-2 blend-image-container h-64 sm:h-72">
                     <img 
-                        src="1793498988502.jpg" 
+                        src="https://raw.githubusercontent.com/kelvnwilson53-bot/Tradashai-test/main/1793498988502.jpg" 
                         alt="Field Service Professional"
                     />
                 </div>
@@ -524,19 +542,6 @@
             </div>
         </section>
 
-        <!-- BOTTOM CTA SECTION -->
-        <section class="max-w-4xl mx-auto px-4 py-16 text-center relative z-10">
-            <div class="podium-card-3d p-8 sm:p-12 rounded-3xl space-y-6">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Ready to Stop Missing Calls?</h2>
-                <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">Set up your 24/7 AI Dispatcher in under 60 seconds. No complex setup, no software installation required.</p>
-                <div class="flex flex-col items-center gap-1.5 pt-2">
-                    <a href="kelvsignup.html" class="px-8 py-4 btn-podium-primary font-bold rounded-xl transition shadow-xl text-center">
-                        Start Your 7-Day Free Trial →
-                    </a>
-                    <span class="text-xs text-slate-500 font-medium">(No credit card required)</span>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- FOOTER WITH RETURN TO TOP BUTTON -->
@@ -561,26 +566,58 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Menu Toggle Logic
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        document.addEventListener('click', () => {
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-
-        document.querySelectorAll('.menu-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Desktop hover preview; touch devices use the native play controls.
+        (() => {
+            const demo = document.getElementById('sarah-emergency-demo');
+            if (!demo) return;
+            const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+            if (isTouch) return;
+            demo.addEventListener('pointerenter', () => {
+                demo.muted = true;
+                const playAttempt = demo.play();
+                if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
             });
-        });
+            demo.addEventListener('pointerleave', () => {
+                demo.pause();
+            });
+        })();
+    </script>
+    <script>
+        // Accessible full-screen navigation menu
+        (() => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!menuBtn || !mobileMenu) return;
+
+            const closeMenu = () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            };
+            const openMenu = () => {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+            };
+
+            menuBtn.setAttribute('aria-controls', 'mobile-menu');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                if (mobileMenu.classList.contains('hidden')) openMenu();
+                else closeMenu();
+            });
+
+            // Keep clicks inside the open panel from being mistaken for outside clicks.
+            mobileMenu.addEventListener('click', (event) => event.stopPropagation());
+            document.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeMenu();
+            });
+
+            mobileMenu.querySelectorAll('a.menu-link').forEach((link) => {
+                link.addEventListener('click', () => closeMenu());
+            });
+        })();
 
         // ROI Calculator Logic (Monthly Lost Revenue: Job Value * Missed Calls per week * 4 weeks)
         const jobValueInput = document.getElementById('job-value');
