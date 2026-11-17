@@ -347,7 +347,7 @@
               <h3 class="text-base font-bold text-white">1. Business details</h3>
               <div class="grid sm:grid-cols-2 gap-3">
                 <label class="text-sm text-slate-300">Business name<input id="qs-businessName" class="dashboard-input mt-1 w-full rounded-xl p-3" required></label>
-                <label class="text-sm text-slate-300">Your existing business number (the number customers call)<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required><span class="block text-xs text-slate-400 mt-1">Enter the number your customers already use to contact your business.</span></label>
+                <label class="text-sm text-slate-300">Business phone number (the number your customers call)<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" required><span class="block text-xs text-slate-400 mt-1">Enter the number your customers already use to contact your business.</span></label>
                 <label class="text-sm text-slate-300">Main trade<select id="qs-primaryTrade" class="dashboard-input mt-1 w-full rounded-xl p-3"><option value="plumber">Plumbing</option><option value="roofer">Roofing</option><option value="hvac">HVAC</option><option value="electrician">Electrical</option><option value="builder">General building</option><option value="multi">Multi-trade / Other</option></select></label>
                  
               </div>
@@ -374,24 +374,9 @@
                
             </section>
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">5. Call-out charges</h3>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <label class="block text-sm text-slate-300">Normal-hours call-out charge (USD)<input id="qs-standard_day_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 95"></label>
-                <label class="block text-sm text-slate-300">Out-of-hours call-out charge (USD)<input id="qs-evening_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. 145"></label>
-              </div>
-              <p class="text-xs text-slate-400">Your receptionist quotes the applicable charge and confirms the customer agrees before proceeding. Leave additional charges blank if they do not apply.</p>
-              <div class="border-t border-slate-700/50 pt-3 space-y-3">
-                <h4 class="text-sm font-semibold text-white">Additional call-out charges (optional)</h4>
-                <div class="grid sm:grid-cols-2 gap-3">
-                  <label class="block text-sm text-slate-300">Weekend call-out charge (USD)<input id="qs-weekend_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
-                  <label class="block text-sm text-slate-300">Public holiday call-out charge (USD)<input id="qs-holiday_callout_price" type="number" min="0" step="0.01" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Leave blank if not applicable"></label>
-                </div>
-              </div>
-              <div class="border-t border-slate-700/50 pt-3 space-y-2">
-                <h4 class="text-sm font-semibold text-white">Emergency contact number (optional)</h4>
-                <label class="block text-sm text-slate-300">Customer emergency contact number<input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Enter a separate emergency number"></label>
-                <p class="text-xs text-slate-400">If you have a separate number for emergency call-outs, enter it here. Your receptionist will give this number to customers who need to contact your emergency service. Leave blank if you do not have one.</p>
-              </div>
+              <h3 class="text-base font-bold text-white">5. Call-out arrangements</h3>
+              <p class="text-sm text-slate-300">We'll personalise four situations for your receptionist: normal daytime hours, out-of-hours, emergency call-outs, and holidays or special days.</p>
+              <p class="text-xs text-slate-400">You can add your exact charges, time windows and conditions in Advanced Setup. This keeps your initial setup short and straightforward.</p>
             </section>
         <!-- PHONE CONNECTION, PART OF QUICK START -->
         <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-4">
@@ -443,8 +428,8 @@
           <!-- SERVICE STATUS -->
           <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
             <article class="dashboard-card rounded-2xl p-4 space-y-3 sm:col-span-2 xl:col-span-1">
-              <div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-200">Your contact number</span><span class="text-xs text-amber-300">Setup required</span></div>
-              <p class="text-xs text-slate-400">Where should we send your new-enquiry alerts and important updates? Enter the best number for your receptionist to contact you.</p>
+              <div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-200">Your preferred contact number</span><span class="text-xs text-amber-300">Setup required</span></div>
+              <p class="text-xs text-slate-400">This is your own mobile or preferred contact number for alerts and important updates. It is separate from the public business number customers call.</p>
               <div class="space-y-1"><label for="routing-business-number" class="text-xs text-slate-300">Your mobile or preferred contact number</label><input id="routing-business-number" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3 text-sm" placeholder="Enter the number we should contact" autocomplete="tel"></div>
               <form id="call-routing-form" class="space-y-2"><button id="save-call-routing" type="submit" class="btn-primary-blue rounded-xl px-4 py-2.5 text-sm">Save contact number</button><p id="call-routing-message" class="text-xs text-slate-400" role="status">This saves your contact number. It does not change your existing business phone or activate call forwarding.</p></form>
               <div class="rounded-lg border border-slate-700/50 bg-black/20 p-2.5"><p class="text-xs text-slate-400">Your dedicated TriDashAI number</p><p id="dedicated-number-dashboard" class="mt-1 text-sm text-slate-200">We'll add this number when your account is activated. You don't need to enter or change it.</p></div>
