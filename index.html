@@ -324,7 +324,7 @@
                         <p class="mt-2 text-sm sm:text-base leading-relaxed text-slate-200">Choose a situation below to see an example of what a customer might say to Sarah.</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
                     <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-burst">
                         <span class="text-2xl" aria-hidden="true">🚰</span><span class="mt-2 block text-sm font-bold text-white">Burst pipe</span><span class="mt-1 block text-xs text-slate-300">Tap for an example</span>
                     </button>
@@ -339,6 +339,9 @@
                     </button>
                     <button type="button" class="sarah-scenario rounded-2xl border border-cyan-300/50 bg-cyan-300/10 p-3 text-center hover:bg-cyan-300/15 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-confirm">
                         <span class="text-2xl" aria-hidden="true">📩</span><span class="mt-2 block text-sm font-bold text-white">Call-out confirmation</span><span class="mt-1 block text-xs text-slate-300">See the customer message</span>
+                    </button>
+                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-booking">
+                        <span class="text-2xl" aria-hidden="true">📅</span><span class="mt-2 block text-sm font-bold text-white">Booking a visit</span><span class="mt-1 block text-xs text-slate-300">See how Sarah handles it</span>
                     </button>
                 </div>
                 <div class="mt-4 space-y-2" aria-live="polite">
@@ -366,6 +369,14 @@
                             </div>
                             <div class="mt-4 rounded-lg bg-cyan-300 px-4 py-3 text-center font-extrabold text-slate-950">CONFIRM AGREEMENT</div>
                             <p class="mt-2 text-center text-xs text-slate-400">Preview only — no agreement is submitted and no payment is taken here.</p>
+                        </div>
+                    </div>
+                    <div id="sarah-example-booking" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white">
+                        <p class="font-bold text-cyan-200">Example booking conversation</p>
+                        <div class="mt-2 rounded-xl bg-white p-4 text-slate-800 shadow-inner">
+                            <p><strong>Customer:</strong> “Can someone come out tomorrow afternoon to look at my leaking tap?”</p>
+                            <p class="mt-2"><strong class="text-blue-700">Sarah:</strong> “I can help with that. May I take your name and address, and a contact number? I'll check the business diary for an available appointment.”</p>
+                            <p class="mt-3 text-xs text-slate-500">Illustrative conversation. An appointment should only be confirmed after the contractor's live calendar has been checked.</p>
                         </div>
                     </div>
                 </div>
