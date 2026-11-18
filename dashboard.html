@@ -432,21 +432,20 @@
           <!-- CONTRACTOR AVAILABILITY STATUS -->
           <section id="contractor-availability" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
             <div>
-              <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Call-out availability</p>
-              <h3 class="text-lg font-bold text-white mt-1">Your current availability</h3>
-              <p class="text-sm text-slate-300 mt-1">Keep this updated so the receptionist can give customers an accurate answer about whether someone is available to attend.</p>
+              <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Taking on work</p>
+              <h3 class="text-lg font-bold text-white mt-1">Can you take another job right now?</h3>
+              <p class="text-sm text-slate-300 mt-1">Choose the option that best describes your situation. Change it whenever things change.</p>
             </div>
-            <label for="contractor-availability-status" class="block text-sm font-semibold text-slate-200">Current status</label>
-            <select id="contractor-availability-status" class="dashboard-input w-full rounded-xl p-3">
-              <option value="">Choose your current availability</option>
-              <option value="available">Available for call-outs</option>
-              <option value="attending_job">Currently attending another job</option>
-              <option value="no_one_on_call">No one available / no one on call</option>
-              <option value="temporarily_unavailable">Temporarily unavailable</option>
+            <select id="contractor-availability-status" aria-label="Can you take another job right now?" class="dashboard-input w-full rounded-xl p-3">
+              <option value="">Choose an option</option>
+              <option value="available">Yes — I can take another job</option>
+              <option value="attending_job">I'm busy on another job</option>
+              <option value="no_one_on_call">No one is available</option>
+              <option value="temporarily_unavailable">I'm not taking call-outs right now</option>
             </select>
             <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-              <button id="save-availability-status" type="button" class="btn-primary-blue rounded-xl px-5 py-3 text-sm">Save availability</button>
-              <p id="availability-status-message" class="text-sm text-slate-400" aria-live="polite">Choose a status and save it whenever your availability changes.</p>
+              <button id="save-availability-status" type="button" class="btn-primary-blue rounded-xl px-5 py-3 text-sm">Save</button>
+              <p id="availability-status-message" class="text-sm text-slate-400" aria-live="polite">The receptionist uses this to answer customers. She will still check with you before confirming a job.</p>
             </div>
           </section>
 
