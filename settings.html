@@ -56,7 +56,6 @@ body{font-size:16px;line-height:1.6}
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Out-of-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="out_of_hours_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<input id="out_of_hours_details" class="field mt-1.5" placeholder="e.g. Weekday evenings, overnight or Sundays. Leave blank if obvious."></label></div>
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Emergency call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="emergency_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<input id="emergency_details" class="field mt-1.5" placeholder="e.g. 24-hour emergencies or overnight attendance. Leave blank if obvious."></label></div>
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Holiday or special-day call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="holiday_special_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<textarea id="holiday_special_details" class="field mt-1.5" rows="3" placeholder="e.g. Christmas Day, New Year's Day or other special dates. Leave blank if obvious."></textarea></label></div>
-<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Hourly labour rate<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="hourly_labour_rate" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD per hour"></span></label><p class="text-xs text-slate-400 mt-2">Enter your standard labour rate per hour. The receptionist will explain that the final repair cost depends on the work required.</p></div>
 </div>
 
 <p class="text-xs text-slate-400">Your receptionist will only quote prices you enter here. If a price is blank or a job needs an assessment, she will explain that you need to confirm the cost. She will never invent a charge or promise a final repair price.</p>
@@ -65,8 +64,8 @@ body{font-size:16px;line-height:1.6}
 <h2 class="text-xl font-bold">Customer confirmations and payments</h2>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-2">
 <h3 class="font-bold text-lg">1. SMS confirmation of the agreed charges</h3>
-<p class="text-sm text-slate-200">Allow your AI receptionist to send the customer an SMS confirming the call-out charge, first-hour charge and other details they have agreed to.</p>
-<p class="text-sm text-slate-400">For example, after the customer agrees to a $145 call-out charge plus $145 for the first hour, the receptionist sends a text confirming those agreed charges and the arrangement. This is a written confirmation by SMS. It is not a payment link, a request for payment or a receipt.</p>
+<p class="text-sm text-slate-200">Allow your AI receptionist to send the customer an SMS confirming the call-out charge and payment arrangement they have agreed to.</p>
+<p class="text-sm text-slate-400">For example, after the customer agrees to the contractor's $145 call-out charge, the receptionist can send a text confirming that charge and the agreed payment arrangement. Any price for the actual repair is discussed with the contractor after the work has been assessed. This is a written confirmation by SMS. It is not a payment link, a request for payment or a receipt.</p>
 </div>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-4">
 <h3 class="font-bold text-lg">2. Accepted payment methods</h3><p class="text-sm text-slate-200">Which payment methods do you accept? Select all that apply. Your receptionist will only offer methods selected here.</p>
@@ -122,7 +121,7 @@ function updatePaymentVisibility(){
 paymentMethodOptions.forEach(el=>el.addEventListener('change',updatePaymentVisibility));
 advanceChoice.addEventListener('change',updatePaymentVisibility);
 linkChoice.addEventListener('change',updatePaymentVisibility);
-const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price','hourly_labour_rate'];
+const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
 const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','receptionistAdditionalInfo','other_payment_method','advance_payment_conditions','payment_link_url'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-900 text-red-100 border border-red-700':'bg-emerald-900 text-emerald-100 border border-emerald-700');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
@@ -154,11 +153,6 @@ auth.onAuthStateChanged(async user=>{
    if(savedProfile[id]!==undefined)el.value=savedProfile[id];
    else if(legacyMap[id]&&savedProfile[legacyMap[id]]!==undefined)el.value=savedProfile[legacyMap[id]];
   });
-  const legacyHourly=savedProfile.hourly_rate_details;
-  if(!document.getElementById('hourly_labour_rate')?.value&&legacyHourly){
-   const m=String(legacyHourly).match(/(?:\$\s*)(\d+(?:\.\d{1,2})?)/);
-   if(m&&document.getElementById('hourly_labour_rate'))document.getElementById('hourly_labour_rate').value=m[1];
-  }
  }catch(error){showMessage('Could not load your saved business details: '+error.message,true);}
 });
 form.addEventListener('submit',async e=>{
@@ -183,7 +177,6 @@ form.addEventListener('submit',async e=>{
   'OUT-OF-HOURS CALL-OUT CHARGE: '+formatCharge(update.out_of_hours_price)+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
   'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'. Details: '+(update.emergency_details||'Not specified')+'.',
   'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'HOURLY LABOUR RATE: '+formatCharge(update.hourly_labour_rate)+' per hour. Explain that this is the labour rate and not a fixed quotation for the complete repair.',
   'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
   'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
   'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
@@ -244,7 +237,6 @@ form.addEventListener('submit',async e=>{
   'OUT-OF-HOURS CALL-OUT CHARGE: '+formatCharge(update.out_of_hours_price)+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
   'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'. Details: '+(update.emergency_details||'Not specified')+'.',
   'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'HOURLY LABOUR RATE: '+formatCharge(update.hourly_labour_rate)+' per hour. Explain that this is the labour rate and not a fixed quotation for the complete repair.',
   'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
   'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
   'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
