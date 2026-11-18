@@ -32,20 +32,20 @@
             max-width: none;
             padding: 0;
             background: transparent;
-            color: rgba(203, 213, 225, 0.62);
-            font-size: 12px;
-            font-weight: 400;
+            color: rgba(255, 255, 255, 0.94);
+            font-size: 14px;
+            font-weight: 600;
             letter-spacing: 0.025em;
             white-space: nowrap;
-            text-shadow: 0 1px 3px rgba(15, 23, 42, 0.28);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 7px rgba(0, 0, 0, 0.65);
             pointer-events: none;
             animation: photoCaptionTravel 16s linear infinite;
             will-change: transform;
         }
         .blend-image-container { container-type: inline-size; }
         @keyframes photoCaptionTravel {
-            from { transform: translateX(-105%); }
-            to { transform: translateX(100cqw); }
+            from { transform: translateX(100cqw); }
+            to { transform: translateX(-105%); }
         }
         @media (prefers-reduced-motion: reduce) {
             .photo-caption-track { animation: none; left: 12px; }
