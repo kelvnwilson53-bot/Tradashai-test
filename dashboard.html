@@ -354,7 +354,7 @@
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">2. Working hours</h3>
               <label class="block text-sm text-slate-300">When is your business normally open?
-                <input id="qs-operatingHours" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Monday–Friday, 8am–5pm">
+                <textarea id="qs-operatingHours" rows="3" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Monday–Friday, 8am–5pm; Saturday 9am–1pm; Sunday closed"></textarea>
               </label>
             </section>
 
@@ -379,12 +379,12 @@
 
             <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">4. Phone connection</h3>
-              <p class="text-sm text-slate-300">Your dedicated TriDashAI number will be assigned during activation. You can then forward calls from your existing business number.</p>
+              <p class="text-sm text-slate-300">Keep your existing business number and phone provider. Calls ring on your phone as normal first. If you are already on a call or do not answer, those calls will be forwarded to your dedicated TriDashAI number.</p>
               <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3">
                 <p class="text-xs text-slate-400">Dedicated TriDashAI number</p>
                 <p id="dedicated-business-number" class="mt-1 text-sm text-slate-200">Assigned during activation</p>
               </div>
-              <p class="text-xs text-slate-400">Call forwarding becomes available after your number has been assigned and the connection has been tested.</p>
+              <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3 space-y-1"><p class="text-sm font-semibold text-white">How the forwarding works</p><p class="text-xs text-slate-300">1. Your existing phone rings first. 2. Busy or unanswered calls go to TriDashAI. 3. The receptionist handles the caller and sends you an alert when you need to act.</p><p class="text-xs text-slate-400">Your carrier instructions will be provided after your TriDashAI number is assigned. Exact activation steps depend on your phone provider.</p></div>
             </section>
 
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
