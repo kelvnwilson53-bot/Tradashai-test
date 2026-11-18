@@ -368,31 +368,55 @@
 
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">1. Call-out times and charges</h3>
-              <p class="text-sm text-slate-300">Set the times or conditions that apply to each type of call-out. Call-out charges are optional; leave an amount blank if you have not set one.</p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
                   <label class="block text-sm font-semibold text-white" for="qs-normalHours">Normal business hours</label>
-                  <textarea id="qs-normalHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the days and times normal arrangements apply"></textarea>
-                  <label class="block text-xs text-slate-300" for="qs-normal_callout_price">Optional call-out charge ($)</label>
-                  <input id="qs-normal_callout_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                  <input id="qs-normalHours" type="text" class="dashboard-input w-full rounded-xl p-3" placeholder="e.g. Monday–Saturday, 8 am–5 pm">
+                  <span class="block text-sm font-semibold text-white">Call-out charge</span>
+                  <div class="flex items-center gap-5 text-sm text-slate-200">
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-normal-callout" value="yes"> Yes</label>
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-normal-callout" value="no" checked> No</label>
+                  </div>
+                  <div id="qs-normal-fee-wrap" class="hidden">
+                    <label class="block text-xs text-slate-300" for="qs-normal_callout_price">Call-out charge ($)</label>
+                    <input id="qs-normal_callout_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3">
+                  </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
-                  <label class="block text-sm font-semibold text-white" for="qs-outOfHours">Out-of-hours</label>
-                  <textarea id="qs-outOfHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the days and times out-of-hours arrangements apply"></textarea>
-                  <label class="block text-xs text-slate-300" for="qs-out_of_hours_price">Optional call-out charge ($)</label>
-                  <input id="qs-out_of_hours_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                  <h4 class="text-sm font-semibold text-white">Out-of-hours</h4>
+                  <span class="block text-sm font-semibold text-white">Call-out charge</span>
+                  <div class="flex items-center gap-5 text-sm text-slate-200">
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-afterhours-callout" value="yes"> Yes</label>
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-afterhours-callout" value="no" checked> No</label>
+                  </div>
+                  <div id="qs-afterhours-fee-wrap" class="hidden">
+                    <label class="block text-xs text-slate-300" for="qs-out_of_hours_price">Call-out charge ($)</label>
+                    <input id="qs-out_of_hours_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3">
+                  </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
-                  <label class="block text-sm font-semibold text-white" for="qs-emergencyHours">Emergency call-outs</label>
-                  <textarea id="qs-emergencyHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter when emergency arrangements apply"></textarea>
-                  <label class="block text-xs text-slate-300" for="qs-emergency_price">Optional call-out charge ($)</label>
-                  <input id="qs-emergency_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                  <h4 class="text-sm font-semibold text-white">Emergency call-outs</h4>
+                  <span class="block text-sm font-semibold text-white">Call-out charge</span>
+                  <div class="flex items-center gap-5 text-sm text-slate-200">
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-emergency-callout" value="yes"> Yes</label>
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-emergency-callout" value="no" checked> No</label>
+                  </div>
+                  <div id="qs-emergency-fee-wrap" class="hidden">
+                    <label class="block text-xs text-slate-300" for="qs-emergency_price">Call-out charge ($)</label>
+                    <input id="qs-emergency_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3">
+                  </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
-                  <label class="block text-sm font-semibold text-white" for="qs-holidayHours">Holidays and special days</label>
-                  <textarea id="qs-holidayHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the holidays or special days and applicable times"></textarea>
-                  <label class="block text-xs text-slate-300" for="qs-holiday_special_price">Optional call-out charge ($)</label>
-                  <input id="qs-holiday_special_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                  <h4 class="text-sm font-semibold text-white">Holidays and special days</h4>
+                  <span class="block text-sm font-semibold text-white">Call-out charge</span>
+                  <div class="flex items-center gap-5 text-sm text-slate-200">
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-holiday-callout" value="yes"> Yes</label>
+                    <label class="inline-flex items-center gap-2"><input type="radio" name="qs-holiday-callout" value="no" checked> No</label>
+                  </div>
+                  <div id="qs-holiday-fee-wrap" class="hidden">
+                    <label class="block text-xs text-slate-300" for="qs-holiday_special_price">Call-out charge ($)</label>
+                    <input id="qs-holiday_special_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3">
+                  </div>
                 </div>
               </div>
               <input id="qs-operatingHours" type="hidden">
@@ -708,7 +732,20 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','normalHours','outOfHours','emergencyHours','holidayHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','normalHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+      const calloutControls=[
+        {name:'qs-normal-callout',wrap:'qs-normal-fee-wrap',price:'qs-normal_callout_price',key:'normalCalloutEnabled'},
+        {name:'qs-afterhours-callout',wrap:'qs-afterhours-fee-wrap',price:'qs-out_of_hours_price',key:'outOfHoursCalloutEnabled'},
+        {name:'qs-emergency-callout',wrap:'qs-emergency-fee-wrap',price:'qs-emergency_price',key:'emergencyCalloutEnabled'},
+        {name:'qs-holiday-callout',wrap:'qs-holiday-fee-wrap',price:'qs-holiday_special_price',key:'holidayCalloutEnabled'}
+      ];
+      calloutControls.forEach(control=>{
+        document.querySelectorAll('input[name="'+control.name+'"]').forEach(radio=>radio.addEventListener('change',()=>{
+          const enabled=radio.value==='yes'&&radio.checked;
+          document.getElementById(control.wrap)?.classList.toggle('hidden',!enabled);
+          if(!enabled&&radio.checked){const price=document.getElementById(control.price);if(price)price.value='';}
+        }));
+      });
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
@@ -722,6 +759,12 @@
         e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
         const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
         const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
+        calloutControls.forEach(control=>{
+          const selected=document.querySelector('input[name="'+control.name+'"]:checked');
+          const enabled=selected?.value==='yes';
+          update[control.key]=enabled;
+          if(!enabled)update[control.price]='';
+        });
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
@@ -845,6 +888,12 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
+          calloutControls.forEach(control=>{
+            const enabled=data[control.key]!==undefined?!!data[control.key]:String(data[control.price]||'').trim()!=='';
+            const selected=document.querySelector('input[name="'+control.name+'"][value="'+(enabled?'yes':'no')+'"]');
+            if(selected)selected.checked=true;
+            document.getElementById(control.wrap)?.classList.toggle('hidden',!enabled);
+          });
 
           const personalContactInput=document.getElementById('personal-contact-number');
           if(personalContactInput&&data.personalContactNumber)personalContactInput.value=data.personalContactNumber;
