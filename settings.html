@@ -181,151 +181,20 @@ form.addEventListener('submit',async e=>{
   'NORMAL WORKING-HOURS CALL-OUT CHARGE: '+(update.normal_callout_price?'$'+update.normal_callout_price:'Not supplied')+'. Applies: '+(update.normal_callout_details||'Conditions not specified')+'.',
   'OUT-OF-HOURS CALL-OUT CHARGE: '+(update.out_of_hours_price?'$'+update.out_of_hours_price:'Not supplied')+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
   'EMERGENCY CALL-OUT CHARGE: '+(update.emergency_price?'$'+update.emergency_price:'Not supplied')+'. Details: '+(update.emergency_details||'Not specified')+'.',
-  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+(update.holiday_special_price?' Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
-  'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
-  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
-  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
- ];
- update.receptionistInstructions=lines.join('\n');
- update.setupComplete=true;update.profileComplete=true;
- update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
- try{
-  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
-  button.textContent='Saved successfully ✓';
-  button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
- }catch(error){
-  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
-  button.disabled=false;button.textContent='Try saving again';return;
- }
- button.disabled=false;
-});
-</script>
-
-<!-- Back-to-top control: appears after the visitor scrolls down -->
-<style>
-#back-to-top{position:fixed;right:18px;bottom:24px;z-index:1000;width:48px;height:48px;border:1px solid #52657d;border-radius:50%;background:#29394d;color:#e7eef7;box-shadow:0 5px 16px rgba(0,0,0,.28);font-size:25px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .2s ease;cursor:pointer}
-#back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-#back-to-top:hover,#back-to-top:focus-visible{background:#365f86;outline:2px solid #91b4d8;outline-offset:2px}
-@media(prefers-reduced-motion:reduce){#back-to-top{transition:none}}
-</style>
-<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
-<script>
-(function(){
- const button=document.getElementById('back-to-top');
- if(!button)return;
- const update=()=>button.classList.toggle('is-visible',window.scrollY>280);
- window.addEventListener('scroll',update,{passive:true});
- button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
- update();
-})();
-</script>
-
-</body></html>
-+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.'),
+  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+(update.holiday_special_price?'$'+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
+  'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
   'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
   'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
   'ADVANCE PAYMENT CONDITIONS: '+(update.advance_payment_conditions||'No conditions supplied.'),
   'PAYMENT LINK RULE: '+(update.offer_payment_link==='yes'&&update.accepted_payment_methods.includes('Credit/debit card by secure payment link')?'The receptionist may offer the contractor-supplied payment link if the customer chooses to pay in advance. Link: '+(update.payment_link_url||'No link supplied; do not send a link.'):'Do not offer or send a payment link.'),
-  'PAYMENT CONVERSATION RULE: First explain the applicable charges and ask the customer clearly, “Are you happy to go ahead with those charges?” Stop and wait for an explicit answer. Do not treat silence, uncertainty or a question as agreement. If the customer agrees, then ask how they would prefer to pay and offer only methods listed above. Do not pressure the customer to pay in advance unless the contractor has made advance payment compulsory. If the contractor allows payment on completion, respect the customer’s preference. If the customer declines or does not clearly agree to the charges, do not present the call-out as accepted.'),
+  'PAYMENT CONVERSATION RULE: First explain the applicable charges and ask the customer clearly, “Are you happy to go ahead with those charges?” Stop and wait for an explicit answer. Do not treat silence, uncertainty or a question as agreement. If the customer agrees, then ask how they would prefer to pay and offer only methods listed above. Do not pressure the customer to pay in advance unless the contractor has made advance payment compulsory. If the contractor allows payment on completion, respect the customer’s preference. If the customer declines or does not clearly agree to the charges, do not present the call-out as accepted.',
   'SMS CHARGE CONFIRMATION RULE: After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.',
   'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
   'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
   'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
   'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
   'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
- ];
- update.receptionistInstructions=lines.join('\n');
- update.setupComplete=true;update.profileComplete=true;
- update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
- try{
-  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
-  button.textContent='Saved successfully ✓';
-  button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
- }catch(error){
-  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
-  button.disabled=false;button.textContent='Try saving again';return;
- }
- button.disabled=false;
-});
-</script>
-
-<!-- Back-to-top control: appears after the visitor scrolls down -->
-<style>
-#back-to-top{position:fixed;right:18px;bottom:24px;z-index:1000;width:48px;height:48px;border:1px solid #52657d;border-radius:50%;background:#29394d;color:#e7eef7;box-shadow:0 5px 16px rgba(0,0,0,.28);font-size:25px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .2s ease;cursor:pointer}
-#back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-#back-to-top:hover,#back-to-top:focus-visible{background:#365f86;outline:2px solid #91b4d8;outline-offset:2px}
-@media(prefers-reduced-motion:reduce){#back-to-top{transition:none}}
-</style>
-<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
-<script>
-(function(){
- const button=document.getElementById('back-to-top');
- if(!button)return;
- const update=()=>button.classList.toggle('is-visible',window.scrollY>280);
- window.addEventListener('scroll',update,{passive:true});
- button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
- update();
-})();
-</script>
-
-</body></html>
-+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
-  'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
-  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
-  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
- ];
- update.receptionistInstructions=lines.join('\n');
- update.setupComplete=true;update.profileComplete=true;
- update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
- try{
-  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
-  button.textContent='Saved successfully ✓';
-  button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
- }catch(error){
-  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
-  button.disabled=false;button.textContent='Try saving again';return;
- }
- button.disabled=false;
-});
-</script>
-
-<!-- Back-to-top control: appears after the visitor scrolls down -->
-<style>
-#back-to-top{position:fixed;right:18px;bottom:24px;z-index:1000;width:48px;height:48px;border:1px solid #52657d;border-radius:50%;background:#29394d;color:#e7eef7;box-shadow:0 5px 16px rgba(0,0,0,.28);font-size:25px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .2s ease;cursor:pointer}
-#back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-#back-to-top:hover,#back-to-top:focus-visible{background:#365f86;outline:2px solid #91b4d8;outline-offset:2px}
-@media(prefers-reduced-motion:reduce){#back-to-top{transition:none}}
-</style>
-<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
-<script>
-(function(){
- const button=document.getElementById('back-to-top');
- if(!button)return;
- const update=()=>button.classList.toggle('is-visible',window.scrollY>280);
- window.addEventListener('scroll',update,{passive:true});
- button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
- update();
-})();
-</script>
-
-</body></html>
-+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'CARD PAYMENTS: '+(update.accepts_card_payments==='yes'?'Accepted. Payment link: '+(update.card_payment_link||'Not supplied'):'Not accepted or not confirmed. Do not offer card payment.'),
-  'OTHER ACCEPTED PAYMENT METHODS: '+(update.other_payment_methods.length?update.other_payment_methods.join(', '):'None specified. Do not suggest any other payment method.')+'. Additional details: '+(update.other_payment_methods_details||'None')+'. Only offer methods the contractor has selected here or confirmed separately.',
-  'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
-  'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
-  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
-  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
- ];
- update.receptionistInstructions=lines.join('\n');
+ ]; update.receptionistInstructions=lines.join('\n');
  update.setupComplete=true;update.profileComplete=true;
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
  try{
