@@ -87,6 +87,11 @@ body{font-size:16px;line-height:1.6}
 <div id="payment_link_url_wrap" class="hidden space-y-2"><label class="block text-sm font-semibold" for="payment_link_url">Your secure payment link</label><input id="payment_link_url" class="field" type="url" inputmode="url" placeholder="Paste the payment link supplied by your payment provider"><p class="text-sm text-slate-400">Only enter a payment link from your payment provider. Sending the link does not confirm that payment has been made.</p></div></div>
 </section>
 
+<section class="border-t border-slate-600 pt-5 space-y-3">
+<h2 class="font-bold text-lg">Additional information</h2>
+<p class="text-sm text-slate-300">Journey times and customer updates (optional). Add any useful guidance about emergency journey times and when customers should receive an arrival update.</p>
+<label class="block text-sm font-semibold">Additional information<textarea id="receptionistAdditionalInfo" class="field mt-1.5" rows="3" placeholder="Example: For emergency call-outs, my journey to Fort Worth is usually around 30–40 minutes in normal traffic. Do not promise an arrival time until I have confirmed it. When I confirm I’m on my way and give an estimated arrival time, send the customer an SMS with that estimate."></textarea></label>
+</section>
 <div class="flex flex-col sm:flex-row gap-3 pt-2">
 <a href="dashboard.html" class="text-center px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm">Back</a>
 <button id="save-button" class="primary flex-1 rounded-xl py-3.5" type="submit">Save Advanced Setup</button>
@@ -118,7 +123,7 @@ paymentMethodOptions.forEach(el=>el.addEventListener('change',updatePaymentVisib
 advanceChoice.addEventListener('change',updatePaymentVisibility);
 linkChoice.addEventListener('change',updatePaymentVisibility);
 const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
-const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','other_payment_method','advance_payment_conditions','payment_link_url'];
+const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','receptionistAdditionalInfo','other_payment_method','advance_payment_conditions','payment_link_url'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-900 text-red-100 border border-red-700':'bg-emerald-900 text-emerald-100 border border-emerald-700');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -242,7 +247,7 @@ form.addEventListener('submit',async e=>{
   'SMS CHARGE CONFIRMATION RULE: After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.',
   'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
   'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
+  'ADDITIONAL INFORMATION — JOURNEY TIMES AND CUSTOMER UPDATES: '+(update.receptionistAdditionalInfo||'None supplied. Use only confirmed arrival estimates. Do not promise an arrival time or send an on-the-way SMS until the contractor confirms departure and provides the estimate.'),
   'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
   'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
  ]; update.receptionistInstructions=lines.join('\n');
