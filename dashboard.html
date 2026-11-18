@@ -352,10 +352,12 @@
           </div>
 
           <!-- SERVICE STATUS -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <section class="space-y-3">
+            <h3 class="text-lg font-semibold text-white">Service status</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <article class="dashboard-card receptionist-card rounded-2xl p-4 sm:p-5 space-y-4">
               <div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-slate-200">AI receptionist</span><span class="status-pill status-preview">Setup required</span></div>
-              <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-xl">✦</span></div><div class="min-w-0"><p class="text-base font-semibold text-white">Your AI Receptionist</p><p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p></div></div>
+              <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-xl">✦</span></div><div class="min-w-0"><p class="text-base font-semibold text-white">Receptionist voice</p><p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p></div></div>
               <div class="receptionist-switch-row">
                 <div class="min-w-0"><p class="text-sm font-semibold text-white">Receptionist control</p><p id="receptionist-toggle-caption" class="text-xs text-slate-400 mt-1">Preview only · service not connected</p></div>
                 <button id="receptionist-master-toggle" type="button" role="switch" aria-checked="false" aria-label="Preview AI receptionist on or off" class="switch-control" data-state="off"><span class="switch-track"><span class="switch-thumb"></span></span><span id="receptionist-toggle-label" class="switch-label">OFF</span></button>
@@ -513,7 +515,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','weekend_callout_price','holiday_callout_price','other_callout_label','other_callout_price','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','standard_day_callout_price','evening_callout_price'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
