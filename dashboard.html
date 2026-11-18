@@ -787,7 +787,8 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
-        if(routingInput&&data.notificationPhone)routingInput.value=data.notificationPhone;
+          const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
+          if(existingBusinessNumber)existingBusinessNumber.textContent=data.businessPhone||'Not yet added in Quick Start';
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
