@@ -45,19 +45,19 @@ body{font-size:16px;line-height:1.6}
 <a href="dashboard.html" class="text-sm font-semibold text-blue-700">Back to dashboard</a>
 </div></header>
 <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
-<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-tight">Advanced Setup</h1><p class="setup-intro mt-3">Quick Start collected your essential business details. Use this page to personalise your receptionist, set payment preferences and add useful information about your business.</p></div>
+<div><p class="text-xs font-bold tracking-widest text-blue-700 uppercase">Business profile</p><h1 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-tight">Advanced Setup</h1><p class="setup-intro mt-3">Quick Start collected your essential business details. Use this page to enter or change your call-out charges and add any other useful business information. You can return here whenever your prices or arrangements change.</p></div>
 <div id="message" role="status" class="hidden rounded-xl p-3 text-sm"></div>
 <form id="settings-form" class="panel rounded-3xl p-6 sm:p-8 space-y-6">
 
 <section class="border-t border-slate-600 pt-5 space-y-4">
-<div><p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Your charges</p><h2 class="text-xl font-bold mt-1">Call-out charges and hourly rate</h2><p class="text-sm text-slate-300 mt-2">Enter the prices your receptionist is allowed to tell customers. Leave a price blank if you do not offer that type of call-out. Add the hours or conditions if they vary.</p></div>
+<div><p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Your charges</p><h2 class="text-xl font-bold mt-1">Your call-out charges</h2><p class="text-sm text-slate-300 mt-2">Enter the charges your receptionist may quote. Add the days, times and any exceptions that apply. You can change these details whenever your prices change.</p></div>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-4">
-<div><label class="block text-sm font-semibold">Normal working-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="normal_callout_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply?<input id="normal_callout_details" class="field mt-1.5" placeholder="e.g. Monday to Friday, 8am–5pm"></label></div>
-<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Out-of-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="out_of_hours_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply?<input id="out_of_hours_details" class="field mt-1.5" placeholder="e.g. Weekday evenings and overnight"></label></div>
-<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Emergency call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="emergency_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Emergency charge details (optional)<input id="emergency_details" class="field mt-1.5" placeholder="e.g. 24-hour emergency attendance"></label></div>
-<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Holiday or special-day call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="holiday_special_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Which days or conditions apply?<input id="holiday_special_details" class="field mt-1.5" placeholder="e.g. Public holidays and Christmas Day"></label></div>
-<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Hourly labour rate<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="hourly_labour_rate" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount per hour in USD"></span></label><label class="block text-sm font-semibold mt-3">Hourly rate conditions (optional)<input id="hourly_labour_details" class="field mt-1.5" placeholder="e.g. One-hour minimum; parts charged separately"></label></div>
+<div><label class="block text-sm font-semibold">Normal working-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="normal_callout_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Days, hours or conditions (optional)<input id="normal_callout_details" class="field mt-1.5" placeholder="e.g. Monday to Friday, 8am–5pm"></label></div>
+<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Out-of-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="out_of_hours_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Days, hours or conditions (optional)<input id="out_of_hours_details" class="field mt-1.5" placeholder="e.g. weekday evenings, overnight or Sundays"></label></div>
+<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Emergency call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="emergency_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Emergency charge details (optional)<input id="emergency_details" class="field mt-1.5" placeholder="e.g. 24-hour emergencies, overnight attendance"></label></div>
+<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Holiday or special-day call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="holiday_special_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">Which days, dates or conditions apply?<textarea id="holiday_special_details" class="field mt-1.5" rows="3" placeholder="e.g. Sundays, Christmas Eve and Christmas Day, New Year's Eve and New Year's Day, or other dates when your charge changes"></textarea></label></div>
 </div>
+
 <p class="text-xs text-slate-400">Your receptionist will only quote prices you enter here. If a price is blank or a job needs an assessment, she will explain that you need to confirm the cost. She will never invent a charge or promise a final repair price.</p>
 </section>
 <section class="border-t border-slate-600 pt-5 space-y-3">
@@ -82,8 +82,8 @@ if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById('settings-form'),message=document.getElementById('message'),button=document.getElementById('save-button');
 let currentUser=null;
 let savedProfile={};
-const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price','hourly_labour_rate'];
-const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','hourly_labour_details','receptionistAdditionalInfo'];
+const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','receptionistAdditionalInfo'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-900 text-red-100 border border-red-700':'bg-emerald-900 text-emerald-100 border border-emerald-700');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -103,8 +103,6 @@ auth.onAuthStateChanged(async user=>{
    emergency_details:'overnight_callout_details',
    holiday_special_price:'holiday_callout_price',
    holiday_special_details:'holiday_callout_details',
-   hourly_labour_rate:'hourly_rate_amount',
-   hourly_labour_details:'hourly_rate_details'
   };
   [...priceFields,...detailFields].forEach(id=>{
    const el=document.getElementById(id);if(!el)return;
@@ -136,7 +134,6 @@ form.addEventListener('submit',async e=>{
   'OUT-OF-HOURS CALL-OUT CHARGE: '+(update.out_of_hours_price?'$'+update.out_of_hours_price:'Not supplied')+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
   'EMERGENCY CALL-OUT CHARGE: '+(update.emergency_price?'$'+update.emergency_price:'Not supplied')+'. Details: '+(update.emergency_details||'Not specified')+'.',
   'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+(update.holiday_special_price?'$'+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'HOURLY LABOUR RATE: '+(update.hourly_labour_rate?'$'+update.hourly_labour_rate+' per hour':'Not supplied')+'. Conditions: '+(update.hourly_labour_details||'Not specified')+'.',
   'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
   'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
   'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
@@ -148,7 +145,7 @@ form.addEventListener('submit',async e=>{
  update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
  try{
   await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Saved successfully. Your prices and business information are stored in your account.');
+  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
   button.textContent='Saved successfully ✓';
   button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
  }catch(error){
