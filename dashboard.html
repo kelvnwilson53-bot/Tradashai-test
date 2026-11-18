@@ -159,8 +159,8 @@
         #hamburger-btn, #theme-toggle-btn { width: 38px; height: 38px; }
         #roi-performance { padding: 1rem; }
         #stage-2 > .grid article, #stage-2 > section { min-width: 0; }
-        #faq-panel details summary { font-size: .9rem; }
-        #faq-panel details p { font-size: .875rem; }
+        #faq-section details summary { font-size: .9rem; }
+        #faq-section details p { font-size: .875rem; }
         @media (max-width: 640px) {
           main { padding-top: 1rem !important; padding-bottom: 1.5rem !important; }
           #stage-1.dashboard-card, #advanced-setup.dashboard-card, #activity-reviews.dashboard-card { padding: 1rem; }
@@ -249,6 +249,7 @@
 
                 <!-- ACCOUNT & HELP MENU -->
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-slate-900 border border-slate-700 py-3 px-3 space-y-2 shadow-2xl z-50">
+                              <a href="settings.html" class="w-full text-left block text-sm font-semibold text-slate-200 hover:text-cyan-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition">Advanced Setup</a>
                               <button id="open-faq-menu" type="button" class="w-full text-left block text-sm font-semibold text-slate-200 hover:text-cyan-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition">Help & FAQs</button>
                               <button id="logout-button" type="button" class="w-full text-left block text-sm font-semibold text-red-400 hover:text-red-300 p-2.5 rounded-lg hover:bg-slate-800/60 transition border-t border-slate-800">Log out</button>
                 </div>
@@ -260,12 +261,7 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
 
-        <div id="advanced-setup-bar" class="hidden w-full mb-5">
-          <a id="advanced-setup-top" href="settings.html" class="w-full flex items-center justify-between gap-3 rounded-xl border border-blue-400/40 bg-blue-500/10 px-4 py-3 text-sm text-blue-100 advanced-setup-pulse">
-            <span class="min-w-0 flex-1"><span id="advanced-setup-title" class="block font-medium">Complete Advanced Setup</span><span id="advanced-setup-subtitle" class="block mt-1 text-xs font-normal text-slate-400">Finish personalising your receptionist</span></span>
-            <span aria-hidden="true" class="shrink-0 text-blue-300 text-xl">›</span>
-          </a>
-        </div>
+
         <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-2"><div><p class="text-xs font-medium tracking-wide text-blue-400">Your business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-semibold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-sm text-slate-400 mt-1">Account overview</p></div></section>
 
         <!-- STAGE 1: QUICK START -->
@@ -481,14 +477,10 @@
           
 
 
-</main>
-
-    <!-- HELP & FAQS -->
-    <section id="faq-panel" class="hidden fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
-      <div class="dashboard-card max-w-2xl mx-auto my-4 sm:my-10 rounded-3xl border border-slate-700/70 overflow-hidden">
+          <section id="faq-section" class="dashboard-card rounded-2xl overflow-hidden">
         <div class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-700/60">
           <div><p class="text-xs uppercase tracking-widest text-cyan-300">TriDashAI support</p><h2 class="text-xl sm:text-2xl font-medium text-white mt-1">Help & FAQs</h2><p class="text-sm text-slate-400 mt-1">Simple answers to common questions about using TriDashAI.</p></div>
-          <button id="close-faq-panel" type="button" aria-label="Close FAQs" class="w-9 h-9 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800">✕</button>
+          
         </div>
         <div class="p-5 sm:p-6 space-y-3">
           <details class="group rounded-xl border border-slate-700/60 bg-black/20 p-4">
@@ -520,9 +512,13 @@
             <p class="mt-3 text-sm leading-relaxed text-slate-300">If extra usage bundles are available on your plan, you can review them using the Extra Bundles area in your dashboard. Check the bundle allowance and expiry details before purchasing.</p>
           </details>
           <div class="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4"><p class="text-sm text-slate-200">Still need help?</p><p class="text-xs text-slate-400 mt-1">Contact TriDashAI support if your question isn't covered here. These FAQs are written help and do not send a chat message.</p></div>
-        </div>
       </div>
     </section>
+
+    </main>
+
+    <!-- HELP & FAQS -->
+
 
     <!-- SUPPORT FOOTER -->
     <footer id="support-footer" class="border-t border-slate-800/50 bg-black/30 py-4 text-center">
@@ -565,7 +561,7 @@
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
-        try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Your business setup has been saved.';msg.className='text-sm text-emerald-400';showBusinessDashboard();updateAdvancedSetupReminder(update);}
+        try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Your business setup has been saved.';msg.className='text-sm text-emerald-400';showBusinessDashboard();}
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
         finally{save.disabled=false;save.textContent='Save Quick Start';}
       });
@@ -611,20 +607,6 @@
         document.getElementById('advanced-setup')?.classList.add('hidden');
         document.getElementById('activity-reviews')?.classList.add('hidden');
         document.getElementById('stage-2')?.classList.remove('hidden');
-        document.getElementById('advanced-setup-bar')?.classList.remove('hidden');
-      }
-      function updateAdvancedSetupReminder(data) {
-        const button = document.getElementById('advanced-setup-top');
-        if (!button) return;
-        const required = ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','standard_day_callout_price','evening_callout_price'];
-        const complete = required.every(key => String(data[key] ?? '').trim().length > 0);
-        button.classList.toggle('advanced-setup-pulse', !complete);
-        button.classList.toggle('border-emerald-500/40', complete);
-        button.classList.toggle('bg-emerald-500/10', complete);
-        const title = document.getElementById('advanced-setup-title');
-        const subtitle = document.getElementById('advanced-setup-subtitle');
-        if (title) title.textContent = complete ? 'Advanced Setup' : 'Complete Advanced Setup';
-        if (subtitle) subtitle.textContent = complete ? 'Edit your receptionist settings' : 'Finish personalising your receptionist';
       }
 
       dashboardAuth.onAuthStateChanged(async user => {
@@ -658,7 +640,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
-          if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
+          if(data.quickStartComplete){showBusinessDashboard();}
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
@@ -695,15 +677,10 @@
             localStorage.setItem('tridashai-theme', nextTheme);
         });
 
-        // Help & FAQs panel
-        const faqPanel = document.getElementById('faq-panel');
+        // Help & FAQs menu item jumps to the permanent FAQ section.
         document.getElementById('open-faq-menu')?.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
-            faqPanel?.classList.remove('hidden');
-        });
-        document.getElementById('close-faq-panel')?.addEventListener('click', () => faqPanel?.classList.add('hidden'));
-        faqPanel?.addEventListener('click', event => {
-            if (event.target === faqPanel) faqPanel.classList.add('hidden');
+            document.getElementById('faq-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
         // Hamburger Menu Toggle Logic
