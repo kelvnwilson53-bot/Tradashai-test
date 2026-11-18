@@ -357,9 +357,6 @@
                 <label class="block text-sm text-slate-300">ZIP / postal code
                   <input id="qs-businessZip" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
                 </label>
-                <label class="block text-sm text-slate-300">Services offered
-                  <input id="qs-additionalServices" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
-                </label>
                 <label class="block text-sm text-slate-300 sm:col-span-2">Service areas
                   <input id="qs-serviceAreas" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
                 </label>
@@ -732,7 +729,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','normalHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','normalHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
       const calloutControls=[
         {name:'qs-normal-callout',wrap:'qs-normal-fee-wrap',price:'qs-normal_callout_price',key:'normalCalloutEnabled'},
         {name:'qs-afterhours-callout',wrap:'qs-afterhours-fee-wrap',price:'qs-out_of_hours_price',key:'outOfHoursCalloutEnabled'},
