@@ -338,12 +338,33 @@
             <p class="text-sm text-slate-300 mt-1">A few essentials to get your receptionist ready. Your registration details are already filled in.</p>
           </div>
           <form id="quick-start-form" class="space-y-4">
-            <div class="hidden" aria-hidden="true">
-              <input id="qs-businessName" readonly><input id="qs-businessPhone" readonly>
-              <input id="qs-primaryTrade" readonly><input id="qs-businessLocation" readonly>
-              <input id="qs-businessZip" readonly><input id="qs-additionalServices" readonly>
-              <input id="qs-serviceAreas" readonly>
-            </div>
+            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
+              <h3 class="text-base font-bold text-white">Your business details</h3>
+              <p class="text-sm text-slate-300">These details came from your sign-up form and are shown here automatically. You do not need to confirm or enter them again.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="block text-sm text-slate-300">Business name
+                  <input id="qs-businessName" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300">Business phone
+                  <input id="qs-businessPhone" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300">Trade
+                  <input id="qs-primaryTrade" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300">Business address
+                  <input id="qs-businessLocation" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300">ZIP / postal code
+                  <input id="qs-businessZip" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300">Services offered
+                  <input id="qs-additionalServices" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+                <label class="block text-sm text-slate-300 sm:col-span-2">Service areas
+                  <input id="qs-serviceAreas" readonly class="dashboard-input mt-1 w-full rounded-xl p-3" aria-readonly="true">
+                </label>
+              </div>
+            </section>
 
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">1. Call-out times and charges</h3>
