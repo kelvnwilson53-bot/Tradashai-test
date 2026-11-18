@@ -371,7 +371,8 @@
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">5. Call-out arrangements</h3>
               <p class="text-sm text-slate-300">These are the four situations your receptionist needs to understand: normal daytime hours, out-of-hours, emergency call-outs, and holidays or special days.</p>
-              <p class="text-xs text-slate-400">You do not need to enter all your fees here. When you are ready to put your receptionist through more detailed tests — for example, different call-out charges, weekend rates, emergency fees or holiday exceptions — open Advanced Setup, complete the relevant fields, save them, and then test your receptionist again. That gives her the information she needs to handle those specific situations accurately.</p>
+              <label class="block text-sm text-slate-300">Standard call-out fee (normal working hours)<span class="flex items-center mt-1"><span class="px-3 py-3 rounded-l-xl border border-r-0 border-slate-600 bg-slate-800 text-slate-200">$</span><input id="qs-standard_day_callout_price" type="number" min="0" step="0.01" required class="dashboard-input mt-1 w-full rounded-r-xl p-3" placeholder="Enter amount in USD"></span></label>
+              <p class="text-xs text-slate-400">Enter your usual attendance or call-out fee. Enter 0 if you do not charge one. Evening, weekend, emergency and holiday charges — plus any exceptions — can be added later in Advanced Setup.</p>
             </section>
         <!-- PHONE CONNECTION, PART OF QUICK START -->
         <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-4">
@@ -670,7 +671,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','evening_callout_price','weekend_callout_price','holiday_callout_price','emergencyInstructions'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
@@ -684,6 +685,7 @@
         e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
         const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
         const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
+        update.normal_callout_price=update.standard_day_callout_price;
         update.calendarBooking=document.querySelector('input[name="qs-calendarBooking"]:checked')?.value||'';
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
@@ -726,7 +728,7 @@
       function updateAdvancedSetupReminder(data) {
         const button = document.getElementById('advanced-setup-top');
         if (!button) return;
-        const required = ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','standard_day_callout_price','evening_callout_price'];
+        const required = ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','standard_day_callout_price'];
         const complete = required.every(key => String(data[key] ?? '').trim().length > 0);
         button.classList.toggle('advanced-setup-pulse', !complete);
         button.classList.toggle('border-emerald-500/40', complete);
@@ -808,6 +810,8 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
+          const standardFeeInput=quickInput('standard_day_callout_price');
+          if(standardFeeInput&&(data.standard_day_callout_price===undefined||data.standard_day_callout_price==='')&&data.normal_callout_price!==undefined)standardFeeInput.value=data.normal_callout_price;
           const personalContactInput=document.getElementById('personal-contact-number');
           if(personalContactInput&&data.personalContactNumber)personalContactInput.value=data.personalContactNumber;
           const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
