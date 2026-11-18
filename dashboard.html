@@ -422,14 +422,20 @@
             <span class="text-xs text-slate-500">Business snapshot</span>
           </div>
 
-          <!-- CALL FORWARDING / PREFERRED CONTACT NUMBER -->
+          <!-- CALL FORWARDING -->
           <article class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
-              <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Phone setup</p><h3 class="text-lg font-bold text-white mt-1">Call Forwarding / Preferred Contact Number</h3></div>
-              <div class="flex items-center justify-between gap-2"><span class="text-sm text-slate-200">Your preferred contact number</span><span class="text-xs text-amber-300">Setup required</span></div>
-              <p class="text-xs text-slate-400">This is your own mobile or preferred contact number for alerts and important updates. It is separate from the public business number customers call.</p>
-              <div class="space-y-1"><label for="routing-business-number" class="text-xs text-slate-300">Your mobile or preferred contact number</label><input id="routing-business-number" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3 text-sm" placeholder="Enter the number we should contact" autocomplete="tel"></div>
-              <form id="call-routing-form" class="space-y-2"><button id="save-call-routing" type="submit" class="btn-primary-blue rounded-xl px-4 py-2.5 text-sm">Save contact number</button><p id="call-routing-message" class="text-xs text-slate-400" role="status">This saves your contact number. It does not change your existing business phone or activate call forwarding.</p></form>
-              <div class="rounded-lg border border-slate-700/50 bg-black/20 p-2.5"><p class="text-xs text-slate-400">Your dedicated TriDashAI number</p><p id="dedicated-number-dashboard" class="mt-1 text-sm text-slate-200">We'll add this number when your account is activated. You don't need to enter or change it.</p></div>
+            <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Phone setup</p><h3 class="text-lg font-bold text-white mt-1">Call Forwarding</h3></div>
+            <div class="rounded-lg border border-slate-700/50 bg-black/20 p-3 space-y-1">
+              <p class="text-xs text-slate-400">Your existing business number</p>
+              <p id="existing-business-number-dashboard" class="text-sm font-semibold text-white">Already saved in Quick Start</p>
+              <p class="text-xs text-slate-400">This is the number your customers already call. We've carried it over from your Quick Start details, so you don't need to enter it again.</p>
+            </div>
+            <div class="rounded-lg border border-slate-700/50 bg-black/20 p-3 space-y-1">
+              <p class="text-xs text-slate-400">Your dedicated TriDashAI number</p>
+              <p id="dedicated-number-dashboard" class="text-sm font-semibold text-white">Assigned during activation</p>
+              <p class="text-xs text-slate-400">This is the number your calls will be forwarded to so Sarah can answer them.</p>
+            </div>
+            <p class="text-xs text-slate-400" role="status">Once your dedicated TriDashAI number has been assigned and tested, we'll guide you through setting up call forwarding with your phone provider. Call forwarding is not activated from this dashboard.</p>
           </article>
 
           <!-- BUSINESS SNAPSHOT -->
@@ -704,20 +710,7 @@
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
         finally{save.disabled=false;save.textContent='Save Quick Start';}
       });
-      // Save the preferred contact number separately from the public business number.
-      const routingForm=document.getElementById('call-routing-form');
-      const routingInput=document.getElementById('routing-business-number');
-      const routingMessage=document.getElementById('call-routing-message');
-      routingForm?.addEventListener('submit',async event=>{
-        event.preventDefault();const user=dashboardAuth.currentUser;if(!user||!routingInput)return;
-        const number=routingInput.value.trim();if(!number){routingMessage.textContent='Enter the number you want us to contact.';routingMessage.className='text-xs text-amber-300';return;}
-        const save=document.getElementById('save-call-routing');save.disabled=true;save.textContent='Saving…';
-        try{
-          await dashboardDb.collection('businesses').doc(user.uid).set({notificationPhone:number,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
-          routingMessage.textContent='Your contact number has been saved.';routingMessage.className='text-xs text-emerald-300';
-        }catch(error){routingMessage.textContent='Could not save the number: '+error.message;routingMessage.className='text-xs text-red-300';}
-        finally{save.disabled=false;save.textContent='Save contact number';}
-      });
+      // The existing business number is displayed from Quick Start; no second entry is needed.
 
       // Compact voice preference controls on the dashboard.
       const voicePreferenceLabel=document.getElementById('voice-preference-label');
