@@ -56,6 +56,7 @@ body{font-size:16px;line-height:1.6}
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Out-of-hours call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="out_of_hours_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<input id="out_of_hours_details" class="field mt-1.5" placeholder="e.g. Weekday evenings, overnight or Sundays. Leave blank if obvious."></label></div>
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Emergency call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="emergency_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<input id="emergency_details" class="field mt-1.5" placeholder="e.g. 24-hour emergencies or overnight attendance. Leave blank if obvious."></label></div>
 <div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Holiday or special-day call-out charge<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="holiday_special_price" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD"></span></label><label class="block text-sm font-semibold mt-3">When does this charge apply? (Optional)<textarea id="holiday_special_details" class="field mt-1.5" rows="3" placeholder="e.g. Christmas Day, New Year's Day or other special dates. Leave blank if obvious."></textarea></label></div>
+<div class="border-t border-slate-600 pt-4"><label class="block text-sm font-semibold">Hourly labour rate<span class="flex items-center mt-1.5"><span class="currency-prefix px-3 py-3">$</span><input id="hourly_labour_rate" class="field currency-input" type="number" min="0" step="0.01" placeholder="Amount in USD per hour"></span></label><p class="text-xs text-slate-400 mt-2">Enter your standard labour rate per hour. The receptionist will explain that the final repair cost depends on the work required.</p></div>
 </div>
 
 <p class="text-xs text-slate-400">Your receptionist will only quote prices you enter here. If a price is blank or a job needs an assessment, she will explain that you need to confirm the cost. She will never invent a charge or promise a final repair price.</p>
@@ -121,7 +122,7 @@ function updatePaymentVisibility(){
 paymentMethodOptions.forEach(el=>el.addEventListener('change',updatePaymentVisibility));
 advanceChoice.addEventListener('change',updatePaymentVisibility);
 linkChoice.addEventListener('change',updatePaymentVisibility);
-const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price','hourly_labour_rate'];
 const detailFields=['normal_callout_details','out_of_hours_details','emergency_details','holiday_special_details','receptionistAdditionalInfo','other_payment_method','advance_payment_conditions','payment_link_url'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-900 text-red-100 border border-red-700':'bg-emerald-900 text-emerald-100 border border-emerald-700');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
@@ -169,7 +170,68 @@ form.addEventListener('submit',async e=>{
  update.payment_timing=document.getElementById('payment_timing').value;
  update.advance_payment_required=advanceChoice.value;
  update.offer_payment_link=linkChoice.value;
+ update.standard_day_callout_price=update.normal_callout_price;
  const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[savedProfile.primaryTrade]||'trade services';
+ const formatCharge=value=>value!==undefined&&value!==null&&String(value).trim()!==''?'
+  'Business: '+(savedProfile.businessName||'Business name not supplied'),
+  'Trade: '+tradeLabel,
+  'Phone: '+(savedProfile.businessPhone||'Not supplied'),
+  'Business location: '+([savedProfile.businessLocation,savedProfile.businessZip].filter(Boolean).join(', ')||'Not supplied'),
+  'Service area: '+(savedProfile.serviceAreas||'Not supplied'),
+  'Operating hours: '+(savedProfile.operatingHours||'Not supplied'),
+  'NORMAL WORKING-HOURS CALL-OUT CHARGE: '+formatCharge(update.normal_callout_price)+'. Applies: '+(update.normal_callout_details||'Conditions not specified')+'.',
+  'OUT-OF-HOURS CALL-OUT CHARGE: '+formatCharge(update.out_of_hours_price)+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
+  'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'. Details: '+(update.emergency_details||'Not specified')+'.',
+  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
+  'HOURLY LABOUR RATE: '+formatCharge(update.hourly_labour_rate)+' per hour. Explain that this is the labour rate and not a fixed quotation for the complete repair.',
+  'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
+  'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
+  'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
+  'ADVANCE PAYMENT CONDITIONS: '+(update.advance_payment_conditions||'No conditions supplied.'),
+  'PAYMENT LINK RULE: '+(update.offer_payment_link==='yes'&&update.accepted_payment_methods.includes('Credit/debit card by secure payment link')?'The receptionist may offer the contractor-supplied payment link if the customer chooses to pay in advance. Link: '+(update.payment_link_url||'No link supplied; do not send a link.'):'Do not offer or send a payment link.'),
+  'PAYMENT CONVERSATION RULE: First explain the applicable charges and ask the customer clearly, “Are you happy to go ahead with those charges?” Stop and wait for an explicit answer. Do not treat silence, uncertainty or a question as agreement. If the customer agrees, then ask how they would prefer to pay and offer only methods listed above. Do not pressure the customer to pay in advance unless the contractor has made advance payment compulsory. If the contractor allows payment on completion, respect the customer’s preference. If the customer declines or does not clearly agree to the charges, do not present the call-out as accepted.',
+  'SMS CHARGE CONFIRMATION RULE: After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.',
+  'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
+  'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
+  'BUSINESS-SPECIFIC ADDITIONAL INFORMATION: '+(update.receptionistAdditionalInfo||'None supplied.'),
+  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
+  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
+ ]; update.receptionistInstructions=lines.join('\n');
+ update.setupComplete=true;update.profileComplete=true;
+ update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
+ try{
+  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
+  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
+  button.textContent='Saved successfully ✓';
+  button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
+ }catch(error){
+  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
+  button.disabled=false;button.textContent='Try saving again';return;
+ }
+ button.disabled=false;
+});
+</script>
+
+<!-- Back-to-top control: appears after the visitor scrolls down -->
+<style>
+#back-to-top{position:fixed;right:18px;bottom:24px;z-index:1000;width:48px;height:48px;border:1px solid #52657d;border-radius:50%;background:#29394d;color:#e7eef7;box-shadow:0 5px 16px rgba(0,0,0,.28);font-size:25px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .2s ease;cursor:pointer}
+#back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+#back-to-top:hover,#back-to-top:focus-visible{background:#365f86;outline:2px solid #91b4d8;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){#back-to-top{transition:none}}
+</style>
+<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
+<script>
+(function(){
+ const button=document.getElementById('back-to-top');
+ if(!button)return;
+ const update=()=>button.classList.toggle('is-visible',window.scrollY>280);
+ window.addEventListener('scroll',update,{passive:true});
+ button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+ update();
+})();
+</script>
+
+</body></html>+value:'Not supplied';
  const lines=[
   'TRIDASHAI RECEPTIONIST OPERATING INSTRUCTIONS',
   'Business: '+(savedProfile.businessName||'Business name not supplied'),
@@ -178,10 +240,11 @@ form.addEventListener('submit',async e=>{
   'Business location: '+([savedProfile.businessLocation,savedProfile.businessZip].filter(Boolean).join(', ')||'Not supplied'),
   'Service area: '+(savedProfile.serviceAreas||'Not supplied'),
   'Operating hours: '+(savedProfile.operatingHours||'Not supplied'),
-  'NORMAL WORKING-HOURS CALL-OUT CHARGE: '+(update.normal_callout_price?'$'+update.normal_callout_price:'Not supplied')+'. Applies: '+(update.normal_callout_details||'Conditions not specified')+'.',
-  'OUT-OF-HOURS CALL-OUT CHARGE: '+(update.out_of_hours_price?'$'+update.out_of_hours_price:'Not supplied')+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
-  'EMERGENCY CALL-OUT CHARGE: '+(update.emergency_price?'$'+update.emergency_price:'Not supplied')+'. Details: '+(update.emergency_details||'Not specified')+'.',
-  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+(update.holiday_special_price?'$'+update.holiday_special_price:'Not supplied')+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
+  'NORMAL WORKING-HOURS CALL-OUT CHARGE: '+formatCharge(update.normal_callout_price)+'. Applies: '+(update.normal_callout_details||'Conditions not specified')+'.',
+  'OUT-OF-HOURS CALL-OUT CHARGE: '+formatCharge(update.out_of_hours_price)+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
+  'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'. Details: '+(update.emergency_details||'Not specified')+'.',
+  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
+  'HOURLY LABOUR RATE: '+formatCharge(update.hourly_labour_rate)+' per hour. Explain that this is the labour rate and not a fixed quotation for the complete repair.',
   'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
   'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
   'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
