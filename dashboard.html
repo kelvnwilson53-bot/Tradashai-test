@@ -422,6 +422,27 @@
             <p id="receptionist-control-note" class="text-xs text-slate-400 border-t border-slate-700/70 pt-3">Switch shown as a dashboard layout preview. Phone forwarding is configured separately through your phone provider.</p>
           </section>
 
+          <!-- VOICE PREFERENCE — VISUAL SELECTION PREVIEW -->
+          <section id="receptionist-voice" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Voice preference</p>
+              <h3 class="text-lg font-bold text-white mt-1">Choose your receptionist's voice</h3>
+              <p class="text-sm text-slate-300 mt-1">Select the voice you prefer.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3" role="group" aria-label="Choose receptionist voice">
+              <label class="flex items-center justify-center gap-3 min-h-14 rounded-xl border border-slate-600 bg-slate-800/70 px-4 py-3 cursor-pointer has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-500/15">
+                <input type="radio" name="dashboard-voice-preference" value="male" class="h-4 w-4 accent-cyan-400">
+                <span class="font-semibold text-white">Male</span>
+              </label>
+              <label class="flex items-center justify-center gap-3 min-h-14 rounded-xl border border-slate-600 bg-slate-800/70 px-4 py-3 cursor-pointer has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-500/15">
+                <input type="radio" name="dashboard-voice-preference" value="female" class="h-4 w-4 accent-cyan-400">
+                <span class="font-semibold text-white">Female</span>
+              </label>
+            </div>
+            <p id="voice-preference-label" class="text-sm text-slate-300">Choose a voice</p>
+            <p id="voice-preference-message" class="text-xs text-slate-400" role="status">Visual preference preview. Live voice selection is not connected yet.</p>
+          </section>
+
           <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
             <div><p class="text-xs uppercase tracking-widest text-blue-400">Your business at a glance</p><h2 class="text-2xl sm:text-3xl font-semibold text-white mt-1">Overview</h2><p class="text-sm text-slate-400 mt-1">Your service status, configuration and recorded activity.</p></div>
             <span class="text-xs text-slate-500">Business snapshot</span>
