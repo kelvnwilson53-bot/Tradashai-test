@@ -405,42 +405,39 @@
 
 
           <!-- JOBBER-STYLE RECEPTIONIST ON/OFF CONTROL — VISUAL LAYOUT PREVIEW -->
-          <section id="receptionist-control" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <section id="receptionist-control" class="dashboard-card rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between gap-3">
               <div>
                 <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Receptionist control</p>
-                <h2 class="text-xl sm:text-2xl font-bold text-white mt-1">AI Receptionist</h2>
-                <p class="text-sm text-slate-300 mt-1">Turn your receptionist on when you want TriDashAI to answer calls, or off when you don't.</p>
+                <h2 class="text-base font-bold text-white mt-1">AI Receptionist</h2>
               </div>
               <div class="flex items-center gap-3 self-start sm:self-center">
                 <span id="receptionist-status-label" class="text-sm font-bold text-amber-300">OFF</span>
-                <button id="receptionist-toggle" type="button" role="switch" aria-checked="false" aria-label="Turn AI receptionist on or off" class="relative inline-flex h-9 w-[68px] shrink-0 items-center rounded-full border border-slate-500 bg-slate-700 p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
-                  <span id="receptionist-toggle-knob" class="inline-block h-7 w-7 translate-x-0 rounded-full bg-white shadow-md transition-transform"></span>
+                <button id="receptionist-toggle" type="button" role="switch" aria-checked="false" aria-label="Turn AI receptionist on or off" class="relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-slate-500 bg-slate-700 p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                  <span id="receptionist-toggle-knob" class="inline-block h-5 w-5 translate-x-0 rounded-full bg-white shadow-md transition-transform"></span>
                 </button>
               </div>
             </div>
-            <p id="receptionist-control-note" class="text-xs text-slate-400 border-t border-slate-700/70 pt-3">Switch shown as a dashboard layout preview. Phone forwarding is configured separately through your phone provider.</p>
+            <p id="receptionist-control-note" class="text-xs text-slate-400">Phone forwarding is configured separately through your phone provider.</p>
           </section>
 
           <!-- VOICE PREFERENCE — VISUAL SELECTION PREVIEW -->
-          <section id="receptionist-voice" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
+          <section id="receptionist-voice" class="dashboard-card rounded-xl p-4 space-y-3">
             <div>
               <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Voice preference</p>
-              <h3 class="text-lg font-bold text-white mt-1">Choose your receptionist's voice</h3>
-              <p class="text-sm text-slate-300 mt-1">Select the voice you prefer.</p>
+              <h3 class="text-base font-bold text-white mt-1">Receptionist voice</h3>
             </div>
-            <div class="grid grid-cols-2 gap-3" role="group" aria-label="Choose receptionist voice">
-              <label class="flex items-center justify-center gap-3 min-h-14 rounded-xl border border-slate-600 bg-slate-800/70 px-4 py-3 cursor-pointer has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-500/15">
+            <div class="flex gap-2" role="group" aria-label="Choose receptionist voice">
+              <label class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/70 px-3 py-2 text-sm cursor-pointer has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-500/15">
                 <input type="radio" name="dashboard-voice-preference" value="male" class="h-4 w-4 accent-cyan-400">
-                <span class="font-semibold text-white">Male</span>
+                <span class="font-medium text-white">Male</span>
               </label>
               <label class="flex items-center justify-center gap-3 min-h-14 rounded-xl border border-slate-600 bg-slate-800/70 px-4 py-3 cursor-pointer has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-500/15">
                 <input type="radio" name="dashboard-voice-preference" value="female" class="h-4 w-4 accent-cyan-400">
-                <span class="font-semibold text-white">Female</span>
+                <span class="font-medium text-white">Female</span>
               </label>
             </div>
-            <p id="voice-preference-label" class="text-sm text-slate-300">Choose a voice</p>
-            <p id="voice-preference-message" class="text-xs text-slate-400" role="status">Visual preference preview. Live voice selection is not connected yet.</p>
+            <p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p>
           </section>
 
           <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
@@ -479,28 +476,6 @@
 
 
         
-
-                    <!-- LIVE OPERATING CONTROL: contractor availability -->
-          <section id="contractor-availability" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
-            <div>
-              <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Taking on work</p>
-              <h3 class="text-lg font-bold text-white mt-1">Can you take another job right now?</h3>
-              <p class="text-sm text-slate-300 mt-1">Choose the option that best describes your situation. Change it whenever things change.</p>
-            </div>
-            <select id="contractor-availability-status" aria-label="Can you take another job right now?" class="dashboard-input w-full rounded-xl p-3">
-              <option value="">Choose an option</option>
-              <option value="available">Yes — I can take another job</option>
-              <option value="attending_job">I'm busy on another job</option>
-              <option value="no_one_on_call">No one is available</option>
-              <option value="temporarily_unavailable">I'm not taking call-outs right now</option>
-            </select>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-              <button id="save-availability-status" type="button" class="btn-primary-blue rounded-xl px-5 py-3 text-sm">Save</button>
-              <p id="availability-status-message" class="text-sm text-slate-400" aria-live="polite">The receptionist uses this to answer customers. She will still check with you before confirming a job.</p>
-            </div>
-          </section>
-
-        </section>
 
         <!-- TEST YOUR RECEPTIONIST: READ-ALOUD PHONE SCENARIOS -->
         <section id="test-receptionist" class="dashboard-card p-6 sm:p-8 rounded-3xl space-y-5">
