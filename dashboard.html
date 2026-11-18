@@ -490,8 +490,8 @@
               <div class="flex items-center justify-between"><span class="text-sm text-slate-300">AI receptionist</span><span class="text-xs text-amber-300">Not activated</span></div>
               <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-lg">✦</span></div><div><p class="text-sm text-white">Your Receptionist</p><p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p></div></div>
               <div class="flex items-center gap-4 pt-1" role="group" aria-label="Receptionist voice preference">
-                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="male" class="h-3.5 w-3.5 accent-cyan-500"> <span class="text-slate-300">Male</span></label>
-                <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300"><input type="radio" name="dashboard-voice-preference" value="female" class="h-3.5 w-3.5 accent-cyan-500"> <span class="text-slate-300">Female</span></label>
+                <label class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-600 bg-black/20 px-4 py-2 cursor-pointer text-sm text-slate-200"><input type="radio" name="dashboard-voice-preference" value="male" class="h-4 w-4 accent-cyan-500"> <span>Male</span></label>
+                <label class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-600 bg-black/20 px-4 py-2 cursor-pointer text-sm text-slate-200"><input type="radio" name="dashboard-voice-preference" value="female" class="h-4 w-4 accent-cyan-500"> <span>Female</span></label>
               </div>
               <p id="voice-preference-message" class="text-sm leading-relaxed text-slate-300" role="status">Your choice is saved as a preference. It will not change the live receptionist voice until voice selection is connected.</p>
           </article>
@@ -530,7 +530,7 @@
               <article class="rounded-xl border border-slate-700/60 bg-black/20 p-3"><p class="text-xs text-slate-400">Responses published</p><p class="mt-1 text-2xl font-bold text-emerald-300">9</p></article>
               <article class="rounded-xl border border-slate-700/60 bg-black/20 p-3"><p class="text-xs text-slate-400">Average rating</p><p class="mt-1 text-2xl font-bold text-amber-300">4.8 ★</p></article>
             </div>
-            <p class="text-sm leading-relaxed text-slate-200">Sarah has sent 24 review requests and helped generate 9 new reviews. All 9 have received a response.</p>
+            <p class="text-sm leading-relaxed text-slate-200">Your receptionist has sent 24 review requests and helped generate 9 new reviews. All 9 have received a response.</p>
             <p class="text-[11px] text-slate-400">Illustrative figures shown for preview only. Actual Google Business Profile data will replace these figures when connected.</p>
           </section>
 
@@ -741,16 +741,15 @@
       voicePreferenceInputs.forEach(input=>input.addEventListener('change',async()=>{
         const user=dashboardAuth.currentUser;if(!user)return;
         const selected=input.value;
-        voicePreferenceInputs.forEach(item=>item.disabled=true);
+        window.dashboardVoicePreference=selected;
+        displayVoicePreference(selected);
         if(voicePreferenceMessage)voicePreferenceMessage.textContent='Saving preference…';
         try{
           await dashboardDb.collection('businesses').doc(user.uid).set({voicePreference:selected,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
-          displayVoicePreference(selected);
-          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Preference saved. Live voice switching is not connected yet.';
+          if(window.dashboardVoicePreference===selected&&voicePreferenceMessage)voicePreferenceMessage.textContent='Preference saved. This records your choice; live voice switching is not connected yet.';
         }catch(error){
-          displayVoicePreference(window.dashboardVoicePreference||'female');
-          if(voicePreferenceMessage)voicePreferenceMessage.textContent='Could not save: '+error.message;
-        }finally{voicePreferenceInputs.forEach(item=>item.disabled=false);}
+          if(window.dashboardVoicePreference===selected&&voicePreferenceMessage)voicePreferenceMessage.textContent='Could not save your preference: '+error.message;
+        }
       }));
 
       // The main dashboard appears after the customer saves their business setup.
