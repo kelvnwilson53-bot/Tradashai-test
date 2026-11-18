@@ -404,6 +404,24 @@
 
 
 
+          <!-- JOBBER-STYLE RECEPTIONIST ON/OFF CONTROL — VISUAL LAYOUT PREVIEW -->
+          <section id="receptionist-control" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Receptionist control</p>
+                <h2 class="text-xl sm:text-2xl font-bold text-white mt-1">AI Receptionist</h2>
+                <p class="text-sm text-slate-300 mt-1">Turn your receptionist on when you want TriDashAI to answer calls, or off when you don't.</p>
+              </div>
+              <div class="flex items-center gap-3 self-start sm:self-center">
+                <span id="receptionist-status-label" class="text-sm font-bold text-amber-300">OFF</span>
+                <button id="receptionist-toggle" type="button" role="switch" aria-checked="false" aria-label="Turn AI receptionist on or off" class="relative inline-flex h-9 w-[68px] shrink-0 items-center rounded-full border border-slate-500 bg-slate-700 p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                  <span id="receptionist-toggle-knob" class="inline-block h-7 w-7 translate-x-0 rounded-full bg-white shadow-md transition-transform"></span>
+                </button>
+              </div>
+            </div>
+            <p id="receptionist-control-note" class="text-xs text-slate-400 border-t border-slate-700/70 pt-3">Switch shown as a dashboard layout preview. Phone forwarding is configured separately through your phone provider.</p>
+          </section>
+
           <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
             <div><p class="text-xs uppercase tracking-widest text-blue-400">Your business at a glance</p><h2 class="text-2xl sm:text-3xl font-semibold text-white mt-1">Overview</h2><p class="text-sm text-slate-400 mt-1">Your service status, configuration and recorded activity.</p></div>
             <span class="text-xs text-slate-500">Business snapshot</span>
@@ -859,6 +877,27 @@
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') mobileMenu.classList.add('hidden');
+        });
+
+        // Visual ON/OFF interaction for the receptionist dashboard layout preview.
+        const receptionistToggle=document.getElementById('receptionist-toggle');
+        const receptionistToggleKnob=document.getElementById('receptionist-toggle-knob');
+        const receptionistStatusLabel=document.getElementById('receptionist-status-label');
+        const receptionistControlNote=document.getElementById('receptionist-control-note');
+        receptionistToggle?.addEventListener('click',()=>{
+          const isOn=receptionistToggle.getAttribute('aria-checked')!=='true';
+          receptionistToggle.setAttribute('aria-checked',String(isOn));
+          receptionistToggle.classList.toggle('bg-emerald-600',isOn);
+          receptionistToggle.classList.toggle('border-emerald-400',isOn);
+          receptionistToggle.classList.toggle('bg-slate-700',!isOn);
+          receptionistToggle.classList.toggle('border-slate-500',!isOn);
+          receptionistToggleKnob?.classList.toggle('translate-x-8',isOn);
+          receptionistToggleKnob?.classList.toggle('translate-x-0',!isOn);
+          if(receptionistStatusLabel){
+            receptionistStatusLabel.textContent=isOn?'ON':'OFF';
+            receptionistStatusLabel.className=isOn?'text-sm font-bold text-emerald-300':'text-sm font-bold text-amber-300';
+          }
+          if(receptionistControlNote)receptionistControlNote.textContent='Layout preview only — this switch changes the display, not live call handling. Phone forwarding is configured separately through your phone provider.';
         });
 
         // No simulated forwarding switch: carrier routing is enabled only after verified phone activation.
