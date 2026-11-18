@@ -345,7 +345,7 @@
                     <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">See Your Receptionist Handle an Emergency Call</h3>
                     <p class="copy-left mt-2 text-sm sm:text-base text-slate-600">A burst pipe. A worried customer. Your receptionist takes the call and gathers the details while the tradesperson is busy.</p>
                 </div>
-                <video id="sarah-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline webkit-playsinline preload="auto" muted autoplay aria-label="AI receptionist handling an emergency burst-pipe call demonstration">
+                <video id="receptionist-emergency-demo" class="w-full rounded-2xl shadow-xl bg-slate-950" controls playsinline webkit-playsinline preload="auto" muted autoplay aria-label="AI receptionist handling an emergency burst-pipe call demonstration">
                     <source src="sarah-ai-dispatcher-burst-pipe-call-rev22-1920x1080-30fps-watermarked.mp4" type="video/mp4">
                     Your browser does not support the video element.
                 </video>
@@ -363,32 +363,32 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
-                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-burst">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-burst">
                         <span class="text-2xl" aria-hidden="true">🚰</span><span class="mt-2 block text-sm font-bold text-white">Burst pipe</span><span class="mt-1 block text-xs text-slate-300">Tap for an example</span>
                     </button>
-                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-storm">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-storm">
                         <span class="text-2xl" aria-hidden="true">🌧️</span><span class="mt-2 block text-sm font-bold text-white">Storm damage</span><span class="mt-1 block text-xs text-slate-300">Tap for an example</span>
                     </button>
-                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-hours">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-hours">
                         <span class="text-2xl" aria-hidden="true">🌙</span><span class="mt-2 block text-sm font-bold text-white">Out of hours</span><span class="mt-1 block text-xs text-slate-300">Tap for an example</span>
                     </button>
-                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-price">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-price">
                         <span class="text-2xl" aria-hidden="true">💲</span><span class="mt-2 block text-sm font-bold text-white">Prices &amp; call-outs</span><span class="mt-1 block text-xs text-slate-300">Tap for an example</span>
                     </button>
-                    <button type="button" class="sarah-scenario rounded-2xl border border-cyan-300/50 bg-cyan-300/10 p-3 text-center hover:bg-cyan-300/15 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-confirm">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-cyan-300/50 bg-cyan-300/10 p-3 text-center hover:bg-cyan-300/15 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-confirm">
                         <span class="text-2xl" aria-hidden="true">📩</span><span class="mt-2 block text-sm font-bold text-white">Call-out confirmation</span><span class="mt-1 block text-xs text-slate-300">Tap for a question to try</span>
                     </button>
-                    <button type="button" class="sarah-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="sarah-example-booking">
+                    <button type="button" class="receptionist-scenario rounded-2xl border border-white/20 bg-white/5 p-3 text-center hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300" aria-expanded="false" aria-controls="receptionist-example-booking">
                         <span class="text-2xl" aria-hidden="true">📅</span><span class="mt-2 block text-sm font-bold text-white">Booking a visit</span><span class="mt-1 block text-xs text-slate-300">Tap for a question to try</span>
                     </button>
                 </div>
                 <div class="mt-4 space-y-2" aria-live="polite">
-                    <p id="sarah-example-burst" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “I've got water pouring through my kitchen ceiling. Can you send someone urgently?”</p>
-                    <p id="sarah-example-storm" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “A storm has damaged my roof and rain is coming into the house. What should I do?”</p>
-                    <p id="sarah-example-hours" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “It's 10 o'clock at night. Do you offer emergency call-outs?”</p>
-                    <p id="sarah-example-price" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “How much do you charge to come out and inspect the problem?”</p>
-                    <p id="sarah-example-confirm" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking your receptionist:</strong> “Before sending someone out, can you text me the call-out fee and terms so I can review them and confirm?”</p>
-                    <p id="sarah-example-booking" class="sarah-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking your receptionist:</strong> “Can someone come out tomorrow afternoon to look at my leaking tap? What details do you need from me?”</p>
+                    <p id="receptionist-example-burst" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “I've got water pouring through my kitchen ceiling. Can you send someone urgently?”</p>
+                    <p id="receptionist-example-storm" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “A storm has damaged my roof and rain is coming into the house. What should I do?”</p>
+                    <p id="receptionist-example-hours" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “It's 10 o'clock at night. Do you offer emergency call-outs?”</p>
+                    <p id="receptionist-example-price" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Customer might say:</strong> “How much do you charge to come out and inspect the problem?”</p>
+                    <p id="receptionist-example-confirm" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking your receptionist:</strong> “Before sending someone out, can you text me the call-out fee and terms so I can review them and confirm?”</p>
+                    <p id="receptionist-example-booking" class="receptionist-example hidden rounded-xl border border-cyan-300/30 bg-white/10 p-4 text-sm text-white"><strong class="text-cyan-200">Try asking your receptionist:</strong> “Can someone come out tomorrow afternoon to look at my leaking tap? What details do you need from me?”</p>
                 </div>
                 <p class="copy-left mt-5 text-sm font-semibold text-cyan-100">These sample questions are just a starting point. After signing up, try your receptionist with your own questions and experiment with different situations to tailor her to your own business requirements.</p>
             </div>
@@ -636,7 +636,7 @@
         // Automatically play receptionist demo when it scrolls into view, then pause when it leaves.
         // Autoplay is muted because browsers generally block automatic playback with sound.
         (() => {
-            const demo = document.getElementById('sarah-emergency-demo');
+            const demo = document.getElementById('receptionist-emergency-demo');
             if (!demo || !('IntersectionObserver' in window)) return;
 
             demo.muted = true;
@@ -661,8 +661,8 @@
     <script>
         // Expand one customer example when a scenario card is tapped.
         (() => {
-            const cards = document.querySelectorAll('.sarah-scenario');
-            const examples = document.querySelectorAll('.sarah-example');
+            const cards = document.querySelectorAll('.receptionist-scenario');
+            const examples = document.querySelectorAll('.receptionist-example');
             cards.forEach((card) => {
                 card.addEventListener('click', () => {
                     const targetId = card.getAttribute('aria-controls');
