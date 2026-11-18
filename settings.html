@@ -39,6 +39,7 @@ body{font-size:16px;line-height:1.6}
 
 /* Keep the four call-out price labels on one line on phones. */
 @media(max-width:640px){.charge-label{font-size:14px!important;white-space:nowrap;letter-spacing:-.025em}}
+@media(max-width:640px){.payment-section-label{font-size:16px!important;letter-spacing:-.02em}}
 </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -63,14 +64,12 @@ body{font-size:16px;line-height:1.6}
 <p class="text-xs text-slate-400">Your receptionist will only quote the call-out charges entered here. She will never invent a charge or promise a final repair price.</p>
 </section>
 <section class="border-t border-slate-600 pt-5 space-y-4">
-<h2 class="text-xl font-bold">Customer confirmations and payments</h2>
+<h2 class="text-xl font-bold">Payments &amp; confirmations</h2>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-2">
-<h3 class="font-bold text-lg">1. SMS confirmation of the agreed charges</h3>
-<p class="text-sm text-slate-200">Allow your AI receptionist to send the customer an SMS confirming the call-out charge and payment arrangement they have agreed to.</p>
-<p class="text-sm text-slate-400">For example, after the customer agrees to the contractor's $145 call-out charge, the receptionist can send a text confirming that charge and the agreed payment arrangement. Any price for the actual repair is discussed with the contractor after the work has been assessed. This is a written confirmation by SMS. It is not a payment link, a request for payment or a receipt.</p>
-</div>
+<h3 class="font-bold text-lg">1. SMS confirmation</h3>
+<p class="text-sm text-slate-200">Send the customer a text confirming the call-out charge and payment arrangement they have agreed to.</p></div>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-4">
-<h3 class="font-bold text-lg">2. Accepted payment methods</h3><p class="text-sm text-slate-200">Which payment methods do you accept? Select all that apply. Your receptionist will only offer methods selected here.</p>
+<h3 class="payment-section-label font-bold text-lg">2. Accepted payment methods</h3><p class="text-sm text-slate-200">Which payment methods do you accept? Select all that apply. Your receptionist will only offer methods selected here.</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Cash"> Cash</label>
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Credit/debit card by secure payment link"> Credit/debit card by secure payment link</label>
@@ -79,12 +78,12 @@ body{font-size:16px;line-height:1.6}
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="PayPal"> PayPal</label>
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Other"> Other</label></div>
 <label class="block text-sm font-semibold" for="other_payment_method">Other payment method (if applicable)<input id="other_payment_method" class="field mt-1.5" placeholder="Please specify"></label></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="font-bold text-lg">3. When do you normally expect payment?</h3>
+<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">3. When is payment due?</h3>
 <select id="payment_timing" class="field"><option value="">Please select</option><option value="Before attending the property">Before attending the property</option><option value="When the work is completed">When the work is completed</option><option value="Either, depending on the customer's preference">Either, depending on the customer's preference</option><option value="It depends on the type of job">It depends on the type of job</option></select></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="font-bold text-lg">4. Is payment in advance compulsory?</h3>
+<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">4. Is advance payment required?</h3>
 <select id="advance_payment_required" class="field"><option value="">Please select</option><option value="Yes, payment in advance is always required">Yes, payment in advance is always required</option><option value="No, customers may pay when the work is completed">No, customers may pay when the work is completed</option><option value="Only for certain jobs or call-outs">Only for certain jobs or call-outs</option></select>
 <div id="advance_payment_conditions_wrap" class="hidden"><label class="block text-sm font-semibold" for="advance_payment_conditions">For which jobs or call-outs is advance payment required?<input id="advance_payment_conditions" class="field mt-1.5" placeholder="Describe when advance payment is required"></label></div></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="font-bold text-lg">5. Payment link</h3>
+<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">5. Payment link</h3>
 <label class="flex items-center gap-3 text-sm font-semibold"><input id="offer_payment_link" type="checkbox" class="h-5 w-5"> Allow the AI receptionist to send my payment link when a customer agrees to pay this way.</label>
 <div id="payment_link_url_wrap" class="hidden space-y-2"><label class="block text-sm font-semibold" for="payment_link_url">Your payment link</label><input id="payment_link_url" class="field" type="url" inputmode="url" placeholder="Paste your payment link here"><p class="text-sm text-slate-400">The receptionist will send this link when a customer agrees to pay by this method.</p></div></div>
 </section>
