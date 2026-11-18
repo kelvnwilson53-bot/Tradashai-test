@@ -429,6 +429,27 @@
             <span class="text-xs text-slate-500">Business snapshot</span>
           </div>
 
+          <!-- CONTRACTOR AVAILABILITY STATUS -->
+          <section id="contractor-availability" class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-blue-400">Call-out availability</p>
+              <h3 class="text-lg font-bold text-white mt-1">Your current availability</h3>
+              <p class="text-sm text-slate-300 mt-1">Keep this updated so the receptionist can give customers an accurate answer about whether someone is available to attend.</p>
+            </div>
+            <label for="contractor-availability-status" class="block text-sm font-semibold text-slate-200">Current status</label>
+            <select id="contractor-availability-status" class="dashboard-input w-full rounded-xl p-3">
+              <option value="">Choose your current availability</option>
+              <option value="available">Available for call-outs</option>
+              <option value="attending_job">Currently attending another job</option>
+              <option value="no_one_on_call">No one available / no one on call</option>
+              <option value="temporarily_unavailable">Temporarily unavailable</option>
+            </select>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+              <button id="save-availability-status" type="button" class="btn-primary-blue rounded-xl px-5 py-3 text-sm">Save availability</button>
+              <p id="availability-status-message" class="text-sm text-slate-400" aria-live="polite">Choose a status and save it whenever your availability changes.</p>
+            </div>
+          </section>
+
           <!-- CALL FORWARDING -->
           <article class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
             <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Phone setup</p><h3 class="text-lg font-bold text-white mt-1">Call Forwarding</h3></div>
@@ -671,6 +692,43 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
+
+      // Contractor availability is stored separately from the business profile
+      // so it can be updated quickly as call-out circumstances change.
+      const availabilitySelect=document.getElementById('contractor-availability-status');
+      const availabilitySave=document.getElementById('save-availability-status');
+      const availabilityMessage=document.getElementById('availability-status-message');
+      const availabilityLabels={
+        available:'Available for call-outs',
+        attending_job:'Currently attending another job',
+        no_one_on_call:'No one available / no one on call',
+        temporarily_unavailable:'Temporarily unavailable'
+      };
+      if(availabilitySave) availabilitySave.addEventListener('click',async()=>{
+        const user=dashboardAuth.currentUser;
+        const status=availabilitySelect?.value||'';
+        if(!user||!status){
+          if(availabilityMessage)availabilityMessage.textContent='Please choose an availability status first.';
+          return;
+        }
+        availabilitySave.disabled=true;
+        availabilitySave.textContent='Saving…';
+        if(availabilityMessage)availabilityMessage.textContent='Saving your current availability…';
+        try{
+          await dashboardDb.collection('businesses').doc(user.uid).set({
+            contractorAvailabilityStatus:status,
+            contractorAvailabilityLabel:availabilityLabels[status],
+            contractorAvailabilityUpdatedAt:firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+          },{merge:true});
+          if(availabilityMessage)availabilityMessage.textContent='Saved: '+availabilityLabels[status]+'. Update this whenever your availability changes.';
+        }catch(error){
+          if(availabilityMessage)availabilityMessage.textContent='Could not save your status: '+error.message;
+        }finally{
+          availabilitySave.disabled=false;
+          availabilitySave.textContent='Save availability';
+        }
+      });
       const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','standard_day_callout_price','emergencyInstructions'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
@@ -797,6 +855,10 @@
             return;
           }
           let data=profile.data();
+          if(availabilitySelect&&data.contractorAvailabilityStatus&&availabilityLabels[data.contractorAvailabilityStatus]){
+            availabilitySelect.value=data.contractorAvailabilityStatus;
+            if(availabilityMessage)availabilityMessage.textContent='Current saved status: '+availabilityLabels[data.contractorAvailabilityStatus]+'.';
+          }
           window.dashboardVoicePreference=data.voicePreference||'female';
           displayVoicePreference(window.dashboardVoicePreference);
           if(voicePreferenceMessage)voicePreferenceMessage.textContent='Saved preference only; live voice switching is not connected.';
