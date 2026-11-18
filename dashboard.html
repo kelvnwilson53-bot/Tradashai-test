@@ -230,14 +230,6 @@
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
 
-            <!-- CENTERED THEME TOGGLE ICON -->
-            <div class="flex items-center justify-center">
-                <button id="theme-toggle-btn" class="w-9 h-9 bg-transparent hover:bg-slate-800/40 rounded-xl flex items-center justify-center text-lg transition cursor-pointer" title="Toggle Background">
-                    <span id="theme-icon">☀️</span>
-                </button>
-            </div>
-
-
             <!-- RIGHT SIDE: HAMBURGER MENU BUTTON -->
             <div class="relative">
                 <button id="hamburger-btn" class="w-10 h-10 bg-slate-900/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl flex flex-col items-center justify-center gap-1 transition shadow-sm cursor-pointer" title="Navigation Menu">
@@ -688,20 +680,7 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Dark by default; remember the user's choice on this device.
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themeIcon = document.getElementById('theme-icon');
-        const savedTheme = localStorage.getItem('tridashai-theme') || 'dark';
-        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-        document.body.classList.toggle('light-theme', savedTheme === 'light');
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-        themeToggleBtn.addEventListener('click', () => {
-            const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
-            document.body.classList.toggle('dark-theme', nextTheme === 'dark');
-            document.body.classList.toggle('light-theme', nextTheme === 'light');
-            themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('tridashai-theme', nextTheme);
-        });
+        // TriDashAI dashboard uses a fixed dark theme; the theme switch has been removed.
 
         // Help & FAQs menu item jumps to the permanent FAQ section.
         document.getElementById('open-faq-menu')?.addEventListener('click', () => {
