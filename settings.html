@@ -67,7 +67,7 @@ body{font-size:16px;line-height:1.6}
 <h2 class="text-xl font-bold">Payments &amp; confirmations</h2>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-2">
 <h3 class="font-bold text-lg">1. SMS confirmation</h3>
-<p class="text-sm text-slate-200">Send the customer a text confirming the call-out charge and payment arrangement they have agreed to.</p></div>
+<label class="flex items-center gap-3 text-sm font-semibold"><input id="sms_charge_confirmation" type="checkbox" class="h-5 w-5"> Allow the AI receptionist to text customers confirming their agreed call-out charge and payment arrangements.</label></div>
 <div class="rounded-2xl border border-slate-600 p-4 space-y-4">
 <h3 class="payment-section-label font-bold text-lg">2. Accepted payment methods</h3><p class="text-sm text-slate-200">Which payment methods do you accept? Select all that apply. Your receptionist will only offer methods selected here.</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
@@ -112,6 +112,7 @@ let currentUser=null;
 let savedProfile={};
 const paymentMethodOptions=[...document.querySelectorAll('.payment-method-option')];
 const advanceChoice=document.getElementById('advance_payment_required');
+const smsConfirmation=document.getElementById('sms_charge_confirmation');
 const advanceConditionsWrap=document.getElementById('advance_payment_conditions_wrap');
 const linkChoice=document.getElementById('offer_payment_link');
 const paymentLinkWrap=document.getElementById('payment_link_url_wrap');
@@ -135,6 +136,7 @@ auth.onAuthStateChanged(async user=>{
   const snap=await db.collection('businesses').doc(user.uid).get();
   if(!snap.exists){showMessage('We could not find your business profile. Please contact support so we can help recover your setup.',true);return;}
   savedProfile=snap.data();
+  smsConfirmation.checked=savedProfile.sms_charge_confirmation===true;
   paymentMethodOptions.forEach(el=>el.checked=Array.isArray(savedProfile.accepted_payment_methods)&&savedProfile.accepted_payment_methods.includes(el.value));
   document.getElementById('payment_timing').value=savedProfile.payment_timing||'';
   advanceChoice.value=savedProfile.advance_payment_required||'';
@@ -158,6 +160,7 @@ form.addEventListener('submit',async e=>{
  button.disabled=true;button.textContent='Saving…';
  const update={};
  [...priceFields,...detailFields].forEach(id=>{const el=document.getElementById(id);update[id]=el?el.value.trim():'';});
+ update.sms_charge_confirmation=smsConfirmation.checked;
  update.accepted_payment_methods=paymentMethodOptions.filter(el=>el.checked).map(el=>el.value);
  update.payment_timing=document.getElementById('payment_timing').value;
  update.advance_payment_required=advanceChoice.value;
