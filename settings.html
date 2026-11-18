@@ -72,18 +72,16 @@ body{font-size:16px;line-height:1.6}
 <h3 class="payment-section-label font-bold text-lg">2. Accepted payment methods</h3><p class="text-sm text-slate-200">Which payment methods do you accept? Select all that apply. Your receptionist will only offer methods selected here.</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Cash"> Cash</label>
-<label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Credit/debit card by secure payment link"> Credit/debit card by secure payment link</label>
+
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Credit/debit card in person using a phone or card reader"> Credit/debit card in person using a phone or card reader</label>
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Bank transfer (ACH)"> Bank transfer (ACH)</label>
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="PayPal"> PayPal</label>
 <label class="flex items-center gap-3"><input class="payment-method-option" type="checkbox" value="Other"> Other</label></div>
 <label class="block text-sm font-semibold" for="other_payment_method">Other payment method (if applicable)<input id="other_payment_method" class="field mt-1.5" placeholder="Please specify"></label></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">3. When is payment due?</h3>
-<select id="payment_timing" class="field"><option value="">Please select</option><option value="Before attending the property">Before attending the property</option><option value="When the work is completed">When the work is completed</option><option value="Either, depending on the customer's preference">Either, depending on the customer's preference</option><option value="It depends on the type of job">It depends on the type of job</option></select></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">4. Is advance payment required?</h3>
-<select id="advance_payment_required" class="field"><option value="">Please select</option><option value="Yes, payment in advance is always required">Yes, payment in advance is always required</option><option value="No, customers may pay when the work is completed">No, customers may pay when the work is completed</option><option value="Only for certain jobs or call-outs">Only for certain jobs or call-outs</option></select>
-<div id="advance_payment_conditions_wrap" class="hidden"><label class="block text-sm font-semibold" for="advance_payment_conditions">For which jobs or call-outs is advance payment required?<input id="advance_payment_conditions" class="field mt-1.5" placeholder="Describe when advance payment is required"></label></div></div>
-<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">5. Payment link</h3>
+<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">3. When should the customer pay?</h3>
+<select id="payment_timing" class="field"><option value="">Please select</option><option value="Before attending the property">Before attending the property</option><option value="When the work is completed">When the work is completed</option><option value="It depends on the job">It depends on the job</option></select>
+<div id="payment_timing_conditions_wrap" class="hidden"><label class="block text-sm font-semibold" for="payment_timing_conditions">When does payment timing vary?<input id="payment_timing_conditions" class="field mt-1.5" placeholder="For example, advance payment for certain call-outs"></label></div></div>
+<div class="rounded-2xl border border-slate-600 p-4 space-y-3"><h3 class="payment-section-label font-bold text-lg">4. Payment link</h3>
 <label class="flex items-center gap-3 text-sm font-semibold"><input id="offer_payment_link" type="checkbox" class="h-5 w-5"> Allow the AI receptionist to send my payment link when a customer agrees to pay this way.</label>
 <div id="payment_link_url_wrap" class="hidden space-y-2"><label class="block text-sm font-semibold" for="payment_link_url">Your payment link</label><input id="payment_link_url" class="field" type="url" inputmode="url" placeholder="Paste your payment link here"><p class="text-sm text-slate-400">The receptionist will send this link when a customer agrees to pay by this method.</p></div></div>
 </section>
@@ -111,21 +109,20 @@ const auth=firebase.auth(),db=firebase.firestore(),form=document.getElementById(
 let currentUser=null;
 let savedProfile={};
 const paymentMethodOptions=[...document.querySelectorAll('.payment-method-option')];
-const advanceChoice=document.getElementById('advance_payment_required');
+const paymentTiming=document.getElementById('payment_timing');
 const smsConfirmation=document.getElementById('sms_charge_confirmation');
-const advanceConditionsWrap=document.getElementById('advance_payment_conditions_wrap');
+const paymentTimingConditionsWrap=document.getElementById('payment_timing_conditions_wrap');
 const linkChoice=document.getElementById('offer_payment_link');
 const paymentLinkWrap=document.getElementById('payment_link_url_wrap');
 function updatePaymentVisibility(){
- advanceConditionsWrap.classList.toggle('hidden',advanceChoice.value!=='Only for certain jobs or call-outs');
- const hasLinkMethod=paymentMethodOptions.some(el=>el.checked&&el.value==='Credit/debit card by secure payment link');
+ paymentTimingConditionsWrap.classList.toggle('hidden',paymentTiming.value!=='It depends on the job');
  paymentLinkWrap.classList.toggle('hidden',!linkChoice.checked);
 }
 paymentMethodOptions.forEach(el=>el.addEventListener('change',updatePaymentVisibility));
-advanceChoice.addEventListener('change',updatePaymentVisibility);
+paymentTiming.addEventListener('change',updatePaymentVisibility);
 linkChoice.addEventListener('change',updatePaymentVisibility);
 const priceFields=['normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
-const detailFields=['receptionistAdditionalInfo','other_payment_method','advance_payment_conditions','payment_link_url'];
+const detailFields=['receptionistAdditionalInfo','other_payment_method','payment_timing_conditions','payment_link_url'];
 function showMessage(text,error=false){message.textContent=text;message.className='rounded-xl p-3 text-sm '+(error?'bg-red-900 text-red-100 border border-red-700':'bg-emerald-900 text-emerald-100 border border-emerald-700');message.classList.remove('hidden');}
 auth.onAuthStateChanged(async user=>{
  if(!user){window.location.replace('login.html');return;}
@@ -138,8 +135,13 @@ auth.onAuthStateChanged(async user=>{
   savedProfile=snap.data();
   smsConfirmation.checked=savedProfile.sms_charge_confirmation===true;
   paymentMethodOptions.forEach(el=>el.checked=Array.isArray(savedProfile.accepted_payment_methods)&&savedProfile.accepted_payment_methods.includes(el.value));
-  document.getElementById('payment_timing').value=savedProfile.payment_timing||'';
-  advanceChoice.value=savedProfile.advance_payment_required||'';
+  const legacyAdvance=savedProfile.advance_payment_required||'';
+  paymentTiming.value=savedProfile.payment_timing||(
+   legacyAdvance.startsWith('Yes,')?'Before attending the property':
+   legacyAdvance.startsWith('No,')?'When the work is completed':
+   legacyAdvance==='Only for certain jobs or call-outs'?'It depends on the job':''
+  );
+  document.getElementById('payment_timing_conditions').value=savedProfile.payment_timing_conditions||savedProfile.advance_payment_conditions||'';
   linkChoice.checked=savedProfile.offer_payment_link===true||savedProfile.offer_payment_link==='yes';
   updatePaymentVisibility();
   const legacyMap={
@@ -162,8 +164,8 @@ form.addEventListener('submit',async e=>{
  [...priceFields,...detailFields].forEach(id=>{const el=document.getElementById(id);update[id]=el?el.value.trim():'';});
  update.sms_charge_confirmation=smsConfirmation.checked;
  update.accepted_payment_methods=paymentMethodOptions.filter(el=>el.checked).map(el=>el.value);
- update.payment_timing=document.getElementById('payment_timing').value;
- update.advance_payment_required=advanceChoice.value;
+ update.payment_timing=paymentTiming.value;
+ update.payment_timing_conditions=document.getElementById('payment_timing_conditions').value.trim();
  update.offer_payment_link=linkChoice.checked?'yes':'no';
  update.standard_day_callout_price=update.normal_callout_price;
  update.normal_callout_details='';update.out_of_hours_details='';update.emergency_details='';update.holiday_special_details='';
@@ -181,75 +183,12 @@ form.addEventListener('submit',async e=>{
   'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'.',
   'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'.',
   'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
-  'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
-  'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
-  'ADVANCE PAYMENT CONDITIONS: '+(update.advance_payment_conditions||'No conditions supplied.'),
-  'PAYMENT LINK RULE: '+(update.offer_payment_link==='yes'&&update.accepted_payment_methods.includes('Credit/debit card by secure payment link')?'The receptionist may offer the contractor-supplied payment link if the customer chooses to pay in advance. Link: '+(update.payment_link_url||'No link supplied; do not send a link.'):'Do not offer or send a payment link.'),
+  'PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.')+'. Details: '+(update.payment_timing_conditions||'No additional conditions supplied.'),
+  'PAYMENT LINK RULE: '+(update.offer_payment_link==='yes'&&update.payment_link_url?'The receptionist may offer the contractor-supplied payment link only after the customer has agreed to the call-out charge and chooses to pay by link. Link: '+update.payment_link_url:'Do not offer or send a payment link. A link must be enabled and a valid URL supplied first.'),
   'PAYMENT CONVERSATION RULE: First explain the applicable charges and ask the customer clearly, “Are you happy to go ahead with those charges?” Stop and wait for an explicit answer. Do not treat silence, uncertainty or a question as agreement. If the customer agrees, then ask how they would prefer to pay and offer only methods listed above. Do not pressure the customer to pay in advance unless the contractor has made advance payment compulsory. If the contractor allows payment on completion, respect the customer’s preference. If the customer declines or does not clearly agree to the charges, do not present the call-out as accepted.',
-  'SMS CHARGE CONFIRMATION RULE: After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.',
+  'SMS CHARGE CONFIRMATION RULE: '+(update.sms_charge_confirmation?'After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.':'Do not send a charge or payment confirmation SMS unless the contractor enables this setting.'),
   'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
   'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
-  'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
- ]; update.receptionistInstructions=lines.join('\n');
- update.setupComplete=true;update.profileComplete=true;
- update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
- try{
-  await db.collection('businesses').doc(currentUser.uid).set(update,{merge:true});
-  showMessage('Saved successfully. Your call-out charges and business information are stored in your account. You can change them here at any time.');
-  button.textContent='Saved successfully ✓';
-  button.classList.remove('primary');button.classList.add('bg-emerald-600','text-white');
- }catch(error){
-  showMessage('Save failed: '+(error.code||'')+' '+error.message,true);
-  button.disabled=false;button.textContent='Try saving again';return;
- }
- button.disabled=false;
-});
-</script>
-
-<!-- Back-to-top control: appears after the visitor scrolls down -->
-<style>
-#back-to-top{position:fixed;right:18px;bottom:24px;z-index:1000;width:48px;height:48px;border:1px solid #52657d;border-radius:50%;background:#29394d;color:#e7eef7;box-shadow:0 5px 16px rgba(0,0,0,.28);font-size:25px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .2s ease;cursor:pointer}
-#back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-#back-to-top:hover,#back-to-top:focus-visible{background:#365f86;outline:2px solid #91b4d8;outline-offset:2px}
-@media(prefers-reduced-motion:reduce){#back-to-top{transition:none}}
-</style>
-<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
-<script>
-(function(){
- const button=document.getElementById('back-to-top');
- if(!button)return;
- const update=()=>button.classList.toggle('is-visible',window.scrollY>280);
- window.addEventListener('scroll',update,{passive:true});
- button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
- update();
-})();
-</script>
-
-</body></html>+value:'Not supplied';
- const lines=[
-  'TRIDASHAI RECEPTIONIST OPERATING INSTRUCTIONS',
-  'Business: '+(savedProfile.businessName||'Business name not supplied'),
-  'Trade: '+tradeLabel,
-  'Phone: '+(savedProfile.businessPhone||'Not supplied'),
-  'Business location: '+([savedProfile.businessLocation,savedProfile.businessZip].filter(Boolean).join(', ')||'Not supplied'),
-  'Service area: '+(savedProfile.serviceAreas||'Not supplied'),
-  'Operating hours: '+(savedProfile.operatingHours||'Not supplied'),
-  'NORMAL WORKING-HOURS CALL-OUT CHARGE: '+formatCharge(update.normal_callout_price)+'. Applies: '+(update.normal_callout_details||'Conditions not specified')+'.',
-  'OUT-OF-HOURS CALL-OUT CHARGE: '+formatCharge(update.out_of_hours_price)+'. Applies: '+(update.out_of_hours_details||'Conditions not specified')+'.',
-  'EMERGENCY CALL-OUT CHARGE: '+formatCharge(update.emergency_price)+'. Details: '+(update.emergency_details||'Not specified')+'.',
-  'HOLIDAY OR SPECIAL-DAY CALL-OUT CHARGE: '+formatCharge(update.holiday_special_price)+'. Applies: '+(update.holiday_special_details||'Conditions not specified')+'.',
-  'ACCEPTED PAYMENT METHODS: '+(update.accepted_payment_methods.length?update.accepted_payment_methods.join(', '):'None selected. Do not offer or claim to accept any payment method; ask the contractor to confirm.')+'. Other method: '+(update.other_payment_method||'None specified')+'.',
-  'NORMAL PAYMENT TIMING: '+(update.payment_timing||'Not specified. Do not assume when payment is due; explain that the contractor will confirm.'),
-  'ADVANCE PAYMENT POLICY: '+(update.advance_payment_required||'Not specified. Do not tell the customer that advance payment is compulsory or optional until confirmed.'),
-  'ADVANCE PAYMENT CONDITIONS: '+(update.advance_payment_conditions||'No conditions supplied.'),
-  'PAYMENT LINK RULE: '+(update.offer_payment_link==='yes'&&update.accepted_payment_methods.includes('Credit/debit card by secure payment link')?'The receptionist may offer the contractor-supplied payment link if the customer chooses to pay in advance. Link: '+(update.payment_link_url||'No link supplied; do not send a link.'):'Do not offer or send a payment link.'),
-  'PAYMENT CONVERSATION RULE: First explain the applicable charges and ask the customer clearly, “Are you happy to go ahead with those charges?” Stop and wait for an explicit answer. Do not treat silence, uncertainty or a question as agreement. If the customer agrees, then ask how they would prefer to pay and offer only methods listed above. Do not pressure the customer to pay in advance unless the contractor has made advance payment compulsory. If the contractor allows payment on completion, respect the customer’s preference. If the customer declines or does not clearly agree to the charges, do not present the call-out as accepted.',
-  'SMS CHARGE CONFIRMATION RULE: After the customer has clearly agreed, send an SMS confirming only the charges and payment arrangement actually discussed and agreed. This SMS is a written confirmation, not a payment request, payment link or receipt. Never describe a payment link as paid; sending a link is not proof of payment.',
-  'PRICING RULE: Only state charges and rates explicitly entered by the contractor, with their conditions. Do not invent, calculate, combine or assume fees. A call-out charge is not a repair quotation. Do not promise a final repair price before the tradesperson has assessed the work. If a price is missing, unclear or outside these instructions, tell the customer the contractor will confirm it.',
-  'SAFETY RULE: Apply the built-in safety procedures and trade-specific safety guidance for '+tradeLabel+'. If there may be immediate danger, prioritise the caller’s safety, tell them to move away from the hazard, and direct them to local emergency services where appropriate. Never coach a caller through dangerous electrical, gas, structural or other hazardous repairs. Escalate urgent or uncertain situations to the contractor.',
-  'LIVE CONTRACTOR AVAILABILITY RULE: Before reassuring a customer about attendance, use the latest contractor availability status saved from the dashboard if it is available. Available for call-outs means the contractor may be able to attend, but confirm with them before promising attendance or an ETA. Currently attending another job means do not imply immediate availability; ask the contractor to confirm whether and when they can attend. No one available / no one on call means explain that honestly and do not promise attendance. Temporarily unavailable means do not offer an emergency attendance. If the status is missing or may be out of date, contact the contractor for confirmation rather than guessing.',
-  'ADDITIONAL INFORMATION — JOURNEY TIMES AND CUSTOMER UPDATES: '+(update.receptionistAdditionalInfo||'No journey-time guidance supplied. Ask for the customer’s location and check with the contractor. Give no ETA unless the contractor confirms it. Do not say the contractor is on the way or send an on-the-way SMS until the contractor confirms departure and provides an estimate. When the contractor confirms they are approximately 10 minutes away, send a further SMS update.'),
   'BOOKING RULE: Collect the customer name, callback number, service address, problem, urgency and access details. Confirm an appointment only when availability has actually been checked.',
   'UNCERTAINTY RULE: If information is missing, ambiguous, unsafe or outside the receptionist’s instructions, say the contractor will confirm and escalate. Do not guess.'
  ]; update.receptionistInstructions=lines.join('\n');
