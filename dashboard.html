@@ -338,49 +338,43 @@
             <p class="text-sm text-slate-300 mt-1">A few essentials to get your receptionist ready. Your registration details are already filled in.</p>
           </div>
           <form id="quick-start-form" class="space-y-4">
-            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">1. Confirm your business details</h3>
-              <p class="text-sm text-slate-300">These details came from registration. Check the summary; you do not need to enter them again here.</p>
-              <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 text-sm">
-                <div><dt class="text-slate-400">Business</dt><dd id="qs-summary-businessName" class="font-semibold text-white">—</dd></div>
-                <div><dt class="text-slate-400">Phone</dt><dd id="qs-summary-businessPhone" class="font-semibold text-white">—</dd></div>
-                <div><dt class="text-slate-400">Trade</dt><dd id="qs-summary-primaryTrade" class="font-semibold text-white">—</dd></div>
-                <div><dt class="text-slate-400">Location / ZIP</dt><dd class="font-semibold text-white"><span id="qs-summary-businessLocation">—</span> <span id="qs-summary-businessZip"></span></dd></div>
-                <div><dt class="text-slate-400">Services</dt><dd id="qs-summary-additionalServices" class="text-slate-200">—</dd></div>
-                <div><dt class="text-slate-400">Service areas</dt><dd id="qs-summary-serviceAreas" class="text-slate-200">—</dd></div>
-              </dl>
-              <div class="hidden" aria-hidden="true">
-                <input id="qs-businessName" readonly><input id="qs-businessPhone" readonly>
-                <input id="qs-primaryTrade" readonly><input id="qs-businessLocation" readonly>
-                <input id="qs-businessZip" readonly><input id="qs-additionalServices" readonly>
-                <input id="qs-serviceAreas" readonly>
-              </div>
-            </section>
+            <div class="hidden" aria-hidden="true">
+              <input id="qs-businessName" readonly><input id="qs-businessPhone" readonly>
+              <input id="qs-primaryTrade" readonly><input id="qs-businessLocation" readonly>
+              <input id="qs-businessZip" readonly><input id="qs-additionalServices" readonly>
+              <input id="qs-serviceAreas" readonly>
+            </div>
 
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">2. Working hours</h3>
-              <label class="block text-sm text-slate-300">When is your business normally open?
-                <textarea id="qs-operatingHours" rows="3" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="e.g. Monday–Friday, 8am–5pm; Saturday 9am–1pm; Sunday closed"></textarea>
-              </label>
-            </section>
-
-            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">3. Call-out charges</h3>
-              <p class="text-sm text-slate-300">Enter the charge for each type of call-out. Enter 0 if you do not charge for that category.</p>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <label class="text-sm text-slate-300">Normal-hours call-outs
-                  <span class="flex mt-1"><span class="rounded-l-lg border border-r-0 border-slate-600 bg-slate-800 px-3 py-2.5">$</span><input id="qs-normal_callout_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-r-lg p-3" placeholder="Amount"></span>
-                </label>
-                <label class="text-sm text-slate-300">Out-of-hours call-outs
-                  <span class="flex mt-1"><span class="rounded-l-lg border border-r-0 border-slate-600 bg-slate-800 px-3 py-2.5">$</span><input id="qs-out_of_hours_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-r-lg p-3" placeholder="Amount"></span>
-                </label>
-                <label class="text-sm text-slate-300">Emergency call-outs
-                  <span class="flex mt-1"><span class="rounded-l-lg border border-r-0 border-slate-600 bg-slate-800 px-3 py-2.5">$</span><input id="qs-emergency_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-r-lg p-3" placeholder="Amount"></span>
-                </label>
-                <label class="text-sm text-slate-300">Holiday and special-day call-outs
-                  <span class="flex mt-1"><span class="rounded-l-lg border border-r-0 border-slate-600 bg-slate-800 px-3 py-2.5">$</span><input id="qs-holiday_special_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-r-lg p-3" placeholder="Amount"></span>
-                </label>
+              <h3 class="text-base font-bold text-white">1. Call-out times and charges</h3>
+              <p class="text-sm text-slate-300">Set the times or conditions that apply to each type of call-out. Call-out charges are optional; leave an amount blank if you have not set one.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
+                  <label class="block text-sm font-semibold text-white" for="qs-normalHours">Normal business hours</label>
+                  <textarea id="qs-normalHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the days and times normal arrangements apply"></textarea>
+                  <label class="block text-xs text-slate-300" for="qs-normal_callout_price">Optional call-out charge ($)</label>
+                  <input id="qs-normal_callout_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                </div>
+                <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
+                  <label class="block text-sm font-semibold text-white" for="qs-outOfHours">Out-of-hours</label>
+                  <textarea id="qs-outOfHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the days and times out-of-hours arrangements apply"></textarea>
+                  <label class="block text-xs text-slate-300" for="qs-out_of_hours_price">Optional call-out charge ($)</label>
+                  <input id="qs-out_of_hours_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                </div>
+                <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
+                  <label class="block text-sm font-semibold text-white" for="qs-emergencyHours">Emergency call-outs</label>
+                  <textarea id="qs-emergencyHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter when emergency arrangements apply"></textarea>
+                  <label class="block text-xs text-slate-300" for="qs-emergency_price">Optional call-out charge ($)</label>
+                  <input id="qs-emergency_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                </div>
+                <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
+                  <label class="block text-sm font-semibold text-white" for="qs-holidayHours">Holidays and special days</label>
+                  <textarea id="qs-holidayHours" rows="2" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter the holidays or special days and applicable times"></textarea>
+                  <label class="block text-xs text-slate-300" for="qs-holiday_special_price">Optional call-out charge ($)</label>
+                  <input id="qs-holiday_special_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Leave blank if not set">
+                </div>
               </div>
+              <input id="qs-operatingHours" type="hidden">
             </section>
 
             <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
@@ -684,7 +678,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','additionalServices','operatingHours','normalHours','outOfHours','emergencyHours','holidayHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
       const quickInput=id=>document.getElementById('qs-'+id);
       const emergencyFeeNote=document.getElementById('qs-emergency-fee-note');
       document.querySelectorAll('input[name="qs-callOutMode"]').forEach(choice=>choice.addEventListener('change',()=>{
@@ -821,11 +815,7 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
-          ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','additionalServices','serviceAreas'].forEach(id=>{
-            const display=document.getElementById('qs-summary-'+id);
-            const source=quickInput(id);
-            if(display)display.textContent=source?.value||'Not provided';
-          });
+
           const personalContactInput=document.getElementById('personal-contact-number');
           if(personalContactInput&&data.personalContactNumber)personalContactInput.value=data.personalContactNumber;
           const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
