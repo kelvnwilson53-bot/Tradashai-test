@@ -172,7 +172,7 @@ form.addEventListener('submit',async e=>{
  update.offer_payment_link=linkChoice.value;
  update.standard_day_callout_price=update.normal_callout_price;
  const tradeLabel={plumber:'plumbing',roofer:'roofing',hvac:'HVAC',electrician:'electrical',builder:'general building',multi:'multi-trade'}[savedProfile.primaryTrade]||'trade services';
- const formatCharge=value=>value!==undefined&&value!==null&&String(value).trim()!==''?'
+ const formatCharge=value=>value!==undefined&&value!==null&&String(value).trim()!==""?"$"+value:"Not supplied";
   'Business: '+(savedProfile.businessName||'Business name not supplied'),
   'Trade: '+tradeLabel,
   'Phone: '+(savedProfile.businessPhone||'Not supplied'),
