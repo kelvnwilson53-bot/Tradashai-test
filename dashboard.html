@@ -354,7 +354,7 @@
           <!-- SERVICE STATUS -->
           <section class="space-y-3">
             <h3 class="text-lg font-semibold text-white">Service status</h3>
-            <div class="grid grid-cols-1 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <article class="dashboard-card receptionist-card rounded-2xl p-4 sm:p-5 space-y-4">
               <div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-slate-200">AI receptionist</span><span class="status-pill status-preview">Setup required</span></div>
               <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-300"><span class="text-xl">✦</span></div><div class="min-w-0"><p class="text-base font-semibold text-white">Receptionist voice</p><p id="voice-preference-label" class="text-xs text-slate-400">Choose a voice</p></div></div>
@@ -372,6 +372,7 @@
                 <p id="voice-preference-message" class="text-xs leading-relaxed text-slate-400" role="status">Choose the voice preference for your receptionist.</p>
               </div>
             </article>
+            <article class="rounded-xl border border-slate-700/60 bg-black/20 p-4 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-white">Call forwarding</span><span class="text-xs font-semibold text-amber-300">Not active</span></div><p class="text-xs text-slate-400">Forward your existing business number after your TriDashAI number is assigned and tested.</p><button type="button" disabled class="w-full rounded-xl border border-slate-600 px-3 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed">Enable forwarding · Preview</button></article>
             
             
           </div>
@@ -385,7 +386,7 @@
             <div><p class="text-xs font-bold uppercase tracking-widest text-blue-400">Service connections</p><h3 class="text-base font-semibold text-white mt-1">Get TriDashAI ready to go live</h3><p class="text-sm text-slate-400 mt-1">Manage the connections that keep your receptionist working.</p></div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <article class="rounded-lg border border-slate-700/60 bg-black/20 p-3 space-y-1.5"><div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-white">Google Calendar</span><span class="text-xs font-semibold text-amber-300">Not connected</span></div><p class="text-xs text-slate-400">Connect your calendar before the receptionist confirms appointments.</p><button type="button" disabled class="w-full rounded-xl border border-slate-600 px-3 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed">Connect calendar · Preview</button></article>
-              <article class="rounded-xl border border-slate-700/60 bg-black/20 p-4 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-white">Call forwarding</span><span class="text-xs font-semibold text-amber-300">Not active</span></div><p class="text-xs text-slate-400">Forward your existing business number after your TriDashAI number is assigned and tested.</p><button type="button" disabled class="w-full rounded-xl border border-slate-600 px-3 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed">Enable forwarding · Preview</button></article>
+              
               
             </div>
           </section>
