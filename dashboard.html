@@ -339,15 +339,21 @@
           </div>
           <form id="quick-start-form" class="space-y-4">
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">1. Your business</h3>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <label class="text-sm text-slate-300">Business name<input id="qs-businessName" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300">Business phone number<input id="qs-businessPhone" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300">Main trade<input id="qs-primaryTrade" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300">Business location<input id="qs-businessLocation" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300">ZIP code<input id="qs-businessZip" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300">Services offered<input id="qs-additionalServices" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
-                <label class="text-sm text-slate-300 sm:col-span-2">Service areas<input id="qs-serviceAreas" class="dashboard-input mt-1 w-full rounded-xl p-3" readonly></label>
+              <h3 class="text-base font-bold text-white">1. Confirm your business details</h3>
+              <p class="text-sm text-slate-300">These details came from registration. Check the summary; you do not need to enter them again here.</p>
+              <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 text-sm">
+                <div><dt class="text-slate-400">Business</dt><dd id="qs-summary-businessName" class="font-semibold text-white">—</dd></div>
+                <div><dt class="text-slate-400">Phone</dt><dd id="qs-summary-businessPhone" class="font-semibold text-white">—</dd></div>
+                <div><dt class="text-slate-400">Trade</dt><dd id="qs-summary-primaryTrade" class="font-semibold text-white">—</dd></div>
+                <div><dt class="text-slate-400">Location / ZIP</dt><dd class="font-semibold text-white"><span id="qs-summary-businessLocation">—</span> <span id="qs-summary-businessZip"></span></dd></div>
+                <div><dt class="text-slate-400">Services</dt><dd id="qs-summary-additionalServices" class="text-slate-200">—</dd></div>
+                <div><dt class="text-slate-400">Service areas</dt><dd id="qs-summary-serviceAreas" class="text-slate-200">—</dd></div>
+              </dl>
+              <div class="hidden" aria-hidden="true">
+                <input id="qs-businessName" readonly><input id="qs-businessPhone" readonly>
+                <input id="qs-primaryTrade" readonly><input id="qs-businessLocation" readonly>
+                <input id="qs-businessZip" readonly><input id="qs-additionalServices" readonly>
+                <input id="qs-serviceAreas" readonly>
               </div>
             </section>
 
@@ -379,12 +385,12 @@
 
             <section id="phone-setup" class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
               <h3 class="text-base font-bold text-white">4. Phone connection</h3>
-              <p class="text-sm text-slate-300">Keep your existing business number and phone provider. Calls ring on your phone as normal first. If you are already on a call or do not answer, those calls will be forwarded to your dedicated TriDashAI number.</p>
+              <p class="text-sm text-slate-300">Keep your existing business number and phone provider. Once phone forwarding is activated, your phone will ring first; busy or unanswered calls will then go to your dedicated TriDashAI number.</p>
               <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3">
                 <p class="text-xs text-slate-400">Dedicated TriDashAI number</p>
                 <p id="dedicated-business-number" class="mt-1 text-sm text-slate-200">Assigned during activation</p>
               </div>
-              <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3 space-y-1"><p class="text-sm font-semibold text-white">How the forwarding works</p><p class="text-xs text-slate-300">1. Your existing phone rings first. 2. Busy or unanswered calls go to TriDashAI. 3. The receptionist handles the caller and sends you an alert when you need to act.</p><p class="text-xs text-slate-400">Your carrier instructions will be provided after your TriDashAI number is assigned. Exact activation steps depend on your phone provider.</p></div>
+              <div class="rounded-xl border border-slate-700/50 bg-black/20 p-3 space-y-1"><p class="text-sm font-semibold text-white">How the forwarding works</p><p class="text-xs text-slate-300">1. Your existing phone rings first. 2. Busy or unanswered calls go to TriDashAI. 3. The receptionist handles the caller and sends you an alert when you need to act.</p><p class="text-xs text-slate-400">No action is needed here yet. We will provide your carrier-specific activation instructions after your TriDashAI number is assigned.</p></div>
             </section>
 
             <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
@@ -395,13 +401,7 @@
               <p class="text-xs text-slate-400">Enter the number where you want urgent calls or messages sent. You can leave this blank for now.</p>
             </section>
 
-            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">6. Google Calendar</h3>
-              <p class="text-sm text-slate-300">Connect your calendar so the receptionist can check availability before arranging appointments.</p>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-calendarBooking" value="yes" class="mt-1"> I want the receptionist to arrange appointments.</label>
-              <label class="flex items-start gap-2 text-sm text-slate-300"><input type="radio" name="qs-calendarBooking" value="no" class="mt-1"> I will arrange appointments myself.</label>
-              <p class="rounded-xl border border-amber-500/20 bg-amber-500/5 px-3 py-3 text-sm text-amber-200" role="status">Google Calendar connection is not available yet. The receptionist must not confirm appointments until calendar sync and availability checks are working.</p>
-            </section>
+
 
             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <button type="submit" class="btn-primary-blue rounded-xl px-6 py-3 text-sm">Save Quick Setup</button>
@@ -698,7 +698,6 @@
         e.preventDefault();const user=dashboardAuth.currentUser;if(!user)return;
         const msg=document.getElementById('quick-start-message');const save=e.submitter;save.disabled=true;save.textContent='Saving…';
         const update={};quickFields.forEach(id=>{const el=quickInput(id);if(el)update[id]=el.value.trim();});
-        update.calendarBooking=document.querySelector('input[name="qs-calendarBooking"]:checked')?.value||'';
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
         update.quickStartComplete=true;
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
@@ -822,12 +821,16 @@
             data=(await dashboardDb.collection('businesses').doc(user.uid).get()).data();
           }
           quickFields.forEach(id=>{const el=quickInput(id);if(el&&data[id]!==undefined)el.value=data[id];});
+          ['businessName','businessPhone','primaryTrade','businessLocation','businessZip','additionalServices','serviceAreas'].forEach(id=>{
+            const display=document.getElementById('qs-summary-'+id);
+            const source=quickInput(id);
+            if(display)display.textContent=source?.value||'Not provided';
+          });
           const personalContactInput=document.getElementById('personal-contact-number');
           if(personalContactInput&&data.personalContactNumber)personalContactInput.value=data.personalContactNumber;
           const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
           if(existingBusinessNumber)existingBusinessNumber.textContent=data.businessPhone||'Not yet added in Quick Start';
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
-          if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="qs-calendarBooking"][value="'+data.calendarBooking+'"]');if(calendarChoice)calendarChoice.checked=true;}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
           document.getElementById('qs-emergency-fee-note')?.classList.toggle('hidden',savedEmergencyMode!=='handle_call');
