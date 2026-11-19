@@ -421,13 +421,6 @@
 
 
 
-            <section class="rounded-2xl border border-slate-700/50 p-4 space-y-3">
-              <h3 class="text-base font-bold text-white">5. Urgent notifications</h3>
-              <label class="block text-sm text-slate-300">Number for urgent call notifications
-                <input id="qs-emergencyHotlineNumber" type="tel" class="dashboard-input mt-1 w-full rounded-xl p-3" placeholder="Mobile number">
-              </label>
-              <p class="text-xs text-slate-400">Enter the number where you want urgent calls or messages sent. You can leave this blank for now.</p>
-            </section>
 
 
 
@@ -483,23 +476,6 @@
             </div>
             <p class="text-xs text-slate-400" role="status">Once your dedicated TriDashAI number has been assigned and tested, we'll guide you through setting up call forwarding with your phone provider. Call forwarding is not activated from this dashboard.</p>
           </article>
-
-        <!-- OPTIONAL PERSONAL CONTACT NUMBER -->
-        <section id="personal-contact" class="dashboard-card p-5 sm:p-6 rounded-2xl space-y-3">
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Optional contact details</p>
-            <h3 class="text-lg font-bold text-white mt-1">Personal Contact Number</h3>
-            <p class="text-sm text-slate-300 mt-2">Please provide a personal contact number where we can reach you directly about your account or any urgent service matters.</p>
-          </div>
-          <form id="personal-contact-form" class="space-y-2">
-            <label for="personal-contact-number" class="block text-xs text-slate-300">Personal contact number (optional)</label>
-            <input id="personal-contact-number" type="tel" autocomplete="tel" class="dashboard-input w-full rounded-xl p-3 text-sm" placeholder="Enter a number where we can reach you">
-            <div class="flex flex-wrap items-center gap-3">
-              <button id="save-personal-contact" type="submit" class="btn-primary-blue rounded-xl px-4 py-2.5 text-sm">Save contact number</button>
-              <p id="personal-contact-message" class="text-xs text-slate-400" role="status">This can be a mobile or landline number. You can leave it blank.</p>
-            </div>
-          </form>
-        </section>
 
           <!-- MONTHLY MINUTES / SMS ALLOWANCE -->
 <!-- COMPACT MONTHLY ALLOWANCE AND BOOST PREVIEW -->
@@ -723,7 +699,7 @@
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       const dashboardAuth = firebase.auth();
       const dashboardDb = firebase.firestore();
-      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','normalHours','emergencyHotlineNumber','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
+      const quickFields=['businessName','businessPhone','primaryTrade','businessLocation','businessZip','serviceAreas','operatingHours','normalHours','normal_callout_price','out_of_hours_price','emergency_price','holiday_special_price'];
       const calloutControls=[
         {name:'qs-normal-callout',wrap:'qs-normal-fee-wrap',price:'qs-normal_callout_price',key:'normalCalloutEnabled'},
         {name:'qs-afterhours-callout',wrap:'qs-afterhours-fee-wrap',price:'qs-out_of_hours_price',key:'outOfHoursCalloutEnabled'},
@@ -886,8 +862,6 @@
             document.getElementById(control.wrap)?.classList.toggle('hidden',!enabled);
           });
 
-          const personalContactInput=document.getElementById('personal-contact-number');
-          if(personalContactInput&&data.personalContactNumber)personalContactInput.value=data.personalContactNumber;
           const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
           if(existingBusinessNumber)existingBusinessNumber.textContent=data.businessPhone||'Not yet added in Quick Start';
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}
@@ -905,28 +879,6 @@
             document.querySelector('main').prepend(banner);
           }
         } catch(error) { console.error('Could not load business profile:',error); }
-      });
-
-      // Save the optional personal contact number separately from the public business number.
-      document.getElementById('personal-contact-form')?.addEventListener('submit',async event=>{
-        event.preventDefault();
-        const user=dashboardAuth.currentUser;
-        const input=document.getElementById('personal-contact-number');
-        const message=document.getElementById('personal-contact-message');
-        const save=document.getElementById('save-personal-contact');
-        if(!user||!input||!message||!save)return;
-        save.disabled=true;save.textContent='Saving…';
-        try{
-          await dashboardDb.collection('businesses').doc(user.uid).set({
-            personalContactNumber:input.value.trim(),
-            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
-          },{merge:true});
-          message.textContent='Your personal contact number has been saved.';
-          message.className='text-xs text-emerald-300';
-        }catch(error){
-          message.textContent='Could not save the number: '+error.message;
-          message.className='text-xs text-red-300';
-        }finally{save.disabled=false;save.textContent='Save contact number';}
       });
 
     </script>
