@@ -325,6 +325,14 @@
         </div>
     </header>
 
+    <!-- LIVE STATUS: reflects saved setup and verified activation state -->
+    <div id="live-status-bar" class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-3" aria-live="polite">
+      <div id="live-status-panel" class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-xl border border-amber-400/40 bg-amber-400/10 px-4 py-3">
+        <div class="flex items-center gap-3 min-w-0"><span id="live-status-dot" class="h-3 w-3 shrink-0 rounded-full bg-amber-400"></span><div class="min-w-0"><p class="text-xs font-bold uppercase tracking-wider text-slate-300">AI receptionist status</p><p id="live-status-label" class="text-sm font-bold text-amber-200">Checking setup…</p></div></div>
+        <p id="live-status-help" class="text-xs text-slate-300">Your receptionist is not live yet.</p>
+      </div>
+    </div>
+
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
 
@@ -751,7 +759,7 @@
         });
         update.calendarBooking=document.querySelector('input[name="qs-calendarBooking"]:checked')?.value||'';
         update.callOutMode=document.querySelector('input[name="qs-callOutMode"]:checked')?.value||'';
-        update.quickStartComplete=true;
+        update.quickStartComplete=true;updateLiveStatus({...update,receptionistLive:false});
         update.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
         try{await dashboardDb.collection('businesses').doc(user.uid).set(update,{merge:true});msg.textContent='Your business setup has been saved.';msg.className='text-sm text-emerald-400';showBusinessDashboard();updateAdvancedSetupReminder(update);}
         catch(err){msg.textContent='Could not save: '+err.message;msg.className='text-sm text-red-400';}
@@ -780,6 +788,18 @@
           if(window.dashboardVoicePreference===selected&&voicePreferenceMessage)voicePreferenceMessage.textContent='Could not save your preference: '+error.message;
         }
       }));
+
+      // Display an honest status: setup/testing is not the same as being live.
+      function updateLiveStatus(data = {}) {
+        const panel=document.getElementById('live-status-panel'),dot=document.getElementById('live-status-dot'),label=document.getElementById('live-status-label'),help=document.getElementById('live-status-help');
+        if(!panel||!dot||!label||!help)return;
+        panel.classList.remove('border-amber-400/40','bg-amber-400/10','border-blue-400/40','bg-blue-400/10','border-emerald-400/40','bg-emerald-400/10');
+        dot.classList.remove('bg-amber-400','bg-blue-400','bg-emerald-400');label.classList.remove('text-amber-200','text-blue-200','text-emerald-200');
+        if(data.receptionistLive===true){panel.classList.add('border-emerald-400/40','bg-emerald-400/10');dot.classList.add('bg-emerald-400');label.classList.add('text-emerald-200');label.textContent='LIVE';help.textContent='Your AI receptionist has been activated.';}
+        else if(data.quickStartComplete===true&&data.setupComplete===true&&data.phoneConnectionTested===true&&data.receptionistTested===true){panel.classList.add('border-blue-400/40','bg-blue-400/10');dot.classList.add('bg-blue-400');label.classList.add('text-blue-200');label.textContent='READY TO GO LIVE';help.textContent='Setup and connection tests are complete. Activation is the remaining step.';}
+        else if(data.quickStartComplete===true){panel.classList.add('border-blue-400/40','bg-blue-400/10');dot.classList.add('bg-blue-400');label.classList.add('text-blue-200');label.textContent='SETUP / TESTING';help.textContent='Complete your receptionist setup and test the phone connection before going live.';}
+        else{panel.classList.add('border-amber-400/40','bg-amber-400/10');dot.classList.add('bg-amber-400');label.classList.add('text-amber-200');label.textContent='SETUP INCOMPLETE';help.textContent='Complete Quick Start and receptionist setup to continue.';}
+      }
 
       // The main dashboard appears after the customer saves their business setup.
       function showBusinessDashboard() {
@@ -861,6 +881,7 @@
             return;
           }
           let data=profile.data();
+          updateLiveStatus(data);
           window.dashboardVoicePreference=data.voicePreference||'female';
           displayVoicePreference(window.dashboardVoicePreference);
           if(voicePreferenceMessage)voicePreferenceMessage.textContent='Saved preference only; live voice switching is not connected.';
