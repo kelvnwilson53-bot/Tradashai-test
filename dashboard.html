@@ -202,7 +202,7 @@
         .dashboard-card { border-radius: 1rem; }
         .dashboard-input { min-height: 42px; padding: .625rem .75rem; border-radius: .625rem; font-size: .9rem; }
         .btn-primary-blue, #mobile-menu button, #mobile-menu a { min-height: 38px; padding: .55rem .9rem; border-radius: .6rem; font-size: .875rem; }
-        #hamburger-btn, #theme-toggle-btn { width: 38px; height: 38px; }
+        #hamburger-btn { width: 38px; height: 38px; }
         #roi-performance { padding: 1rem; }
         #stage-2 > .grid article, #stage-2 > section { min-width: 0; }
         #faq-panel details summary { font-size: .9rem; }
@@ -282,14 +282,6 @@
                 <span class="text-cyan-400">Tri</span><span class="text-white">DashAI</span>
                 <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">Dashboard</span>
             </a>
-
-            <!-- CENTERED THEME TOGGLE ICON -->
-            <div class="flex items-center justify-center">
-                <button id="theme-toggle-btn" class="w-9 h-9 bg-transparent hover:bg-slate-800/40 rounded-xl flex items-center justify-center text-lg transition cursor-pointer" title="Toggle Background">
-                    <span id="theme-icon">☀️</span>
-                </button>
-            </div>
-
 
             <!-- RIGHT SIDE: HAMBURGER MENU BUTTON -->
             <div class="relative">
@@ -930,21 +922,6 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Dark by default; remember the user's choice on this device.
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themeIcon = document.getElementById('theme-icon');
-        const savedTheme = localStorage.getItem('tridashai-theme') || 'dark';
-        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-        document.body.classList.toggle('light-theme', savedTheme === 'light');
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-        themeToggleBtn.addEventListener('click', () => {
-            const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
-            document.body.classList.toggle('dark-theme', nextTheme === 'dark');
-            document.body.classList.toggle('light-theme', nextTheme === 'light');
-            themeIcon.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('tridashai-theme', nextTheme);
-        });
-
         // Dashboard navigation: reveal the correct view before scrolling to it.
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
