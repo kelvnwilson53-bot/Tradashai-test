@@ -130,8 +130,15 @@
       return messages[error.code] || error.message || 'Sign-in failed. Please try again.';
     }
 
+    // Return to the page the visitor originally requested after signing in.
+    // Only allow known same-site pages; never accept an external redirect.
+    const postLoginPath = () => {
+      const requested = new URLSearchParams(window.location.search).get('returnTo');
+      return ['settings.html','dashboard.html','analytics.html','billing.html'].includes(requested) ? requested : 'dashboard.html';
+    };
+
     auth.onAuthStateChanged(user => {
-      if (user && user.emailVerified) window.location.replace('dashboard.html');
+      if (user && user.emailVerified) window.location.replace(postLoginPath());
     });
 
     document.getElementById('login-form').addEventListener('submit', async event => {
@@ -155,7 +162,7 @@
           button.textContent='Log In to Dashboard →';
           return;
         }
-        window.location.replace('dashboard.html');
+        window.location.replace(postLoginPath());
 
       } catch (error) {
         showMessage(friendlyError(error));
@@ -183,7 +190,7 @@
       try {
         const provider = new firebase.auth.GoogleAuthProvider();
         await auth.signInWithPopup(provider);
-        window.location.replace('dashboard.html');
+        window.location.replace(postLoginPath());
 
       } catch (error) {
         showMessage(friendlyError(error));
