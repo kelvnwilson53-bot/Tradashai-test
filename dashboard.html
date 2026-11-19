@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" id="html-root">
 <head>
+<style>.dashboard-currency-prefix{display:flex;align-items:center;justify-content:center;min-width:3.25rem;padding:0 12px;border:1px solid #46566b;border-right:0;border-radius:10px 0 0 10px;background:#111b2a;color:#e2e8f0;font-weight:600}.dashboard-currency-input{border-radius:0 10px 10px 0!important;min-width:0}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TriDashAI - Contractor Dashboard</title>
@@ -367,7 +368,7 @@
                   </div>
                   <div id="qs-normal-fee-wrap" class="hidden">
                     <label class="block text-xs text-slate-300" for="qs-normal_callout_price">Call-out fee ($)</label>
-                    <input id="qs-normal_callout_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter amount">
+                    <span class="flex mt-1"><span class="dashboard-currency-prefix" aria-hidden="true">$</span><input id="qs-normal_callout_price" type="number" min="0" step="0.01" inputmode="decimal" class="dashboard-input dashboard-currency-input flex-1 w-full rounded-xl p-3" placeholder="Enter amount"></span>
                   </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
@@ -379,7 +380,7 @@
                   </div>
                   <div id="qs-afterhours-fee-wrap" class="hidden">
                     <label class="block text-xs text-slate-300" for="qs-out_of_hours_price">Call-out fee ($)</label>
-                    <input id="qs-out_of_hours_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter amount">
+                    <span class="flex mt-1"><span class="dashboard-currency-prefix" aria-hidden="true">$</span><input id="qs-out_of_hours_price" type="number" min="0" step="0.01" inputmode="decimal" class="dashboard-input dashboard-currency-input flex-1 w-full rounded-xl p-3" placeholder="Enter amount"></span>
                   </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
@@ -391,7 +392,7 @@
                   </div>
                   <div id="qs-emergency-fee-wrap" class="hidden">
                     <label class="block text-xs text-slate-300" for="qs-emergency_price">Call-out fee ($)</label>
-                    <input id="qs-emergency_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter amount">
+                    <span class="flex mt-1"><span class="dashboard-currency-prefix" aria-hidden="true">$</span><input id="qs-emergency_price" type="number" min="0" step="0.01" inputmode="decimal" class="dashboard-input dashboard-currency-input flex-1 w-full rounded-xl p-3" placeholder="Enter amount"></span>
                   </div>
                 </div>
                 <div class="rounded-xl border border-slate-700/50 p-3 space-y-2">
@@ -403,7 +404,7 @@
                   </div>
                   <div id="qs-holiday-fee-wrap" class="hidden">
                     <label class="block text-xs text-slate-300" for="qs-holiday_special_price">Call-out fee ($)</label>
-                    <input id="qs-holiday_special_price" type="number" min="0" step="0.01" class="dashboard-input w-full rounded-xl p-3" placeholder="Enter amount">
+                    <span class="flex mt-1"><span class="dashboard-currency-prefix" aria-hidden="true">$</span><input id="qs-holiday_special_price" type="number" min="0" step="0.01" inputmode="decimal" class="dashboard-input dashboard-currency-input flex-1 w-full rounded-xl p-3" placeholder="Enter amount"></span>
                   </div>
                 </div>
               </div>
