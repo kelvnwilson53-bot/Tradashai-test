@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Subscription &amp; Billing | TriDashAI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{background:#080f1d;color:#e2e8f0;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.dashboard-card{background:rgba(15,23,42,.92);border:1px solid rgba(71,85,105,.55);box-shadow:0 10px 30px rgba(0,0,0,.16)}
+</style>
+</head>
+<body class="min-h-screen">
+<header class="border-b border-slate-800 bg-slate-950/90">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <a href="dashboard.html" class="text-xl font-extrabold"><span class="text-cyan-400">Tri</span>DashAI</a>
+    <a href="dashboard.html" class="text-sm font-semibold text-cyan-300">← Back to Dashboard</a>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-6 space-y-5">
+  <section class="dashboard-card rounded-2xl p-5 sm:p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Account</p>
+    <h1 class="text-2xl sm:text-3xl font-bold text-white mt-1">My Subscription &amp; Billing</h1>
+    <p class="text-sm text-slate-400 mt-2">View your TriDashAI plan, upcoming payment and billing details in one place.</p>
+  </section>
+  <section class="dashboard-card rounded-2xl p-5 sm:p-6 space-y-3">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+      <h2 class="text-lg font-bold text-white">Billing management not connected yet</h2>
+    </div>
+    <p class="text-sm leading-relaxed text-slate-300">This page is ready for your subscription information. The payment provider and customer billing portal have not been connected yet, so no live subscription, renewal date, invoice or payment-method details can be shown or changed here at present.</p>
+    <p class="text-sm text-slate-400">You will be able to manage these details here once billing integration is completed.</p>
+  </section>
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <article class="dashboard-card rounded-2xl p-5 space-y-1">
+      <h2 class="font-bold text-white">Your subscription</h2>
+      <p class="text-sm text-slate-400">Your current plan and monthly subscription price will appear here.</p>
+    </article>
+    <article class="dashboard-card rounded-2xl p-5 space-y-1">
+      <h2 class="font-bold text-white">Next payment</h2>
+      <p class="text-sm text-slate-400">Your next billing date and payment status will appear here.</p>
+    </article>
+    <article class="dashboard-card rounded-2xl p-5 space-y-1">
+      <h2 class="font-bold text-white">Payment method</h2>
+      <p class="text-sm text-slate-400">Your saved payment method and update options will appear here.</p>
+    </article>
+    <article class="dashboard-card rounded-2xl p-5 space-y-1">
+      <h2 class="font-bold text-white">Billing history</h2>
+      <p class="text-sm text-slate-400">Your invoices and previous payments will appear here.</p>
+    </article>
+  </section>
+</main>
+<footer class="max-w-5xl mx-auto px-4 py-6 text-center text-xs text-slate-500">TriDashAI · <a href="dashboard.html" class="text-cyan-300">Return to dashboard</a></footer>
+</body>
+</html>
