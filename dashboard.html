@@ -326,10 +326,22 @@
 
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
-        <div id="dashboard-loading-status" role="status" aria-live="polite" class="rounded-xl border border-slate-700/70 bg-slate-900/70 px-4 py-3 text-sm text-slate-300 flex items-center gap-3">
-          <span class="inline-block h-4 w-4 rounded-full border-2 border-slate-500 border-t-cyan-400 animate-spin" aria-hidden="true"></span>
-          <span>Loading your business details…</span>
-        </div>
+        <section id="dashboard-loading-status" role="status" aria-live="polite" class="dashboard-card max-w-xl mx-auto w-full rounded-3xl border border-slate-700/70 bg-slate-900/80 px-6 py-8 sm:px-10 sm:py-10 text-center space-y-5">
+          <img src="file_000000002e9c8211b6fb5b9a4a14dcae.png" alt="TriDashAI's friendly AI receptionist wearing a headset" class="mx-auto h-32 w-32 sm:h-40 sm:w-40 rounded-full object-cover border-4 border-cyan-300 shadow-xl" width="160" height="160">
+          <div class="space-y-2">
+            <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">TriDashAI receptionist</p>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-white">Welcome back</h2>
+            <p class="text-sm sm:text-base text-slate-300">Sarah is getting your business dashboard ready.</p>
+          </div>
+          <div class="mx-auto max-w-md rounded-2xl border border-slate-700/70 bg-black/20 px-4 py-3">
+            <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">A question Sarah can help with</p>
+            <p class="text-sm sm:text-base text-slate-100">“I've got water coming through my ceiling. Can you help?”</p>
+          </div>
+          <div class="flex items-center justify-center gap-3 text-sm text-slate-400">
+            <span class="inline-block h-4 w-4 rounded-full border-2 border-slate-500 border-t-cyan-400 animate-spin" aria-hidden="true"></span>
+            <span>Loading your business details…</span>
+          </div>
+        </section>
 
         <!-- STAGE 1: QUICK START -->
         <section id="stage-1" class="hidden dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
@@ -434,7 +446,7 @@
 
 
         <!-- ACTIVATED DASHBOARD -->
-        <section id="stage-2" class="space-y-6">
+        <section id="stage-2" class="hidden space-y-6">
           <!-- BUSINESS IDENTITY AT TOP OF ACTIVATED DASHBOARD -->
           <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-2"><div><p class="text-xs font-medium tracking-wide text-blue-400">Your Business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-semibold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-sm text-slate-400 mt-1">Account overview</p></div></section>
 
@@ -941,7 +953,7 @@
           console.error('Could not load business profile:',error);
           const loadingStatus=document.getElementById('dashboard-loading-status');
           if(loadingStatus) {
-            loadingStatus.innerHTML='<span class="text-amber-300 font-semibold">Your dashboard is open, but we could not load your saved business details.</span> <button type="button" id="retry-dashboard-load" class="underline text-cyan-300">Try again</button>';
+            loadingStatus.innerHTML='<img src="file_000000002e9c8211b6fb5b9a4a14dcae.png" alt="TriDashAI receptionist" class="mx-auto h-28 w-28 rounded-full object-cover border-4 border-cyan-300"><p class="text-amber-300 font-semibold mt-4">We could not load your saved business details.</p><button type="button" id="retry-dashboard-load" class="underline text-cyan-300 mt-2">Try again</button>';
             document.getElementById('retry-dashboard-load')?.addEventListener('click',()=>window.location.reload());
           }
         }
