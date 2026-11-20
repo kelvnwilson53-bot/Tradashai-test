@@ -326,7 +326,10 @@
 
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-5">
-
+        <div id="dashboard-loading-status" role="status" aria-live="polite" class="rounded-xl border border-slate-700/70 bg-slate-900/70 px-4 py-3 text-sm text-slate-300 flex items-center gap-3">
+          <span class="inline-block h-4 w-4 rounded-full border-2 border-slate-500 border-t-cyan-400 animate-spin" aria-hidden="true"></span>
+          <span>Loading your business details…</span>
+        </div>
 
         <!-- STAGE 1: QUICK START -->
         <section id="stage-1" class="hidden dashboard-card p-6 sm:p-8 rounded-3xl space-y-6">
@@ -431,7 +434,7 @@
 
 
         <!-- ACTIVATED DASHBOARD -->
-        <section id="stage-2" class="hidden space-y-6">
+        <section id="stage-2" class="space-y-6">
           <!-- BUSINESS IDENTITY AT TOP OF ACTIVATED DASHBOARD -->
           <section class="dashboard-card rounded-2xl px-5 py-5 sm:px-7 space-y-2"><div><p class="text-xs font-medium tracking-wide text-blue-400">Your Business</p><h1 id="business-name-heading" class="text-2xl sm:text-3xl font-semibold text-white mt-1">Your business dashboard</h1><p id="business-plan-summary" class="text-sm text-slate-400 mt-1">Account overview</p></div></section>
 
@@ -871,14 +874,20 @@
       dashboardAuth.onAuthStateChanged(async user => {
         if (!user) { window.location.replace('login.html'); return; }
         try {
-          await user.reload();
+          // Most returning users already have a verified auth state. Only refresh
+          // when verification is not yet reflected, avoiding an extra network wait.
           if (!user.emailVerified) {
-            await dashboardAuth.signOut();
-            window.location.replace('login.html?verify=required');
-            return;
+            await user.reload();
+            if (!user.emailVerified) {
+              await dashboardAuth.signOut();
+              window.location.replace('login.html?verify=required');
+              return;
+            }
           }
           const profile = await dashboardDb.collection('businesses').doc(user.uid).get();
           if (!profile.exists) {
+            document.getElementById('dashboard-loading-status')?.classList.add('hidden');
+            document.getElementById('stage-2')?.classList.add('hidden');
             document.getElementById('stage-1')?.classList.remove('hidden');
             const note=document.createElement('div');
             note.className='mx-4 mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200';
@@ -912,6 +921,7 @@
           const existingBusinessNumber=document.getElementById('existing-business-number-dashboard');
           if(existingBusinessNumber)existingBusinessNumber.textContent=data.businessPhone||'Not yet added in Quick Start';
           if(data.quickStartComplete){showBusinessDashboard();updateAdvancedSetupReminder(data);}else{document.getElementById('stage-1')?.classList.remove('hidden');document.getElementById('stage-2')?.classList.add('hidden');}
+          document.getElementById('dashboard-loading-status')?.classList.add('hidden');
           if(data.calendarBooking){const calendarChoice=document.querySelector('input[name="calendarBooking-choice"][value="'+data.calendarBooking+'"]');if(calendarChoice){calendarChoice.checked=true;updateCalendarBookingVisibility(data.calendarBooking);}}
           const savedEmergencyMode=data.callOutMode==='give_number'||data.callOutMode==='hotline'?'hotline':(data.callOutMode==='handle_call'||data.callOutMode==='contact_and_update'?'handle_call':'');
           if(savedEmergencyMode){const emergencyChoice=document.querySelector('input[name="qs-callOutMode"][value="'+savedEmergencyMode+'"]');if(emergencyChoice)emergencyChoice.checked=true;}
@@ -927,7 +937,14 @@
             document.querySelector('main').prepend(banner);
           }
           document.getElementById('faq-panel')?.classList.remove('hidden');
-        } catch(error) { console.error('Could not load business profile:',error); }
+        } catch(error) {
+          console.error('Could not load business profile:',error);
+          const loadingStatus=document.getElementById('dashboard-loading-status');
+          if(loadingStatus) {
+            loadingStatus.innerHTML='<span class="text-amber-300 font-semibold">Your dashboard is open, but we could not load your saved business details.</span> <button type="button" id="retry-dashboard-load" class="underline text-cyan-300">Try again</button>';
+            document.getElementById('retry-dashboard-load')?.addEventListener('click',()=>window.location.reload());
+          }
+        }
       });
 
       // Save the optional personal contact number separately from the public business number.
