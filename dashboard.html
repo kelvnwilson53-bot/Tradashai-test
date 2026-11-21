@@ -824,6 +824,7 @@
       // Optional customer feedback: each submission is stored under the signed-in business.
       const feedbackPanel=document.getElementById('feedback-panel');
       document.getElementById('feedback-nav-button')?.addEventListener('click',()=>{
+        document.getElementById('faq-panel')?.classList.add('hidden');
         feedbackPanel?.classList.remove('hidden');
         feedbackPanel?.scrollIntoView({behavior:'smooth',block:'start'});
         document.getElementById('mobile-menu')?.classList.add('hidden');
@@ -885,7 +886,6 @@
             note.className='mx-4 mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200';
             note.innerHTML='Your account is signed in, but its business profile has not been completed. <a class="underline font-bold" href="settings.html">Complete your business setup</a>.';
             document.querySelector('main').prepend(note);
-            document.getElementById('faq-panel')?.classList.remove('hidden');
             return;
           }
           let data=profile.data();
@@ -928,7 +928,6 @@
             banner.innerHTML='<strong>One more step:</strong> complete and save your Quick Start setup below.';
             document.querySelector('main').prepend(banner);
           }
-          document.getElementById('faq-panel')?.classList.remove('hidden');
         } catch(error) {
           console.error('Could not load business profile:',error);
           const loadingStatus=document.getElementById('dashboard-loading-status');
@@ -971,7 +970,15 @@
         document.querySelectorAll('.dashboard-nav-link').forEach(link => {
             link.addEventListener('click', event => {
                 const target = link.getAttribute('href');
-                if (target === '#stage-1') {
+                if (target === '#faq-panel') {
+                    event.preventDefault();
+                    document.getElementById('stage-1')?.classList.add('hidden');
+                    document.getElementById('stage-2')?.classList.add('hidden');
+                    document.getElementById('activity-reviews')?.classList.add('hidden');
+                    document.getElementById('feedback-panel')?.classList.add('hidden');
+                    document.getElementById('faq-panel')?.classList.remove('hidden');
+                    requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'}));
+                } else if (target === '#stage-1') {
                     event.preventDefault();
                     document.getElementById('stage-2')?.classList.add('hidden');
                     document.getElementById('stage-1')?.classList.remove('hidden');
